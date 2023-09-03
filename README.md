@@ -1,7 +1,7 @@
 
 <h1 align="center"><img src= "https://github.com/Mazzuc/Lionnez/assets/101806906/126bbb37-ca08-4b2b-b6cb-4e5f15dc1fa2" heigth="250px" width="1050px"/></h1>
 
-<img src="http://img.shields.io/static/v1?label=FUNCIONALIDADE&message=TRABALHO%20DADOS%20REFERENTES%20AO%20PROJETO%20DO%20TCC:%20ZOOLOGICO, FUNCIONALIDADES, SISTEMA%20E%20 APLICATIVOS&color=black&style=for-the-badge"/>
+<img src="http://img.shields.io/static/v1?label=PROJETO&message=TRABALHO%20DADO%20REFERENTE%20AO%20PROJETO%20DO%20TCC:%20ZOOLOGICO, FUNCIONALIDADES, SISTEMA%20E%20 APLICATIVOS&color=black&style=for-the-badge"/>
 
 
 ## :computer: Desenvolvedores
@@ -17,6 +17,7 @@
 <a href="http://www.clem.ufba.br/tuts/html/c07.htm#:~:text=A%20HTML%20usa%20a%20tag,(link)%20com%20outro%20documento.">Poliana Albuquerque Lima</a> <bR>
 
 </details>
+
 **Escola:** ETEC Prof° Basilides de Godoy;<br>
 **Curso:** Desenvolvimento de Sistemas;<br><br>
 
