@@ -42,11 +42,11 @@ BEGIN
     FROM Ingresso
     WHERE IngressoID = CompraID;
 
-    -- Inserir a compra na tabela Compra
+    -- Inserindo a compra na tabela Compra
     INSERT INTO Compra (ValorTotal, QtdTotal, FormaPag)
     VALUES (ValorCompra, Quantidade, 'Forma de Pagamento Aqui');
 
-    -- Inserir a nota fiscal na tabela NotaFiscal
+    -- Inserindo a nota fiscal na tabela NotaFiscal
     INSERT INTO NotaFiscal (ValorTotal, CompraID)
     VALUES (ValorCompra, LAST_INSERT_ID());
 
@@ -58,7 +58,7 @@ DELIMITER ;
 INSERT INTO Ingresso (Tipo, Valor) VALUES ('Meia', 20.00);
 INSERT INTO Ingresso (Tipo, Valor) VALUES ('Inteira', 40.00);
 
--- Chamando a procedure para realizar a compra
+
 -- Compra 3 ingressos do tipo Meia
 CALL RealizarCompra(1, 3); 
 -- Compra 3 ingressos do tipo Inteira
