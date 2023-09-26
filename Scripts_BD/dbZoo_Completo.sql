@@ -3,15 +3,35 @@ DROP DATABASE if EXISTS dbZoo;
 create database dbZoo;
 use dbZoo;
 
-/*ANIMAL*/
-create table tbDieta(
-IdDieta int auto_increment primary key,
-NomeDieta varchar(100) not null,
-HoraAlimento char(5) not null,
-QtdAlimento int not null, 
-DescricaoDieta varchar(2000)
+/*USUÁRIO*/
+create table tbUsuario(
+IdUsuario int auto_increment primary key,
+Nome varchar(150) not null,
+Email varchar(200) not null,
+Senha char(8) not null
 );
 
+create table tbFuncionario(
+IdFuncionario int auto_increment primary key,
+IdUsuario int,
+CPF char(11) not null,
+RG char(9) not null,
+DataNasc date not null,
+Cargo varchar(50) not null,
+DataAdm date not null,
+foreign key (IdUsuario) references tbUsuario(IdUsuario)
+);
+
+create table tbVisitante(
+IdVisitante int auto_increment primary key,
+IdUsuario int, 
+DataNasc date not null,
+CPF char(11) not null,
+DataCadastro date not null,
+foreign key (IdUsuario) references tbUsuario(IdUsuario)
+);
+
+/*ANIMAL*/
 create table tbTipoHabitat(
 IdTipoHabitat int auto_increment primary key,
 NomeTipoHabitat varchar(100) not null
@@ -42,16 +62,23 @@ IdAnimal int auto_increment primary key,
 NomeAnimal varchar(100) not null,
 IdEspecie int not null,
 foreign key (IdEspecie) references tbEspecie(IdEspecie),
-IdDieta int not null,
-foreign key (IdDieta) references tbDieta(IdDieta),
 IdHabitat int not null,
 foreign key (IdHabitat) references tbHabitat(IdHabitat),
-AnoNasc int not null,
+DataNasc date not null,
 IdPorte int not null,
 foreign key (IdPorte) references tbPorte(IdPorte),
 Peso double not null,
 Sexo char(1),
 DescricaoAnimal varchar(2000) 
+);
+
+create table tbDieta(
+IdDieta int auto_increment primary key,
+IdAnimal int not null,
+foreign key (IdAnimal) references tbAnimal(IdAnimal),
+NomeDieta varchar(100) not null,
+HoraAlimento char(5) not null,
+DescricaoDieta varchar(2000)
 );
 
 create table tbProntuario(
@@ -64,7 +91,7 @@ ObsProntuario varchar(2000)
 create table tbAlergiaProntuario(
 IdAlergiaProntuario int auto_increment primary key,
 NomeAlergia varchar(100) not null,
-DescricaoHistorico varchar(2000) not null,
+Descricao varchar(2000) not null,
 IdProntuario int not null,
 foreign key (IdProntuario) references tbProntuario(IdProntuario)
 );
@@ -73,34 +100,8 @@ create table tbHistoricoProntuario(
 IdHistorico int auto_increment primary key,
 IdProntuario int not null,
 foreign key (IdProntuario) references tbProntuario(IdProntuario),
+DataCadas date not null,
 DescricaoHistorico varchar(2000) not null
-);
-
-/*USUÁRIO*/
-create table tbUsuario(
-IdUsuario int auto_increment primary key,
-Nome varchar(150) not null,
-Email varchar(200) not null,
-Senha char(8) not null,
-CPF char(11) not null,
-RG char(9) not null,
-DataNasc date not null,
-UsuStatus boolean not null
-);
-
-create table tbFuncionario(
-IdFuncionario int auto_increment primary key,
-IdUsuario int,
-Cargo varchar(50) not null,
-DataAdm date not null,
-foreign key (IdUsuario) references tbUsuario(IdUsuario)
-);
-
-create table tbVisitante(
-IdVisitante int auto_increment primary key,
-IdUsuario int, 
-DataCadastro date not null,
-foreign key (IdUsuario) references tbUsuario(IdUsuario)
 );
 
 /*INGRESSO*/
