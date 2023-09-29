@@ -31,16 +31,17 @@ DataCadastro date not null,
 foreign key (IdUsuario) references tbUsuario(IdUsuario)
 );
 
+DROP DATABASE if EXISTS dbZoo;
+
+create database dbZoo;
+use dbZoo;
+
 /*ANIMAL*/
 -- Habitat
 create table tbTipoHabitat(
 IdTipoHabitat int auto_increment primary key,
 NomeTipoHabitat varchar(100) not null
 );
-insert into tbTipoHabitat(NomeTipoHabitat) 
-values("Terrestre"),
-	  ("Aquático"), 
-	  ("Aéreo");
 
 create table tbHabitat(
 IdHabitat int auto_increment primary key,
@@ -50,7 +51,7 @@ foreign key (IdTipoHabitat) references tbTipoHabitat(IdTipoHabitat),
 Capacidade int not null,
 QtdAnimal int not null
 );
--- Procedures
+
 delimiter $$
 create procedure spInsertHabitat(vNomeHabitat varchar(100), vNomeTipoHabitat varchar(100), vCapacidade int)
 begin
@@ -107,37 +108,13 @@ ON tbHabitat.IdTipoHabitat = tbTipoHabitat.IdTipoHabitat;
 end
 $$
 
-delimiter $$
-create procedure spSelectHabitatAnimais(vNomeHabitat varchar(100))
-begin
-	set @IdHabitat = (select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
-	if not exists(select * from tbHabitat where NomeHabitat = vNomeHabitat) then
-    select ("Habitat não cadastrado");
-    else 
-
-    end if;
-end
-$$
-
-call spInsertHabitat("Floresta tropical", "Terrestre", 20);
-call spInsertHabitat("Mata Atlântica", "Aéreo", 10);
-call spInsertHabitat("Mata Atlântica teste", "Aéreo", 0);
-call spInsertHabitat("Mata delete teste", "Aéreo", 0);
-
-call spUpdateHabitat("Mata delete teste",1);
-
-call spDeleteHabitat("Mata delete teste");
-
-call spSelectHabitatAnimais("Floresta tropical");
-call spSelectHabitat;
-
 -- Espécie 
 create table tbEspecie(
 IdEspecie int auto_increment primary key,
 NomeEspecie varchar(100) not null,
 NomeCientifico varchar(100) not null
 );
--- Procedures
+
 delimiter $$
 create procedure spInsertEspecie(vNomeEspecie varchar(100), vNomeCientifico varchar(100))
 begin
@@ -149,19 +126,11 @@ begin
 end
 $$
 
-call spInsertEspecie("Jaguatirica", "Leopardus pardalis");
-call spInsertEspecie("Arara-Azul", "Anodorhynchus hyacinthinus");
-select * from tbEspecie;
-
 -- Porte
 create table tbPorte(
 IdPorte int auto_increment primary key,
 NomePorte varchar(100) not null
 );
-insert into tbPorte(NomePorte)
-	values("Grande"),
-    ("Médio"),
-    ("Pequeno");
 
 -- Dieta
 create table tbDieta(
@@ -169,10 +138,6 @@ IdDieta int auto_increment primary key,
 NomeDieta varchar(100) not null,
 DescricaoDieta varchar(2000)
 );
-insert into tbDieta(NomeDieta)
-	values("Carnívoro"),
-		  ("Onívoro"),
-          ("Herbívoro");
 
 -- Animal
 create table tbAnimal(
@@ -198,7 +163,7 @@ IdAnimal int not null,
 foreign key (IdAnimal) references tbAnimal(IdAnimal),
 ObsProntuario varchar(2000)
 );
--- Procedures
+
 delimiter $$
 create procedure spInsertAnimal(vNomeAnimal varchar(100), vNomeEspecie varchar(100), vNomeHabitat varchar(100), vDataNasc date, vNomePorte varchar(100), vPeso double, vSexo char(1), vDescricaoAnimal varchar(2000), vNomeDieta varchar(100), vObsProntuario varchar(2000))
 begin
@@ -316,46 +281,6 @@ ON tbAnimal.IdPorte = tbPorte.IdPorte;
 end
 $$
 
-delimiter $$
-create procedure spSelectAnimalEspecifico(vNomeAnimal varchar(100))
-begin
-SELECT 
-	tbAnimal.IdAnimal as "Id do Animal",
-    tbAnimal.NomeAnimal as "Nome",
-    tbAnimal.DataNasc as "Nascimento",
-    tbEspecie.NomeEspecie as "Espécie",
-    tbEspecie.NomeCientifico as "Nome Científico",
-    tbPorte.NomePorte as "Porte",
-    tbHabitat.NomeHabitat as "Habitat",
-    tbDieta.NomeDieta as "Dieta",
-    tbAnimal.Peso,
-    tbAnimal.Sexo,
-    tbAnimal.DescricaoAnimal as "Descrição"
-FROM tbAnimal
-LEFT JOIN tbEspecie
-ON tbAnimal.IdEspecie = tbEspecie.IdEspecie
-LEFT JOIN tbDieta
-ON tbAnimal.IdDieta = tbDieta.IdDieta
-LEFT JOIN tbHabitat
-ON tbAnimal.IdHabitat = tbHabitat.IdHabitat
-LEFT JOIN tbPorte
-ON tbAnimal.IdPorte = tbPorte.IdPorte;
-end
-$$
-
-call spInsertAnimal("Lisa","Jaguatirica", "Floresta tropical", '2006-05-25', "Médio", 20.00, "F", "ela é legal","Carnívoro", "Mancha pata direita");
-call spInsertAnimal("Azul","Arara-Azul", "Mata Atlântica", '2016-05-25', "Pequeno", 10.00, "M", "tímido","Herbívoro", "Mancha asa direita");
-call spInsertAnimal("Azula","Arara-Azul", "Floresta tropical", '2017-05-25', "Pequeno", 8.00, "F", "fofa","Herbívoro", "Mancha bico");
-
-call spUpdateAnimal("Azul","Floresta tropical", 9.00,"tímido", "Mancha bico azul");
-
-call spDeleteAnimal("Azula");
-
-call spSelectAnimal;
-select * from tbAnimal;
-select * from tbProntuario;
-
-
 -- Prontuário
 create table tbAlergia(
 IdAlergia int auto_increment primary key,
@@ -365,7 +290,6 @@ IdProntuario int not null,
 foreign key (IdProntuario) references tbProntuario(IdProntuario)
 );
 
--- procedures
 delimiter $$
 create procedure spInsertAlergia(vNomeAnimal varchar(100), vNomeAlergia varchar(100), vDescricao varchar(2000))
 begin
@@ -379,7 +303,6 @@ begin
 end
 $$
 
--- procedures
 delimiter $$
 create procedure spUpdateAlergia(vNomeAnimal varchar(100), vNomeAlergia varchar(100), vDescricao varchar(2000))
 begin
@@ -397,12 +320,8 @@ begin
     end if;
 end
 $$
-call spUpdateAlergia("Azul", "dermatite alimentar", "não sei");
-call spInsertAlergia("Lulu", "dermatite alimentar", "não tenho ideia");
 
-
-select * from tbAlergia;
-
+-- Histórico
 create table tbHistoricoProntuario(
 IdHistorico int auto_increment primary key,
 IdProntuario int not null,
@@ -411,7 +330,6 @@ DataCadas date not null,
 DescricaoHistorico varchar(2000) not null
 );
 
--- Procedure
 delimiter $$
 create procedure spInsertHistorico(vNomeAnimal varchar(100), vDescricao varchar(2000))
 begin
@@ -425,9 +343,22 @@ begin
 	end if;
 end
 $$
-call spInsertHistorico("Lulu", "Exames de Rotina");
-call spInsertHistorico("Azul", "Exames de Rotina");
-select * from tbHistoricoProntuario;
+
+-- Insert
+insert into tbTipoHabitat(NomeTipoHabitat) 
+	values("Terrestre"),
+		  ("Aquático"), 
+		  ("Aéreo");
+      
+insert into tbPorte(NomePorte)
+	values("Grande"),
+    ("Médio"),
+    ("Pequeno");
+
+insert into tbDieta(NomeDieta)
+	values("Carnívoro"),
+		  ("Onívoro"),
+          ("Herbívoro");
 
 /*INGRESSO*/
 CREATE TABLE tbCompra (
