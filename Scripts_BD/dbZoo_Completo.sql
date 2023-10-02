@@ -52,6 +52,85 @@ Capacidade int not null,
 QtdAnimal int not null
 );
 
+-- Espécie 
+create table tbEspecie(
+IdEspecie int auto_increment primary key,
+NomeEspecie varchar(100) not null
+);
+
+-- Porte
+create table tbPorte(
+IdPorte int auto_increment primary key,
+NomePorte varchar(100) not null
+);
+
+-- Dieta
+create table tbDieta(
+IdDieta int auto_increment primary key,
+NomeDieta varchar(100) not null,
+DescricaoDieta varchar(2000)
+);
+
+-- Animal
+create table tbAnimal(
+IdAnimal int auto_increment primary key,
+NomeAnimal varchar(100) not null,
+IdEspecie int not null,
+foreign key (IdEspecie) references tbEspecie(IdEspecie),
+IdDieta int not null,
+foreign key (IdDieta) references tbDieta(IdDieta),
+IdHabitat int not null,
+foreign key (IdHabitat) references tbHabitat(IdHabitat),
+DataNasc date not null,
+IdPorte int not null,
+foreign key (IdPorte) references tbPorte(IdPorte),
+Peso double(2,2) not null,
+Sexo char(1),
+DescricaoAnimal varchar(2000) 
+);
+
+create table tbProntuario(
+IdProntuario int auto_increment primary key,
+IdAnimal int not null,
+foreign key (IdAnimal) references tbAnimal(IdAnimal),
+ObsProntuario varchar(2000)
+);
+
+-- Prontuário
+create table tbAlergia(
+IdAlergia int auto_increment primary key,
+NomeAlergia varchar(100) not null,
+Descricao varchar(2000) not null,
+IdProntuario int not null,
+foreign key (IdProntuario) references tbProntuario(IdProntuario)
+);
+
+create table tbHistoricoProntuario(
+IdHistorico int auto_increment primary key,
+IdProntuario int not null,
+foreign key (IdProntuario) references tbProntuario(IdProntuario),
+DataCadas date not null,
+DescricaoHistorico varchar(2000) not null
+);
+
+-- Insert
+insert into tbTipoHabitat(NomeTipoHabitat) 
+	values("Terrestre"),
+		  ("Aquático"), 
+		  ("Aéreo");
+      
+insert into tbPorte(NomePorte)
+	values("Grande"),
+    ("Médio"),
+    ("Pequeno");
+
+insert into tbDieta(NomeDieta)
+	values("Carnívoro"),
+		  ("Onívoro"),
+          ("Herbívoro");
+
+-- Procedures 
+-- HABITAT 
 delimiter $$
 create procedure spInsertHabitat(vNomeHabitat varchar(100), vNomeTipoHabitat varchar(100), vCapacidade int)
 begin
@@ -64,6 +143,9 @@ begin
     end if;
 end
 $$
+
+call spInsertHabitat("Floresta Tropical", "Terrestre", 10);
+call spInsertHabitat("Mata Atlântica", "Terrestre", 1);
 
 delimiter $$
 create procedure spDeleteHabitat(vNomeHabitat varchar(100))
@@ -108,62 +190,58 @@ ON tbHabitat.IdTipoHabitat = tbTipoHabitat.IdTipoHabitat;
 end
 $$
 
--- Espécie 
-create table tbEspecie(
-IdEspecie int auto_increment primary key,
-NomeEspecie varchar(100) not null,
-NomeCientifico varchar(100) not null
-);
-
 delimiter $$
-create procedure spInsertEspecie(vNomeEspecie varchar(100), vNomeCientifico varchar(100))
+create procedure spSelectHabitatAnimais(vNomeHabitat varchar(200))
+begin
+	set @IdHabitat = (select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
+    
+	if not exists(select * from tbHabitat where NomeHabitat = vNomeHabitat) then
+		select ("Habitat não cadastrado");
+    else 
+		SELECT
+			tbAnimal.IdAnimal as "Id do Animal",
+			tbAnimal.NomeAnimal as "Nome",
+			tbAnimal.DataNasc as "Nascimento",
+			tbEspecie.NomeEspecie as "Espécie",
+			tbPorte.NomePorte as "Porte",
+			tbDieta.NomeDieta as "Dieta",
+			tbAnimal.Peso,
+			tbAnimal.Sexo,
+			tbAnimal.DescricaoAnimal as "Descrição"
+		FROM
+			tbHabitat
+		INNER JOIN
+		  tbAnimal
+		ON tbAnimal.IdHabitat = @IdHabitat
+        INNER JOIN tbEspecie
+		ON tbAnimal.IdEspecie = tbEspecie.IdEspecie
+		INNER JOIN tbDieta
+		ON tbAnimal.IdDieta = tbDieta.IdDieta
+		INNER JOIN tbPorte
+		ON tbAnimal.IdPorte = tbPorte.IdPorte
+        GROUP BY tbAnimal.IdAnimal
+;
+	end if;
+end
+$$
+
+drop procedure spSelectHabitatAnimais;
+call spSelectHabitatAnimais("Floresta Tropical");
+call spSelectHabitat;
+
+-- ESPÉCIE
+delimiter $$
+create procedure spInsertEspecie(vNomeEspecie varchar(100))
 begin
 	if not exists(select * from tbEspecie where NomeEspecie = vNomeEspecie) then
-	insert into tbEspecie(NomeEspecie, NomeCientifico) values (vNomeEspecie, vNomeCientifico);
+	insert into tbEspecie(NomeEspecie) values (vNomeEspecie);
     else 
 			select ("Espécie já cadastrada");
     end if;
 end
 $$
 
--- Porte
-create table tbPorte(
-IdPorte int auto_increment primary key,
-NomePorte varchar(100) not null
-);
-
--- Dieta
-create table tbDieta(
-IdDieta int auto_increment primary key,
-NomeDieta varchar(100) not null,
-DescricaoDieta varchar(2000)
-);
-
--- Animal
-create table tbAnimal(
-IdAnimal int auto_increment primary key,
-NomeAnimal varchar(100) not null,
-IdEspecie int not null,
-foreign key (IdEspecie) references tbEspecie(IdEspecie),
-IdDieta int not null,
-foreign key (IdDieta) references tbDieta(IdDieta),
-IdHabitat int not null,
-foreign key (IdHabitat) references tbHabitat(IdHabitat),
-DataNasc date not null,
-IdPorte int not null,
-foreign key (IdPorte) references tbPorte(IdPorte),
-Peso double(2,2) not null,
-Sexo char(1),
-DescricaoAnimal varchar(2000) 
-);
-
-create table tbProntuario(
-IdProntuario int auto_increment primary key,
-IdAnimal int not null,
-foreign key (IdAnimal) references tbAnimal(IdAnimal),
-ObsProntuario varchar(2000)
-);
-
+-- ANIMAL 
 delimiter $$
 create procedure spInsertAnimal(vNomeAnimal varchar(100), vNomeEspecie varchar(100), vNomeHabitat varchar(100), vDataNasc date, vNomePorte varchar(100), vPeso double, vSexo char(1), vDescricaoAnimal varchar(2000), vNomeDieta varchar(100), vObsProntuario varchar(2000))
 begin
@@ -173,11 +251,13 @@ begin
     
     set @QtdAtualizada = 1+@QtdAtual;
     
+    if not exists(select * from tbEspecie where NomeEspecie = vNomeEspecie) then
+		call spInsertEspecie (vNomeEspecie);
+	end if;
+    
     if (@QtdAtualizada > @Capacidade) then
     select ("Capacidade Máxima do Habitat atingida");
     
-	elseif not exists(select * from tbEspecie where NomeEspecie = vNomeEspecie) then
-		select ("Espécie não cadastrada");
 	elseif not exists(select * from tbHabitat where NomeHabitat = vNomeHabitat) then
 		select ("Habitat não cadastrado");
 	elseif not exists(select * from tbDieta where NomeDieta = vNomeDieta) then
@@ -200,6 +280,10 @@ begin
     end if;
 end
 $$
+
+call spInsertAnimal("Lulu", "Jaguatirica", "Floresta Tropical", '2006-05-25', "Médio", 10.00, "F", "Animal Legal", "Carnívoro", "Mancha na pata esquerda");
+call spInsertAnimal("Azula", "Arara-Azul", "Mata Atlântica", '2006-05-25', "Médio", 10.00, "F", "Animal Legal", "Herbívoro", "Mancha na asa esquerda");
+call spInsertAnimal("Azul", "Jaguatirica", "Floresta Tropical", '2006-05-25', "Médio", 10.00, "M", "Animal Legal", "Carnívoro", "Mancha na pata direita");
 
 delimiter $$
 create procedure spUpdateAnimal(vNomeAnimal varchar(100), vNomeHabitat varchar(100), vPeso double, vDescricaoAnimal varchar(2000), vObsProntuario varchar(2000))
@@ -262,7 +346,6 @@ SELECT
     tbAnimal.NomeAnimal as "Nome",
     tbAnimal.DataNasc as "Nascimento",
     tbEspecie.NomeEspecie as "Espécie",
-    tbEspecie.NomeCientifico as "Nome Científico",
     tbPorte.NomePorte as "Porte",
     tbHabitat.NomeHabitat as "Habitat",
     tbDieta.NomeDieta as "Dieta",
@@ -281,15 +364,45 @@ ON tbAnimal.IdPorte = tbPorte.IdPorte;
 end
 $$
 
--- Prontuário
-create table tbAlergia(
-IdAlergia int auto_increment primary key,
-NomeAlergia varchar(100) not null,
-Descricao varchar(2000) not null,
-IdProntuario int not null,
-foreign key (IdProntuario) references tbProntuario(IdProntuario)
-);
+delimiter $$
+create procedure spSelectAnimalEspecifico(vNomeAnimal varchar(200))
+begin
+	set @IdAnimal = (select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
+    
+	if not exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
+		select ("Animal não cadastrado");
+    else 
+		SELECT
+			tbAnimal.IdAnimal as "Id do Animal",
+			tbAnimal.NomeAnimal as "Nome",
+			tbAnimal.DataNasc as "Nascimento",
+			tbEspecie.NomeEspecie as "Espécie",
+			tbPorte.NomePorte as "Porte",
+			tbHabitat.NomeHabitat as "Habitat",
+			tbDieta.NomeDieta as "Dieta",
+			tbAnimal.Peso,
+			tbAnimal.Sexo,
+			tbAnimal.DescricaoAnimal as "Descrição"
+		FROM
+			tbAnimal
+		INNER JOIN
+			tbHabitat
+		ON tbAnimal.IdAnimal = @IdAnimal
+        INNER JOIN tbEspecie
+		ON tbAnimal.IdEspecie = tbEspecie.IdEspecie
+		INNER JOIN tbDieta
+		ON tbAnimal.IdDieta = tbDieta.IdDieta
+		INNER JOIN tbPorte
+		ON tbAnimal.IdPorte = tbPorte.IdPorte
+;
+	end if;
+end
+$$
 
+call spSelectAnimal;
+call spSelectAnimalEspecifico("Floresta Tropical");
+
+-- PRONTUÁRIO
 delimiter $$
 create procedure spInsertAlergia(vNomeAnimal varchar(100), vNomeAlergia varchar(100), vDescricao varchar(2000))
 begin
@@ -321,15 +434,6 @@ begin
 end
 $$
 
--- Histórico
-create table tbHistoricoProntuario(
-IdHistorico int auto_increment primary key,
-IdProntuario int not null,
-foreign key (IdProntuario) references tbProntuario(IdProntuario),
-DataCadas date not null,
-DescricaoHistorico varchar(2000) not null
-);
-
 delimiter $$
 create procedure spInsertHistorico(vNomeAnimal varchar(100), vDescricao varchar(2000))
 begin
@@ -343,22 +447,6 @@ begin
 	end if;
 end
 $$
-
--- Insert
-insert into tbTipoHabitat(NomeTipoHabitat) 
-	values("Terrestre"),
-		  ("Aquático"), 
-		  ("Aéreo");
-      
-insert into tbPorte(NomePorte)
-	values("Grande"),
-    ("Médio"),
-    ("Pequeno");
-
-insert into tbDieta(NomeDieta)
-	values("Carnívoro"),
-		  ("Onívoro"),
-          ("Herbívoro");
 
 /*INGRESSO*/
 CREATE TABLE tbCompra (
