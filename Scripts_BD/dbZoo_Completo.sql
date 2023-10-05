@@ -4,32 +4,70 @@ create database dbZoo;
 use dbZoo;
 
 /*USUÁRIO*/
-create table tbUsuario(
-IdUsuario int auto_increment primary key,
+create table tbCadastro(
+IdCadastro int primary key auto_increment, 
+CPF char(11) not null,
 Nome varchar(150) not null,
-Email varchar(200) not null,
-Senha char(8) not null
-);
+Email varchar(200) not null
+); 
 
-create table tbFuncionario(
-IdFuncionario int auto_increment primary key,
-IdUsuario int,
-CPF char(11) not null,
-RG char(9) not null,
-DataNasc date not null,
+create table tbLogin(
+IdLogin int primary key auto_increment, 
+IdCadastro int not null,
+foreign key (IdCadastro) references tbCadastro(IdCadastro),
+Usuario varchar(100) not null,
+Senha char(8) not null,
+Acesso int not null
+); 
+
+create table tbCadastroFuncionario(
+IdFuncionario int primary key auto_increment, 
+IdCadastro int, 
+foreign key (IdCadastro) references tbCadastro(IdCadastro),
 Cargo varchar(50) not null,
-DataAdm date not null,
-foreign key (IdUsuario) references tbUsuario(IdUsuario)
+RGCad char(9) not null,
+DataNasc date not null,
+DataAdm date not null
 );
 
-create table tbVisitante(
-IdVisitante int auto_increment primary key,
-IdUsuario int, 
-DataNasc date not null,
-CPF char(11) not null,
-DataCadastro date not null,
-foreign key (IdUsuario) references tbUsuario(IdUsuario)
+create table tbCadastroVisitante(
+IdCadastroVisitante int primary key auto_increment,
+IdCadastro int, 
+foreign key (IdCadastro) references tbCadastro(IdCadastro),
+DataCadastro date not null
 );
+
+delimiter $$
+create procedure spInsertFuncionario(vNome varchar(200), vEmail varchar(200), vCPF char(11), vCargo varchar(50), vSenha char(8), vUsuario varchar(20), vRG char(9), vDataNasc date, vDataAdm date)
+begin
+	if not exists(select * from tbCadastro where CPF = vCPF) then
+	insert into tbCadastro(CPF, Nome, Email) values (vCPF, VNome, vEmail);
+    
+    set @IdCadastro = (select IdCadastro from tbCadastro where CPF = vCPF);
+    set @Acesso = 1;
+    insert into tbLogin(IdCadastro, Usuario, Senha, Acesso) values (@IdCadastro, vUsuario, vSenha, @Acesso);
+    insert into tbCadastroFuncionario(IdCadastro, Cargo, RGCad, DataNasc, DataAdm) values (@IdCadastro, vCargo, vRG, vDataNasc, vDataAdm);
+    else 
+			select ("Funcionário já cadastrado");
+    end if;
+end
+$$
+
+delimiter $$
+create procedure spInsertVisitante(vNome varchar(200), vEmail varchar(200), vCPF char(11), vSenha char(8), vUsuario varchar(20))
+begin
+	if not exists(select * from tbCadastro where CPF = vCPF) then
+	insert into tbCadastro(CPF, Nome, Email) values (vCPF, VNome, vEmail);
+    
+    set @IdCadastro = (select IdCadastro from tbCadastro where CPF = vCPF);
+    set @Acesso = 0;
+    insert into tbLogin(IdCadastro, Usuario, Senha, Acesso) values (@IdCadastro, vUsuario, vSenha, @Acesso);
+    insert into tbCadastroVisitante(IdCadastro, DataCadastro) values (@IdCadastro, curdate());
+    else 
+			select ("Visitante já cadastrado");
+    end if;
+end
+$$
 
 /*ANIMAL*/
 -- Habitat
@@ -94,20 +132,12 @@ foreign key (IdAnimal) references tbAnimal(IdAnimal),
 ObsProntuario varchar(2000)
 );
 
--- Prontuário
-create table tbAlergia(
-IdAlergia int auto_increment primary key,
-NomeAlergia varchar(100) not null,
-Descricao varchar(2000) not null,
-IdProntuario int not null,
-foreign key (IdProntuario) references tbProntuario(IdProntuario)
-);
-
 create table tbHistoricoProntuario(
 IdHistorico int auto_increment primary key,
 IdProntuario int not null,
 foreign key (IdProntuario) references tbProntuario(IdProntuario),
 DataCadas date not null,
+Alergia varchar(200) not null,
 DescricaoHistorico varchar(2000) not null
 );
 
@@ -390,41 +420,9 @@ begin
 end
 $$
 
-call spSelectAnimal;
 -- PRONTUÁRIO
 delimiter $$
-create procedure spInsertAlergia(vNomeAnimal varchar(100), vNomeAlergia varchar(100), vDescricao varchar(2000))
-begin
-	set @IdAnimal = (select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
-	set @IdProntuario = (select IdProntuario from tbProntuario where IdAnimal = @IdAnimal);
-    	if not exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
-    select ("Prontuário não cadastrado");
-    else   
-	insert into tbAlergia(NomeAlergia, Descricao, IdProntuario) values (vNomeAlergia, vDescricao, @IdProntuario);
-    end if;
-end
-$$
-
-delimiter $$
-create procedure spUpdateAlergia(vNomeAnimal varchar(100), vNomeAlergia varchar(100), vDescricao varchar(2000))
-begin
-	set @IdAnimal = (select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
-	set @IdProntuario = (select IdProntuario from tbProntuario where IdAnimal = @IdAnimal);
-    
-    set @IdAlergia = (select IdAlergia from tbAlergia where IdProntuario = @IdProntuario and NomeAlergia = vNomeAlergia);
-    
-	if not exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
-    select ("Prontuário não cadastrado");
-    elseif not exists(select * from tbAlergia where IdAlergia = @IdAlergia) then
-    select ("Alergia não cadastrada");
-    else
-	update tbAlergia set Descricao = vDescricao where IdAlergia = @IdAlergia;
-    end if;
-end
-$$
-
-delimiter $$
-create procedure spInsertHistorico(vNomeAnimal varchar(100), vDescricao varchar(2000))
+create procedure spInsertHistorico(vNomeAnimal varchar(100), vAlergia varchar(200), vDescricao varchar(2000))
 begin
 	set @IdAnimal = (select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
 	set @IdProntuario = (select IdProntuario from tbProntuario where IdAnimal = @IdAnimal);
@@ -432,7 +430,7 @@ begin
 	if not exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
     select ("Prontuário não cadastrado");
     else    
-	insert into tbHistoricoProntuario(DataCadas, DescricaoHistorico, IdProntuario) values (curdate(), vDescricao, @IdProntuario);
+	insert into tbHistoricoProntuario(DataCadas, DescricaoHistorico, IdProntuario, Alergia) values (curdate(), vDescricao, @IdProntuario, vAlergia);
 	end if;
 end
 $$
@@ -461,20 +459,11 @@ begin
         LEFT JOIN tbEspecie
 		ON tbAnimal.IdEspecie = tbEspecie.IdEspecie;
         
-        -- Alergia
-		SELECT
-            tbAlergia.NomeAlergia as "Nome",
-            tbAlergia.Descricao as "Descrição"
-		FROM
-			tbProntuario
-        LEFT JOIN tbAlergia
-		ON tbProntuario.IdAnimal = @IdAnimal and tbProntuario.IdProntuario = tbAlergia.IdProntuario
-        group by IdAlergia;
-        
 		-- Historico
 		SELECT
-           tbHistoricoProntuario.DataCadas as "Data",
-            tbHistoricoProntuario.DescricaoHistorico as "Descrição"
+			tbHistoricoProntuario.DataCadas as "Data",
+            tbHistoricoProntuario.Alergia as "Alergia",
+			tbHistoricoProntuario.DescricaoHistorico as "Descrição"
 		FROM
 			tbProntuario
         LEFT JOIN tbHistoricoProntuario
@@ -485,70 +474,100 @@ end
 $$
 
 /*INGRESSO*/
-CREATE TABLE tbCompra (
-    IdCompra INT PRIMARY KEY AUTO_INCREMENT,
-    DataCompra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+-- Tabela Compra
+CREATE TABLE Compra (
+    IDCompra INT AUTO_INCREMENT PRIMARY KEY,
+    DataCompra DATE,
     ValorTotal DECIMAL(10, 2),
     QtdTotal INT,
-    FormaPag VARCHAR(50)
+    FormaPag ENUM('pix', 'cartao_de_credito', 'boleto')
 );
 
-CREATE TABLE tbIngresso (
-    IdIngresso INT PRIMARY KEY AUTO_INCREMENT,
-    Tipo VARCHAR(10), -- Meia ou Inteira
-    Valor DECIMAL(10, 2),
-    IdCompra int,
-    FOREIGN KEY (IdCompra) REFERENCES tbCompra(IdCompra)
+-- Tabela Ingresso
+CREATE TABLE Ingresso (
+    IDIngresso INT AUTO_INCREMENT PRIMARY KEY,
+    Nome ENUM('meia', 'inteira'),
+    Valor DECIMAL(5, 2)
 );
 
-CREATE TABLE tbNotaFiscal (
-    IdNotaFiscal INT PRIMARY KEY AUTO_INCREMENT,
-    DataEmissao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+-- Tabela CompraIngresso
+CREATE TABLE CompraIngresso (
+    IDCompraIngresso INT AUTO_INCREMENT PRIMARY KEY,
+    IDCompra INT,
+    IDIngresso INT,
+    Quantidade INT,
+    FOREIGN KEY (IDCompra) REFERENCES Compra(IDCompra),
+    FOREIGN KEY (IDIngresso) REFERENCES Ingresso(IDIngresso)
+);
+
+-- Tabela NotaFiscal
+CREATE TABLE NotaFiscal (
+    IDNotaFiscal INT AUTO_INCREMENT PRIMARY KEY,
+    DataEmissao DATE,
     ValorTotal DECIMAL(10, 2),
-    IdCompra INT,
-    FOREIGN KEY (IdCompra) REFERENCES tbCompra(IdCompra)
+    IDCompra INT,
+    FOREIGN KEY (IDCompra) REFERENCES Compra(IDCompra)
 );
 
 -- Procedure para realizar a compra e gerar a nota fiscal
 DELIMITER //
-
 CREATE PROCEDURE RealizarCompra(
-    IN IdCompra INT,
-    IN Quantidade INT
+    IN FormaPagParam ENUM('pix', 'cartao_de_credito', 'boleto'),
+    IN IngressosMeia INT,
+    IN IngressosInteira INT
 )
 BEGIN
-    DECLARE ValorCompra DECIMAL(10, 2);
-    
-    -- Cálculo do valor total da compra
-    SELECT SUM(Valor * Quantidade) INTO ValorCompra
-    FROM tbIngresso
-    WHERE IdIngresso = IdCompra;
+    --  data atual
+    SET @DataCompra = CURDATE();
 
-    -- Inserindo a compra na tabela Compra
-    INSERT INTO tbCompra (ValorTotal, QtdTotal, FormaPag)
-    VALUES (ValorCompra, Quantidade, 'Forma de Pagamento Aqui');
+    -- Inserindo dados na tabela Compra
+    INSERT INTO Compra (DataCompra, FormaPag, ValorTotal, QtdTotal)
+    VALUES (@DataCompra, FormaPagParam, 0.00, IngressosMeia + IngressosInteira);
 
-    -- Inserindo a nota fiscal na tabela NotaFiscal
-    INSERT INTO tbNotaFiscal (ValorTotal, IdCompra)
-    VALUES (ValorCompra, LAST_INSERT_ID());
+    -- ID da compra inserida
+    SET @IDCompra = LAST_INSERT_ID();
+
+    -- Inserir ingressos meia na tabela CompraIngresso
+    INSERT INTO CompraIngresso (IDCompra, IDIngresso, Quantidade)
+    SELECT @IDCompra, IDIngresso, IngressosMeia
+    FROM Ingresso
+    WHERE Nome = 'meia';
+
+    -- Inserindo ingressos inteira na tabela CompraIngresso
+    INSERT INTO CompraIngresso (IDCompra, IDIngresso, Quantidade)
+    SELECT @IDCompra, IDIngresso, IngressosInteira
+    FROM Ingresso
+    WHERE Nome = 'inteira';
+
+    -- Calcular o valor da compra
+    SELECT SUM(I.Valor * CI.Quantidade)
+    INTO @ValorCompra
+    FROM CompraIngresso CI
+    INNER JOIN Ingresso I ON CI.IDIngresso = I.IDIngresso
+    WHERE CI.IDCompra = @IDCompra;
+
+    -- Atualizando o valor total da compra
+    UPDATE Compra
+    SET ValorTotal = @ValorCompra
+    WHERE IDCompra = @IDCompra;
+
+    -- Inserindo a nota fiscal associada à compra
+    INSERT INTO NotaFiscal (DataEmissao, ValorTotal, IDCompra)
+    VALUES (@DataCompra, @ValorCompra, @IDCompra);
 
 END //
-
 DELIMITER ;
 
--- Exemplo Inserindo ingressos 
-INSERT INTO tbIngresso (Tipo, Valor) VALUES ('Meia', 20.00);
-INSERT INTO tbIngresso (Tipo, Valor) VALUES ('Inteira', 40.00);
+INSERT INTO Ingresso (Nome, Valor) VALUES ('Meia', 20.00);
+INSERT INTO Ingresso (Nome, Valor) VALUES ('Inteira', 40.00);
 
 
--- Compra 3 ingressos do tipo Meia
-CALL RealizarCompra(1, 3); 
--- Compra 3 ingressos do tipo Inteira
-CALL RealizarCompra(2, 3); 
+-- EXEMPLOS DE CALL 
+-- Inserindo 2 ingressos 'meia' e 1 'inteira'
+CALL RealizarCompra('cartao_de_credito', 2, 1);
+-- Inserindo 4 ingressos 'meia' e 2 'inteira'
+CALL RealizarCompra('cartao_de_credito', 4, 2);
 
-
-SELECT * FROM tbCompra;
-SELECT * FROM tbNotaFiscal;
-
-SELECT * FROM Compra WHERE CompraID = 1;
-
+select * from Compra;
+select * from NotaFiscal;
+select * from Ingresso;
