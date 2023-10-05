@@ -40,7 +40,9 @@ DataCadastro date not null
 delimiter $$
 create procedure spInsertFuncionario(vNome varchar(200), vEmail varchar(200), vCPF char(11), vCargo varchar(50), vSenha char(8), vUsuario varchar(20), vRG char(9), vDataNasc date, vDataAdm date)
 begin
-	if not exists(select * from tbCadastro where CPF = vCPF) then
+	if exists(select * from tbLogin where Usuario = vUsuario) then
+   	select ("Usuário Inválido");
+	elseif not exists(select * from tbCadastro where CPF = vCPF) then
 	insert into tbCadastro(CPF, Nome, Email) values (vCPF, VNome, vEmail);
     
     set @IdCadastro = (select IdCadastro from tbCadastro where CPF = vCPF);
@@ -56,7 +58,9 @@ $$
 delimiter $$
 create procedure spInsertVisitante(vNome varchar(200), vEmail varchar(200), vCPF char(11), vSenha char(8), vUsuario varchar(20))
 begin
-	if not exists(select * from tbCadastro where CPF = vCPF) then
+	if exists(select * from tbLogin where Usuario = vUsuario) then
+   	select ("Usuário Inválido");
+	elseif not exists(select * from tbCadastro where CPF = vCPF) then
 	insert into tbCadastro(CPF, Nome, Email) values (vCPF, VNome, vEmail);
     
     set @IdCadastro = (select IdCadastro from tbCadastro where CPF = vCPF);
@@ -65,6 +69,93 @@ begin
     insert into tbCadastroVisitante(IdCadastro, DataCadastro) values (@IdCadastro, curdate());
     else 
 			select ("Visitante já cadastrado");
+    end if;
+end
+$$
+
+delimiter $$
+create procedure spSelectVisitante()
+begin
+	select 
+	tbCadastro.IdCadastro, 
+	tbCadastro.Nome,
+	tbCadastro.Email,
+     tbCadastro.CPF,
+	tbLogin.Usuario,
+	tbLogin.Senha,
+	tbCadastroVisitante.DataCadastro
+	from tbCadastroVisitante
+	left join tbCadastro on tbCadastro.IdCadastro = tbCadastroVisitante.IdCadastro
+	left join tbLogin on tbCadastro.IdCadastro = tbLogin.IdCadastro;
+end
+$$
+
+delimiter $$
+create procedure spSelectFuncionario()
+begin
+	select 
+	tbCadastro.IdCadastro, 
+	tbCadastro.Nome,
+	tbCadastro.Email,
+    tbCadastro.CPF,
+    tbCadastroFuncionario.RGCad,
+	tbLogin.Usuario,
+	tbLogin.Senha,
+	tbCadastroFuncionario.Cargo,
+    tbCadastroFuncionario.DataNasc,
+    tbCadastroFuncionario.DataAdm
+	from tbCadastroFuncionario
+	left join tbCadastro on tbCadastro.IdCadastro = tbCadastroFuncionario.IdCadastro
+	left join tbLogin on tbCadastro.IdCadastro = tbLogin.IdCadastro;
+end
+$$
+
+delimiter $$
+create procedure spDeleteCadastro(vUsuario varchar(100))
+begin
+	set @IdCadastro = (select IdCadastro from tbLogin where Usuario = vUsuario);
+    set @Acesso = (select Acesso from tbLogin where Usuario = vUsuario);
+    
+    if(@Acesso = 0) then
+		select ("Usuário não pode ser excluído");
+    else
+	if exists(select * from tbcadastro where IdCadastro = @IdCadastro) then
+		delete from tbCadastroFuncionário where IdCadastro = @IdCadastro;
+		delete from tblogin where IdCadastro = @IdCadastro;
+		delete from tbCadastro where IdCadastro = @IdCadastro;
+    else
+		select ("Usuário não existe");
+    end if;
+    
+    end if;
+end
+$$
+
+delimiter $$
+create procedure spLogin(vUsuario varchar(100), vSenha char(8))
+begin
+	set @IdCadastro = (select IdCadastro from tbLogin where Usuario = vUsuario);
+	set @Acesso = (select Acesso from tbLogin where Usuario = vUsuario);
+    
+    set @Login = (select IdCadastro from tbLogin where Usuario = vUsuario);
+    set @Senha = (select Senha from tbLogin where Usuario = vUsuario);
+        
+	if(@Acesso = 0) then
+    
+		if(@Login = @IdCadastro and @Senha = vSenha) then
+		select ("Usuário logado - Visitante");
+        else
+        select ("Usuário ou senha inválidos");
+        end if;
+        
+    else
+    
+		if(@Login = @IdCadastro and @Senha = vSenha) then
+		select ("Usuário logado - Funcionário");
+        else
+        select ("Usuário ou senha inválidos");
+        end if;
+        
     end if;
 end
 $$
@@ -480,7 +571,9 @@ CREATE TABLE Compra (
     DataCompra DATE,
     ValorTotal DECIMAL(10, 2),
     QtdTotal INT,
-    FormaPag ENUM('pix', 'cartao_de_credito', 'boleto')
+    FormaPag ENUM('pix', 'cartao_de_credito', 'boleto'),
+    IdCadastro int, 
+    foreign key (IdCadastro) references tbCadastro(IdCadastro)
 );
 
 -- Tabela Ingresso
@@ -511,18 +604,20 @@ CREATE TABLE NotaFiscal (
 
 -- Procedure para realizar a compra e gerar a nota fiscal
 DELIMITER //
-CREATE PROCEDURE RealizarCompra(
+
+CREATE  PROCEDURE RealizarCompra(
     IN FormaPagParam ENUM('pix', 'cartao_de_credito', 'boleto'),
     IN IngressosMeia INT,
-    IN IngressosInteira INT
+    IN IngressosInteira INT,
+    IN IdCadastro INT 
 )
 BEGIN
     --  data atual
     SET @DataCompra = CURDATE();
 
     -- Inserindo dados na tabela Compra
-    INSERT INTO Compra (DataCompra, FormaPag, ValorTotal, QtdTotal)
-    VALUES (@DataCompra, FormaPagParam, 0.00, IngressosMeia + IngressosInteira);
+    INSERT INTO Compra (DataCompra, FormaPag, ValorTotal, QtdTotal,IdCadastro)
+    VALUES (@DataCompra, FormaPagParam, 0.00, IngressosMeia + IngressosInteira, IdCadastro);
 
     -- ID da compra inserida
     SET @IDCompra = LAST_INSERT_ID();
@@ -554,7 +649,11 @@ BEGIN
     -- Inserindo a nota fiscal associada à compra
     INSERT INTO NotaFiscal (DataEmissao, ValorTotal, IDCompra)
     VALUES (@DataCompra, @ValorCompra, @IDCompra);
-
+    
+    if NOT exists(select * from tbLogin where IdLogin = IdCadastro) then
+   	select ("Usuário Inválido");
+ END IF; 
+ 
 END //
 DELIMITER ;
 
@@ -566,7 +665,7 @@ INSERT INTO Ingresso (Nome, Valor) VALUES ('Inteira', 40.00);
 -- Inserindo 2 ingressos 'meia' e 1 'inteira'
 CALL RealizarCompra('cartao_de_credito', 2, 1);
 -- Inserindo 4 ingressos 'meia' e 2 'inteira'
-CALL RealizarCompra('cartao_de_credito', 4, 2);
+CALL RealizarCompra('cartao_de_credito', 4, 2, 2);
 
 select * from Compra;
 select * from NotaFiscal;
