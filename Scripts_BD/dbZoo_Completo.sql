@@ -261,7 +261,7 @@ begin
 		select ("Usuário não pode ser excluído");
     else
 	if exists(select * from tbcadastro where IdCadastro = @IdCadastro) then
-		delete from tbCadastroFuncionário where IdCadastro = @IdCadastro;
+		delete from tbCadastroFuncionario where IdCadastro = @IdCadastro;
 		delete from tblogin where IdCadastro = @IdCadastro;
 		delete from tbCadastro where IdCadastro = @IdCadastro;
     else
@@ -491,7 +491,6 @@ begin
 	if not exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
     select ("Animal não cadastrado");
     else 
-    delete from tbAlergia where IdProntuario = @IdProntuario;
     delete from tbHistoricoProntuario where IdProntuario = @IdProntuario;
 	delete from tbProntuario where IdProntuario = @IdProntuario;
     
