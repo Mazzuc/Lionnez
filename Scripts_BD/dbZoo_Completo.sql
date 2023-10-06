@@ -4,6 +4,8 @@ create database dbZoo;
 use dbZoo;
 
 /*USUÁRIO*/
+
+-- Cadastro
 create table tbCadastro(
 IdCadastro int primary key auto_increment, 
 CPF char(11) not null,
@@ -11,6 +13,7 @@ Nome varchar(150) not null,
 Email varchar(200) not null
 ); 
 
+-- Login
 create table tbLogin(
 IdLogin int primary key auto_increment, 
 IdCadastro int not null,
@@ -20,6 +23,7 @@ Senha char(8) not null,
 Acesso int not null
 ); 
 
+-- Funcionário
 create table tbCadastroFuncionario(
 IdFuncionario int primary key auto_increment, 
 IdCadastro int, 
@@ -30,6 +34,7 @@ DataNasc date not null,
 DataAdm date not null
 );
 
+-- Visitante
 create table tbCadastroVisitante(
 IdCadastroVisitante int primary key auto_increment,
 IdCadastro int, 
@@ -37,6 +42,142 @@ foreign key (IdCadastro) references tbCadastro(IdCadastro),
 DataCadastro date not null
 );
 
+/*ANIMAL*/
+
+-- Habitat
+create table tbTipoHabitat(
+IdTipoHabitat int auto_increment primary key,
+NomeTipoHabitat varchar(100) not null
+);
+
+create table tbHabitat(
+IdHabitat int auto_increment primary key,
+NomeHabitat varchar(100) not null,
+IdTipoHabitat int not null,
+foreign key (IdTipoHabitat) references tbTipoHabitat(IdTipoHabitat),
+Capacidade int not null,
+Vegetacao varchar(100),
+Clima varchar(100),
+Solo varchar(100),
+QtdAnimal int not null
+);
+
+-- Espécie 
+create table tbEspecie(
+IdEspecie int auto_increment primary key,
+NomeEspecie varchar(100) not null
+);
+
+-- Porte
+create table tbPorte(
+IdPorte int auto_increment primary key,
+NomePorte varchar(100) not null
+);
+
+-- Dieta
+create table tbDieta(
+IdDieta int auto_increment primary key,
+NomeDieta varchar(100) not null,
+DescricaoDieta varchar(2000)
+);
+
+-- Animal
+create table tbAnimal(
+IdAnimal int auto_increment primary key,
+NomeAnimal varchar(100) not null,
+IdEspecie int not null,
+foreign key (IdEspecie) references tbEspecie(IdEspecie),
+IdDieta int not null,
+foreign key (IdDieta) references tbDieta(IdDieta),
+IdHabitat int not null,
+foreign key (IdHabitat) references tbHabitat(IdHabitat),
+DataNasc date not null,
+IdPorte int not null,
+foreign key (IdPorte) references tbPorte(IdPorte),
+Peso double(2,2) not null,
+Sexo char(1),
+DescricaoAnimal varchar(2000) 
+);
+
+-- Prontuário
+create table tbProntuario(
+IdProntuario int auto_increment primary key,
+IdAnimal int not null,
+foreign key (IdAnimal) references tbAnimal(IdAnimal),
+ObsProntuario varchar(2000)
+);
+
+create table tbHistoricoProntuario(
+IdHistorico int auto_increment primary key,
+IdProntuario int not null,
+foreign key (IdProntuario) references tbProntuario(IdProntuario),
+DataCadas date not null,
+Alergia varchar(200) not null,
+DescricaoHistorico varchar(2000) not null
+);
+
+/*INGRESSO*/
+
+-- Tabela Compra
+CREATE TABLE Compra (
+    IDCompra INT AUTO_INCREMENT PRIMARY KEY,
+    DataCompra DATE,
+    ValorTotal DECIMAL(10, 2),
+    QtdTotal INT,
+    FormaPag ENUM('pix', 'cartao_de_credito', 'boleto'),
+    IdCadastro int, 
+    foreign key (IdCadastro) references tbCadastro(IdCadastro)
+);
+
+-- Tabela Ingresso
+CREATE TABLE Ingresso (
+    IDIngresso INT AUTO_INCREMENT PRIMARY KEY,
+    Nome ENUM('meia', 'inteira'),
+    Valor DECIMAL(5, 2)
+);
+
+-- Tabela CompraIngresso
+CREATE TABLE CompraIngresso (
+    IDCompraIngresso INT AUTO_INCREMENT PRIMARY KEY,
+    IDCompra INT,
+    IDIngresso INT,
+    Quantidade INT,
+    FOREIGN KEY (IDCompra) REFERENCES Compra(IDCompra),
+    FOREIGN KEY (IDIngresso) REFERENCES Ingresso(IDIngresso)
+);
+
+-- Tabela NotaFiscal
+CREATE TABLE NotaFiscal (
+    IDNotaFiscal INT AUTO_INCREMENT PRIMARY KEY,
+    DataEmissao DATE,
+    ValorTotal DECIMAL(10, 2),
+    IDCompra INT,
+    FOREIGN KEY (IDCompra) REFERENCES Compra(IDCompra)
+);
+
+
+-- Insert
+insert into tbTipoHabitat(NomeTipoHabitat) 
+	values("Terrestre"),
+		  ("Aquático"), 
+		  ("Aéreo");
+      
+insert into tbPorte(NomePorte)
+	values("Grande"),
+    ("Médio"),
+    ("Pequeno");
+
+insert into tbDieta(NomeDieta)
+	values("Carnívoro"),
+		  ("Onívoro"),
+          ("Herbívoro");
+          
+INSERT INTO Ingresso (Nome, Valor) VALUES ('Meia', 20.00);
+INSERT INTO Ingresso (Nome, Valor) VALUES ('Inteira', 40.00);
+
+-- Procedures 
+
+-- CADASTRO 
 delimiter $$
 create procedure spInsertFuncionario(vNome varchar(200), vEmail varchar(200), vCPF char(11), vCargo varchar(50), vSenha char(8), vUsuario varchar(20), vRG char(9), vDataNasc date, vDataAdm date)
 begin
@@ -160,95 +301,6 @@ begin
 end
 $$
 
-/*ANIMAL*/
--- Habitat
-create table tbTipoHabitat(
-IdTipoHabitat int auto_increment primary key,
-NomeTipoHabitat varchar(100) not null
-);
-
-create table tbHabitat(
-IdHabitat int auto_increment primary key,
-NomeHabitat varchar(100) not null,
-IdTipoHabitat int not null,
-foreign key (IdTipoHabitat) references tbTipoHabitat(IdTipoHabitat),
-Capacidade int not null,
-Vegetacao varchar(100),
-Clima varchar(100),
-Solo varchar(100),
-QtdAnimal int not null
-);
-
--- Espécie 
-create table tbEspecie(
-IdEspecie int auto_increment primary key,
-NomeEspecie varchar(100) not null
-);
-
--- Porte
-create table tbPorte(
-IdPorte int auto_increment primary key,
-NomePorte varchar(100) not null
-);
-
--- Dieta
-create table tbDieta(
-IdDieta int auto_increment primary key,
-NomeDieta varchar(100) not null,
-DescricaoDieta varchar(2000)
-);
-
--- Animal
-create table tbAnimal(
-IdAnimal int auto_increment primary key,
-NomeAnimal varchar(100) not null,
-IdEspecie int not null,
-foreign key (IdEspecie) references tbEspecie(IdEspecie),
-IdDieta int not null,
-foreign key (IdDieta) references tbDieta(IdDieta),
-IdHabitat int not null,
-foreign key (IdHabitat) references tbHabitat(IdHabitat),
-DataNasc date not null,
-IdPorte int not null,
-foreign key (IdPorte) references tbPorte(IdPorte),
-Peso double(2,2) not null,
-Sexo char(1),
-DescricaoAnimal varchar(2000) 
-);
-
-create table tbProntuario(
-IdProntuario int auto_increment primary key,
-IdAnimal int not null,
-foreign key (IdAnimal) references tbAnimal(IdAnimal),
-ObsProntuario varchar(2000)
-);
-
-create table tbHistoricoProntuario(
-IdHistorico int auto_increment primary key,
-IdProntuario int not null,
-foreign key (IdProntuario) references tbProntuario(IdProntuario),
-DataCadas date not null,
-Alergia varchar(200) not null,
-DescricaoHistorico varchar(2000) not null
-);
-
--- Insert
-insert into tbTipoHabitat(NomeTipoHabitat) 
-	values("Terrestre"),
-		  ("Aquático"), 
-		  ("Aéreo");
-      
-insert into tbPorte(NomePorte)
-	values("Grande"),
-    ("Médio"),
-    ("Pequeno");
-
-insert into tbDieta(NomeDieta)
-	values("Carnívoro"),
-		  ("Onívoro"),
-          ("Herbívoro");
-
--- Procedures 
 -- HABITAT 
 delimiter $$
 create procedure spInsertHabitat(vNomeHabitat varchar(100), vNomeTipoHabitat varchar(100), vCapacidade int, vVegetacao varchar(100), vClima varchar(100), vSolo varchar(100))
@@ -564,44 +616,6 @@ begin
 end
 $$
 
-/*INGRESSO*/
--- Tabela Compra
-CREATE TABLE Compra (
-    IDCompra INT AUTO_INCREMENT PRIMARY KEY,
-    DataCompra DATE,
-    ValorTotal DECIMAL(10, 2),
-    QtdTotal INT,
-    FormaPag ENUM('pix', 'cartao_de_credito', 'boleto'),
-    IdCadastro int, 
-    foreign key (IdCadastro) references tbCadastro(IdCadastro)
-);
-
--- Tabela Ingresso
-CREATE TABLE Ingresso (
-    IDIngresso INT AUTO_INCREMENT PRIMARY KEY,
-    Nome ENUM('meia', 'inteira'),
-    Valor DECIMAL(5, 2)
-);
-
--- Tabela CompraIngresso
-CREATE TABLE CompraIngresso (
-    IDCompraIngresso INT AUTO_INCREMENT PRIMARY KEY,
-    IDCompra INT,
-    IDIngresso INT,
-    Quantidade INT,
-    FOREIGN KEY (IDCompra) REFERENCES Compra(IDCompra),
-    FOREIGN KEY (IDIngresso) REFERENCES Ingresso(IDIngresso)
-);
-
--- Tabela NotaFiscal
-CREATE TABLE NotaFiscal (
-    IDNotaFiscal INT AUTO_INCREMENT PRIMARY KEY,
-    DataEmissao DATE,
-    ValorTotal DECIMAL(10, 2),
-    IDCompra INT,
-    FOREIGN KEY (IDCompra) REFERENCES Compra(IDCompra)
-);
-
 -- Procedure para realizar a compra e gerar a nota fiscal
 DELIMITER //
 
@@ -656,17 +670,3 @@ BEGIN
  
 END //
 DELIMITER ;
-
-INSERT INTO Ingresso (Nome, Valor) VALUES ('Meia', 20.00);
-INSERT INTO Ingresso (Nome, Valor) VALUES ('Inteira', 40.00);
-
-
--- EXEMPLOS DE CALL 
--- Inserindo 2 ingressos 'meia' e 1 'inteira'
-CALL RealizarCompra('cartao_de_credito', 2, 1);
--- Inserindo 4 ingressos 'meia' e 2 'inteira'
-CALL RealizarCompra('cartao_de_credito', 4, 2, 2);
-
-select * from Compra;
-select * from NotaFiscal;
-select * from Ingresso;
