@@ -1,7 +1,7 @@
-DROP DATABASE if EXISTS dbZoo;
+DROP DATABASE if EXISTS dbZoologico;
 
-create database dbZoo;
-use dbZoo;
+create database dbZoologico;
+use dbZoologico;
 
 /*USUÁRIO*/
 
@@ -669,3 +669,6 @@ BEGIN
  
 END //
 DELIMITER ;
+
+CREATE USER 'Zoo'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678';
+GRANT ALL PRIVILEGES ON dbZoologico.* TO 'Zoo'@'localhost' WITH GRANT OPTION;
