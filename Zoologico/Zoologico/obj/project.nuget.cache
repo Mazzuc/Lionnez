@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0c5ya6TCbwziE/ONTBDJU3Gj4FFsVVkEbRwN3tvCbP/cM02IQBRHUkw4f8uB2Q9rtrrK2dKNg29llqnu+TlLXg==",
+  "dgSpecHash": "plPEHPSNJv4Clh16Iw220/a3mAxLMAiI9qaFcm+AS5AMJQfZxd0wj6MEec6rtFOU3xL4uuZ3wJSfCw/tP23S1A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dudin\\Downloads\\Zoologico\\Zoologico\\Zoologico\\Zoologico.csproj",
+  "projectFilePath": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\Zoologico.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dudin\\.nuget\\packages\\efcodefirst\\0.8.0\\efcodefirst.0.8.0.nupkg.sha512",
     "C:\\Users\\dudin\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",

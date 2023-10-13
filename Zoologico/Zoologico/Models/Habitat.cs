@@ -1,5 +1,11 @@
-﻿using System.ComponentModel;
+﻿using MySql.Data.MySqlClient;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System;
+using System.Configuration;
+using System.Data;
+using ConfigurationManager = System.Configuration.ConfigurationManager;
+using Org.BouncyCastle.Asn1.Mozilla;
 
 namespace Zoologico.Models
 {
@@ -41,6 +47,24 @@ namespace Zoologico.Models
         [ReadOnly(true)]
         [DisplayName("Número de Animais")]
         public int QtdAnimais { get; set; }
+
+        private readonly MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexao"].ConnectionString);
+        private readonly MySqlCommand cmd = new MySqlCommand();
+        public void InsertHabitat(Habitat habitat)
+        {
+            conexao.Open();
+            cmd.CommandText = ("call spInsertHabitat(@NomeHabitat, @TipoHabitat, @Capacidade, @Vegetacao, @Clima, @Solo);");
+            cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = habitat.NomeHabitat;
+            cmd.Parameters.Add("@TipoHabitat", MySqlDbType.VarChar).Value = habitat.TipoHabitat;
+            cmd.Parameters.Add("@Capacidade", MySqlDbType.Int64).Value = habitat.Capacidade;
+            cmd.Parameters.Add("@Vegetacao", MySqlDbType.VarChar).Value = habitat.Vegetacao;
+            cmd.Parameters.Add("@Clima", MySqlDbType.VarChar).Value = habitat.Clima;
+            cmd.Parameters.Add("@Solo", MySqlDbType.VarChar).Value = habitat.Solo;
+
+            cmd.Connection = conexao;
+            cmd.ExecuteNonQuery();
+            conexao.Close();
+        }
 
     }
 }

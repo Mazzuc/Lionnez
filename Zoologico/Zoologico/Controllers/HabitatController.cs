@@ -5,31 +5,31 @@ namespace Zoologico.Controllers
 {
     public class HabitatController : Controller
     {
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Insert()
         {
             return View();
         }
-
-        public ActionResult Resultado(Habitat ObjHabitat)
-        {
-            return View(ObjHabitat);
-        }
-
-        public ActionResult Criar()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public ActionResult Criar(Habitat ObjHabitat)
+        public ActionResult Insert(Habitat vielmodel)
         {
+            if (!ModelState.IsValid)
+                return View(vielmodel);
 
-            if (ModelState.IsValid)
+            Habitat novohabitat = new Habitat()
             {
-                return View("Resultado", ObjHabitat);
-            }
+                NomeHabitat = vielmodel.NomeHabitat,
+                TipoHabitat = vielmodel.TipoHabitat,
+                Capacidade = vielmodel.Capacidade,
+                Vegetacao = vielmodel.Vegetacao,
+                Clima = vielmodel.Clima,
+                Solo = vielmodel.Solo
+            };
+            novohabitat.InsertHabitat(novohabitat);
 
-            return View();
+            return RedirectToAction("Index", "Home");
+
+            
         }
     }
 }

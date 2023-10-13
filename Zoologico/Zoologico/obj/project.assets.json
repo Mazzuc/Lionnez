@@ -10045,11 +10045,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dudin\\Downloads\\Zoologico\\Zoologico\\Zoologico\\Zoologico.csproj",
+      "projectUniqueName": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\Zoologico.csproj",
       "projectName": "Zoologico",
-      "projectPath": "C:\\Users\\dudin\\Downloads\\Zoologico\\Zoologico\\Zoologico\\Zoologico.csproj",
+      "projectPath": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\Zoologico.csproj",
       "packagesPath": "C:\\Users\\dudin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dudin\\Downloads\\Zoologico\\Zoologico\\Zoologico\\obj\\",
+      "outputPath": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dudin\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,14 +1,16 @@
 ﻿@model Zoologico.Models.Habitat
 
 @{
-    ViewData["Title"] = "Criar";
+    ViewData["Title"] = "Insert";
 }
 
-<h1>Cadastrar Habitat</h1>
+<h1>Insert</h1>
+
+<h4>Habitat</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Criar">
+        <form asp-action="Insert">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="NomeHabitat" class="control-label"></label>
@@ -48,7 +50,7 @@
 </div>
 
 <div>
-    <a asp-controller="Home" asp-action="Index">Voltar</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

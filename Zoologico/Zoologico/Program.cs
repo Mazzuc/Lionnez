@@ -7,8 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
-var mySQLConnectionConfig = new MySQLConfiguration(builder.Configuration.GetConnectionString("MySqlConnection"));
-builder.Services.AddSingleton(mySQLConnectionConfig);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
