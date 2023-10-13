@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Cad_Login_FB" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/verde</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+        <item name="android:windowBackground">@color/white</item>
+
+    </style>
+
+
+
+
+    <style name="TEXTCOLOR">
+        <item name="android:textColor">@color/cinza_escuro</item>
+
+    </style>
+
+    <style name="TEXTCOLORDEST">
+        <item name="android:textColor">@color/roxo</item>
+
+    </style>
+
+    <style name="TEXTDESTAQUE">
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+
+    <style name="TEXTRARO">
+        <item name="android:textColor">@color/cinza_escuro</item>
+
+    </style>
+
+    <style name="FUNDO">
+        <item name="android:background">@color/white</item>
+
+    </style>
+
+    <style name="FUNDOSPLASH">
+        <item name="android:background">@color/white</item>
+    </style>
+
+
+    <style name="FUNDOEDITTEXT">
+        <item name="android:background">@drawable/bg_editescuro
+        </item>
+
+    </style>
+
+    <style name="FUNDOCARD">
+        <item name="android:background">@drawable/bd_card_claro
+        </item>
+
+    </style>
+
+    <style name="BUTTON">
+        <item name="android:background">@drawable/btn_button_rox
+        </item>
+
+    </style>
+
+    <style name="BUTTONSPLASH">
+        <item name="android:background">@drawable/btn_button_roxo</item>
+    </style>
+
+    <style name="REDONDSPLASH">
+        <item name="android:background">@drawable/bg_redondo_roxo</item>
+    </style>
+
+    <style name="REDONDSPLASHFUNDO">
+        <item name="android:background">@drawable/bg_redondo_branco</item>
+    </style>
+
+    <style name="CAMPOLOGO">
+        <item name="android:src">@drawable/campo_logoroxa</item>
+    </style>
+</resources>
