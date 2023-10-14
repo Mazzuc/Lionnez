@@ -9,4 +9,12 @@
         <!-- Adicione essa linha se você estiver usando a barra de ação -->
         <item name="windowNoTitle">true</item>
     </style>
+
+
+
+
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <!-- Configurações de estilo de escuro -->
+    </style>
 </resources>

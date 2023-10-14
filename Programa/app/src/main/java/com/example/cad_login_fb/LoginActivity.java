@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         binding.textrecuperarconta.setOnClickListener(v ->
-                startActivity(new Intent(this, RecuperarContaActivity.class)));
+                startActivity(new Intent(this, MainActivity.class)));
 
         binding.btnCriarConta.setOnClickListener(v -> ValidaDados());
     }
