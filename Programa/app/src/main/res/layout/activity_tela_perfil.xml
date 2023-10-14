@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TelaPerfilActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:padding="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_edit"
+            app:backgroundTint="@null">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:background="@color/black"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            app:backgroundTint="@null"
+            app:cardElevation="0dp">
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minha Conta"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/perfil" />
+
+        <LinearLayout
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-55dp"
+
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/bd_rec_cinza">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textinform"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Informações Pessoais"
+            android:textAlignment="center"
+            android:textColor="@color/cinza_claro"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayo4ut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:id="@+id/linearLa4ut"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <LinearLayout
+                android:id="@+id/iconenome"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/verde"
+                android:orientation="horizontal"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/textonome"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
+                android:background="@color/black"
+                android:orientation="vertical"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
+                <TextView
+                    android:id="@+id/textinfornome"
+                    android:layout_marginTop="17dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seu Nome"
+                    android:textColor="@color/cinza_medio"
+                    android:textSize="16dp"
+                   />
+
+                <TextView
+                    android:id="@+id/textvoltarnome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Exemplo leonardo"
+                    android:textColor="@color/cinza_claro"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/altnome"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/cinza_medio"
+                android:orientation="vertical"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lineL8a4ut"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <LinearLayout
+                android:id="@+id/iconeemail"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/verde_medio"
+                android:orientation="horizontal"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/textoemail"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
+                android:background="@color/black"
+                android:orientation="vertical"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <TextView
+                    android:id="@+id/textinforemail"
+                    android:layout_marginTop="17dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Endereço de E-mail"
+                    android:textColor="@color/cinza_medio"
+                    android:textSize="16dp"
+                    />
+
+                <TextView
+                    android:id="@+id/textvoltaremail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="leo@gmail.com"
+                    android:textColor="@color/cinza_claro"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/altemail"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/verde"
+                android:orientation="vertical"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="17dp"
+            android:id="@+id/textconfig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Configurações"
+            android:textAlignment="center"
+            android:textColor="@color/cinza_claro"
+            android:textSize="14dp"
+            android:textStyle="bold"
+
+            />
+
+        <LinearLayout
+            android:id="@+id/lin75eL8a4ut"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <LinearLayout
+                android:id="@+id/iconemodo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/verde_medio"
+                android:orientation="horizontal"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/textomodo"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
+                android:background="@color/black"
+                android:orientation="vertical"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
+                <TextView
+                    android:id="@+id/textinformodo"
+                    android:layout_marginTop="17dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Modo Divertido"
+                    android:textColor="@color/cinza_medio"
+                    android:textSize="16dp"
+                    />
+
+                <TextView
+                    android:id="@+id/textvoltarmodo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ative o modo divertido"
+                    android:textColor="@color/cinza_claro"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/altmodo"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/verde"
+                android:orientation="vertical"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="17dp"
+            android:id="@+id/textentrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Entrar"
+            android:textAlignment="center"
+            android:textColor="@color/cinza_claro"
+            android:textSize="14dp"
+            android:textStyle="bold"
+
+            />
+
+        <LinearLayout
+            android:id="@+id/linsair"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <LinearLayout
+                android:id="@+id/iconesair"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/verde_medio"
+                android:orientation="horizontal"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/textsair"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
+                android:background="@color/black"
+                android:orientation="vertical"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
+                <TextView
+                    android:id="@+id/textinforconta"
+                    android:layout_marginTop="17dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sair"
+                    android:textColor="@color/cinza_medio"
+                    android:textSize="16dp"
+                    />
+
+                <TextView
+                    android:id="@+id/textvoltarconta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deseja sair da sua conta?"
+                    android:textColor="@color/cinza_claro"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/altsair"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/black"
+                android:orientation="vertical"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <Switch
+                    android:layout_marginTop="17dp"
+                    android:id="@+id/buttonSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="189dp"
+                    tools:layout_editor_absoluteY="680dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+</LinearLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

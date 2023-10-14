@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ZooCuritiba</string>
+
+    //Tela de Escolha
+    <string name="politicpriv"><u>Política de Privacidade</u></string>
+    <string name="termosegu"><u>Termos de Uso</u></string>
+
+    //Tela Home
+    <string name="novidades">Novidades</string>
+    <string name="info">Informações</string>
+    <string name="animais">Nossos Animais</string>
+    <string name="mamiferos">Mamíferos</string>
+    <string name="repteis">Répteis</string>
+    <string name="aves">Aves</string>
+    <string name="aquaticos">Aquáticos</string>
+    <string name="anfibios">Anfíbios</string>
+    <string name="atracoes">Atrações</string>
+</resources>

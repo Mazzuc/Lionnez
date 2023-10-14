@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="EstiloStatusBarVerde" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/verde</item>
+    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Adicione essa linha para remover a barra de ação -->
+        <item name="windowActionBar">false</item>
+        <!-- Adicione essa linha se você estiver usando a barra de ação -->
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+
+
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <!-- Configurações de estilo de escuro -->
+    </style>
+</resources>

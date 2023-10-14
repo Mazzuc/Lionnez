@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="27dp"
+    android:paddingRight="22dp"
+    android:paddingTop="15dp"
+    tools:context=".LoginActivity">
+
+    <TextView
+        style="@style/TEXTCOLOR"
+        android:id="@+id/facalogin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/outifit"
+        android:text="Faça login com uma das seguintes opções:"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <LinearLayout
+        style="@style/FUNDO"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facalogin2">
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            style="@style/FUNDOEDITTEXT"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/icone4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/icongoogle" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/FUNDO"
+            android:layout_width="20dp"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            app:cardElevation="0dp" />
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            style="@style/FUNDOEDITTEXT"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/icone5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/face" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="20dp"
+            android:layout_height="70dp"
+            style="@style/FUNDO"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            app:cardElevation="0dp" />
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            style="@style/FUNDOEDITTEXT"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/icone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/icontwitter" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="-16dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:padding="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            style="@style/FUNDOEDITTEXT"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/arrow" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/FUNDO"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            app:backgroundTint="@null"
+            app:cardElevation="0dp">
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/TEXTDESTAQUE"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Log In"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="22dp"
+        style="@style/FUNDO"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCriarConta">
+
+        <TextView
+            android:id="@+id/facalo4gin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:fontFamily="@font/outifit"
+            android:text="Não tem uma conta?"
+            style="@style/TEXTCOLOR"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="120dp" />
+
+        <TextView
+            android:id="@+id/textcadastro"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/outifit"
+            android:text="Inscreva-se!"
+            style="@style/TEXTCOLORDEST"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="120dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/terhrh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="E-mail"
+        style="@style/TEXTCOLOR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <EditText
+        style="@style/FUNDOEDITTEXT"
+        android:id="@+id/editEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="5dp"
+        android:ems="10"
+        android:hint="Digite seu e-mail..."
+        android:inputType="textEmailAddress"
+        android:padding="14dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/cinza_medio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/terhrh" />
+
+    <TextView
+        android:id="@+id/terhrrh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Senha"
+        style="@style/TEXTCOLOR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+
+    <EditText
+        android:id="@+id/editsenha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="5dp"
+        style="@style/FUNDOEDITTEXT"
+        android:ems="10"
+        android:hint="Coloque sua senha"
+        android:inputType="textPassword"
+        android:padding="14dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/cinza_medio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/terhrrh" />
+
+    <TextView
+        android:id="@+id/textrecuperarconta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="end"
+        android:text="Esqueceu a senha?"
+        style="@style/TEXTCOLOR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editsenha" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="168dp"
+        android:indeterminateTint="@color/cinza_escuro"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:visibility="visible" />
+
+    <Button
+        style="@style/BUTTON"
+        android:id="@+id/btnCriarConta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Conecte-se"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textrecuperarconta" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
