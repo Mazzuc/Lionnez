@@ -7,9 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositorio\**" />
+    <Content Remove="Repositorio\**" />
+    <EmbeddedResource Remove="Repositorio\**" />
+    <None Remove="Repositorio\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
     <PackageReference Include="MvcScaffolding" Version="1.0.9" />
     <PackageReference Include="MySql.Data" Version="8.1.0" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.5" />
   </ItemGroup>
 
 </Project>

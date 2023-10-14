@@ -4,9 +4,8 @@
     ViewData["Title"] = "Insert";
 }
 
-<h1>Insert</h1>
+<h1>Cadastrar Habitat</h1>
 
-<h4>Habitat</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -42,15 +41,16 @@
                 <input asp-for="Solo" class="form-control" />
                 <span asp-validation-for="Solo" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Home" asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {

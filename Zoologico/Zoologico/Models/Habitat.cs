@@ -66,5 +66,44 @@ namespace Zoologico.Models
             conexao.Close();
         }
 
+
+        public MySqlDataReader ExecuteReadSql(string strQuery)
+        {
+            cmd.CommandText = strQuery;
+            cmd.Connection = conexao;
+            MySqlDataReader Leitor = cmd.ExecuteReader();
+            return Leitor;
+        }
+
+        public List<Habitat> SelectList()
+        {
+            conexao.Open();
+            string strQuery = "call spSelectHabitat;";
+            MySqlDataReader leitor = ExecuteReadSql(strQuery);
+            return ReaderList(leitor);
+        }
+
+        private List<Habitat> ReaderList(MySqlDataReader DR)
+        {
+            List<Habitat> list = new List <Habitat>();
+            while(DR.Read())
+            {
+                var TempHabitat = new Habitat()
+                {
+                    IdHabitat = int.Parse(DR["Id do Habitat"].ToString()),
+                    NomeHabitat = DR["Nome"].ToString(),
+                    TipoHabitat = DR["Tipo"].ToString(),
+                    Capacidade = int.Parse(DR["Capacidade"].ToString()),
+                    Vegetacao = DR["Vegetação"].ToString(),
+                    Clima = DR["Clima"].ToString(),
+                    Solo = DR["Solo"].ToString(),
+                    QtdAnimais = int.Parse(DR["Animais"].ToString()),
+                };
+                list.Add(TempHabitat);
+            }
+            DR.Close();
+            conexao.Close();
+            return list;
+        }
     }
 }
