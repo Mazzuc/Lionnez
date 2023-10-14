@@ -15,4 +15,25 @@
     <string name="aquaticos">Aquáticos</string>
     <string name="anfibios">Anfíbios</string>
     <string name="atracoes">Atrações</string>
+    <string name="horario">Horário de Funcionamento</string>
+    <string name="diasemana">
+        Domingo
+        Segunda-Feira
+        Terça-Feira
+        Quarta-Feira
+        Quinta-Feira
+        Sexta-Feira
+        Sábado
+    </string>
+    <string name="horadia">
+        09:00 - 17:00
+        09:00 - 17:00
+        09:00 - 17:00
+        09:00 - 17:00
+        09:00 - 17:00
+        09:00 - 17:00
+        09:00 - 17:00
+    </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

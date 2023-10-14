@@ -9,12 +9,9 @@
         <!-- Adicione essa linha se você estiver usando a barra de ação -->
         <item name="windowNoTitle">true</item>
     </style>
-
-
-
-
-
-    <style name="AppTheme.Dark" parent="Theme.AppCompat">
-        <!-- Configurações de estilo de escuro -->
+    <style name="AlertDialogCustomStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@color/transparent</item>
     </style>
+
 </resources>
