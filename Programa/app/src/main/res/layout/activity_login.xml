@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/face" />
+                app:srcCompat="@drawable/iconface" />
         </LinearLayout>
 
         <LinearLayout
@@ -124,7 +124,7 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/arrow" />
+                app:srcCompat="@drawable/iconarrow2" />
         </LinearLayout>
 
         <LinearLayout
