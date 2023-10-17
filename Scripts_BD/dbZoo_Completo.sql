@@ -332,13 +332,13 @@ end
 $$
 
 delimiter $$
-create procedure spUpdateHabitat(vNomeHabitat varchar(100), vCapacidade int)
+create procedure spUpdateHabitat(vNomeHabitat varchar(100), vCapacidade int, vVegetacao varchar(100), vClima varchar(100), vSolo varchar(100))
 begin
 	set @IdHabitat = (select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
 	if not exists(select * from tbHabitat where NomeHabitat = vNomeHabitat) then
     select ("Habitat não cadastrado");
     else 
-	update tbHabitat set Capacidade = vCapacidade where IdHabitat = @IdHabitat;
+	update tbHabitat set NomeHabitat = vNomeHabitat, Capacidade = vCapacidade, Vegetacao = vVegetacao, Clima = vClima, Solo = vSolo where IdHabitat = @IdHabitat;
     end if;
 end
 $$
@@ -362,11 +362,29 @@ end
 $$
 
 delimiter $$
-create procedure spSelectHabitatAnimais(vNomeHabitat varchar(200))
+create procedure spSelectHabitatUnic(vNomeHabitat int)
 begin
-	set @IdHabitat = (select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
-    
-	if not exists(select * from tbHabitat where NomeHabitat = vNomeHabitat) then
+	if not exists(select * from tbHabitat where IdHabitat = vNomeHabitat) then
+		select ("Habitat não cadastrado");
+    else 
+	SELECT
+		tbHabitat.IdHabitat as "Id do Habitat",
+		tbHabitat.NomeHabitat as "Nome",
+		tbHabitat.Vegetacao as "Vegetação",
+		tbHabitat.Solo as "Solo",
+		tbHabitat.Clima as "Clima",
+		tbHabitat.Capacidade
+	FROM
+	tbHabitat where IdHabitat = vNomeHabitat;
+	end if;
+end
+$$
+
+delimiter $$
+create procedure spSelectHabitatAnimais(vNomeHabitat int)
+begin
+	set @IdHabitat = (select IdHabitat from tbHabitat where IdHabitat = vNomeHabitat);
+	if not exists(select * from tbHabitat where IdHabitat = @IdHabitat) then
 		select ("Habitat não cadastrado");
     else 
 		SELECT
