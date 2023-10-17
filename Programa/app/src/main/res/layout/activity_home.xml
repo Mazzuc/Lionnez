@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="0dp"
-    android:background="@color/black"
+    style="@style/FUNDO"
     tools:context=".HomeActivity">
 
 
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="88dp"
         android:layout_gravity="center"
-        android:background="@drawable/back_menu"
+        style="@style/BACK_MENU"
         android:elevation="10dp"
         android:orientation="vertical"
         android:paddingLeft="20dp"
@@ -36,8 +36,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_menu"
             android:elevation="10dp"
+            style="@style/HOME_MENU"
             android:paddingLeft="10dp"
             android:paddingTop="9dp">
 
@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/round_back_icon"
+                    style="@style/ROUND_BACK"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="4dp"

@@ -22,18 +22,22 @@
 
     <style name="TEXTCOLOR">
         <item name="android:textColor">@color/cinza_escuro</item>
-
     </style>
 
     <style name="TEXTCOLORDEST">
         <item name="android:textColor">@color/roxo</item>
-
     </style>
 
     <style name="TEXTDESTAQUE">
         <item name="android:textColor">@color/black</item>
 
     </style>
+
+    <style name="TEXTDESTAQUE2">
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+
 
     <style name="TEXTRARO">
         <item name="android:textColor">@color/cinza_escuro</item>
@@ -82,5 +86,41 @@
 
     <style name="CAMPOLOGO">
         <item name="android:src">@drawable/campo_logoroxa</item>
+    </style>
+
+    <style name="CAMPOVOLTAR">
+        <item name="android:src">@drawable/iconarrow</item>
+    </style>
+
+    <style name="HOME_CARDAPOTIONS">
+        <item name="android:background">@drawable/home_cardopitions2</item>
+    </style>
+
+    <style name="HOME_MENU">
+        <item name="android:background">@drawable/home_menu2</item>
+    </style>
+
+    <style name="BACK_MENU">
+        <item name="android:background">@drawable/back_menu2</item>
+    </style>
+
+    <style name="CARDCLIMA">
+        <item name="android:background">@drawable/cardclima2</item>
+    </style>
+
+    <style name="BUTTON_INFO">
+        <item name="android:background">@drawable/button_info2</item>
+    </style>
+
+    <style name="ROUND_BACK">
+        <item name="android:background">@drawable/round_back_icon2</item>
+    </style>
+
+    <style name="ICONEARROW">
+        <item name="android:src">@drawable/iconarrowescolha2</item>
+    </style>
+
+    <style name="ICONEARROW2">
+        <item name="android:src">@drawable/arrowbranco</item>
     </style>
 </resources>

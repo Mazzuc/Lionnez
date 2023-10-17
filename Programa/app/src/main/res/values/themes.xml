@@ -38,6 +38,11 @@
 
     </style>
 
+    <style name="TEXTDESTAQUE2">
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+
     <style name="TEXTRARO">
         <item name="android:textColor">@color/cinza_claro</item>
 
@@ -75,5 +80,41 @@
 
     <style name="CAMPOLOGO">
         <item name="android:src">@drawable/campo_logo</item>
+    </style>
+
+    <style name="CAMPOVOLTAR">
+        <item name="android:src">@drawable/iconarrow2</item>
+    </style>
+
+    <style name="HOME_CARDAPOTIONS">
+        <item name="android:background">@drawable/home_cardopitions</item>
+    </style>
+
+    <style name="HOME_MENU">
+        <item name="android:background">@drawable/home_menu</item>
+    </style>
+
+    <style name="BACK_MENU">
+        <item name="android:background">@drawable/back_menu</item>
+    </style>
+
+    <style name="CARDCLIMA">
+        <item name="android:background">@drawable/cardclima</item>
+    </style>
+
+    <style name="BUTTON_INFO">
+        <item name="android:background">@drawable/button_info</item>
+    </style>
+
+    <style name="ROUND_BACK">
+        <item name="android:background">@drawable/round_back_icon</item>
+    </style>
+
+    <style name="ICONEARROW">
+        <item name="android:src">@drawable/iconarrowescolha</item>
+    </style>
+
+    <style name="ICONEARROW2">
+        <item name="android:src">@drawable/arrowpreto</item>
     </style>
 </resources>
