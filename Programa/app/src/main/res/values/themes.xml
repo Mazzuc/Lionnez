@@ -18,9 +18,17 @@
     </style>
 
 
+    <style name="TEXTCOLOR2">
+        <item name="android:textColor">@color/cinza_medio</item>
+
+    </style>
     <style name="TEXTCOLOR">
         <item name="android:textColor">@color/cinza_medio</item>
 
+    </style>
+
+    <style name="TEXTCOLORDES">
+        <item name="android:textColor">@color/cinza_claro</item>
     </style>
 
     <style name="FUNDO">

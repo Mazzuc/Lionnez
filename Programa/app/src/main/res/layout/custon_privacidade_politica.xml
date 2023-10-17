@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/HOME_CARDAPOTIONS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            style="@style/HOME_CARDAPOTIONS"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="10dp"
+            android:padding="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                style="@style/CAMPOVOLTAR"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="83dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="126dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/iconrelogio" />
+
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/poppins_medium"
+            android:lineSpacingExtra="-7dp"
+            android:text="Os Termos e a Política de Privacidade do App são armazenados com segurança:"
+            android:textAlignment="center"
+            style="@style/TEXTCOLORDES"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+        <TextView
+            android:id="@+id/textVie"
+            style="@style/TEXTCOLORDEST"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="115dp"
+            android:fontFamily="@font/poppins_medium"
+            android:lineSpacingExtra="-7dp"
+            android:text="Atualizações importantes"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/textV"
+            style="@style/TEXTCOLOR2"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="@font/poppins_medium"
+            android:lineSpacingExtra="-7dp"
+            android:text="incluem mais"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textVie"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/treV"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="@font/poppins_medium"
+            android:lineSpacingExtra="-7dp"
+            android:text="• O serviço do Aplicativo e como tratamos seus dados."
+            style="@style/TEXTCOLORDES"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/teV" />
+
+
+        <TextView
+            android:id="@+id/teV"
+            android:layout_width="300dp"
+            style="@style/TEXTCOLOR2"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="@font/poppins_medium"
+            android:lineSpacingExtra="-7dp"
+            android:text="informações sobre:"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@+id/textVie" />
+
+        <TextView
+            android:id="@+id/tV"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="@font/poppins_medium"
+            android:lineSpacingExtra="-7dp"
+            android:text="• Como s serviços de rmazenar e gerenciar suas atividades."
+            style="@style/TEXTCOLORDES"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/treV" />
+
+        <TextView
+            android:id="@+id/egegeg"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:lineSpacingExtra="-7dp"
+            android:text="Ao tocar em Concordar, você aceita os novos Termos e Política de Privacidade, que entram em vigor em 2023. Você pode também acessar a Central de Ajuda se preferir apagar sua conta e desejar obter mais informações."
+            style="@style/TEXTCOLOR2"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tV" />
+
+        <LinearLayout
+            android:id="@+id/buttcard1"
+            style="@style/BUTTON_INFO"
+            android:layout_width="165dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:paddingLeft="45dp"
+            android:paddingTop="4dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/egegeg"
+            app:layout_constraintStart_toStartOf="@+id/egegeg"
+            app:layout_constraintTop_toBottomOf="@+id/egegeg">
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/TEXTCOLOR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Concordar"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
