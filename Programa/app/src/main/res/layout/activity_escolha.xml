@@ -168,8 +168,8 @@
                 style="@style/REDONDSPLASH"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginRight="5dp"
                 android:padding="17dp"
                 android:layout_marginTop="08dp"
                 >
