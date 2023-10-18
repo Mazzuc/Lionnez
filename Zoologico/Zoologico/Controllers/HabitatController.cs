@@ -8,7 +8,14 @@ namespace Zoologico.Controllers
     public class HabitatController : Controller
     {
         Habitat ObjHabitat = new Habitat();
-        List<Habitat> Objhabitat = new List<Habitat>();
+        Animal ObjAnimal = new Animal();
+
+        public ActionResult Details(int Id)
+        {
+            var list = ObjAnimal.SelectListHabitat(Id);
+            return View(list);
+        }
+        [HttpGet]
         public ActionResult Select()
         {
             var list = ObjHabitat.SelectList();

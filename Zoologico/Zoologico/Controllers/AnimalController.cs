@@ -5,6 +5,18 @@ namespace Zoologico.Controllers
 {
     public class AnimalController : Controller
     {
+        Animal ObjAnimal = new Animal();
+
+        public ActionResult Details(int Id)
+        {
+            var habitat = ObjAnimal.SelectAnimal(Id);
+            return View(habitat);
+        }
+        public ActionResult Select()
+        {
+            var list = ObjAnimal.SelectList();
+            return View(list);
+        }
         [HttpGet]
         public ActionResult Insert()
         {

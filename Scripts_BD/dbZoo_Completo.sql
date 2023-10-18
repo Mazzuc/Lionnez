@@ -525,31 +525,20 @@ SELECT
 	tbAnimal.IdAnimal as "Id do Animal",
     tbAnimal.NomeAnimal as "Nome",
     tbAnimal.DataNasc as "Nascimento",
-    tbEspecie.NomeEspecie as "Espécie",
-    tbPorte.NomePorte as "Porte",
-    tbHabitat.NomeHabitat as "Habitat",
-    tbDieta.NomeDieta as "Dieta",
-    tbAnimal.Peso,
-    tbAnimal.Sexo,
-    tbAnimal.DescricaoAnimal as "Descrição"
+    tbHabitat.NomeHabitat as "Habitat"
 FROM tbAnimal
-LEFT JOIN tbEspecie
-ON tbAnimal.IdEspecie = tbEspecie.IdEspecie
-LEFT JOIN tbDieta
-ON tbAnimal.IdDieta = tbDieta.IdDieta
 LEFT JOIN tbHabitat
-ON tbAnimal.IdHabitat = tbHabitat.IdHabitat
-LEFT JOIN tbPorte
-ON tbAnimal.IdPorte = tbPorte.IdPorte;
+ON tbAnimal.IdHabitat = tbHabitat.IdHabitat;
 end
 $$
+call spSelectAnimalEspecifico(1);
 
 delimiter $$
-create procedure spSelectAnimalEspecifico(vNomeAnimal varchar(200))
+create procedure spSelectAnimalEspecifico(vNomeAnimal int)
 begin
-	set @IdAnimal = (select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
+	set @IdAnimal = (select IdAnimal from tbAnimal where IdAnimal = vNomeAnimal);
     
-	if not exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
+	if not exists(select * from tbAnimal where IdAnimal = @IdAnimal) then
 		select ("Animal não cadastrado");
     else 
 		SELECT

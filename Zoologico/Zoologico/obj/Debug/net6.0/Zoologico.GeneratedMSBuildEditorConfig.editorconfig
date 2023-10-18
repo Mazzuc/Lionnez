@@ -9,45 +9,57 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Zoologico
 build_property.RootNamespace = Zoologico
-build_property.ProjectDir = C:\Users\3ds\Desktop\Lionnez\Zoologico\Zoologico\
+build_property.ProjectDir = C:\Users\3jd\Documents\GitHub\Lionnez\Zoologico\Zoologico\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\3ds\Desktop\Lionnez\Zoologico\Zoologico
+build_property.MSBuildProjectDirectory = C:\Users\3jd\Documents\GitHub\Lionnez\Zoologico\Zoologico
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/3ds/Desktop/Lionnez/Zoologico/Zoologico/Views/Animal/Insert.cshtml]
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Animal/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Animal/Insert.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsXEluc2VydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/3ds/Desktop/Lionnez/Zoologico/Zoologico/Views/Habitat/Insert.cshtml]
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Animal/Select.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsXFNlbGVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Habitat/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhdFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Habitat/Insert.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhdFxJbnNlcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/3ds/Desktop/Lionnez/Zoologico/Zoologico/Views/Habitat/Select.cshtml]
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Habitat/Select.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhdFxTZWxlY3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/3ds/Desktop/Lionnez/Zoologico/Zoologico/Views/Home/Index.cshtml]
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/3ds/Desktop/Lionnez/Zoologico/Zoologico/Views/Shared/Error.cshtml]
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/3ds/Desktop/Lionnez/Zoologico/Zoologico/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/3ds/Desktop/Lionnez/Zoologico/Zoologico/Views/_ViewImports.cshtml]
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/3ds/Desktop/Lionnez/Zoologico/Zoologico/Views/_ViewStart.cshtml]
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/3ds/Desktop/Lionnez/Zoologico/Zoologico/Views/Shared/_Layout.cshtml]
+[C:/Users/3jd/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-8p1q74l5me
