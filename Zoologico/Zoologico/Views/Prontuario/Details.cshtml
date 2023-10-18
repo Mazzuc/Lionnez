@@ -1,19 +1,20 @@
-﻿@model Zoologico.Models.Animal
+﻿@model Zoologico.Models.Prontuario
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>@Html.DisplayFor(model => model.NomeAnimal)</h1>
+<h1> @Html.DisplayFor(model => model.NomeAnimal)</h1>
 
 <div>
+    <h4>Prontuário</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdAnimal)
+            @Html.DisplayNameFor(model => model.IdProntuario)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdAnimal)
+            @Html.DisplayFor(model => model.IdProntuario)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.NomeEspecie)
@@ -22,22 +23,10 @@
             @Html.DisplayFor(model => model.NomeEspecie)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NomeHabitat)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NomeHabitat)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DataNasc)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DataNasc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NomePorte)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NomePorte)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Peso)
@@ -52,20 +41,14 @@
             @Html.DisplayFor(model => model.Sexo)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DescricaoAnimal)
+            @Html.DisplayNameFor(model => model.ObsProntuario)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DescricaoAnimal)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NomeDieta)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NomeDieta)
+            @Html.DisplayFor(model => model.ObsProntuario)
         </dd>
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Editar", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Nova Consulta", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Select">Voltar</a>
 </div>

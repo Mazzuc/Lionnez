@@ -467,7 +467,7 @@ end
 $$
 
 delimiter $$
-create procedure spUpdateAnimal(vNomeAnimal varchar(100), vNomeHabitat varchar(100), vPeso double, vDescricaoAnimal varchar(2000), vObsProntuario varchar(2000))
+create procedure spUpdateAnimal(vNomeAnimal varchar(100), vNomeHabitat varchar(100), vDescricaoAnimal varchar(2000), vObsProntuario varchar(2000))
 begin
 	set @AntigoHabitat = (select IdHabitat from tbAnimal where NomeAnimal = vNomeAnimal);
     set @QtdAtualAntigo = (select QtdAnimal from tbHabitat where IdHabitat = @AntigoHabitat);
@@ -487,7 +487,7 @@ begin
 	elseif not exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
     select ("Animal não cadastrado");
     else 
-		update tbAnimal set IdHabitat = @Habitat, Peso = vPeso, DescricaoAnimal = vDescricaoAnimal where IdAnimal = @IdAnimal;
+		update tbAnimal set IdHabitat = @Habitat, DescricaoAnimal = vDescricaoAnimal where IdAnimal = @IdAnimal;
         update tbProntuario set ObsProntuario = vObsProntuario where IdProntuario = @IdProntuario; 
         
         update tbHabitat set QtdAnimal = @QtdAtualizada where IdHabitat = @Habitat;
@@ -571,25 +571,46 @@ $$
 
 -- PRONTUÁRIO
 delimiter $$
-create procedure spInsertHistorico(vNomeAnimal varchar(100), vAlergia varchar(200), vDescricao varchar(2000))
+create procedure spInsertHistorico(vNomeAnimal int, vAlergia varchar(200), vDescricao varchar(2000), vPeso double)
 begin
-	set @IdAnimal = (select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
+	set @IdAnimal = (select IdAnimal from tbAnimal where IdAnimal = vNomeAnimal);
 	set @IdProntuario = (select IdProntuario from tbProntuario where IdAnimal = @IdAnimal);
 
 	if not exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
     select ("Prontuário não cadastrado");
     else    
 	insert into tbHistoricoProntuario(DataCadas, DescricaoHistorico, IdProntuario, Alergia) values (curdate(), vDescricao, @IdProntuario, vAlergia);
+    update tbAnimal set Peso = vPeso where IdAnimal = @IdAnimal;
 	end if;
 end
 $$
 
 delimiter $$
-create procedure spSelectProntuario(vNomeAnimal varchar(100))
+create procedure spSelectProntuarios()
 begin
-	set @IdAnimal = (select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
+		SELECT
+			tbProntuario.IdProntuario as "Id do Prontuário",
+			tbAnimal.NomeAnimal as "Nome",
+			tbAnimal.DataNasc as "Nascimento",
+			tbEspecie.NomeEspecie as "Espécie",
+			tbAnimal.Peso,
+			tbAnimal.Sexo,
+            tbProntuario.ObsProntuario as "Observação"
+		FROM
+			tbProntuario
+		LEFT JOIN tbAnimal
+        ON tbAnimal.IdAnimal = tbProntuario.IdAnimal
+        LEFT JOIN tbEspecie
+        ON tbEspecie.IdEspecie = tbAnimal.IdEspecie;
+end
+$$
+
+delimiter $$
+create procedure spSelectProntuarioEspecifico(vNomeAnimal int)
+begin
+	set @IdAnimal = (select IdAnimal from tbProntuario where IdAnimal = vNomeAnimal);
     
-	if not exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
+	if not exists(select * from tbProntuario where IdAnimal = vNomeAnimal) then
 		select ("Animal não cadastrado");
     else
 		-- geral
@@ -607,21 +628,22 @@ begin
         tbAnimal on tbProntuario.IdAnimal = tbAnimal.IdAnimal and tbAnimal.IdAnimal = @IdAnimal
         LEFT JOIN tbEspecie
 		ON tbAnimal.IdEspecie = tbEspecie.IdEspecie;
-        
+        end if;
+end
+$$
+
+delimiter $$
+create procedure spSelectConsulta(vNomeAnimal int)
+begin
 		-- Historico
 		SELECT
 			tbHistoricoProntuario.DataCadas as "Data",
             tbHistoricoProntuario.Alergia as "Alergia",
 			tbHistoricoProntuario.DescricaoHistorico as "Descrição"
 		FROM
-			tbProntuario
-        LEFT JOIN tbHistoricoProntuario
-		ON tbProntuario.IdAnimal = @IdAnimal and tbProntuario.IdProntuario = tbHistoricoProntuario.IdProntuario
-        group by IdHistorico;
-	end if;
-end
+			tbHistoricoProntuario where IdProntuario = 1;
+	end
 $$
-
 -- Procedure para realizar a compra e gerar a nota fiscal
 DELIMITER //
 

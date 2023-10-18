@@ -4,9 +4,8 @@
     ViewData["Title"] = "Insert";
 }
 
-<h1>Insert</h1>
+<h1>Cadastrar Animal</h1>
 
-<h4>Animal</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -62,6 +61,7 @@
                 <textarea asp-for="ObsProntuario" class="form-control"></textarea>
                 <span asp-validation-for="ObsProntuario" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -70,7 +70,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Select">Voltar</a>
 </div>
 
 @section Scripts {

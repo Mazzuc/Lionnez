@@ -4,7 +4,7 @@
     ViewData["Title"] = "Select";
 }
 
-<h1>Select</h1>
+<h1>Animais</h1>
 
 <p>
     <a asp-action="Insert">Cadastrar</a>
@@ -44,9 +44,9 @@
             </td>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.IdAnimal}) |
-                @Html.ActionLink("Details", "Details", new { id=item.IdAnimal }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Detalhes", "Details", new { id=item.IdAnimal }) |
+                @Html.ActionLink("Editar", "Edit", new {  id=item.IdAnimal}) |
+                @Html.ActionLink("Deletar", "Delete", new { /* id=item.PrimaryKey */ }) 
             </td>
         </tr>
 }
