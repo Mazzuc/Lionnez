@@ -4,17 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaPerfilActivity">
+    android:paddingLeft="27dp"
+    android:paddingRight="22dp"
+    android:paddingTop="15dp"
+    tools:context=".LoginActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="-16dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:padding="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -33,9 +37,9 @@
         </LinearLayout>
 
         <LinearLayout
+            style="@style/FUNDO"
             android:layout_width="20dp"
             android:layout_height="10dp"
-            android:background="@color/black"
             android:orientation="horizontal"
             android:paddingLeft="20dp"
             app:backgroundTint="@null"
@@ -44,12 +48,13 @@
         </LinearLayout>
 
         <TextView
+            style="@style/TEXTDESTAQUE"
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Minha Conta"
-            android:textColor="@color/white"
-            android:textSize="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Log In"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -62,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/black"
+        style="@style/FUNDO"
         android:orientation="vertical"
         android:paddingLeft="35dp"
         android:paddingRight="35dp"
@@ -70,21 +75,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/perfil" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/perfil" />
 
         <LinearLayout
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="180dp"
             android:layout_marginTop="-55dp"
-
             android:layout_width="55dp"
+            android:padding="15dp"
             android:layout_height="55dp"
-            android:background="@drawable/bd_rec_cinza">
+            style="@style/BD_REC">
+
+            <ImageView
+                android:id="@+id/icone4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_iconedit" />
         </LinearLayout>
 
         <TextView
@@ -94,7 +106,7 @@
             android:layout_height="wrap_content"
             android:text="Informações Pessoais"
             android:textAlignment="center"
-            android:textColor="@color/cinza_claro"
+            style="@style/TEXTCOLORDES"
             android:textSize="14dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -111,10 +123,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@color/black"
+        style="@style/FUNDO"
         android:orientation="vertical"
-        android:paddingLeft="35dp"
-        android:paddingRight="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -135,13 +145,19 @@
                 android:id="@+id/iconenome"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:background="@color/verde"
+                style="@style/FUNDO"
                 android:orientation="horizontal"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
+                android:padding="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <ImageView
+                    android:id="@+id/icn4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_group" />
 
             </LinearLayout>
 
@@ -149,7 +165,7 @@
                 android:id="@+id/textonome"
                 android:layout_width="200dp"
                 android:layout_height="80dp"
-                android:background="@color/black"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
@@ -164,17 +180,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Seu Nome"
-                    android:textColor="@color/cinza_medio"
-                    android:textSize="16dp"
-                   />
+                    style="@style/TEXTCOLOR"
+                    android:textSize="17dp"
+                    />
 
                 <TextView
-                    android:id="@+id/textvoltarnome"
+                    android:id="@+id/emailTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Exemplo leonardo"
-                    android:textColor="@color/cinza_claro"
-                    android:textSize="18dp"
+                    android:text="Exemplo nome"
+                    style="@style/TEXTCOLORDES"
+                    android:textSize="15dp"
                     android:textStyle="bold"
                     />
 
@@ -185,14 +201,19 @@
                 android:id="@+id/altnome"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@color/cinza_medio"
+                style="@style/FUNDO"
                 android:orientation="vertical"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
+                android:padding="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
+                <ImageView
+                    android:id="@+id/on4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/iconarrowcinza" />
             </LinearLayout>
 
 
@@ -215,13 +236,20 @@
                 android:id="@+id/iconeemail"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:background="@color/verde_medio"
+                style="@style/FUNDO"
                 android:orientation="horizontal"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
+                android:padding="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
+                <ImageView
+                    android:id="@+id/i4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_iconeemail" />
 
             </LinearLayout>
 
@@ -229,7 +257,7 @@
                 android:id="@+id/textoemail"
                 android:layout_width="200dp"
                 android:layout_height="80dp"
-                android:background="@color/black"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
@@ -243,8 +271,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Endereço de E-mail"
-                    android:textColor="@color/cinza_medio"
-                    android:textSize="16dp"
+                    style="@style/TEXTCOLOR"
+                    android:textSize="17dp"
                     />
 
                 <TextView
@@ -252,8 +280,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="leo@gmail.com"
-                    android:textColor="@color/cinza_claro"
-                    android:textSize="18dp"
+                    style="@style/TEXTCOLORDES"
+                    android:textSize="15dp"
                     android:textStyle="bold"
                     />
             </LinearLayout>
@@ -262,14 +290,18 @@
                 android:id="@+id/altemail"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@color/verde"
+                style="@style/FUNDO"
                 android:orientation="vertical"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
+                android:padding="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
+                <ImageView
+                    android:id="@+id/voltaremail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/iconarrowcinza" />
             </LinearLayout>
 
 
@@ -282,7 +314,7 @@
             android:layout_height="wrap_content"
             android:text="Configurações"
             android:textAlignment="center"
-            android:textColor="@color/cinza_claro"
+            style="@style/TEXTCOLORDES"
             android:textSize="14dp"
             android:textStyle="bold"
 
@@ -304,13 +336,19 @@
                 android:id="@+id/iconemodo"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:background="@color/verde_medio"
+                style="@style/FUNDO"
                 android:orientation="horizontal"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
+                android:padding="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <ImageView
+                    android:id="@+id/icon4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_iconmodoclaro" />
 
             </LinearLayout>
 
@@ -318,7 +356,7 @@
                 android:id="@+id/textomodo"
                 android:layout_width="200dp"
                 android:layout_height="80dp"
-                android:background="@color/black"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
@@ -333,8 +371,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Modo Divertido"
-                    android:textColor="@color/cinza_medio"
-                    android:textSize="16dp"
+                    style="@style/TEXTCOLOR"
+                    android:textSize="17dp"
                     />
 
                 <TextView
@@ -342,24 +380,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ative o modo divertido"
-                    android:textColor="@color/cinza_claro"
-                    android:textSize="14dp"
+                    style="@style/TEXTCOLORDES"
+                    android:textSize="15dp"
                     android:textStyle="bold"
                     />
-
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/altmodo"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@color/verde"
+                style="@style/FUNDO"
                 android:orientation="vertical"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
+                android:padding="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <Switch
+                    android:id="@+id/switch_dark_mode"
+                    android:layout_width="50dp"
+                    style="@style/TINT_SWITCH"
+                    android:layout_height="50dp"
+                    android:trackTint="#808080"
+                    />
 
             </LinearLayout>
 
@@ -373,7 +417,7 @@
             android:layout_height="wrap_content"
             android:text="Entrar"
             android:textAlignment="center"
-            android:textColor="@color/cinza_claro"
+            style="@style/TEXTCOLORDES"
             android:textSize="14dp"
             android:textStyle="bold"
 
@@ -395,13 +439,19 @@
                 android:id="@+id/iconesair"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:background="@color/verde_medio"
+                style="@style/FUNDO"
                 android:orientation="horizontal"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
+                android:padding="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <ImageView
+                    android:id="@+id/iconexit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_iconexit" />
 
             </LinearLayout>
 
@@ -409,7 +459,7 @@
                 android:id="@+id/textsair"
                 android:layout_width="200dp"
                 android:layout_height="80dp"
-                android:background="@color/black"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
@@ -424,8 +474,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sair"
-                    android:textColor="@color/cinza_medio"
-                    android:textSize="16dp"
+                    style="@style/TEXTCOLOR"
+                    android:textSize="17dp"
                     />
 
                 <TextView
@@ -433,8 +483,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Deseja sair da sua conta?"
-                    android:textColor="@color/cinza_claro"
-                    android:textSize="14dp"
+                    style="@style/TEXTCOLORDES"
+                    android:textSize="15dp"
                     android:textStyle="bold"
                     />
 
@@ -445,25 +495,19 @@
                 android:id="@+id/altsair"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@color/black"
+                style="@style/FUNDO"
                 android:orientation="vertical"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
+                android:padding="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-                <Switch
-                    android:layout_marginTop="17dp"
-                    android:id="@+id/buttonSwitch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:textAlignment="center"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    tools:layout_editor_absoluteX="189dp"
-                    tools:layout_editor_absoluteY="680dp" />
+                <ImageView
+                    android:id="@+id/volta"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/iconarrowcinza" />
 
 
             </LinearLayout>
@@ -472,10 +516,5 @@
         </LinearLayout>
 
 
-</LinearLayout>
-
-
-
-
-
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

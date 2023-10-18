@@ -40,7 +40,7 @@
             style="@style/HOME_MENU"
             android:paddingLeft="10dp"
             android:paddingTop="9dp">
-
+<!-- Para removar essa sombra tem que tirar o elevation -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

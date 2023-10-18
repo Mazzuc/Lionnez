@@ -9,6 +9,9 @@
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/back_menu.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/back_menu2.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/bd_card_cinza.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/bd_rec_branco.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/bd_rec_cinza.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/bg_button_img.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/button_info.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/button_info2.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/cardclima.xml" value="0.2185" />
@@ -18,7 +21,14 @@
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/home_men.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/home_menu.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/home_menu2.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/ic_emailicone.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/ic_group.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/ic_iconedit.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/ic_iconeemail.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/ic_iconexit.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/ic_iconmodoclaro.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/ic_logbra.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/ic_logobranca.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/icon_book.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/icon_home.xml" value="0.2185" />
@@ -32,17 +42,19 @@
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/icon_selected_search.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/iconarrow.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/iconarrow2.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/iconarrowcinza.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/iconarrowescolha.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/iconarrowescolha2.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/iconface.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/icongoogle.xml" value="0.2185" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/iconmodoclaro.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/icontwitter.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/round_back_icon.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/drawable/round_back_icon2.xml" value="0.2185" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/activity_cadastro.xml" value="0.264" />
-        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/activity_escolha.xml" value="0.264" />
-        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/activity_home.xml" value="0.264" />
-        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/activity_escolha.xml" value="0.6" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/activity_home.xml" value="0.536" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/activity_recuperar_conta.xml" value="0.2" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
@@ -51,8 +63,11 @@
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/card_novidades_layout.xml" value="0.264" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/custom_dialog_horario.xml" value="0.264" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/custon_privacidade_politica.xml" value="0.264" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/custon_sair.xml" value="0.4" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/fragment_pesquisa.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/testedeco.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Lionnez/Programa/app/src/main/res/layout/testes.xml" value="0.264" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Projeto_App/Programa/app/src/main/res/drawable-v24/bd_card_claro.xml" value="0.1" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Projeto_App/Programa/app/src/main/res/drawable-v24/bg_editescuro.xml" value="0.1" />
         <entry key="..\:/Users/luizm/OneDrive/Documentos/GitHub/Projeto_App/Programa/app/src/main/res/drawable-v24/btn_button_rox.xml" value="0.1" />

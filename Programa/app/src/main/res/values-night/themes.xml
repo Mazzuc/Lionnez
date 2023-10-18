@@ -128,4 +128,17 @@
     <style name="ICONEARROW2">
         <item name="android:src">@drawable/arrowbranco</item>
     </style>
+
+    <style name="BD_REC">
+        <item name="android:background">@drawable/bd_rec_branco</item>
+    </style>
+
+    <style name="TINT_SWITCH">
+        <item name="android:thumbTint">@color/roxo</item>
+    </style>
+
+    <style name="LINHA">
+        <item name="android:background">@color/cinza_claro</item>
+
+    </style>
 </resources>
