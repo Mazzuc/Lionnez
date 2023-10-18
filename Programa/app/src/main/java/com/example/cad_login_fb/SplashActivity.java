@@ -16,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
         // Criando a Tela Splash: Tempo de espera de 3 segundos
         new Handler(getMainLooper()).postDelayed(() -> {
             finish();
-            startActivity(new Intent(this, EscolhaActivity.class));
+            startActivity(new Intent(this, TelaPerfilActivity.class));
         }, 3000);
     }
 }

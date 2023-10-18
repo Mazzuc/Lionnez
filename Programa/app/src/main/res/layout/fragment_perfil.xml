@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="27dp"
+    android:paddingRight="22dp"
     android:paddingTop="15dp"
     tools:context=".LoginActivity">
 
@@ -12,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="-16dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:padding="0dp"
@@ -21,17 +23,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            style="@style/FUNDOEDITTEXT"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            style="@style/FUNDOEDITTEXT"
             android:padding="12dp">
 
             <ImageView
                 android:id="@+id/imageView4"
-                style="@style/CAMPOVOLTAR"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                style="@style/CAMPOVOLTAR" />
         </LinearLayout>
 
         <LinearLayout
@@ -46,8 +48,8 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView"
             style="@style/TEXTDESTAQUE"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
@@ -115,14 +117,13 @@
     </LinearLayout>
 
 
+
     <LinearLayout
         android:id="@+id/linearLayo4ut"
-        style="@style/FUNDO"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        style="@style/FUNDO"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -132,6 +133,7 @@
             android:id="@+id/linearLa4ut"
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
@@ -141,10 +143,9 @@
 
             <LinearLayout
                 android:id="@+id/iconenome"
-                style="@style/FUNDO"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginRight="10dp"
+                style="@style/FUNDO"
                 android:orientation="horizontal"
                 android:padding="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -162,9 +163,9 @@
 
             <LinearLayout
                 android:id="@+id/textonome"
-                style="@style/FUNDO"
-                android:layout_width="220dp"
+                android:layout_width="200dp"
                 android:layout_height="80dp"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
@@ -175,30 +176,32 @@
 
                 <TextView
                     android:id="@+id/textinfornome"
-                    style="@style/TEXTCOLOR"
+                    android:layout_marginTop="17dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
                     android:text="Seu Nome"
-                    android:textSize="17dp" />
+                    style="@style/TEXTCOLOR"
+                    android:textSize="17dp"
+                    />
 
                 <TextView
                     android:id="@+id/emailTextView"
-                    style="@style/TEXTCOLORDES"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Exemplo nome"
+                    style="@style/TEXTCOLORDES"
                     android:textSize="15dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    />
 
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/altnome"
-                style="@style/FUNDO"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:padding="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -221,6 +224,7 @@
             android:id="@+id/lineL8a4ut"
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
@@ -230,12 +234,11 @@
 
             <LinearLayout
                 android:id="@+id/iconeemail"
-                style="@style/FUNDO"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                style="@style/FUNDO"
                 android:orientation="horizontal"
                 android:padding="25dp"
-                android:layout_marginRight="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -246,15 +249,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/icon_email" />
+                    app:srcCompat="@drawable/icon_email"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/textoemail"
-                style="@style/FUNDO"
-                android:layout_width="220dp"
+                android:layout_width="200dp"
                 android:layout_height="80dp"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
@@ -264,34 +267,35 @@
 
                 <TextView
                     android:id="@+id/textinforemail"
-                    style="@style/TEXTCOLOR"
+                    android:layout_marginTop="17dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
                     android:text="Endereço de E-mail"
-                    android:textSize="17dp" />
+                    style="@style/TEXTCOLOR"
+                    android:textSize="17dp"
+                    />
 
                 <TextView
                     android:id="@+id/textvoltaremail"
-                    style="@style/TEXTCOLORDES"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="leo@gmail.com"
+                    style="@style/TEXTCOLORDES"
                     android:textSize="15dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/altemail"
-                style="@style/FUNDO"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:padding="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
                 <ImageView
                     android:id="@+id/voltaremail"
                     android:layout_width="match_parent"
@@ -304,13 +308,13 @@
         </LinearLayout>
 
         <TextView
+            android:layout_marginTop="17dp"
             android:id="@+id/textconfig"
-            style="@style/TEXTCOLORDES"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
             android:text="Configurações"
             android:textAlignment="center"
+            style="@style/TEXTCOLORDES"
             android:textSize="14dp"
             android:textStyle="bold"
 
@@ -320,6 +324,7 @@
             android:id="@+id/lin75eL8a4ut"
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
@@ -329,12 +334,11 @@
 
             <LinearLayout
                 android:id="@+id/iconemodo"
-                style="@style/FUNDO"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                style="@style/FUNDO"
                 android:orientation="horizontal"
                 android:padding="25dp"
-                android:layout_marginRight="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -350,9 +354,9 @@
 
             <LinearLayout
                 android:id="@+id/textomodo"
-                style="@style/FUNDO"
-                android:layout_width="215dp"
+                android:layout_width="200dp"
                 android:layout_height="80dp"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
@@ -363,28 +367,30 @@
 
                 <TextView
                     android:id="@+id/textinformodo"
-                    style="@style/TEXTCOLOR"
+                    android:layout_marginTop="17dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
                     android:text="Modo Divertido"
-                    android:textSize="17dp" />
+                    style="@style/TEXTCOLOR"
+                    android:textSize="17dp"
+                    />
 
                 <TextView
                     android:id="@+id/textvoltarmodo"
-                    style="@style/TEXTCOLORDES"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ative o modo divertido"
+                    style="@style/TEXTCOLORDES"
                     android:textSize="15dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/altmodo"
-                style="@style/FUNDO"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:padding="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -393,10 +399,11 @@
 
                 <Switch
                     android:id="@+id/switch_dark_mode"
-                    style="@style/TINT_SWITCH"
                     android:layout_width="50dp"
+                    style="@style/TINT_SWITCH"
                     android:layout_height="50dp"
-                    android:trackTint="#808080" />
+                    android:trackTint="#808080"
+                    />
 
             </LinearLayout>
 
@@ -404,13 +411,13 @@
         </LinearLayout>
 
         <TextView
+            android:layout_marginTop="17dp"
             android:id="@+id/textentrar"
-            style="@style/TEXTCOLORDES"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
             android:text="Entrar"
             android:textAlignment="center"
+            style="@style/TEXTCOLORDES"
             android:textSize="14dp"
             android:textStyle="bold"
 
@@ -420,6 +427,7 @@
             android:id="@+id/linsair"
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
@@ -429,12 +437,11 @@
 
             <LinearLayout
                 android:id="@+id/iconesair"
-                style="@style/FUNDO"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                style="@style/FUNDO"
                 android:orientation="horizontal"
                 android:padding="25dp"
-                android:layout_marginRight="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -450,9 +457,9 @@
 
             <LinearLayout
                 android:id="@+id/textsair"
-                style="@style/FUNDO"
-                android:layout_width="220dp"
+                android:layout_width="200dp"
                 android:layout_height="80dp"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
@@ -463,30 +470,32 @@
 
                 <TextView
                     android:id="@+id/textinforconta"
-                    style="@style/TEXTCOLOR"
+                    android:layout_marginTop="17dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
                     android:text="Sair"
-                    android:textSize="17dp" />
+                    style="@style/TEXTCOLOR"
+                    android:textSize="17dp"
+                    />
 
                 <TextView
                     android:id="@+id/textvoltarconta"
-                    style="@style/TEXTCOLORDES"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Deseja sair da sua conta?"
+                    style="@style/TEXTCOLORDES"
                     android:textSize="15dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    />
 
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/altsair"
-                style="@style/FUNDO"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                style="@style/FUNDO"
                 android:orientation="vertical"
                 android:padding="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
