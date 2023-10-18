@@ -38,6 +38,21 @@ public class HomeFragment extends Fragment {
         addAtracoesCard("Colônia das Formigas", "09:00 - 12:00", R.drawable.atracoes1);
         addAtracoesCard("Pavão do Egito", "09:00 - 12:00", R.drawable.atracoes2);
 
+        LinearLayout linearQR = view.findViewById(R.id.LinearQR);
+
+
+        // Adicionar o código para exiber a página de QRCode ao clicar em LinearQR
+        linearQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Iniciar a transição para a tela QrCode
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainer, new QrCode())
+                        .addToBackStack(null)
+                        .commit();
+                                        }
+        });
+
         // Adicionar o código para exibir o AlertDialog personalizado ao clicar em LinearHorario
         LinearLayout linearHorario = view.findViewById(R.id.LinearHorario);
 
