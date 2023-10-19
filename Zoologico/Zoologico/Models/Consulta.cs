@@ -29,8 +29,25 @@ namespace Zoologico.Models
         [DisplayName("Data da Consulta")]
         public DateTime DataCadas { get; set; }
 
+
         private readonly MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexao"].ConnectionString);
         private readonly MySqlCommand cmd = new MySqlCommand();
+
+        public void InsertConsulta(Consulta consulta)
+        {
+            Double buffer = Convert.ToDouble(consulta.Peso);
+
+            conexao.Open();
+            cmd.CommandText = ("call spInsertHistorico(@IdProntuario, @Alergia, @Descricao, @Peso);");
+            cmd.Parameters.Add("@IdProntuario", MySqlDbType.Int64).Value = consulta.IdProntuario;
+            cmd.Parameters.Add("@Alergia", MySqlDbType.VarChar).Value = consulta.Alergia;
+            cmd.Parameters.Add("@Descricao", MySqlDbType.VarChar).Value = consulta.DescricaoHistorico;
+            cmd.Parameters.Add("@Peso", MySqlDbType.Double).Value = buffer;
+
+            cmd.Connection = conexao;
+            cmd.ExecuteNonQuery();
+            conexao.Close();
+        }
 
         public MySqlDataReader ExecuteReadSql(string strQuery)
         {
@@ -40,24 +57,24 @@ namespace Zoologico.Models
             return Leitor;
         }
 
-        public List<Consulta> SelectList(int Id)
+        public List<Consulta> SelectListConsulta(int Id)
         {
             conexao.Open();
-            string strQuery = "call spSelectConsulta(" +Id+ ");";
+            string strQuery = "call spSelectConsulta(" + Id + ");";
             MySqlDataReader leitor = ExecuteReadSql(strQuery);
-            return ReaderList(leitor);
+            return ReaderListConsulta(leitor);
         }
 
-        private List<Consulta> ReaderList(MySqlDataReader DR)
+        private List<Consulta> ReaderListConsulta(MySqlDataReader DR)
         {
             List<Consulta> list = new List<Consulta>();
             while (DR.Read())
             {
                 var TempConsultas = new Consulta()
                 {
-                    NomeAnimal = DR["Nome"].ToString(),
-                    NomeEspecie = DR["Espécie"].ToString(),
-                    DataNasc = DateTime.Parse(DR["Nascimento"].ToString()),
+                    Alergia = DR["Alergia"].ToString(),
+                    DescricaoHistorico = DR["Descrição"].ToString(),
+                    DataCadas = DateTime.Parse(DR["Data"].ToString()),
                 };
                 list.Add(TempConsultas);
             }
@@ -66,5 +83,6 @@ namespace Zoologico.Models
             conexao.Close();
             return list;
         }
+
     }
 }

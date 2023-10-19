@@ -64,7 +64,8 @@ namespace Zoologico.Models
                     DataNasc = DateTime.Parse(DR["Nascimento"].ToString()),
                     Peso = Double.Parse(DR["Peso"].ToString()),
                     Sexo = DR["Sexo"].ToString(),
-                };
+                    ObsProntuario = DR["Observação"].ToString()
+            };
                 list.Add(TempProntuario);
             }
             DR.Close();
@@ -93,5 +94,6 @@ namespace Zoologico.Models
             conexao.Close();
             return prontuario;
         }
+
     }
 }
