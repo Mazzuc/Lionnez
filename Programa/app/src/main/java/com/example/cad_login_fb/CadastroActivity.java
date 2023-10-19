@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -30,59 +32,54 @@ public class CadastroActivity extends AppCompatActivity {
         binding = ActivityCadastroBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Mwu objeto Auth = Fazendo a conexão com o FireBase
+        // Meu objeto Auth = Fazendo a conexão com o Firebase
         mAuth = FirebaseAuth.getInstance();
 
         binding.btnCriarConta.setOnClickListener(v -> ValidaDados());
     }
 
     private void ValidaDados() {
-
         String email = binding.editEmail.getText().toString().trim();
         String senha = binding.editsenha.getText().toString().trim();
+        String nome = binding.editNome.getText().toString().trim();
 
-        //Se o email não foi vazio (isEmpty)
-
-        if (!email.isEmpty()) {
-            if (!senha.isEmpty()) {
-
-                binding.progressBar.setVisibility(View.VISIBLE);
-
-                CriarContaFireBase(email, senha);
-            } else {
-                Toast.makeText(this, "Informe uma senha", Toast.LENGTH_SHORT).show();
-
-            }
-
-        } else {
-
+        if (nome.isEmpty()) {
+            Toast.makeText(this, "Informe seu nome", Toast.LENGTH_SHORT).show();
+        } else if (email.isEmpty()) {
             Toast.makeText(this, "Informe seu E-mail", Toast.LENGTH_SHORT).show();
+        } else if (senha.isEmpty()) {
+            Toast.makeText(this, "Informe uma senha", Toast.LENGTH_SHORT).show();
+        } else {
+            binding.progressBar.setVisibility(View.VISIBLE);
+            CriarContaFireBase(email, senha, nome);
         }
-
-
     }
 
-    private void CriarContaFireBase(String email, String senha) {
-        mAuth.createUserWithEmailAndPassword(
-                email, senha
-        ).addOnCompleteListener(task -> {
+    private void CriarContaFireBase(String email, String senha, String nome) {
+        mAuth.createUserWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // Registro com sucesso
+                        FirebaseUser user = mAuth.getCurrentUser();
 
-            // Se o cadastro ocorreu com sucesso
-            if (task.isSuccessful()) {
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(nome)
+                                .build();
 
-                //como deu certo, será levado para home
-                finish();
-                startActivity(new Intent(this, HomeActivity.class));
-
-            }
-            // Ocorreu erro, recebe:
-            else {
-
-                binding.progressBar.setVisibility(View.GONE);
-                Toast.makeText(this, "Opa, verifique as informações: ocorreu um erro.", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+                        user.updateProfile(profileUpdates).addOnCompleteListener(updateTask -> {
+                            if (updateTask.isSuccessful()) {
+                                // Redirecionar para a HomeActivity
+                                finish();
+                                startActivity(new Intent(this, HomeActivity.class));
+                            } else {
+                                binding.progressBar.setVisibility(View.GONE);
+                                Toast.makeText(this, "Opa, ocorreu um erro ao atualizar o nome", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else {
+                        binding.progressBar.setVisibility(View.GONE);
+                        Toast.makeText(this, "Opa, verifique as informações: ocorreu um erro", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
-

@@ -20,15 +20,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-     /*   View btnteste;
+     View btnteste;
         btnteste = findViewById(R.id.btnteste);
 
         btnteste.setOnClickListener(view -> {
 
             Intent intent = new Intent(MainActivity.this, TelaPerfilActivity.class);
             startActivity(intent);
-        });*/
+        });
 
+        View btntesteimg;
+        btntesteimg = findViewById(R.id.btnimgteste);
+
+        btntesteimg.setOnClickListener(view -> {
+
+            Intent intent = new Intent(MainActivity.this, TelaTesteImg.class);
+            startActivity(intent);
+        });
         switchDarkMode = findViewById(R.id.switch_dark_mode);
 
         // Defina o estado inicial do Switch com base no tema atual

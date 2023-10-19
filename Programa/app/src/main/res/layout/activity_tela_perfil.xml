@@ -183,7 +183,7 @@
                     android:textSize="17dp" />
 
                 <TextView
-                    android:id="@+id/emailTextView"
+                    android:id="@+id/nomeTextView"
                     style="@style/TEXTCOLORDES"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -272,7 +272,7 @@
                     android:textSize="17dp" />
 
                 <TextView
-                    android:id="@+id/textvoltaremail"
+                    android:id="@+id/emailTextView"
                     style="@style/TEXTCOLORDES"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

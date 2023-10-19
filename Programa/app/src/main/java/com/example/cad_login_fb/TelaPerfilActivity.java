@@ -12,15 +12,18 @@ import com.google.firebase.auth.FirebaseUser;
 public class TelaPerfilActivity extends AppCompatActivity {
 
     private TextView emailTextView;
+    private TextView nomeTextView;
     private FirebaseAuth mAuth;
     private Switch switchDarkMode;
- 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_perfil);
 
         emailTextView = findViewById(R.id.emailTextView);
+        nomeTextView = findViewById(R.id.nomeTextView); // Adicione esta linha
+
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = mAuth.getCurrentUser();
@@ -28,6 +31,10 @@ public class TelaPerfilActivity extends AppCompatActivity {
             String userEmail = user.getEmail(); // Obtém o email do usuário autenticado
             if (userEmail != null) {
                 emailTextView.setText("" + userEmail);
+            }
+            String userNome = user.getDisplayName(); // Obtém o nome do usuário autenticado
+            if (userNome != null) {
+                nomeTextView.setText("" + userNome); // Define o nome do usuário no TextView
             }
         }
         switchDarkMode = findViewById(R.id.switch_dark_mode);

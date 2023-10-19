@@ -1,6 +1,5 @@
 package com.example.cad_login_fb;
 
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -21,27 +20,48 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
 
 public class TelaTesteImg extends AppCompatActivity {
 
+    private static final int REQUEST_IMAGE_PICK = 1;
     private Button mBtnSelectPhoto;
-    private ImageView mImg_Photo;
-    private Uri mSelectUri;
+    private Button mBtnUpload;
+    private ImageView mImgPhoto;
+    private Uri mSelectedImageUri;
+    private String imageFileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.testes);
+        setContentView(R.layout.testedeco);
 
-        mBtnSelectPhoto = findViewById(R.id.btn_selectfoto);
-        mImg_Photo = findViewById(R.id.img_photo);
+        mBtnSelectPhoto = findViewById(R.id.btn_selectphoto);
+        mBtnUpload = findViewById(R.id.btn_upload);
+        mImgPhoto = findViewById(R.id.img_photo);
 
         mBtnSelectPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectPhoto();
+                // Abra a galeria para selecionar uma imagem
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, REQUEST_IMAGE_PICK);
+            }
+        });
+
+        mBtnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Verifique se uma imagem foi selecionada
+                if (mSelectedImageUri != null) {
+                    uploadImageToFirebaseStorage();
+                } else {
+                    Toast.makeText(TelaTesteImg.this, "Selecione uma imagem primeiro.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -50,56 +70,42 @@ public class TelaTesteImg extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 0 && resultCode == RESULT_OK && data != null) {
-            mSelectUri = data.getData();
+        if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK && data != null) {
+            // A imagem foi selecionada com sucesso
+            mSelectedImageUri = data.getData();
 
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), mSelectUri);
-                mImg_Photo.setImageDrawable(new BitmapDrawable(bitmap));
-                mBtnSelectPhoto.setAlpha(0);
-
-                // Após selecionar a imagem, chame o método para salvar no Firebase
-                savePhotoToFirebase();
+                // Exiba a imagem selecionada no ImageView
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), mSelectedImageUri);
+                mImgPhoto.setImageDrawable(new BitmapDrawable(bitmap));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void selectPhoto() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, 0);
-    }
-
-    private void savePhotoToFirebase() {
-        if (mSelectUri != null) {
+    private void uploadImageToFirebaseStorage() {
+        if (mSelectedImageUri != null) {
             // Gere um nome de arquivo exclusivo para a imagem
-            String filename = UUID.randomUUID().toString();
-            String path = "images/" + filename; // Caminho para a pasta "images"
-
-            // Crie a referência para o arquivo
-            final StorageReference ref = FirebaseStorage.getInstance().getReference().child(path);
+            imageFileName = UUID.randomUUID().toString() + ".jpg";
 
             // Converte a imagem em um array de bytes
+            Bitmap bitmap = ((BitmapDrawable) mImgPhoto.getDrawable()).getBitmap();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            Bitmap bitmap = ((BitmapDrawable) mImg_Photo.getDrawable()).getBitmap();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 90, baos);
             byte[] data = baos.toByteArray();
 
+            // Salvar a imagem localmente
+            saveImageLocally(data, imageFileName);
+
             // Faça o upload da imagem para o Firebase Storage
-            UploadTask uploadTask = ref.putBytes(data);
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images/" + imageFileName);
+            UploadTask uploadTask = storageReference.putBytes(data);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     // Imagem enviada com sucesso
-                    ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Log.i("FirebaseStorage", "Imagem carregada: " + uri.toString());
-                            Toast.makeText(TelaTesteImg.this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    Toast.makeText(TelaTesteImg.this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -109,6 +115,19 @@ public class TelaTesteImg extends AppCompatActivity {
                     Toast.makeText(TelaTesteImg.this, "Erro ao carregar a imagem.", Toast.LENGTH_SHORT).show();
                 }
             });
+        }
+    }
+
+    private void saveImageLocally(byte[] imageData, String fileName) {
+        try {
+            File directory = getFilesDir();
+            File file = new File(directory, fileName);
+
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(imageData);
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

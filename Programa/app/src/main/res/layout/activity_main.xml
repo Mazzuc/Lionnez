@@ -24,21 +24,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btnimgteste"
+        style="@style/BUTTON"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Tela IMG"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
     <LinearLayout
+        android:id="@+id/linearLayout5"
+        style="@style/BUTTON"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_marginTop="28dp"
         android:orientation="vertical"
         android:padding="16dp"
-        style="@style/BUTTON"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnteste">
 
         <Switch
             android:id="@+id/switch_dark_mode"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            />
+            android:layout_height="50dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

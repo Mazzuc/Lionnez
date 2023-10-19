@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Cad_Login_FB"
         tools:targetApi="31">
         <activity
+            android:name=".TelaTesteImg"
+            android:exported="false" />
+        <activity
             android:name=".TelaPerfilActivity"
             android:exported="false" />
         <activity
