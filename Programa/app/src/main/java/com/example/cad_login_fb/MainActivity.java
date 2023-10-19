@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnteste.setOnClickListener(view -> {
 
-            Intent intent = new Intent(MainActivity.this, TelaPerfilActivity.class);
+            Intent intent = new Intent(MainActivity.this, EscolhaActivity.class);
             startActivity(intent);
         });
 
