@@ -37,6 +37,9 @@ public class TelaPerfilActivity extends AppCompatActivity {
                 nomeTextView.setText("" + userNome); // Define o nome do usuário no TextView
             }
         }
+
+
+
         switchDarkMode = findViewById(R.id.switch_dark_mode);
 
         // Defina o estado inicial do Switch com base no tema atual
