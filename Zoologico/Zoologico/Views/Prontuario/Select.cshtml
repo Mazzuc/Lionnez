@@ -27,6 +27,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Sexo)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ObsProntuario)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -52,7 +55,10 @@
                 @Html.DisplayFor(modelItem => item.Sexo)
             </td>
             <td>
-                @Html.ActionLink("Consultas", "Details", new { id=item.IdProntuario}) |
+                @Html.DisplayFor(modelItem => item.ObsProntuario)
+            </td>
+            <td>
+                @Html.ActionLink("Consultas", "Details", new { id=item.IdProntuario}) 
             </td>
         </tr>
 }

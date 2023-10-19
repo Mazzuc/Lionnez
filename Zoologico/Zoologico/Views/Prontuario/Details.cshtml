@@ -1,54 +1,51 @@
-﻿@model Zoologico.Models.Prontuario
+﻿@model IEnumerable<Zoologico.Models.Consulta>
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1> @Html.DisplayFor(model => model.NomeAnimal)</h1>
+<h1>Histórico de Consultas</h1>
 
-<div>
-    <h4>Prontuário</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdProntuario)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdProntuario)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NomeEspecie)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NomeEspecie)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataNasc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataNasc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Peso)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Peso)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Sexo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Sexo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ObsProntuario)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ObsProntuario)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Nova Consulta", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Select">Voltar</a>
-</div>
+<p>
+    <a asp-action="Insert">Nova Consulta</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Alergia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Peso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescricaoHistorico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadas)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alergia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Peso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescricaoHistorico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadas)
+            </td>
+            <td>
+                @Html.ActionLink("Detalhes", "Details", new { /* id=item.PrimaryKey */ }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

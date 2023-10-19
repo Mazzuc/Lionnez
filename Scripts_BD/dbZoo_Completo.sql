@@ -568,7 +568,7 @@ begin
 	end if;
 end
 $$
-
+call spInsertHistorico(1, "Teste", "ugfuhdf", 20);
 -- PRONTUÁRIO
 delimiter $$
 create procedure spInsertHistorico(vNomeAnimal int, vAlergia varchar(200), vDescricao varchar(2000), vPeso double)
@@ -576,7 +576,7 @@ begin
 	set @IdAnimal = (select IdAnimal from tbAnimal where IdAnimal = vNomeAnimal);
 	set @IdProntuario = (select IdProntuario from tbProntuario where IdAnimal = @IdAnimal);
 
-	if not exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
+	if not exists(select * from tbProntuario where IdProntuario = vNomeAnimal) then
     select ("Prontuário não cadastrado");
     else    
 	insert into tbHistoricoProntuario(DataCadas, DescricaoHistorico, IdProntuario, Alergia) values (curdate(), vDescricao, @IdProntuario, vAlergia);
@@ -641,7 +641,7 @@ begin
             tbHistoricoProntuario.Alergia as "Alergia",
 			tbHistoricoProntuario.DescricaoHistorico as "Descrição"
 		FROM
-			tbHistoricoProntuario where IdProntuario = 1;
+			tbHistoricoProntuario where IdProntuario = vNomeAnimal;
 	end
 $$
 -- Procedure para realizar a compra e gerar a nota fiscal
