@@ -138,4 +138,32 @@
         <item name="android:background">@color/cinza_medio</item>
 
     </style>
+
+
+
+
+
+
+    <style name="ICONEPERFIL">
+        <item name="android:src">@drawable/ic_group</item>
+    </style>
+
+
+    <style name="ICONESAIR">
+        <item name="android:src">@drawable/ic_iconexit</item>
+    </style>
+
+    <style name="ICONEEMAIL">
+        <item name="android:src">@drawable/icon_email</item>
+    </style>
+
+
+
+    <style name="ICONEEDIT">
+        <item name="android:src">@drawable/ic_iconedit</item>
+    </style>
+
+
+
+
 </resources>

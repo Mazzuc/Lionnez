@@ -99,13 +99,14 @@
 
         <TextView
             android:id="@+id/textinform"
-            android:layout_marginTop="25dp"
+            style="@style/TEXTCOLORDES"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/outifit"
             android:text="Informações Pessoais"
             android:textAlignment="center"
-            style="@style/TEXTCOLORDES"
-            android:textSize="14dp"
+            android:textSize="15dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -156,7 +157,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_group" />
+                    style="@style/ICONEPERFIL" />
 
             </LinearLayout>
 
@@ -179,14 +180,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="17dp"
+                    android:fontFamily="@font/outifit"
                     android:text="Seu Nome"
-                    android:textSize="17dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/nomeTextView"
                     style="@style/TEXTCOLORDES"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/outifit"
                     android:text="Exemplo nome"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -246,7 +249,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/icon_email" />
+                    style="@style/ICONEEMAIL" />
+
 
             </LinearLayout>
 
@@ -268,14 +272,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="17dp"
+                    android:fontFamily="@font/outifit"
                     android:text="Endereço de E-mail"
-                    android:textSize="17dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/emailTextView"
                     style="@style/TEXTCOLORDES"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/outifit"
                     android:text="leo@gmail.com"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -309,12 +315,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
+            android:fontFamily="@font/outifit"
             android:text="Configurações"
             android:textAlignment="center"
             android:textSize="14dp"
-            android:textStyle="bold"
 
-            />
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/lin75eL8a4ut"
@@ -363,18 +369,20 @@
 
                 <TextView
                     android:id="@+id/textinformodo"
-                    style="@style/TEXTCOLOR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="17dp"
+                    android:fontFamily="@font/outifit"
+                    style="@style/TEXTCOLORDES"
                     android:text="Modo Divertido"
-                    android:textSize="17dp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/textvoltarmodo"
-                    style="@style/TEXTCOLORDES"
+                    style="@style/TEXTCOLOR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/outifit"
                     android:text="Ative o modo divertido"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -395,6 +403,7 @@
                     android:id="@+id/switch_dark_mode"
                     style="@style/TINT_SWITCH"
                     android:layout_width="50dp"
+                    android:layout_marginLeft="-03dp"
                     android:layout_height="50dp"
                     android:trackTint="#808080" />
 
@@ -409,12 +418,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
+            android:fontFamily="@font/outifit"
             android:text="Entrar"
             android:textAlignment="center"
             android:textSize="14dp"
-            android:textStyle="bold"
 
-            />
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/linsair"
@@ -444,7 +453,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_iconexit" />
+                    style="@style/ICONESAIR" />
 
             </LinearLayout>
 
@@ -463,18 +472,20 @@
 
                 <TextView
                     android:id="@+id/textinforconta"
-                    style="@style/TEXTCOLOR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="17dp"
+                    style="@style/TEXTCOLORDES"
+                    android:fontFamily="@font/outifit"
                     android:text="Sair"
-                    android:textSize="17dp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/textvoltarconta"
-                    style="@style/TEXTCOLORDES"
+                    style="@style/TEXTCOLOR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/outifit"
                     android:text="Deseja sair da sua conta?"
                     android:textSize="15dp"
                     android:textStyle="bold" />
