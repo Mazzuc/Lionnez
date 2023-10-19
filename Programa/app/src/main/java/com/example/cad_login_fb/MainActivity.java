@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 public class MainActivity extends AppCompatActivity {
-    private Switch switchDarkMode;
+  //  private Switch switchDarkMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnteste.setOnClickListener(view -> {
 
-            Intent intent = new Intent(MainActivity.this, EscolhaActivity.class);
+            Intent intent = new Intent(MainActivity.this, TelaPerfilActivity.class);
             startActivity(intent);
         });
 
@@ -37,7 +37,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, TelaTesteImg.class);
             startActivity(intent);
         });
-        switchDarkMode = findViewById(R.id.switch_dark_mode);
+
+
+
+       /* switchDarkMode = findViewById(R.id.switch_dark_mode);
 
         // Defina o estado inicial do Switch com base no tema atual
         switchDarkMode.setChecked(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES);
@@ -50,6 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
             recreate(); // Reconstrua a atividade para aplicar o novo tema
-        });
+        });*/
     }
 }
