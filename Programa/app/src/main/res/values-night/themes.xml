@@ -59,9 +59,17 @@
     </style>
 
 
+
+
+
+
+
+
+
     <style name="FUNDOEDITTEXT">
-        <item name="android:background">@drawable/bg_editescuro
-        </item>
+        <item name="android:background">@drawable/bg_editescuro</item>
+        <item name="android:textColor">@color/black</item>
+
 
     </style>
 
