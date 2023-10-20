@@ -38,9 +38,9 @@ namespace Zoologico.Controllers
                 DescricaoHistorico = vielmodel.DescricaoHistorico,
                 Peso = vielmodel.Peso
             };
-            novaconsulta.InsertConsulta(novaconsulta);
+            novaconsulta.InsertConsulta(novaconsulta, Id);
 
-            return RedirectToAction("Details", "Prontuario");
+            return RedirectToAction("Select", "Prontuario");
         }
     }
 }

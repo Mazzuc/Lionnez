@@ -113,6 +113,7 @@ IdProntuario int not null,
 foreign key (IdProntuario) references tbProntuario(IdProntuario),
 DataCadas date not null,
 Alergia varchar(200) not null,
+Peso double(2,2) not null,
 DescricaoHistorico varchar(2000) not null
 );
 
@@ -568,7 +569,7 @@ begin
 	end if;
 end
 $$
-call spInsertHistorico(1, "Teste", "ugfuhdf", 20);
+
 -- PRONTUÁRIO
 delimiter $$
 create procedure spInsertHistorico(vNomeAnimal int, vAlergia varchar(200), vDescricao varchar(2000), vPeso double)
@@ -579,7 +580,7 @@ begin
 	if not exists(select * from tbProntuario where IdProntuario = vNomeAnimal) then
     select ("Prontuário não cadastrado");
     else    
-	insert into tbHistoricoProntuario(DataCadas, DescricaoHistorico, IdProntuario, Alergia) values (curdate(), vDescricao, @IdProntuario, vAlergia);
+	insert into tbHistoricoProntuario(DataCadas, DescricaoHistorico, IdProntuario, Alergia, Peso) values (curdate(), vDescricao, @IdProntuario, vAlergia, vPeso);
     update tbAnimal set Peso = vPeso where IdAnimal = @IdAnimal;
 	end if;
 end
@@ -637,9 +638,11 @@ create procedure spSelectConsulta(vNomeAnimal int)
 begin
 		-- Historico
 		SELECT
+			tbHistoricoProntuario.IdProntuario,
 			tbHistoricoProntuario.DataCadas as "Data",
             tbHistoricoProntuario.Alergia as "Alergia",
-			tbHistoricoProntuario.DescricaoHistorico as "Descrição"
+			tbHistoricoProntuario.DescricaoHistorico as "Descrição",
+            tbHistoricoProntuario.Peso
 		FROM
 			tbHistoricoProntuario where IdProntuario = vNomeAnimal;
 	end

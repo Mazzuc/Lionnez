@@ -6,12 +6,12 @@
 
 <h1>Histórico de Consultas</h1>
 
-<p>
-    <a asp-action="Insert">Nova Consulta</a>
-</p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadas)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Alergia)
             </th>
@@ -21,15 +21,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.DescricaoHistorico)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCadas)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadas)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Alergia)
             </td>
@@ -40,10 +40,8 @@
                 @Html.DisplayFor(modelItem => item.DescricaoHistorico)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataCadas)
-            </td>
-            <td>
-                @Html.ActionLink("Detalhes", "Details", new { /* id=item.PrimaryKey */ }) 
+                @Html.ActionLink("Detalhes", "Details", new {  id=item.IdProntuario}) |
+                @Html.ActionLink("Nova Consulta", "Insert", new {  id=item.IdProntuario}) 
             </td>
         </tr>
 }
