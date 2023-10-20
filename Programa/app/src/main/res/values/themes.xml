@@ -163,6 +163,10 @@
         <item name="android:src">@drawable/ic_iconedit</item>
     </style>
 
+    <style name="SOL">
+        <item name="android:src">@drawable/ic_iconmodoclaro</item>
+    </style>
+
 
 
 

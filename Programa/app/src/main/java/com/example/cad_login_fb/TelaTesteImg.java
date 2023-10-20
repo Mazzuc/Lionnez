@@ -2,6 +2,7 @@ package com.example.cad_login_fb;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,8 +18,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -77,7 +80,7 @@ public class TelaTesteImg extends AppCompatActivity {
             try {
                 // Exiba a imagem selecionada no ImageView
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), mSelectedImageUri);
-                mImgPhoto.setImageDrawable(new BitmapDrawable(bitmap));
+                mImgPhoto.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -106,6 +109,8 @@ public class TelaTesteImg extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     // Imagem enviada com sucesso
                     Toast.makeText(TelaTesteImg.this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show();
+                    // Após o upload, você pode chamar a função para baixar e exibir a imagem
+                    downloadAndDisplayImage();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -128,6 +133,33 @@ public class TelaTesteImg extends AppCompatActivity {
             fos.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void downloadAndDisplayImage() {
+        if (imageFileName != null) {
+            // Recupere a referência da imagem no Firebase Storage
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images/" + imageFileName);
+
+            // Crie um arquivo local para salvar a imagem baixada
+            File localFile = new File(getFilesDir(), imageFileName);
+
+            // Faça o download da imagem para o arquivo local
+            storageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    // Imagem baixada com sucesso
+                    // Agora você pode exibir a imagem no ImageView
+                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getPath());
+                    mImgPhoto.setImageBitmap(bitmap);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                public void onFailure(@NonNull Exception e) {
+                    // Tratamento de erro
+                    Log.e("FirebaseStorage", "Erro ao baixar a imagem: " + e.getMessage(), e);
+                    Toast.makeText(TelaTesteImg.this, "Erro ao baixar a imagem.", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }

@@ -161,6 +161,9 @@
         <item name="android:src">@drawable/icone_email2</item>
     </style>
 
+    <style name="SOL">
+        <item name="android:src">@drawable/ic_iconmodoclaro2</item>
+    </style>
 
 
 </resources>

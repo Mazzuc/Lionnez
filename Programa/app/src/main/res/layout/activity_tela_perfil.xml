@@ -94,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_iconedit" />
+                style="@style/ICONEEDIT" />
         </LinearLayout>
 
         <TextView
@@ -350,7 +350,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_iconmodoclaro" />
+                    style="@style/SOL" />
 
             </LinearLayout>
 
