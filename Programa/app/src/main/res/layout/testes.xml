@@ -8,7 +8,7 @@
 
 
         <Button
-            android:id="@+id/btn_selectfoto"
+            android:id="@+id/btn_selectphoto"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@drawable/bg_button_img"
@@ -22,13 +22,14 @@
             android:id="@+id/img_photo"
             android:layout_width="150dp"
             app:civ_border_color="@color/cinza_claro"
+            android:background="@drawable/bg_button_img"
             app:civ_border_width="5dp"
             android:layout_height="150dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_selectfoto"
-            app:layout_constraintEnd_toEndOf="@+id/btn_selectfoto"
-            app:layout_constraintStart_toStartOf="@+id/btn_selectfoto"
-            app:layout_constraintTop_toTopOf="@+id/btn_selectfoto">
+            app:layout_constraintBottom_toBottomOf="@+id/btn_selectphoto"
+            app:layout_constraintEnd_toEndOf="@+id/btn_selectphoto"
+            app:layout_constraintStart_toStartOf="@+id/btn_selectphoto"
+            app:layout_constraintTop_toTopOf="@+id/btn_selectphoto">
 
         </de.hdodenhof.circleimageview.CircleImageView>
 

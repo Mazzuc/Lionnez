@@ -172,6 +172,8 @@
     </style>
 
 
-
+    <style name="BTTIMG">
+        <item name="android:src">@drawable/bg_button_img</item>
+    </style>
 
 </resources>

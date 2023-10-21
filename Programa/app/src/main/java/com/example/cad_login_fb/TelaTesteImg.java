@@ -2,7 +2,6 @@ package com.example.cad_login_fb;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,18 +14,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.UUID;
 
 public class TelaTesteImg extends AppCompatActivity {
 
@@ -34,8 +32,6 @@ public class TelaTesteImg extends AppCompatActivity {
     private Button mBtnSelectPhoto;
     private Button mBtnUpload;
     private ImageView mImgPhoto;
-    private Uri mSelectedImageUri;
-    private String imageFileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,13 +54,11 @@ public class TelaTesteImg extends AppCompatActivity {
         mBtnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mSelectedImageUri != null) {
-                    uploadImageToFirebaseStorage();
-                } else {
-                    Toast.makeText(TelaTesteImg.this, "Selecione uma imagem primeiro.", Toast.LENGTH_SHORT).show();
-                }
+                uploadImageToFirebaseStorage();
             }
         });
+
+        downloadAndDisplayImages();
     }
 
     @Override
@@ -72,33 +66,40 @@ public class TelaTesteImg extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK && data != null) {
-            mSelectedImageUri = data.getData();
+            Uri selectedImageUri = data.getData();
 
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), mSelectedImageUri);
-                mImgPhoto.setImageBitmap(bitmap);
-            } catch (IOException e) {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+
+                // Aplicar a forma redonda com Glide
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.transform(new CircleCrop());
+
+                Glide.with(this)
+                        .load(bitmap)
+                        .apply(requestOptions)
+                        .into(mImgPhoto);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
     private void uploadImageToFirebaseStorage() {
-        if (mSelectedImageUri != null) {
-            imageFileName = UUID.randomUUID().toString() + ".jpg";
+        if (mImgPhoto.getDrawable() != null) {
             Bitmap bitmap = ((BitmapDrawable) mImgPhoto.getDrawable()).getBitmap();
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images/" + System.currentTimeMillis() + ".jpg");
+
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 90, baos);
             byte[] data = baos.toByteArray();
-            saveImageLocally(data, imageFileName);
 
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images/" + imageFileName);
             UploadTask uploadTask = storageReference.putBytes(data);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Toast.makeText(TelaTesteImg.this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show();
-                    downloadAndDisplayImage();
+                    downloadAndDisplayImages();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -107,37 +108,37 @@ public class TelaTesteImg extends AppCompatActivity {
                     Toast.makeText(TelaTesteImg.this, "Erro ao carregar a imagem.", Toast.LENGTH_SHORT).show();
                 }
             });
+        } else {
+            Toast.makeText(TelaTesteImg.this, "Selecione uma imagem primeiro.", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void saveImageLocally(byte[] imageData, String fileName) {
-        try {
-            File directory = getFilesDir();
-            File file = new File(directory, fileName);
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(imageData);
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    private void downloadAndDisplayImages() {
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images/");
+        storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+            @Override
+            public void onSuccess(ListResult listResult) {
+                for (StorageReference item : listResult.getItems()) {
+                    item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            // Use a biblioteca Glide para carregar e exibir as imagens a partir de "uri"
+                            RequestOptions requestOptions = new RequestOptions();
+                            requestOptions.transform(new CircleCrop());
 
-    private void downloadAndDisplayImage() {
-        if (imageFileName != null) {
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images/" + imageFileName);
-            File localFile = new File(getFilesDir(), imageFileName);
-            storageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getPath());
-                    mImgPhoto.setImageBitmap(bitmap);
+                            Glide.with(TelaTesteImg.this)
+                                    .load(uri)
+                                    .apply(requestOptions)
+                                    .into(mImgPhoto);
+                        }
+                    });
                 }
-            }).addOnFailureListener(new OnFailureListener() {
-                public void onFailure(@NonNull Exception e) {
-                    Log.e("FirebaseStorage", "Erro ao baixar a imagem: " + e.getMessage(), e);
-                    Toast.makeText(TelaTesteImg.this, "Erro ao baixar a imagem.", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e("FirebaseStorage", "Erro ao listar itens: " + e.getMessage(), e);
+            }
+        });
     }
 }
