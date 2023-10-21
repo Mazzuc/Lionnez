@@ -218,10 +218,6 @@
         android:hint="Digite seu e-mail..."
         android:inputType="textEmailAddress"
         android:padding="14dp"
-<<<<<<< Updated upstream
-        android:textColor="@color/cinza_claro"
-=======
->>>>>>> Stashed changes
         android:textColorHint="@color/cinza_medio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -250,10 +246,6 @@
         android:hint="Coloque sua senha"
         android:inputType="textPassword"
         android:padding="14dp"
-<<<<<<< Updated upstream
-        android:textColor="@color/cinza_claro"
-=======
->>>>>>> Stashed changes
         android:textColorHint="@color/cinza_medio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -297,7 +289,6 @@
         android:fontFamily="@font/poppins_medium"
         android:text="Conecte-se"
         android:textAllCaps="false"
-        android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
         app:backgroundTint="@null"
