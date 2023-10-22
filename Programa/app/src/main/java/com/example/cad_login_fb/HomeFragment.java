@@ -8,12 +8,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.DocumentSnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private LinearLayout novidadesLayout;
-    private LinearLayout atracoesLayout;
     private LinearLayout profileLayout;
+
+    private List<Atracao> atracoesList = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private AtracoesAdapter adapter;
+    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+    private CollectionReference atracoesCollection = firestore.collection("Atracoes");
+
+    private List<Novidades> novidadesList = new ArrayList<>();
+    private RecyclerView recyclerView2;
+    private NovidadesAdapter adapter2;
+    private CollectionReference novidadesCollection = firestore.collection("Novidades");
 
     public HomeFragment() {
         // Required empty public constructor
@@ -24,24 +44,50 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Cards Novidades
-        novidadesLayout = view.findViewById(R.id.novidades_layout);
+        // Configurar o RecyclerView para exibir os itens na horizontal - Card Atrações
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        adapter = new AtracoesAdapter(atracoesList);
+        recyclerView.setAdapter(adapter);
 
-        addNovidadesCard("Primata Marrom", "Nova espécie de Primata Marrom, chega ao Zoo Curitiba.\n" +
-                "Nova espécie de Primata Marrom, chega ao Zoo Curitiba.", R.drawable.novidade1);
-        addNovidadesCard("Primata Marrom", "Nova espécie de Primata Marrom, chega ao Zoo Curitiba.\n" +
-                "Nova espécie de Primata Marrom, chega ao Zoo Curitiba.", R.drawable.novidade1);
+        // Obter dados do Firestore - Card Atrações
+        atracoesCollection.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                    String nome = document.getString("nome");
+                    String horario = document.getString("horario");
+                    String imagemUrl = document.getString("imagem");
+                    Atracao atracao = new Atracao(nome, horario, imagemUrl);
+                    atracoesList.add(atracao);
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
 
-        // Cards Atrações
-        atracoesLayout = view.findViewById(R.id.atracoes_layout);
+        // Configurar o RecyclerView para exibir os itens na horizontal - Card Novidades
+        recyclerView2 = view.findViewById(R.id.recyclerView2);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        adapter2 = new NovidadesAdapter(novidadesList);
+        recyclerView2.setAdapter(adapter2);
 
-        addAtracoesCard("Colônia das Formigas", "09:00 - 12:00", R.drawable.atracoes1);
-        addAtracoesCard("Pavão do Egito", "09:00 - 12:00", R.drawable.atracoes2);
+        // Obter dados do Firestore - Card Novidades
+        novidadesCollection.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                    String nome = document.getString("nome");
+                    String info = document.getString("info");
+                    String imagemUrl = document.getString("image");
+                    Novidades novidade = new Novidades(nome, info, imagemUrl);
+                    novidadesList.add(novidade);
+                }
+                adapter2.notifyDataSetChanged();
+            }
+        });
 
+        // Adicionar o código para exibir a página de QRCode ao clicar em LinearQR
         LinearLayout linearQR = view.findViewById(R.id.LinearQR);
-
-
-        // Adicionar o código para exiber a página de QRCode ao clicar em LinearQR
         linearQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,12 +96,11 @@ public class HomeFragment extends Fragment {
                         .replace(R.id.fragmentContainer, new QrCode())
                         .addToBackStack(null)
                         .commit();
-                                        }
+            }
         });
 
         // Adicionar o código para exibir o AlertDialog personalizado ao clicar em LinearHorario
         LinearLayout linearHorario = view.findViewById(R.id.LinearHorario);
-
         linearHorario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,16 +120,6 @@ public class HomeFragment extends Fragment {
         });
 
         return view;
-    }
-
-    private void addNovidadesCard(String title, String info, int imageResId) {
-        NovidadesCard novidadesCard = new NovidadesCard(requireContext(), title, info, imageResId);
-        novidadesLayout.addView(novidadesCard);
-    }
-
-    private void addAtracoesCard(String title, String info, int imageResId) {
-        AtracoesCard atracoesCard = new AtracoesCard(requireContext(), title, info, imageResId);
-        atracoesLayout.addView(atracoesCard);
     }
 
     private void showCustomDialog() {

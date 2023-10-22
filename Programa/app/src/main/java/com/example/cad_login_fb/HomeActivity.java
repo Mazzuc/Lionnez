@@ -125,6 +125,11 @@ public class HomeActivity extends AppCompatActivity {
         scannerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Chamando fragment QrCode para execução no BarCode Navigation
+                getSupportFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.fragmentContainer, QrCode.class, null)
+                        .commit();
 
                 if(selectedTab != 3){
                     homeTxt.setVisibility(View.GONE);

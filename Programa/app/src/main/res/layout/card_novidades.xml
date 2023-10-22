@@ -8,11 +8,11 @@
     style="@style/HOME_CARDAPOTIONS"
     android:orientation="horizontal"
     android:paddingTop="5dp"
-    android:paddingRight="5dp"
+    android:paddingRight="10dp"
     android:paddingBottom="5dp">
 
     <ImageView
-        android:id="@+id/image_novidades"
+        android:id="@+id/imageView"
         android:layout_width="135dp"
         android:layout_height="140dp"
         android:layout_marginLeft="10dp"
@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.562" />
 
     <TextView
-        android:id="@+id/txttitle"
+        android:id="@+id/nomeTextView"
         android:layout_width="170dp"
         android:layout_height="28dp"
         android:layout_marginStart="20dp"
@@ -34,11 +34,11 @@
         style="@style/TEXTDESTAQUE"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image_novidades"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtinfo"
+        android:id="@+id/infoTextView"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -49,37 +49,38 @@
         android:textAppearance="?android:textAppearanceSmall"
         style="@style/TEXTCOLOR"
         android:textSize="10dp"
+        android:justificationMode="inter_word"
         app:layout_constraintBottom_toTopOf="@+id/buttoncard1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image_novidades"
-        app:layout_constraintTop_toBottomOf="@+id/txttitle" />
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/nomeTextView" />
 
     <LinearLayout
         android:id="@+id/buttoncard1"
-        android:layout_width="165dp"
+        style="@style/BUTTON_INFO"
+        android:layout_width="170dp"
         android:layout_height="25dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical"
-        style="@style/BUTTON_INFO"
         android:paddingLeft="45dp"
         android:paddingTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.222"
-        app:layout_constraintStart_toEndOf="@+id/image_novidades"
-        app:layout_constraintTop_toBottomOf="@+id/txtinfo"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/infoTextView"
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/textView6"
+            style="@style/TEXTCOLOR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/info"
-            style="@style/TEXTCOLOR"
             android:textSize="12sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

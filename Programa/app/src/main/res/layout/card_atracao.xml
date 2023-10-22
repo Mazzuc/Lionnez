@@ -12,7 +12,7 @@
     android:paddingBottom="5dp">
 
     <ImageView
-        android:id="@+id/image_novidades"
+        android:id="@+id/imageView"
         android:layout_width="168dp"
         android:layout_height="102dp"
         android:layout_marginStart="56dp"
@@ -22,10 +22,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txttitle" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeTextView" />
 
     <TextView
-        android:id="@+id/txttitle"
+        android:id="@+id/nomeTextView"
         android:layout_width="170dp"
         android:layout_height="28dp"
         android:layout_marginStart="30dp"
@@ -37,7 +37,7 @@
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtinfo" />
+        app:layout_constraintTop_toBottomOf="@+id/horarioTextView" />
 
     <LinearLayout
         android:id="@+id/buttoncard1"
@@ -53,7 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_novidades">
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <TextView
             android:id="@+id/textView6"
@@ -66,7 +66,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/txtinfo"
+        android:id="@+id/horarioTextView"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -78,3 +78,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

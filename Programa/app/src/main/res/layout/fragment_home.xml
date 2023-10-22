@@ -231,16 +231,15 @@
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
                 android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:id="@+id/novidades_layout"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal"
-                    android:padding="8dp"></LinearLayout>
+                    android:orientation="horizontal" />
             </HorizontalScrollView>
 
             <LinearLayout
@@ -516,16 +515,17 @@
                     android:textSize="20sp" />
 
                 <HorizontalScrollView
+                    android:id="@+id/ScrollAtracoes"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <LinearLayout
-                        android:id="@+id/atracoes_layout"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:orientation="horizontal"
-                        android:padding="8dp"></LinearLayout>
+                        android:orientation="horizontal" />
+
                 </HorizontalScrollView>
 
             </LinearLayout>
