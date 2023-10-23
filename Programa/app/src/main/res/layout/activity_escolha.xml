@@ -8,7 +8,7 @@
 
     <TextView
         style="@style/TEXTRARO"
-        android:id="@+id/textVie2"
+        android:id="@+id/TxtPolitica"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -198,7 +198,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textVie2" />
+        app:layout_constraintTop_toBottomOf="@+id/TxtPolitica" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

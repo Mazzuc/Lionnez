@@ -1,6 +1,9 @@
 package com.example.cad_login_fb;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -105,6 +108,15 @@ public class TelaPerfilActivity extends AppCompatActivity {
         });
 
         downloadAndDisplayImages();
+
+        // Adicionar o código para exibir o AlertDialog personalizado ao clicar em TxtPolitica
+        LinearLayout linearLayout = findViewById(R.id.altsair);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomDialog();
+            }
+        });
     }
 
 
@@ -187,6 +199,23 @@ public class TelaPerfilActivity extends AppCompatActivity {
                 Log.e("FirebaseStorage", "Erro ao listar itens: " + e.getMessage(), e);
             }
         });
+    }
+
+    private void showCustomDialog() {
+        // Inflar o layout do AlertDialog personalizado
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.custon_sair, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustomStyle);
+        builder.setView(dialogView);
+
+        // Criar o AlertDialog
+        final AlertDialog customDialog = builder.create();
+
+        // Configurar o clique fora do AlertDialog para fechá-lo
+        customDialog.setCanceledOnTouchOutside(true);
+
+        // Exibir o AlertDialog
+        customDialog.show();
     }
 }
 
