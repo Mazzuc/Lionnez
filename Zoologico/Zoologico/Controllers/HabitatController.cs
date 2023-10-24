@@ -8,6 +8,8 @@ namespace Zoologico.Controllers
     public class HabitatController : Controller
     {
         Habitat ObjHabitat = new Habitat();
+        List<Habitat> ObjHabitatList = new List<Habitat>();
+
         Animal ObjAnimal = new Animal();
 
         public ActionResult Details(int Id)
@@ -46,6 +48,5 @@ namespace Zoologico.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
     }
 }
