@@ -31,7 +31,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.io.ByteArrayOutputStream;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -57,39 +56,33 @@ public class TelaPerfilActivity extends AppCompatActivity {
         mImgPhoto = findViewById(R.id.img_photo);
 
         emailTextView = findViewById(R.id.emailTextView);
-        nomeTextView = findViewById(R.id.nomeTextView); // Adicione esta linha
+        nomeTextView = findViewById(R.id.nomeTextView);
 
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
-            String userEmail = user.getEmail(); // Obtém o email do usuário autenticado
+            String userEmail = user.getEmail();
             if (userEmail != null) {
                 emailTextView.setText("" + userEmail);
             }
-            String userNome = user.getDisplayName(); // Obtém o nome do usuário autenticado
+            String userNome = user.getDisplayName();
             if (userNome != null) {
-                nomeTextView.setText("" + userNome); // Define o nome do usuário no TextView
+                nomeTextView.setText("" + userNome);
             }
         }
 
-
-
         switchDarkMode = findViewById(R.id.switch_dark_mode);
-
-        // Defina o estado inicial do Switch com base no tema atual
         switchDarkMode.setChecked(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES);
 
         switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // Altere o tema do aplicativo com base no estado do Switch
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
-            recreate(); // Reconstrua a atividade para aplicar o novo tema
+            recreate();
         });
-
 
         mBtnSelectPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,9 +100,8 @@ public class TelaPerfilActivity extends AppCompatActivity {
             }
         });
 
-        downloadAndDisplayImages();
+        downloadAndDisplayUserImage();
 
-        // Adicionar o código para exibir o AlertDialog personalizado ao clicar em TxtPolitica
         LinearLayout linearLayout = findViewById(R.id.altsair);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +110,6 @@ public class TelaPerfilActivity extends AppCompatActivity {
             }
         });
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -129,8 +120,6 @@ public class TelaPerfilActivity extends AppCompatActivity {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
-
-                // Aplicar a forma redonda com Glide
                 RequestOptions requestOptions = new RequestOptions();
                 requestOptions.transform(new CircleCrop());
 
@@ -146,77 +135,74 @@ public class TelaPerfilActivity extends AppCompatActivity {
 
     private void uploadImageToFirebaseStorage() {
         if (mImgPhoto.getDrawable() != null) {
-            Bitmap bitmap = ((BitmapDrawable) mImgPhoto.getDrawable()).getBitmap();
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images/" + System.currentTimeMillis() + ".jpg");
+            FirebaseUser user = mAuth.getCurrentUser();
+            if (user != null) {
+                String userId = user.getUid();
+                Bitmap bitmap = ((BitmapDrawable) mImgPhoto.getDrawable()).getBitmap();
+                StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images/" + userId + ".jpg");
 
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, baos);
-            byte[] data = baos.toByteArray();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 90, baos);
+                byte[] data = baos.toByteArray();
 
-            UploadTask uploadTask = storageReference.putBytes(data);
-            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(TelaPerfilActivity.this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show();
-                    downloadAndDisplayImages();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.e("FirebaseStorage", "Erro ao fazer upload da imagem: " + e.getMessage(), e);
-                    Toast.makeText(TelaPerfilActivity.this, "Erro ao carregar a imagem.", Toast.LENGTH_SHORT).show();
-                }
-            });
+                UploadTask uploadTask = storageReference.putBytes(data);
+                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(TelaPerfilActivity.this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show();
+                        downloadAndDisplayUserImage();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("FirebaseStorage", "Erro ao fazer upload da imagem: " + e.getMessage(), e);
+                        Toast.makeText(TelaPerfilActivity.this, "Erro ao carregar a imagem.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                Toast.makeText(TelaPerfilActivity.this, "Usuário não autenticado.", Toast.LENGTH_SHORT).show();
+            }
         } else {
             Toast.makeText(TelaPerfilActivity.this, "Selecione uma imagem primeiro.", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void downloadAndDisplayImages() {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images/");
-        storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
-            @Override
-            public void onSuccess(ListResult listResult) {
-                for (StorageReference item : listResult.getItems()) {
-                    item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            // Use a biblioteca Glide para carregar e exibir as imagens a partir de "uri"
-                            RequestOptions requestOptions = new RequestOptions();
-                            requestOptions.transform(new CircleCrop());
+    private void downloadAndDisplayUserImage() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            String userId = user.getUid();
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images/" + userId + ".jpg");
 
-                            Glide.with(TelaPerfilActivity.this)
-                                    .load(uri)
-                                    .apply(requestOptions)
-                                    .into(mImgPhoto);
-                        }
-                    });
+            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    RequestOptions requestOptions = new RequestOptions();
+                    requestOptions.transform(new CircleCrop());
+
+                    Glide.with(TelaPerfilActivity.this)
+                            .load(uri)
+                            .apply(requestOptions)
+                            .into(mImgPhoto);
                 }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.e("FirebaseStorage", "Erro ao listar itens: " + e.getMessage(), e);
-            }
-        });
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e("FirebaseStorage", "Erro ao obter imagem do usuário: " + e.getMessage(), e);
+                }
+            });
+        } else {
+            Toast.makeText(TelaPerfilActivity.this, "Usuário não autenticado.", Toast.LENGTH_SHORT).show();
+        }
     }
 
-
     private void showCustomDialog() {
-        // Inflar o layout do AlertDialog personalizado
         View dialogView = LayoutInflater.from(this).inflate(R.layout.custon_sair, null);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustomStyle);
         builder.setView(dialogView);
 
-        // Criar o AlertDialog
         final AlertDialog customDialog = builder.create();
-
-        // Configurar o clique fora do AlertDialog para fechá-lo
         customDialog.setCanceledOnTouchOutside(true);
-
-        // Exibir o AlertDialog
         customDialog.show();
     }
 }
-
