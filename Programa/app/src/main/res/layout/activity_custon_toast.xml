@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_toast"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/campo_toast_error"
@@ -9,9 +10,10 @@
 
 
     <LinearLayout
+        android:padding="05dp"
         android:id="@+id/base"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:backgroundTint="@null"
         app:cardElevation="0dp"
@@ -21,26 +23,24 @@
     <LinearLayout
         android:gravity="center"
         android:id="@+id/iconenome"
-        android:layout_width="120dp"
-        android:layout_height="130dp"
-        android:layout_marginRight="10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
         >
 
         <LinearLayout
             android:gravity="center"
             android:id="@+id/iconome"
             android:background="@drawable/icon_redondo_white"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:orientation="vertical"
             >
 
             <ImageView
                 android:id="@+id/_photo"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 app:srcCompat="@drawable/icon_atention" />
     </LinearLayout>
 
@@ -48,43 +48,37 @@
 
 
         <LinearLayout
+            android:paddingLeft="10dp"
             android:gravity="center"
             android:id="@+id/inenome"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:orientation="vertical"
-            android:paddingRight="20dp">
+            >
 
             <TextView
-                android:id="@+id/textinform"
                 android:textColor="@color/white"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="05dp"
                 android:fontFamily="@font/outifit"
                 android:text="OPERAÇÃO FALHA, ERRO!"
-                android:textSize="18dp"
+                android:textSize="13dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
-            <TextView
-                android:id="@+id/texform"
-                android:textColor="#FFBC0A"
-                android:layout_width="match_parent"
-                android:layout_height="05dp"
 
-                />
             <TextView
-                android:id="@+id/texinform"
-                android:layout_width="match_parent"
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="05dp"
                 android:fontFamily="@font/outifit"
-                android:text="Certifique-se de que todas as operações foram respondidas com sucesso!"
+                android:text="Vai carregar a mensagem !"
                 android:textColor="@color/white"
-                android:textSize="12dp"
+                android:textSize="11dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />

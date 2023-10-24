@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.cad_login_fb.databinding.ActivityCustonToastBinding;
+import com.example.cad_login_fb.databinding.ActivityCustonToastCorrectBinding;
+import com.example.cad_login_fb.databinding.ActivityCustonToatAlertBinding;
 import com.example.cad_login_fb.databinding.ActivityCadastroBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -44,11 +47,38 @@ public class CadastroActivity extends AppCompatActivity {
         String nome = binding.editNome.getText().toString().trim();
 
         if (nome.isEmpty()) {
-            Toast.makeText(this, "Informe seu nome", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Informe seu nome", Toast.LENGTH_SHORT).show();
+            ActivityCustonToatAlertBinding customToastBindingCorrect = ActivityCustonToatAlertBinding.inflate(getLayoutInflater());
+
+            // Personalize o texto da mensagem do Toast
+            customToastBindingCorrect.textViewalerta.setText("Informe seu nome");
+
+            Toast customToast = new Toast(this);
+            customToast.setDuration(Toast.LENGTH_SHORT);
+            customToast.setView(customToastBindingCorrect.getRoot());
+            customToast.show();
         } else if (email.isEmpty()) {
-            Toast.makeText(this, "Informe seu E-mail", Toast.LENGTH_SHORT).show();
+         //   Toast.makeText(this, "Informe seu E-mail", Toast.LENGTH_SHORT).show();
+            ActivityCustonToatAlertBinding customToastBindingCorrect = ActivityCustonToatAlertBinding.inflate(getLayoutInflater());
+
+            // Personalize o texto da mensagem do Toast
+            customToastBindingCorrect.textViewalerta.setText("Informe seu E-mail");
+
+            Toast customToast = new Toast(this);
+            customToast.setDuration(Toast.LENGTH_SHORT);
+            customToast.setView(customToastBindingCorrect.getRoot());
+            customToast.show();
         } else if (senha.isEmpty()) {
-            Toast.makeText(this, "Informe uma senha", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(this, "Informe uma senha", Toast.LENGTH_SHORT).show();
+            ActivityCustonToatAlertBinding customToastBindingCorrect = ActivityCustonToatAlertBinding.inflate(getLayoutInflater());
+
+            // Personalize o texto da mensagem do Toast
+            customToastBindingCorrect.textViewalerta.setText("Informe uma senha");
+
+            Toast customToast = new Toast(this);
+            customToast.setDuration(Toast.LENGTH_SHORT);
+            customToast.setView(customToastBindingCorrect.getRoot());
+            customToast.show();
         } else {
             binding.progressBar.setVisibility(View.VISIBLE);
             CriarContaFireBase(email, senha, nome);
@@ -73,12 +103,33 @@ public class CadastroActivity extends AppCompatActivity {
                                 startActivity(new Intent(this, HomeActivity.class));
                             } else {
                                 binding.progressBar.setVisibility(View.GONE);
-                                Toast.makeText(this, "Opa, ocorreu um erro ao atualizar o nome", Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(this, "Opa, ocorreu um erro ao atualizar o nome", Toast.LENGTH_SHORT).show();
+                                // Código para mostrar o Toast personalizado
+                                ActivityCustonToastBinding customToastBinding = ActivityCustonToastBinding.inflate(getLayoutInflater());
+
+                                // Personalize o texto da mensagem do Toast
+                                customToastBinding.textView.setText("Opa, verifique as informações: ocorreu um erro.");
+
+                                Toast customToast = new Toast(this);
+                                customToast.setDuration(Toast.LENGTH_SHORT);
+                                customToast.setView(customToastBinding.getRoot());
+                                customToast.show();
                             }
                         });
                     } else {
                         binding.progressBar.setVisibility(View.GONE);
-                        Toast.makeText(this, "Opa, verifique as informações: ocorreu um erro", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(this, "Opa, verifique as informações: ocorreu um erro", Toast.LENGTH_SHORT).show();
+
+                        // Código para mostrar o Toast personalizado
+                        ActivityCustonToastBinding customToastBinding = ActivityCustonToastBinding.inflate(getLayoutInflater());
+
+                        // Personalize o texto da mensagem do Toast
+                        customToastBinding.textView.setText("Opa, verifique as informações: ocorreu um erro.");
+
+                        Toast customToast = new Toast(this);
+                        customToast.setDuration(Toast.LENGTH_SHORT);
+                        customToast.setView(customToastBinding.getRoot());
+                        customToast.show();
                     }
                 });
     }
