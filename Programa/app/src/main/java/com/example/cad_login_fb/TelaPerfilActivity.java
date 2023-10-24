@@ -25,6 +25,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.cad_login_fb.databinding.ActivityCustonToastBinding;
+import com.example.cad_login_fb.databinding.ActivityCustonToatAlertBinding;
+import com.example.cad_login_fb.databinding.ActivityCustonToastCorrectBinding;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -150,7 +154,19 @@ public class TelaPerfilActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(TelaPerfilActivity.this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show();
+
+
                         downloadAndDisplayUserImage();
+
+                     /*   ActivityCustonToastCorrectBinding customToastBindingCorrect = ActivityCustonToastCorrectBinding.inflate(getLayoutInflater());
+
+                        // Personalize o texto da mensagem do Toast
+                        customToastBindingCorrect.textViewsucesso.setText("Informe seu E-mail");
+
+                        Toast customToast = new Toast(this);
+                        customToast.setDuration(Toast.LENGTH_SHORT);
+                        customToast.setView(customToastBindingCorrect.getRoot());
+                        customToast.show();*/
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -160,7 +176,18 @@ public class TelaPerfilActivity extends AppCompatActivity {
                     }
                 });
             } else {
-                Toast.makeText(TelaPerfilActivity.this, "Usuário não autenticado.", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(TelaPerfilActivity.this, "Usuário não autenticado.", Toast.LENGTH_SHORT).show();
+
+                // Código para mostrar o Toast personalizado
+                ActivityCustonToastBinding customToastBinding = ActivityCustonToastBinding.inflate(getLayoutInflater());
+
+                // Personalize o texto da mensagem do Toast
+                customToastBinding.textView.setText("Usuário não autenticado.");
+
+                Toast customToast = new Toast(this);
+                customToast.setDuration(Toast.LENGTH_SHORT);
+                customToast.setView(customToastBinding.getRoot());
+                customToast.show();
             }
         } else {
             Toast.makeText(TelaPerfilActivity.this, "Selecione uma imagem primeiro.", Toast.LENGTH_SHORT).show();

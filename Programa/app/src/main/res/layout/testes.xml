@@ -7,33 +7,106 @@
         android:layout_height="match_parent">
 
 
-        <Button
-            android:id="@+id/btn_selectphoto"
+    <LinearLayout
+        android:id="@+id/base"
+        android:layout_width="300dp"
+        android:layout_height="165dp"
+        android:gravity="end"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="216dp"
+        android:background="@drawable/aquariunn"
+        android:orientation="horizontal"
+        android:padding="05dp"
+        app:backgroundTint="@null"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/brgattse"
             android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/bg_button_img"
-            android:text="Button"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:padding="10dp"
+            android:layout_marginStart="80dp">
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_photo"
-            android:layout_width="150dp"
-            app:civ_border_color="@color/cinza_claro"
-            android:background="@drawable/bg_button_img"
-            app:civ_border_width="5dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_selectphoto"
-            app:layout_constraintEnd_toEndOf="@+id/btn_selectphoto"
-            app:layout_constraintStart_toStartOf="@+id/btn_selectphoto"
-            app:layout_constraintTop_toTopOf="@+id/btn_selectphoto">
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="05dp"
+                android:fontFamily="@font/outifit"
+                android:text="Tour Online - Aquário de São Paulo"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-        </de.hdodenhof.circleimageview.CircleImageView>
+            <LinearLayout
+                android:id="@+id/brttse"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outifit"
+                    android:text="Horário Duração"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+
+                    />
+
+                <TextView
+                    android:gravity="end"
+                    android:id="@+id/textVw14"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outifit"
+                    android:text="11:30 AM 45 mins"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+
+                    />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:id="@+id/buttoncard1"
+                android:background="@drawable/roud_image"
+                android:layout_width="70dp"
+                android:layout_height="15dp"
+                android:orientation="vertical"
+
+                >
+
+                <TextView
+                    android:textAlignment="center"
+                    android:id="@+id/textView6"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Tour"
+                    android:textSize="7sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 

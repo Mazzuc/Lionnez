@@ -3,6 +3,10 @@ package com.example.cad_login_fb;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cad_login_fb.databinding.ActivityCustonToastBinding;
+import com.example.cad_login_fb.databinding.ActivityCustonToastCorrectBinding;
+import com.example.cad_login_fb.databinding.ActivityCustonToatAlertBinding;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
