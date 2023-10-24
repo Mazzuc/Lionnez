@@ -74,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(this, HomeActivity.class));
             } else {
+
              //   binding.progressBar.setVisibility(View.GONE);
               //  Toast.makeText(this, "Opa, verifique as informações: ocorreu um erro.", Toast.LENGTH_SHORT).show();
 

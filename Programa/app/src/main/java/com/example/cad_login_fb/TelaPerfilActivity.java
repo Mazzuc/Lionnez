@@ -201,6 +201,7 @@ public class TelaPerfilActivity extends AppCompatActivity {
         });
     }
 
+
     private void showCustomDialog() {
         // Inflar o layout do AlertDialog personalizado
         View dialogView = LayoutInflater.from(this).inflate(R.layout.custon_sair, null);
