@@ -1,43 +1,38 @@
 package com.example.cad_login_fb;
 
 import android.app.AlertDialog;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import android.widget.Switch;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.cad_login_fb.databinding.ActivityCustonToastBinding;
-import com.example.cad_login_fb.databinding.ActivityCustonToatAlertBinding;
-import com.example.cad_login_fb.databinding.ActivityCustonToastCorrectBinding;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class TelaPerfilActivity extends AppCompatActivity {
 
@@ -49,6 +44,7 @@ public class TelaPerfilActivity extends AppCompatActivity {
     private TextView nomeTextView;
     private FirebaseAuth mAuth;
     private Switch switchDarkMode;
+    private LinearLayout linearLayoutSair;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +54,8 @@ public class TelaPerfilActivity extends AppCompatActivity {
         mBtnSelectPhoto = findViewById(R.id.btn_selectphoto);
         mBtnUpload = findViewById(R.id.btn_upload);
         mImgPhoto = findViewById(R.id.img_photo);
-
         emailTextView = findViewById(R.id.emailTextView);
         nomeTextView = findViewById(R.id.nomeTextView);
-
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = mAuth.getCurrentUser();
@@ -106,8 +100,8 @@ public class TelaPerfilActivity extends AppCompatActivity {
 
         downloadAndDisplayUserImage();
 
-        LinearLayout linearLayout = findViewById(R.id.altsair);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        linearLayoutSair = findViewById(R.id.altsair);
+        linearLayoutSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showCustomDialog();
@@ -155,18 +149,7 @@ public class TelaPerfilActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(TelaPerfilActivity.this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show();
 
-
                         downloadAndDisplayUserImage();
-
-                     /*   ActivityCustonToastCorrectBinding customToastBindingCorrect = ActivityCustonToastCorrectBinding.inflate(getLayoutInflater());
-
-                        // Personalize o texto da mensagem do Toast
-                        customToastBindingCorrect.textViewsucesso.setText("Informe seu E-mail");
-
-                        Toast customToast = new Toast(this);
-                        customToast.setDuration(Toast.LENGTH_SHORT);
-                        customToast.setView(customToastBindingCorrect.getRoot());
-                        customToast.show();*/
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -176,18 +159,7 @@ public class TelaPerfilActivity extends AppCompatActivity {
                     }
                 });
             } else {
-              //  Toast.makeText(TelaPerfilActivity.this, "Usuário não autenticado.", Toast.LENGTH_SHORT).show();
-
-                // Código para mostrar o Toast personalizado
-                ActivityCustonToastBinding customToastBinding = ActivityCustonToastBinding.inflate(getLayoutInflater());
-
-                // Personalize o texto da mensagem do Toast
-                customToastBinding.textView.setText("Usuário não autenticado.");
-
-                Toast customToast = new Toast(this);
-                customToast.setDuration(Toast.LENGTH_SHORT);
-                customToast.setView(customToastBinding.getRoot());
-                customToast.show();
+                Toast.makeText(TelaPerfilActivity.this, "Usuário não autenticado.", Toast.LENGTH_SHORT).show();
             }
         } else {
             Toast.makeText(TelaPerfilActivity.this, "Selecione uma imagem primeiro.", Toast.LENGTH_SHORT).show();
@@ -231,5 +203,35 @@ public class TelaPerfilActivity extends AppCompatActivity {
         final AlertDialog customDialog = builder.create();
         customDialog.setCanceledOnTouchOutside(true);
         customDialog.show();
+
+        LinearLayout linearSair = dialogView.findViewById(R.id.LinearSair);
+
+        linearSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Deslogar o usuário (caso esteja usando Firebase Auth)
+                FirebaseAuth.getInstance().signOut();
+
+                // Atualizar o SharedPreferences para indicar que o usuário não está mais conectado
+                setLoginStatus(false);
+
+                // Fecha o diálogo
+                customDialog.dismiss();
+
+                // Redirecionar o usuário para a tela de escolha
+                Intent intent = new Intent(TelaPerfilActivity.this, EscolhaActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish(); // Encerra a atividade atual
+            }
+        });
+    }
+
+    // Método para atualizar o estado de login no SharedPreferences
+    private void setLoginStatus(boolean isLogged) {
+        SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("isLogged", isLogged);
+        editor.apply();
     }
 }

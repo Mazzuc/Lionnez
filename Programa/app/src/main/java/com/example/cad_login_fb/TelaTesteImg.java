@@ -20,10 +20,6 @@ public class TelaTesteImg extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.testes);
 
-        ImageView imageView = findViewById(R.id.roundedImageView);
-        Bitmap originalBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        Bitmap roundedBitmap = getRoundedBitmap(originalBitmap);
-        imageView.setImageBitmap(roundedBitmap);
     }
 
     public Bitmap getRoundedBitmap(Bitmap bitmap) {

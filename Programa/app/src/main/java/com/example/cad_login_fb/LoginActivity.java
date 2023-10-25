@@ -1,15 +1,16 @@
 package com.example.cad_login_fb;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-import com.example.cad_login_fb.databinding.ActivityLoginBinding;
-import com.example.cad_login_fb.databinding.ActivityCustonToastBinding;
-import com.example.cad_login_fb.databinding.ActivityCustonToastCorrectBinding;
-import com.example.cad_login_fb.databinding.ActivityCustonToatAlertBinding;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.cad_login_fb.databinding.ActivityCustonToastBinding;
+import com.example.cad_login_fb.databinding.ActivityLoginBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
@@ -38,57 +39,43 @@ public class LoginActivity extends AppCompatActivity {
         String email = binding.editEmail.getText().toString().trim();
         String senha = binding.editsenha.getText().toString().trim();
 
-        if (!email.isEmpty()) {
-            if (!senha.isEmpty()) {
-                binding.progressBar.setVisibility(View.VISIBLE);
-                LoginFireBase(email, senha);
-            } else {
-
-                ActivityCustonToatAlertBinding customToastBindingCorrect = ActivityCustonToatAlertBinding.inflate(getLayoutInflater());
-
-                // Personalize o texto da mensagem do Toast
-                customToastBindingCorrect.textViewalerta.setText("Informe uma senha");
-
-                Toast customToast = new Toast(this);
-                customToast.setDuration(Toast.LENGTH_SHORT);
-                customToast.setView(customToastBindingCorrect.getRoot());
-                customToast.show();
-            }
+        if (!email.isEmpty() && !senha.isEmpty()) {
+            binding.progressBar.setVisibility(View.VISIBLE);
+            LoginFireBase(email, senha);
         } else {
-
-            ActivityCustonToatAlertBinding customToastBindingCorrect = ActivityCustonToatAlertBinding.inflate(getLayoutInflater());
-
-            // Personalize o texto da mensagem do Toast
-            customToastBindingCorrect.textViewalerta.setText("Informe seu E-mail");
-
-            Toast customToast = new Toast(this);
-            customToast.setDuration(Toast.LENGTH_SHORT);
-            customToast.setView(customToastBindingCorrect.getRoot());
-            customToast.show();
+            showToast("Informe um email e senha válidos.");
         }
     }
 
     private void LoginFireBase(String email, String senha) {
         mAuth.signInWithEmailAndPassword(email, senha).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
+                // Atualize o SharedPreferences para indicar que o usuário está logado
+                setLoginStatus(true);
                 finish();
                 startActivity(new Intent(this, HomeActivity.class));
             } else {
-
-             //   binding.progressBar.setVisibility(View.GONE);
-              //  Toast.makeText(this, "Opa, verifique as informações: ocorreu um erro.", Toast.LENGTH_SHORT).show();
-
-                // Código para mostrar o Toast personalizado
-                ActivityCustonToastBinding customToastBinding = ActivityCustonToastBinding.inflate(getLayoutInflater());
-
-                // Personalize o texto da mensagem do Toast
-                customToastBinding.textView.setText("Opa, verifique as informações: ocorreu um erro.");
-
-                Toast customToast = new Toast(this);
-                customToast.setDuration(Toast.LENGTH_SHORT);
-                customToast.setView(customToastBinding.getRoot());
-                customToast.show();
+                binding.progressBar.setVisibility(View.GONE);
+                showToast("Opa, verifique as informações: ocorreu um erro.");
             }
         });
+    }
+
+    private void showToast(String message) {
+        ActivityCustonToastBinding customToastBinding = ActivityCustonToastBinding.inflate(getLayoutInflater());
+        customToastBinding.textView.setText(message);
+
+        Toast customToast = new Toast(this);
+        customToast.setDuration(Toast.LENGTH_SHORT);
+        customToast.setView(customToastBinding.getRoot());
+        customToast.show();
+    }
+
+    // Método para atualizar o estado de login no SharedPreferences
+    private void setLoginStatus(boolean isLogged) {
+        SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("isLogged", isLogged);
+        editor.apply();
     }
 }
