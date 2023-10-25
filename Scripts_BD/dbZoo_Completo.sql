@@ -317,14 +317,14 @@ end
 $$
 
 delimiter $$
-create procedure spDeleteHabitat(vNomeHabitat varchar(100))
+create procedure spDeleteHabitat(vNomeHabitat int)
 begin
-	set @IdHabitat = (select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
+	set @IdHabitat = (select IdHabitat from tbHabitat where IdHabitat = vNomeHabitat);
     set @Qtd = (select QtdAnimal from tbHabitat where NomeHabitat = vNomeHabitat);
     
 	if (@Qtd != 0) then
 		select ("Existem animais cadastrados no habitat");
-	elseif not exists(select * from tbHabitat where NomeHabitat = vNomeHabitat) then
+	elseif not exists(select * from tbHabitat where IdHabitat = vNomeHabitat) then
     select ("Habitat não cadastrado");
     else
 	delete from tbHabitat where IdHabitat = @IdHabitat;
@@ -333,10 +333,10 @@ end
 $$
 
 delimiter $$
-create procedure spUpdateHabitat(vNomeHabitat varchar(100), vCapacidade int, vVegetacao varchar(100), vClima varchar(100), vSolo varchar(100))
+create procedure spUpdateHabitat(vIdHabitat int, vNomeHabitat varchar(100), vCapacidade int, vVegetacao varchar(100), vClima varchar(100), vSolo varchar(100))
 begin
-	set @IdHabitat = (select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
-	if not exists(select * from tbHabitat where NomeHabitat = vNomeHabitat) then
+	set @IdHabitat = (select IdHabitat from tbHabitat where IdHabitat = vIdHabitat);
+	if not exists(select * from tbHabitat where IdHabitat = vIdHabitat) then
     select ("Habitat não cadastrado");
     else 
 	update tbHabitat set NomeHabitat = vNomeHabitat, Capacidade = vCapacidade, Vegetacao = vVegetacao, Clima = vClima, Solo = vSolo where IdHabitat = @IdHabitat;
@@ -371,12 +371,15 @@ begin
 	SELECT
 		tbHabitat.IdHabitat as "Id do Habitat",
 		tbHabitat.NomeHabitat as "Nome",
+		tbTipoHabitat.NomeTipoHabitat as "Tipo",
+		tbHabitat.Capacidade,
 		tbHabitat.Vegetacao as "Vegetação",
 		tbHabitat.Solo as "Solo",
 		tbHabitat.Clima as "Clima",
-		tbHabitat.Capacidade
-	FROM
-	tbHabitat where IdHabitat = vNomeHabitat;
+		tbHabitat.QtdAnimal as "Animais"
+	FROM tbHabitat
+LEFT JOIN tbTipoHabitat
+ON tbHabitat.IdTipoHabitat = tbTipoHabitat.IdTipoHabitat and tbHabitat.IdHabitat = vNomeHabitat;
 	end if;
 end
 $$
@@ -498,16 +501,16 @@ end
 $$
 
 delimiter $$
-create procedure spDeleteAnimal(vNomeAnimal varchar(100))
+create procedure spDeleteAnimal(vNomeAnimal int)
 begin
-	set @IdAnimal = (select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
+	set @IdAnimal = (select IdAnimal from tbAnimal where IdAnimal = vNomeAnimal);
     
     set @IdHabitat = (select IdHabitat from tbAnimal where NomeAnimal = vNomeAnimal);
     set @IdProntuario = (select IdProntuario from tbProntuario where IdAnimal = @IdAnimal);
     
     set @QtdAtual = (select QtdAnimal from tbHabitat where IdHabitat = @IdHabitat);
     
-	if not exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
+	if not exists(select * from tbAnimal where IdAnimal = vNomeAnimal) then
     select ("Animal não cadastrado");
     else 
     delete from tbHistoricoProntuario where IdProntuario = @IdProntuario;
@@ -532,7 +535,6 @@ LEFT JOIN tbHabitat
 ON tbAnimal.IdHabitat = tbHabitat.IdHabitat;
 end
 $$
-call spSelectAnimalEspecifico(1);
 
 delimiter $$
 create procedure spSelectAnimalEspecifico(vNomeAnimal int)

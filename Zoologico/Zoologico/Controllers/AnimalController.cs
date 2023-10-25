@@ -46,6 +46,7 @@ namespace Zoologico.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
         public ActionResult Delete(int Id)
         {
             var objAnimal = ObjAnimal.SelectAnimal(Id);
@@ -54,8 +55,8 @@ namespace Zoologico.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult ConfirmeDelete(int Id)
         {
-            ObjAnimal.Delete(Id);
-            return RedirectToAction("ObjHabitat");
+            ObjAnimal.DeleteAnimal(Id);
+            return RedirectToAction("Select");
         }
     }
 }
