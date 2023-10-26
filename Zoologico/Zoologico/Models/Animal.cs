@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 using MySql.Data.MySqlClient;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -84,6 +85,33 @@ namespace Zoologico.Models
             cmd.Parameters.Add("@NomeDieta", MySqlDbType.VarChar).Value = animal.NomeDieta;
             cmd.Parameters.Add("@ObsProntuario", MySqlDbType.VarChar).Value = animal.ObsProntuario;
 
+
+            cmd.Connection = conexao;
+            cmd.ExecuteNonQuery();
+            conexao.Close();
+        }
+
+        public void UpdateAnimal(Animal animal)
+        {
+
+            conexao.Open();
+            cmd.CommandText = ("call spUpdateAnimal(@IdAnimal, @NomeHabitat, @DescricaoAnimal, @ObsProntuario);");
+            cmd.Parameters.Add("@IdAnimal", MySqlDbType.Int64).Value = animal.IdAnimal;
+            cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = animal.NomeHabitat;
+            cmd.Parameters.Add("@DescricaoAnimal", MySqlDbType.VarChar).Value = animal.DescricaoAnimal;
+            cmd.Parameters.Add("@ObsProntuario", MySqlDbType.VarChar).Value = animal.ObsProntuario;
+
+
+            cmd.Connection = conexao;
+            cmd.ExecuteNonQuery();
+            conexao.Close();
+        }
+
+        public void DeleteAnimal(int Id )
+        {
+            conexao.Open();
+
+            cmd.CommandText = ("call spDeleteAnimal("+Id+");");
 
             cmd.Connection = conexao;
             cmd.ExecuteNonQuery();

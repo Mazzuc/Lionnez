@@ -8,8 +8,6 @@ namespace Zoologico.Controllers
     public class HabitatController : Controller
     {
         Habitat ObjHabitat = new Habitat();
-        List<Habitat> ObjHabitatList = new List<Habitat>();
-
         Animal ObjAnimal = new Animal();
 
         public ActionResult Details(int Id)
@@ -47,6 +45,46 @@ namespace Zoologico.Controllers
             novohabitat.InsertHabitat(novohabitat);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Delete(int Id)
+        {
+            var objHabitat = ObjHabitat.SelectHabitat(Id);
+            return View(objHabitat);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult ConfirmeDelete(int Id)
+        {
+            ObjHabitat.DeleteHabitat(Id);
+            return RedirectToAction("Select");
+        }
+
+        public ActionResult Edit(int Id)
+        {
+            var objHabitat = ObjHabitat.SelectHabitat(Id);
+
+            return View(objHabitat);
+        }
+        [HttpPost]
+        public ActionResult Edit(Habitat vielmodel)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                Habitat mudancahabitat = new Habitat()
+                {
+                    IdHabitat = vielmodel.IdHabitat,
+                    NomeHabitat = vielmodel.NomeHabitat,
+                    Capacidade = vielmodel.Capacidade,
+                    Vegetacao = vielmodel.Vegetacao,
+                    Clima = vielmodel.Clima,
+                    Solo = vielmodel.Solo
+                };
+                mudancahabitat.UpdateHabitat(mudancahabitat);
+
+                return RedirectToAction("Select");
+            }
+            return View(vielmodel);
         }
     }
 }

@@ -66,6 +66,21 @@ namespace Zoologico.Models
             conexao.Close();
         }
 
+        public void UpdateHabitat(Habitat habitat)
+        {
+            conexao.Open();
+            cmd.CommandText = ("call spUpdateHabitat(@IdHabitat, @NomeHabitat, @Capacidade, @Vegetacao, @Clima, @Solo);");
+            cmd.Parameters.Add("@IdHabitat", MySqlDbType.Int64).Value = habitat.IdHabitat;
+            cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = habitat.NomeHabitat;
+            cmd.Parameters.Add("@Capacidade", MySqlDbType.Int64).Value = habitat.Capacidade;
+            cmd.Parameters.Add("@Vegetacao", MySqlDbType.VarChar).Value = habitat.Vegetacao;
+            cmd.Parameters.Add("@Clima", MySqlDbType.VarChar).Value = habitat.Clima;
+            cmd.Parameters.Add("@Solo", MySqlDbType.VarChar).Value = habitat.Solo;
+
+            cmd.Connection = conexao;
+            cmd.ExecuteNonQuery();
+            conexao.Close();
+        }
 
         public MySqlDataReader ExecuteReadSql(string strQuery)
         {
@@ -75,6 +90,39 @@ namespace Zoologico.Models
             return Leitor;
         }
 
+        public void DeleteHabitat(int Id)
+        {
+            conexao.Open();
+
+            cmd.CommandText = ("call spDeleteHabitat(" + Id + ");");
+
+            cmd.Connection = conexao;
+            cmd.ExecuteNonQuery();
+            conexao.Close();
+        }
+
+        public Habitat SelectHabitat(int Id)
+        {
+            Habitat habitat = new Habitat();
+            string strQuery = "call spSelectHabitatUnic(" + Id + ");";
+
+            conexao.Open();
+            MySqlDataReader DR = ExecuteReadSql(strQuery);
+
+            DR.Read();
+            habitat.IdHabitat = int.Parse(DR["Id do Habitat"].ToString());
+            habitat.NomeHabitat = DR["Nome"].ToString();
+            habitat.TipoHabitat = DR["Tipo"].ToString();
+            habitat.Vegetacao = DR["Vegetação"].ToString();
+            habitat.Clima = DR["Clima"].ToString();
+            habitat.Solo = DR["Solo"].ToString();
+            habitat.Capacidade = int.Parse(DR["Capacidade"].ToString());
+            habitat.QtdAnimais = int.Parse(DR["Animais"].ToString());
+
+            DR.Close();
+            conexao.Close();
+            return habitat;
+        }
         public List<Habitat> SelectList()
         {
             conexao.Open();

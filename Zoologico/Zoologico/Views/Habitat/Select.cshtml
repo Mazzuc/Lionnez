@@ -68,8 +68,8 @@
             </td>
             <td>
                 @Html.ActionLink("Detalhes", "Details", new { id=item.IdHabitat }) |
-                @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Deletar", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Editar", "Edit", new { id=item.IdHabitat}) |
+                @Html.ActionLink("Deletar", "Delete", new { id=item.IdHabitat })
             </td>
         </tr>
 }

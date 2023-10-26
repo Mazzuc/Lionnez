@@ -58,7 +58,8 @@
                 @Html.DisplayFor(modelItem => item.ObsProntuario)
             </td>
             <td>
-                @Html.ActionLink("Consultas", "Details", new { id=item.IdProntuario}) 
+                @Html.ActionLink("Histórico", "Details", new { id=item.IdProntuario}) |
+                @Html.ActionLink("Nova Consulta", "Insert", new { id=item.IdProntuario})
             </td>
         </tr>
 }
