@@ -21,6 +21,9 @@
         android:theme="@style/Theme.Cad_Login_FB"
         tools:targetApi="31">
         <activity
+            android:name=".card_eventos"
+            android:exported="false" />
+        <activity
             android:name=".CustonToastUploadActivity"
             android:exported="false" />
         <activity

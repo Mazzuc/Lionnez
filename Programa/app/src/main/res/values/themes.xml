@@ -17,6 +17,7 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Text Color: Cor da letra -->
 
     <style name="TEXTCOLOR2">
         <item name="android:textColor">@color/cinza_medio</item>
