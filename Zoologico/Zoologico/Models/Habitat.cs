@@ -69,10 +69,9 @@ namespace Zoologico.Models
         public void UpdateHabitat(Habitat habitat)
         {
             conexao.Open();
-            cmd.CommandText = ("call spUpdateHabitat(@IdHabitat, @NomeHabitat, @TipoHabitat, @Capacidade, @Vegetacao, @Clima, @Solo);");
+            cmd.CommandText = ("call spUpdateHabitat(@IdHabitat, @NomeHabitat, @Capacidade, @Vegetacao, @Clima, @Solo);");
             cmd.Parameters.Add("@IdHabitat", MySqlDbType.Int64).Value = habitat.IdHabitat;
             cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = habitat.NomeHabitat;
-            cmd.Parameters.Add("@TipoHabitat", MySqlDbType.VarChar).Value = habitat.TipoHabitat;
             cmd.Parameters.Add("@Capacidade", MySqlDbType.Int64).Value = habitat.Capacidade;
             cmd.Parameters.Add("@Vegetacao", MySqlDbType.VarChar).Value = habitat.Vegetacao;
             cmd.Parameters.Add("@Clima", MySqlDbType.VarChar).Value = habitat.Clima;

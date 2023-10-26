@@ -58,5 +58,32 @@ namespace Zoologico.Controllers
             ObjAnimal.DeleteAnimal(Id);
             return RedirectToAction("Select");
         }
+
+        public ActionResult Edit(int Id)
+        {
+            var objAnimal = ObjAnimal.SelectAnimal(Id);
+
+            return View(objAnimal);
+        }
+        [HttpPost]
+        public ActionResult Edit(Animal vielmodel)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                Animal animal = new Animal()
+                {
+                    IdAnimal = vielmodel.IdAnimal,
+                    NomeHabitat = vielmodel.NomeHabitat,
+                    DescricaoAnimal = vielmodel.DescricaoAnimal,
+                    ObsProntuario = vielmodel.ObsProntuario
+                };
+                animal.UpdateAnimal(animal);
+
+                return RedirectToAction("Select");
+            }
+            return View(vielmodel);
+           
+        }
     }
 }

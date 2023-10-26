@@ -66,14 +66,25 @@ namespace Zoologico.Controllers
             return View(objHabitat);
         }
         [HttpPost]
-        public ActionResult Edit(Habitat objHabitat)
+        public ActionResult Edit(Habitat vielmodel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                ObjHabitat.UpdateHabitat(objHabitat);
+
+                Habitat mudancahabitat = new Habitat()
+                {
+                    IdHabitat = vielmodel.IdHabitat,
+                    NomeHabitat = vielmodel.NomeHabitat,
+                    Capacidade = vielmodel.Capacidade,
+                    Vegetacao = vielmodel.Vegetacao,
+                    Clima = vielmodel.Clima,
+                    Solo = vielmodel.Solo
+                };
+                mudancahabitat.UpdateHabitat(mudancahabitat);
+
                 return RedirectToAction("Select");
             }
-            return View(objHabitat);
+            return View(vielmodel);
         }
     }
 }
