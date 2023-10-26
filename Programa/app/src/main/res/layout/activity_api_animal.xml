@@ -68,7 +68,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Inscreva-se"
+                    android:text="Nome do Animal"
                     android:textSize="20sp" />
 
             </androidx.appcompat.widget.Toolbar>

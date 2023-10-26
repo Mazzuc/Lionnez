@@ -57,7 +57,10 @@
 
     </style>
 
-
+    <style name="PESQUISA">
+        <item name="android:background">@drawable/item_selector_edit_home</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 
     <style name="FUNDOEDITTEXT">
         <item name="android:background">@drawable/item_selector_edit</item>

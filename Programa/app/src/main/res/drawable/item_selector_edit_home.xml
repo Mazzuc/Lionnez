@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado Pressionado e Focado -->
+    <item android:state_pressed="true" android:drawable="@drawable/bg_edittext" />
+    <item android:state_focused="true" android:drawable="@drawable/bg_edittext" />
+
+    <!-- Estado Padrão -->
+    <item android:drawable="@drawable/bg_edit_busca" />
+
+    <!-- Estado Padrão (sem foco ou pressionado) -->
+    <item android:state_pressed="false" android:state_focused="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/cinza_medio" />
+        </shape>
+    </item>
+
+    <!-- Estado Pressionado -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/verde" />
+        </shape>
+    </item>
+
+    <!-- Estado Focado -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/verde" />
+        </shape>
+    </item>
+</selector>
