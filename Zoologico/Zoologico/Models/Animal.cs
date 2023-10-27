@@ -172,6 +172,7 @@ namespace Zoologico.Models
             habitat.Peso = Double.Parse(DR["Peso"].ToString());
             habitat.Sexo = DR["Sexo"].ToString();
             habitat.DescricaoAnimal = DR["Descrição"].ToString();
+            habitat.ObsProntuario = DR["Prontuário"].ToString();
 
             DR.Close();
             conexao.Close();

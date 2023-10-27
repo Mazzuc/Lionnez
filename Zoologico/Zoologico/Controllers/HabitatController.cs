@@ -44,7 +44,7 @@ namespace Zoologico.Controllers
             };
             novohabitat.InsertHabitat(novohabitat);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Select");
         }
 
         public ActionResult Delete(int Id)

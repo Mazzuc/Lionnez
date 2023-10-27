@@ -314,13 +314,13 @@ begin
 			select ("Habitat já cadastrado");
     end if;
 end
-$$
+$$ 
 
 delimiter $$
 create procedure spDeleteHabitat(vNomeHabitat int)
 begin
 	set @IdHabitat = (select IdHabitat from tbHabitat where IdHabitat = vNomeHabitat);
-    set @Qtd = (select QtdAnimal from tbHabitat where NomeHabitat = vNomeHabitat);
+    set @Qtd = (select QtdAnimal from tbHabitat where IdHabitat = vNomeHabitat);
     
 	if (@Qtd != 0) then
 		select ("Existem animais cadastrados no habitat");
@@ -336,8 +336,12 @@ delimiter $$
 create procedure spUpdateHabitat(vIdHabitat int, vNomeHabitat varchar(100), vCapacidade int, vVegetacao varchar(100), vClima varchar(100), vSolo varchar(100))
 begin
 	set @IdHabitat = (select IdHabitat from tbHabitat where IdHabitat = vIdHabitat);
+    set @QtdAnimal = (SELECT COUNT(*) FROM tbAnimal where IdHabitat = @IdHabitat);
+    
 	if not exists(select * from tbHabitat where IdHabitat = vIdHabitat) then
     select ("Habitat não cadastrado");
+    elseif(vCapacidade<@QtdAnimal)then
+        select ("Existem animais no Habitat");
     else 
 	update tbHabitat set NomeHabitat = vNomeHabitat, Capacidade = vCapacidade, Vegetacao = vVegetacao, Clima = vClima, Solo = vSolo where IdHabitat = @IdHabitat;
     end if;
@@ -436,15 +440,15 @@ create procedure spInsertAnimal(vNomeAnimal varchar(100), vNomeEspecie varchar(1
 begin
 	set @Habitat = (select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
 	set @Capacidade = (select Capacidade from tbHabitat where IdHabitat = @Habitat);
-	set @QtdAtual = (select QtdAnimal from tbHabitat where IdHabitat = @Habitat);
+	set @QtdAntiga = (SELECT COUNT(*) FROM tbAnimal where IdHabitat = @Habitat);
     
-    set @QtdAtualizada = 1+@QtdAtual;
+    set @QtdAtualizada = 1+@QtdAntiga;
     
     if not exists(select * from tbEspecie where NomeEspecie = vNomeEspecie) then
 		call spInsertEspecie (vNomeEspecie);
 	end if;
     
-    if (@QtdAtualizada > @Capacidade) then
+    if (1+@QtdAntiga > @Capacidade) then
     select ("Capacidade Máxima do Habitat atingida");
     
 	elseif not exists(select * from tbHabitat where NomeHabitat = vNomeHabitat) then
@@ -457,10 +461,11 @@ begin
     set @Porte = (select IdPorte from tbPorte where NomePorte = vNomePorte);
     set @Dieta = (select IdDieta from tbDieta where NomeDieta = vNomeDieta);
     
-	update tbHabitat set QtdAnimal = @QtdAtualizada where IdHabitat = @Habitat;
-    
 	insert into tbAnimal(NomeAnimal, IdEspecie, IdHabitat, IdDieta, DataNasc, IdPorte, Peso, Sexo, DescricaoAnimal) values (vNomeAnimal, @Especie, @Habitat, @Dieta, vDataNasc, @Porte, vPeso, vSexo, vDescricaoAnimal);
 	
+	set @QtdNova = (SELECT COUNT(*) FROM tbAnimal where IdHabitat = @Habitat);
+	update tbHabitat set QtdAnimal = @QtdNova where IdHabitat = @Habitat;
+    
 	set @IdAnimal = (select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
     
     insert into tbProntuario(IdAnimal, ObsProntuario) values(@IdAnimal, vObsProntuario);
@@ -473,25 +478,30 @@ $$
 delimiter $$
 create procedure spUpdateAnimal(vNomeAnimal int, vNomeHabitat varchar(100), vDescricaoAnimal varchar(2000), vObsProntuario varchar(2000))
 begin
-	set @AntigoHabitat = (select IdHabitat from tbAnimal where IdAnimal = vNomeAnimal);
-
 	set @IdAnimal = (select IdAnimal from tbAnimal where IdAnimal = vNomeAnimal);
 	set @IdProntuario = (select IdProntuario from tbProntuario where IdAnimal = @IdAnimal);
     
-    set @Habitat = (select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
-	set @Capacidade = (select Capacidade from tbHabitat where IdHabitat = @Habitat);
+	set @AntigoHabitat = (select IdHabitat from tbAnimal where IdAnimal = vNomeAnimal);
+	set @NovoHabitat = (select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
+    
+	set @Capacidade = (select Capacidade from tbHabitat where IdHabitat = @NovoHabitat);
+	set @NovoQtdHabitat = (SELECT COUNT(*) FROM tbAnimal where IdHabitat = @NovoHabitat);
     
 	if not exists(select * from tbAnimal where IdAnimal = vNomeAnimal) then
-    select ("Animal não cadastrado");
-    else 
-		update tbAnimal set IdHabitat = @Habitat, DescricaoAnimal = vDescricaoAnimal where IdAnimal = @IdAnimal;
+    	select ("Animal não cadastrado");
+	elseif(1+@NovoQtdHabitat>@Capacidade)then
+        select ("Capacidade Máxima do Habitat atingida");
+	else
+		update tbAnimal set IdHabitat = @NovoHabitat, DescricaoAnimal = vDescricaoAnimal where IdAnimal = @IdAnimal;
         update tbProntuario set ObsProntuario = vObsProntuario where IdProntuario = @IdProntuario; 
+	end if;
+    
+    if(@AntigoHabitat <> @NovoHabitat) then 
+		set @AntigoQtd = (SELECT COUNT(*) FROM tbAnimal where IdHabitat = @AntigoHabitat);
+        set @NovoQtd = (SELECT COUNT(*) FROM tbAnimal where IdHabitat = @NovoHabitat);
         
-		set @QtdAnimal = (SELECT COUNT(*) FROM tbAnimal where IdHabitat = @AntigoHabitat);
-        set @QtdNova = (SELECT COUNT(*) FROM tbAnimal where IdHabitat = @Habitat);
-        
-		update tbHabitat set QtdAnimal = @QtdAnimal where IdHabitat = @AntigoHabitat;
-        update tbHabitat set QtdAnimal = @QtdNova where IdHabitat = @Habitat;
+		update tbHabitat set QtdAnimal = @AntigoQtd where IdHabitat = @AntigoHabitat;
+        update tbHabitat set QtdAnimal = @NovoQtd where IdHabitat = @NovoHabitat;
     end if;
 end
 $$
@@ -501,10 +511,8 @@ create procedure spDeleteAnimal(vNomeAnimal int)
 begin
 	set @IdAnimal = (select IdAnimal from tbAnimal where IdAnimal = vNomeAnimal);
     
-    set @IdHabitat = (select IdHabitat from tbAnimal where NomeAnimal = vNomeAnimal);
+    set @IdHabitat = (select IdHabitat from tbAnimal where IdAnimal = vNomeAnimal);
     set @IdProntuario = (select IdProntuario from tbProntuario where IdAnimal = @IdAnimal);
-    
-    set @QtdAtual = (select QtdAnimal from tbHabitat where IdHabitat = @IdHabitat);
     
 	if not exists(select * from tbAnimal where IdAnimal = vNomeAnimal) then
     select ("Animal não cadastrado");
@@ -513,7 +521,8 @@ begin
 	delete from tbProntuario where IdProntuario = @IdProntuario;
     
     delete from tbAnimal where IdAnimal = @IdAnimal;
-    update tbHabitat set QtdAnimal = @QtdAtual-1 where IdHabitat = @IdHabitat;
+	set @QtdAnimal = (SELECT COUNT(*) FROM tbAnimal where IdHabitat = @IdHabitat);
+    update tbHabitat set QtdAnimal = @QtdAnimal where IdHabitat = @IdHabitat;
     end if;
 end
 $$
@@ -550,7 +559,8 @@ begin
 			tbDieta.NomeDieta as "Dieta",
 			tbAnimal.Peso,
 			tbAnimal.Sexo,
-			tbAnimal.DescricaoAnimal as "Descrição"
+			tbAnimal.DescricaoAnimal as "Descrição",
+			tbProntuario.ObsProntuario as "Prontuário"
 		FROM
 			tbAnimal
 		INNER JOIN 
