@@ -1,5 +1,6 @@
 package com.example.cad_login_fb;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,10 +36,17 @@ public class HomeFragment extends Fragment {
     private NovidadesAdapter adapter2;
     private CollectionReference novidadesCollection = firestore.collection("Novidades");
 
+
+    private List<Eventos> eventosList = new ArrayList<>();
+    private RecyclerView recyclerView3;
+    private EventosAdapter adapter3;
+    private CollectionReference eventosCollection = firestore.collection("Eventos");
+
     public HomeFragment() {
         // Required empty public constructor
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -83,6 +91,29 @@ public class HomeFragment extends Fragment {
                     novidadesList.add(novidade);
                 }
                 adapter2.notifyDataSetChanged();
+            }
+        });
+
+        // Configurar o RecyclerView para exibir os itens na horizontal - Card Eventos
+        recyclerView3 = view.findViewById(R.id.recyclerView3);
+        recyclerView3.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        adapter3 = new EventosAdapter(eventosList);
+        recyclerView3.setAdapter(adapter3);
+
+        // Obter dados do Firestore - Card Eventos
+        eventosCollection.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                    String nome = document.getString("nome");
+                    String horario = document.getString("horario");
+                    String duracao = document.getString("duracao");
+                    String dia = document.getString("dia");
+                    String imagemUrl = document.getString("image");
+                    Eventos eventos = new Eventos(nome, horario, duracao, dia, imagemUrl);
+                    eventosList.add(eventos);
+                }
+                adapter3.notifyDataSetChanged();
             }
         });
 
