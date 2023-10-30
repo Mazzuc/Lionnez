@@ -14,17 +14,17 @@ namespace Zoologico.Models
         public int IdAnimal { get; set; }
 
         [DisplayName("Nome")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "O nome é obrigatório")]
         public string NomeAnimal { get; set; }
 
         [DisplayName("Espécie")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "A espécie é obrigatório")]
         public string NomeEspecie { get; set; }
 
         [DisplayName("Habitat")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "Informe o habitat")]
         public string NomeHabitat { get; set; }
 
@@ -34,7 +34,7 @@ namespace Zoologico.Models
         public DateTime DataNasc { get; set; }
 
         [DisplayName("Porte")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "Informe o porte")]
         public string NomePorte { get; set; }
 
@@ -55,7 +55,7 @@ namespace Zoologico.Models
 
 
         [DisplayName("Dieta")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "Informe a dieta do animal")]
         public string NomeDieta { get; set; }
 

@@ -10762,11 +10762,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\3ds\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\Zoologico.csproj",
+      "projectUniqueName": "C:\\Users\\3ds\\Desktop\\Lionnez\\Zoologico\\Zoologico\\Zoologico.csproj",
       "projectName": "Zoologico",
-      "projectPath": "C:\\Users\\3ds\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\Zoologico.csproj",
+      "projectPath": "C:\\Users\\3ds\\Desktop\\Lionnez\\Zoologico\\Zoologico\\Zoologico.csproj",
       "packagesPath": "C:\\Users\\3ds\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\3ds\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\obj\\",
+      "outputPath": "C:\\Users\\3ds\\Desktop\\Lionnez\\Zoologico\\Zoologico\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

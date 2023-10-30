@@ -16,7 +16,7 @@ namespace Zoologico.Models
         public int IdHabitat { get; set; }
 
         [DisplayName("Nome")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "O nome é obrigatório")]
         public string NomeHabitat { get; set; }
 
@@ -30,17 +30,17 @@ namespace Zoologico.Models
         public int Capacidade { get; set; }
 
         [DisplayName("Vegetação")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "Informe a vegetação")]
         public string Vegetacao { get; set; }
 
         [DisplayName("Clima")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "Informe o clima")]
         public string Clima { get; set; }
 
         [DisplayName("Solo")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "Informe o solo")]
         public string Solo { get; set; }
 

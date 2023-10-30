@@ -12,7 +12,7 @@ namespace Zoologico.Models
         public int IdProntuario { get; set; }
 
         [DisplayName("Alergia")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "Informe sobre a alergia")]
         public string Alergia { get; set; }
 
@@ -22,7 +22,7 @@ namespace Zoologico.Models
 
         [DisplayName("Descrição")]
         [DataType(DataType.MultilineText)]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "A descrição é obrigatória")]
         public string DescricaoHistorico { get; set; }
 
