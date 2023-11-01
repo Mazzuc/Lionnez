@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Zoologico.DAO;
 using Zoologico.Models;
 
 namespace Zoologico.Controllers
 {
     public class ProntuarioController : Controller
     {
-        Prontuario ObjProntuario = new Prontuario();
+        ProntuarioDAO ObjProntuario = new ProntuarioDAO();
         Consulta ObjConsulta = new Consulta();
         public ActionResult Select()
         {

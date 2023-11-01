@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Zoologico.DAO;
 using Zoologico.Models;
 
 namespace Zoologico.Controllers
 {
     public class AnimalController : Controller
     {
-        Animal ObjAnimal = new Animal();
+        AnimalDAO ObjAnimal = new AnimalDAO();
 
         public ActionResult Details(int Id)
         {
@@ -29,7 +30,7 @@ namespace Zoologico.Controllers
             if (!ModelState.IsValid)
                 return View(vielmodel);
 
-            Animal novoanimal = new Animal()
+            AnimalDAO novoanimal = new AnimalDAO()
             {
                 NomeAnimal = vielmodel.NomeAnimal,
                 NomeEspecie = vielmodel.NomeEspecie,
@@ -65,25 +66,25 @@ namespace Zoologico.Controllers
 
             return View(objAnimal);
         }
-        [HttpPost]
-        public ActionResult Edit(Animal vielmodel)
-        {
-            if (!ModelState.IsValid)
-            {
+        //[HttpPost]
+        //public ActionResult Edit(Animal vielmodel)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
 
-                Animal animal = new Animal()
-                {
-                    IdAnimal = vielmodel.IdAnimal,
-                    NomeHabitat = vielmodel.NomeHabitat,
-                    DescricaoAnimal = vielmodel.DescricaoAnimal,
-                    ObsProntuario = vielmodel.ObsProntuario
-                };
-                animal.UpdateAnimal(animal);
+        //        Animal animal = new Animal()
+        //        {
+        //            IdAnimal = vielmodel.IdAnimal,
+        //            NomeHabitat = vielmodel.NomeHabitat,
+        //            DescricaoAnimal = vielmodel.DescricaoAnimal,
+        //            ObsProntuario = vielmodel.ObsProntuario
+        //        };
+        //        animal.UpdateAnimal(animal);
 
-                return RedirectToAction("Select");
-            }
-            return View(vielmodel);
+        //        return RedirectToAction("Select");
+        //    }
+        //    return View(vielmodel);
            
-        }
+        //}
     }
 }

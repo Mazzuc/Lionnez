@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
+using Zoologico.DAO;
 using Zoologico.Models;
 
 namespace Zoologico.Controllers
 {
     public class HabitatController : Controller
     {
-        Habitat ObjHabitat = new Habitat();
+        HabitatDAO ObjHabitat = new HabitatDAO();
         Animal ObjAnimal = new Animal();
 
         public ActionResult Details(int Id)
@@ -28,23 +29,25 @@ namespace Zoologico.Controllers
         }
 
         [HttpPost]
-        public ActionResult Insert(Habitat vielmodel)
+        public ActionResult Insert(string NomeHabitat, string TipoHabitat, int Capacidade, string Vegetacao, string Clima, string Solo)
         {
             if (!ModelState.IsValid)
-                return View(vielmodel);
+                return View("Select");
 
-            Habitat novohabitat = new Habitat()
-            {
-                NomeHabitat = vielmodel.NomeHabitat,
-                TipoHabitat = vielmodel.TipoHabitat,
-                Capacidade = vielmodel.Capacidade,
-                Vegetacao = vielmodel.Vegetacao,
-                Clima = vielmodel.Clima,
-                Solo = vielmodel.Solo
-            };
-            novohabitat.InsertHabitat(novohabitat);
+            ObjHabitat.InsertHabitat(NomeHabitat, TipoHabitat, Capacidade, Vegetacao, Clima, Solo);
 
             return RedirectToAction("Select");
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int IdHabitat, string NomeHabitat, int Capacidade, string Vegetacao, string Clima, string Solo)
+        {
+            if (!ModelState.IsValid)
+                return View("select");
+   
+                ObjHabitat.UpdateHabitat(IdHabitat, NomeHabitat, Capacidade, Vegetacao, Clima, Solo);
+
+                return RedirectToAction("Select");
         }
 
         public ActionResult Delete(int Id)
@@ -65,26 +68,6 @@ namespace Zoologico.Controllers
 
             return View(objHabitat);
         }
-        [HttpPost]
-        public ActionResult Edit(Habitat vielmodel)
-        {
-            if (!ModelState.IsValid)
-            {
-
-                Habitat mudancahabitat = new Habitat()
-                {
-                    IdHabitat = vielmodel.IdHabitat,
-                    NomeHabitat = vielmodel.NomeHabitat,
-                    Capacidade = vielmodel.Capacidade,
-                    Vegetacao = vielmodel.Vegetacao,
-                    Clima = vielmodel.Clima,
-                    Solo = vielmodel.Solo
-                };
-                mudancahabitat.UpdateHabitat(mudancahabitat);
-
-                return RedirectToAction("Select");
-            }
-            return View(vielmodel);
-        }
+       
     }
 }
