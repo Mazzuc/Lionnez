@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MySql.Data.MySqlClient;
 using Zoologico.Models;
+using ConfigurationManager = System.Configuration.ConfigurationManager;
 
 namespace Zoologico.DAO
 {
@@ -8,15 +9,46 @@ namespace Zoologico.DAO
     {
         MySQLConfig db = new MySQLConfig();
 
+        private readonly MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexao"].ConnectionString);
+        private readonly MySqlCommand cmd = new MySqlCommand();
+
         public void InsertAnimal(Animal animal)
         {
             Double buffer = Convert.ToDouble(animal.Peso);
 
-            db.Open();
-            string strQuery = "call spInsertAnimal('" + animal.NomeAnimal + "', '" + animal.NomeEspecie + "', '" + animal.NomeHabitat + "', '" + animal.DataNasc +"', '"+ animal.NomePorte +"', "+ buffer +", '"+ animal.Sexo +"', '"+ animal.DescricaoAnimal+"', '"+ animal.NomeDieta +"', '"+ animal.ObsProntuario +"');";
+            conexao.Open();
+            cmd.CommandText = ("call spInsertAnimal(@NomeAnimal, @NomeEspecie, @NomeHabitat, @DataNasc, @NomePorte, @Peso, @Sexo, @DescricaoAnimal, @NomeDieta, @ObsProntuario);");
+            cmd.Parameters.Add("@NomeAnimal", MySqlDbType.VarChar).Value = animal.NomeAnimal;
+            cmd.Parameters.Add("@NomeEspecie", MySqlDbType.VarChar).Value = animal.NomeEspecie;
+            cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = animal.NomeHabitat;
+            cmd.Parameters.Add("@DataNasc", MySqlDbType.Date).Value = animal.DataNasc;
+            cmd.Parameters.Add("@NomePorte", MySqlDbType.VarChar).Value = animal.NomePorte;
+            cmd.Parameters.Add("@Peso", MySqlDbType.Double).Value = buffer;
+            cmd.Parameters.Add("@Sexo", MySqlDbType.VarChar).Value = animal.Sexo;
+            cmd.Parameters.Add("@DescricaoAnimal", MySqlDbType.VarChar).Value = animal.DescricaoAnimal;
+            cmd.Parameters.Add("@NomeDieta", MySqlDbType.VarChar).Value = animal.NomeDieta;
+            cmd.Parameters.Add("@ObsProntuario", MySqlDbType.VarChar).Value = animal.ObsProntuario;
 
-            db.ExecuteNowdSql(strQuery);
-            db.Close();
+
+            cmd.Connection = conexao;
+            cmd.ExecuteNonQuery();
+            conexao.Close();
+        }
+
+        public void UpdateAnimal(Animal animal)
+        {
+
+            conexao.Open();
+            cmd.CommandText = ("call spUpdateAnimal(@IdAnimal, @NomeHabitat, @DescricaoAnimal, @ObsProntuario);");
+            cmd.Parameters.Add("@IdAnimal", MySqlDbType.Int64).Value = animal.IdAnimal;
+            cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = animal.NomeHabitat;
+            cmd.Parameters.Add("@DescricaoAnimal", MySqlDbType.VarChar).Value = animal.DescricaoAnimal;
+            cmd.Parameters.Add("@ObsProntuario", MySqlDbType.VarChar).Value = animal.ObsProntuario;
+
+
+            cmd.Connection = conexao;
+            cmd.ExecuteNonQuery();
+            conexao.Close();
         }
 
         public void DeleteAnimal(int Id)

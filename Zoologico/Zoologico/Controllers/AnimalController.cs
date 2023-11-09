@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using Zoologico.DAO;
 using Zoologico.Models;
 
@@ -30,7 +31,7 @@ namespace Zoologico.Controllers
             if (!ModelState.IsValid)
                 return View(vielmodel);
 
-            AnimalDAO novoanimal = new AnimalDAO()
+            Animal novoanimal = new Animal()
             {
                 NomeAnimal = vielmodel.NomeAnimal,
                 NomeEspecie = vielmodel.NomeEspecie,
@@ -43,10 +44,11 @@ namespace Zoologico.Controllers
                 NomeDieta = vielmodel.NomeDieta,
                 ObsProntuario = vielmodel.ObsProntuario
             };
-            novoanimal.InsertAnimal(novoanimal);
+            ObjAnimal.InsertAnimal(novoanimal);
 
             return RedirectToAction("Index", "Home");
         }
+
 
         public ActionResult Delete(int Id)
         {
@@ -66,6 +68,7 @@ namespace Zoologico.Controllers
 
             return View(objAnimal);
         }
+
         //[HttpPost]
         //public ActionResult Edit(Animal vielmodel)
         //{

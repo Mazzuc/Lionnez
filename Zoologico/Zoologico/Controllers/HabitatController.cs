@@ -9,7 +9,7 @@ namespace Zoologico.Controllers
     public class HabitatController : Controller
     {
         HabitatDAO ObjHabitat = new HabitatDAO();
-        Animal ObjAnimal = new Animal();
+        AnimalDAO ObjAnimal = new AnimalDAO();
 
         public ActionResult Details(int Id)
         {

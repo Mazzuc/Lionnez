@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Security.Cryptography;
 using Zoologico.Models;
 using ConfigurationManager = System.Configuration.ConfigurationManager;
 
@@ -6,8 +7,8 @@ namespace Zoologico
 {
     public class MySQLConfig
     {
-        private readonly MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexao"].ConnectionString);
-        private readonly MySqlCommand cmd = new MySqlCommand();
+        MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexao"].ConnectionString);
+        MySqlCommand cmd = new MySqlCommand();
 
         public void Open()
         {
@@ -33,6 +34,7 @@ namespace Zoologico
             cmd.Connection = conexao;
             cmd.ExecuteNonQuery();
         }
+
 
     }
 }

@@ -27,7 +27,7 @@ namespace Zoologico.Models
         public string DescricaoHistorico { get; set; }
 
         [DisplayName("Data da Consulta")]
-        public DateTime DataCadas { get; set; }
+        public DateOnly DataCadas { get; set; }
 
 
         private readonly MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexao"].ConnectionString);
@@ -76,7 +76,7 @@ namespace Zoologico.Models
                     Peso = Double.Parse(DR["Peso"].ToString()),
                     Alergia = DR["Alergia"].ToString(),
                     DescricaoHistorico = DR["Descrição"].ToString(),
-                    DataCadas = DateTime.Parse(DR["Data"].ToString()),
+                    DataCadas = DateOnly.Parse(DR["Data"].ToString()),
                 };
                 list.Add(TempConsultas);
             }
