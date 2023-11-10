@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="165dp"
-    android:id="@+id/imageView"
+    android:id="@+id/imageView2"
+    android:background="@color/branco"
     android:orientation="horizontal"
     >
 
     <LinearLayout
-        android:id="@+id/base"
+        android:id="@+id/LinearImage"
         android:layout_width="300dp"
         android:layout_height="165dp"
         android:gravity="end"
@@ -17,8 +18,16 @@
         android:padding="05dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/imageView"/>
 
         <LinearLayout
             android:id="@+id/brgattse"
@@ -54,10 +63,10 @@
                 <TextView
                     android:id="@+id/texthorariodecuracao"
                     android:layout_width="50dp"
-                    android:text="Horário Duração Dia"
-
                     android:layout_height="40dp"
+
                     android:fontFamily="@font/outifit"
+                    android:text="Horário Duração Dia"
                     android:textColor="@color/white"
                     android:textSize="10sp"
 
@@ -69,6 +78,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/horarioTxt"
                         android:layout_width="50dp"
@@ -80,6 +90,7 @@
                         android:textSize="10sp"
 
                         />
+
                     <TextView
                         android:id="@+id/duracaoTxt"
                         android:layout_width="50dp"
@@ -91,6 +102,7 @@
                         android:textSize="10sp"
 
                         />
+
                     <TextView
                         android:id="@+id/diaTxt"
                         android:layout_width="50dp"

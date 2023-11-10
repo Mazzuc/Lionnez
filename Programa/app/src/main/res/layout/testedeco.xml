@@ -9,7 +9,7 @@
     >
 
     <LinearLayout
-        android:id="@+id/base"
+        android:id="@+id/LinearImage"
         android:layout_width="300dp"
         android:layout_height="165dp"
         android:gravity="end"
