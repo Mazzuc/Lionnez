@@ -24,11 +24,12 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private LinearLayout profileLayout;
+    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     private List<Atracao> atracoesList = new ArrayList<>();
     private RecyclerView recyclerView;
     private AtracoesAdapter adapter;
-    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
     private CollectionReference atracoesCollection = firestore.collection("Atracoes");
 
     private List<Novidades> novidadesList = new ArrayList<>();
@@ -107,10 +108,10 @@ public class HomeFragment extends Fragment {
                 for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
                     String nome = document.getString("nome");
                     String horario = document.getString("horario");
+                    String imagemUrl = document.getString("image");
                     String duracao = document.getString("duracao");
                     String dia = document.getString("dia");
-                    String imagemUrl = document.getString("image");
-                    Eventos eventos = new Eventos(nome, horario, duracao, dia, imagemUrl);
+                    Eventos eventos = new Eventos(nome, horario, imagemUrl, duracao, dia);
                     eventosList.add(eventos);
                 }
                 adapter3.notifyDataSetChanged();
