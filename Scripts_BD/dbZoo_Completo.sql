@@ -311,7 +311,7 @@ begin
     set @QtdAnimal = 0;
 	insert into tbHabitat(NomeHabitat, IdTipoHabitat, Capacidade, QtdAnimal, Vegetacao, Clima, Solo) values (vNomeHabitat, @NomeTipoHabitat, vCapacidade, @QtdAnimal, vVegetacao, vClima, vSolo);
     else 
-			select ("Habitat já cadastrado");
+			select (3);
     end if;
 end
 $$ 
@@ -323,7 +323,7 @@ begin
     set @Qtd = (select QtdAnimal from tbHabitat where IdHabitat = vNomeHabitat);
     
 	if (@Qtd != 0) then
-		select ("Existem animais cadastrados no habitat");
+		select (2);
 	elseif not exists(select * from tbHabitat where IdHabitat = vNomeHabitat) then
     select ("Habitat não cadastrado");
     else
@@ -341,7 +341,7 @@ begin
 	if not exists(select * from tbHabitat where IdHabitat = vIdHabitat) then
     select ("Habitat não cadastrado");
     elseif(vCapacidade<@QtdAnimal)then
-        select ("Existem animais no Habitat");
+        select (2);
     else 
 	update tbHabitat set NomeHabitat = vNomeHabitat, Capacidade = vCapacidade, Vegetacao = vVegetacao, Clima = vClima, Solo = vSolo where IdHabitat = @IdHabitat;
     end if;
@@ -429,7 +429,7 @@ begin
 	if not exists(select * from tbEspecie where NomeEspecie = vNomeEspecie) then
 	insert into tbEspecie(NomeEspecie) values (vNomeEspecie);
     else 
-			select ("Espécie já cadastrada");
+			select (3);
     end if;
 end
 $$
@@ -449,10 +449,10 @@ begin
 	end if;
     
     if (1+@QtdAntiga > @Capacidade) then
-    select ("Capacidade Máxima do Habitat atingida");
+    select (2);
     
 	elseif not exists(select * from tbHabitat where NomeHabitat = vNomeHabitat) then
-		select ("Habitat não cadastrado");
+		select (1);
 	elseif not exists(select * from tbDieta where NomeDieta = vNomeDieta) then
 		select ("Dieta não cadastrada");
 	
@@ -469,8 +469,10 @@ begin
 	set @IdAnimal = (select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
     
     insert into tbProntuario(IdAnimal, ObsProntuario) values(@IdAnimal, vObsProntuario);
+    
+    select(0);
     else 
-			select ("Animal já cadastrado");
+			select (3);
     end if;
 end
 $$
@@ -490,7 +492,7 @@ begin
 	if not exists(select * from tbAnimal where IdAnimal = vNomeAnimal) then
     	select ("Animal não cadastrado");
 	elseif(1+@NovoQtdHabitat>@Capacidade)then
-        select ("Capacidade Máxima do Habitat atingida");
+        select (2);
 	else
 		update tbAnimal set IdHabitat = @NovoHabitat, DescricaoAnimal = vDescricaoAnimal where IdAnimal = @IdAnimal;
         update tbProntuario set ObsProntuario = vObsProntuario where IdProntuario = @IdProntuario; 

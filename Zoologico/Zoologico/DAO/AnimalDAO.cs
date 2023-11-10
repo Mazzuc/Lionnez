@@ -32,6 +32,8 @@ namespace Zoologico.DAO
 
             cmd.Connection = conexao;
             cmd.ExecuteNonQuery();
+
+
             conexao.Close();
         }
 

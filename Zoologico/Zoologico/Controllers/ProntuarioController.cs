@@ -7,7 +7,7 @@ namespace Zoologico.Controllers
     public class ProntuarioController : Controller
     {
         ProntuarioDAO ObjProntuario = new ProntuarioDAO();
-        Consulta ObjConsulta = new Consulta();
+        ConsultaDAO ObjConsulta = new ConsultaDAO();
         public ActionResult Select()
         {
             var list = ObjProntuario.SelectList();
@@ -39,7 +39,7 @@ namespace Zoologico.Controllers
                 DescricaoHistorico = vielmodel.DescricaoHistorico,
                 Peso = vielmodel.Peso
             };
-            novaconsulta.InsertConsulta(novaconsulta, Id);
+            ObjConsulta.InsertConsulta(novaconsulta, Id);
 
             return RedirectToAction("Select", "Prontuario");
         }

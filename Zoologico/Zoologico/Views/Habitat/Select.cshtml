@@ -41,6 +41,11 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+    <div class="row">
+    <div class="card green">
+        @Html.DisplayFor(modelItem => item.NomeHabitat)
+    </div>
+    </div>
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.IdHabitat)
@@ -61,7 +66,7 @@
                 @Html.DisplayFor(modelItem => item.Solo)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Capacidade)
+                 @Html.DisplayFor(modelItem => item.Capacidade)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.QtdAnimais)
@@ -75,3 +80,5 @@
 }
     </tbody>
 </table>
+
+
