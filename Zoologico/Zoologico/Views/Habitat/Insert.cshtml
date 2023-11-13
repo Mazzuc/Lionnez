@@ -18,9 +18,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="TipoHabitat" class="control-label"></label>
-                <input asp-for="TipoHabitat" class="form-control" />
+                <select asp-for="TipoHabitat" class="form-control" id="exampleFormControlSelect1">
+                    <option>Terrestre</option>
+                    <option>Aquático</option>
+                    <option>Aéreo</option>
+                </select>
                 <span asp-validation-for="TipoHabitat" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Capacidade" class="control-label"></label>
                 <input asp-for="Capacidade" class="form-control" />

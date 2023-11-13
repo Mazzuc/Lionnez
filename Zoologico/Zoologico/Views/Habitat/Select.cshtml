@@ -9,76 +9,22 @@
 <p>
     <a asp-action="Insert">Cadastrar</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdHabitat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeHabitat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoHabitat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vegetacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Clima)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Solo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Capacidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QtdAnimais)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-    <div class="row">
-    <div class="card green">
-        @Html.DisplayFor(modelItem => item.NomeHabitat)
-    </div>
-    </div>
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdHabitat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeHabitat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoHabitat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Vegetacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Clima)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Solo)
-            </td>
-            <td>
-                 @Html.DisplayFor(modelItem => item.Capacidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QtdAnimais)
-            </td>
-            <td>
-                @Html.ActionLink("Detalhes", "Details", new { id=item.IdHabitat }) |
-                @Html.ActionLink("Editar", "Edit", new { id=item.IdHabitat}) |
-                @Html.ActionLink("Deletar", "Delete", new { id=item.IdHabitat })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
 
+<div class="card-group">
+@foreach (var item in Model) {
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h2 class="card-title text-success">@Html.DisplayFor(modelItem => item.NomeHabitat)</h2>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.TipoHabitat): </b>@Html.DisplayFor(modelItem => item.TipoHabitat)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Vegetacao):</b> @Html.DisplayFor(modelItem => item.Vegetacao)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Clima): </b>@Html.DisplayFor(modelItem => item.Clima)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Solo): </b>@Html.DisplayFor(modelItem => item.Solo)</p>
+            <a href="#" class="card-link"> @Html.ActionLink("Deletar", "Delete", new { id=item.IdHabitat }) |</a>
+            <a href="#" class="card-link"> @Html.ActionLink("Detalhes", "Edit", new { id=item.IdHabitat}) |</a>
+            <a href="#" class="card-link"> @Html.ActionLink("Animais", "Details", new { id=item.IdHabitat})</a>
+        </div>
+    </div>
+}
+</div>
+    
 
