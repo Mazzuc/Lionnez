@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_album">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <Button
+        android:id="@+id/btnAnterior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anterior"
+        android:onClick="navegarAnterior"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnProximo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Próximo"
+        android:onClick="navegarProximo"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_toEndOf="@id/btnAnterior"/>
+
+    <Button
+        android:id="@+id/btnAdicionarImagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Imagem"
+        android:onClick="adicionarImagem"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/btnAnterior"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/btnAbrirCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abrir Câmera"
+        android:onClick="abrirCamera"
+        android:layout_alignParentStart="true"
+        android:layout_above="@id/btnAdicionarImagem"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnAbrirGaleria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abrir Galeria"
+        android:onClick="abrirGaleria"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/btnAdicionarImagem"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_toEndOf="@id/btnAbrirCamera"/>
+
+    <!-- Adicione o TextView para exibir o indicador de página -->
+    <TextView
+        android:id="@+id/txtPaginaAtual"
+        android:textColor="@color/verde"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/btnAdicionarImagem"
+        android:layout_marginTop="16dp"/>
+</RelativeLayout>

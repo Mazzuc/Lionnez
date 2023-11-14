@@ -36,4 +36,9 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Adicione isso ao seu arquivo strings.xml -->
+    <string name="indicador_pagina">Página %1$d de %2$d</string>
+
 </resources>

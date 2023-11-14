@@ -1,0 +1,27 @@
+<!-- fragment_album_page.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageViewAlbum"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder_image" />
+
+    <TextView
+        android:id="@+id/textViewCaption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="630dp"
+        android:padding="8dp"
+        android:text="Adicione uma descrição aqui"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <!-- Adicione outros elementos conforme necessário -->
+
+</RelativeLayout>
