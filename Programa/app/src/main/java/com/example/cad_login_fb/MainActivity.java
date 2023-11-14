@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         btntesteimg.setOnClickListener(view -> {
 
-            Intent intent = new Intent(MainActivity.this, TelaTesteImg.class);
+            Intent intent = new Intent(MainActivity.this, activity_album.class);
             startActivity(intent);
         });
 
