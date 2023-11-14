@@ -33,7 +33,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="NomePorte" class="control-label"></label>
-                <input asp-for="NomePorte" class="form-control" />
+                <select asp-for="NomePorte" class="form-control" id="exampleFormControlSelect1">
+                    <option>Pequeno</option>
+                    <option>Médio</option>
+                    <option>Grande</option>
+                </select>
                 <span asp-validation-for="NomePorte" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -43,7 +47,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="Sexo" class="control-label"></label>
-                <input asp-for="Sexo" class="form-control" />
+                <select asp-for="Sexo" class="form-control" id="exampleFormControlSelect1">
+                    <option>F</option>
+                    <option>M</option>
+                </select>
                 <span asp-validation-for="Sexo" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -53,7 +60,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="NomeDieta" class="control-label"></label>
-                <input asp-for="NomeDieta" class="form-control" />
+                <select asp-for="NomeDieta" class="form-control" id="exampleFormControlSelect1">
+                    <option>Carnívoro</option>
+                    <option>Herbívoro</option>
+                    <option>Onívoro</option>
+
+                </select>
                 <span asp-validation-for="NomeDieta" class="text-danger"></span>
             </div>
             <div class="form-group">

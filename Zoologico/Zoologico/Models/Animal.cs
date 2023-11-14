@@ -34,7 +34,6 @@ namespace Zoologico.Models
         public DateTime DataNasc { get; set; }
 
         [DisplayName("Porte")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "Informe o porte")]
         public string NomePorte { get; set; }
 
@@ -55,7 +54,6 @@ namespace Zoologico.Models
 
 
         [DisplayName("Dieta")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "Informe a dieta do animal")]
         public string NomeDieta { get; set; }
 
