@@ -4,7 +4,6 @@ public class Eventos {
     private String nome;
     private String horario;
     private String imagemUrl;
-
     private String duracao;
     private String dia;
 

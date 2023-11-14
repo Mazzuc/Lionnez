@@ -192,16 +192,17 @@
 
 
                             </LinearLayout>
+
                             <TextView
-                                android:layout_marginTop="05dp"
                                 android:id="@+id/exw9"
+                                style="@style/TEXTCOLOR"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="05dp"
                                 android:fontFamily="@font/outifit"
-                                android:text="QRcode"
-                                style="@style/TEXTCOLOR"
-                                android:textStyle="bold"
-                                android:textSize="14sp" />
+                                android:text="Perfil"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -496,16 +497,16 @@
             </LinearLayout>
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingLeft="10dp"
-                android:paddingBottom="50dp">
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:id="@+id/textView11"
+                    style="@style/TEXTDESTAQUE"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
@@ -513,7 +514,6 @@
                     android:paddingTop="20dp"
                     android:paddingRight="5dp"
                     android:text="@string/atracoes"
-                    style="@style/TEXTDESTAQUE"
                     android:textSize="20sp" />
 
                 <HorizontalScrollView
@@ -530,6 +530,27 @@
 
                 </HorizontalScrollView>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingBottom="90dp">
+
+                <TextView
+                    android:id="@+id/textView18"
+                    style="@style/TEXTDESTAQUE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/eventos"
+                    android:textSize="20sp" />
+
                 <HorizontalScrollView
                     android:id="@+id/ScrollEventos"
                     android:layout_width="match_parent"
@@ -543,13 +564,7 @@
                         android:orientation="horizontal" />
 
                 </HorizontalScrollView>
-
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="vertical"></LinearLayout>
 
         </LinearLayout>
     </ScrollView>
