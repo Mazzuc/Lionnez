@@ -1,7 +1,9 @@
 package com.example.cad_login_fb;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -47,6 +49,9 @@ public class activity_album extends AppCompatActivity {
         albumPagerAdapter = new AlbumPagerAdapter(getSupportFragmentManager(), albumPages);
         viewPager.setAdapter(albumPagerAdapter);
 
+        // o adaptador do ViewPager
+        viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+
         btnAnterior = findViewById(R.id.btnAnterior);
         btnProximo = findViewById(R.id.btnProximo);
         btnAdicionarImagem = findViewById(R.id.btnAdicionarImagem);
@@ -77,9 +82,19 @@ public class activity_album extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == 1 && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             salvarFotoNoAlbum(photo);
+        } else if (requestCode == 2 && resultCode == RESULT_OK) {
+            // Lógica para lidar com a imagem selecionada da galeria
+            if (data != null && data.getData() != null) {
+                Uri selectedImageUri = data.getData();
+                String imagePath = getImagePath(selectedImageUri);
+                List<String> novaLista = new ArrayList<>();
+                novaLista.add(imagePath);
+                adicionarNovaImagem(fragment_album_page.newInstance(novaLista));
+            }
         }
     }
 
@@ -87,7 +102,9 @@ public class activity_album extends AppCompatActivity {
     private void salvarFotoNoAlbum(Bitmap photo) {
         // Lógica para salvar a foto no álbum
         // Adicione o caminho da imagem ao seu modelo de dados
-        String imagePath = salvarImagemNoDispositivo(photo, "nome_da_foto");
+        String timestamp = String.valueOf(System.currentTimeMillis());
+        String imageName = "nome_da_foto_" + timestamp;
+        String imagePath = salvarImagemNoDispositivo(photo, imageName);
         // Atualize a lista de páginas do álbum
         List<String> novaLista = new ArrayList<>();
         novaLista.add(imagePath);
@@ -102,7 +119,8 @@ public class activity_album extends AppCompatActivity {
 
     // Método para abrir a galeria
     public void abrirGaleria(View view) {
-        // Lógica para abrir a galeria (substitua isso pela lógica real)
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, 2);
     }
 
     // Método para navegar para a página anterior
@@ -157,6 +175,20 @@ public class activity_album extends AppCompatActivity {
             e.printStackTrace();
         }
         return imagePath;
+    }
+
+    // Método para obter o caminho da imagem a partir da URI
+    private String getImagePath(Uri uri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(projection[0]);
+            String imagePath = cursor.getString(columnIndex);
+            cursor.close();
+            return imagePath;
+        }
+        return null;
     }
 
     // Classe AlbumPagerAdapter

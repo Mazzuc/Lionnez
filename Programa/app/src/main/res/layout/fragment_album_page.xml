@@ -2,12 +2,12 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="500dp">
 
     <ImageView
         android:id="@+id/imageViewAlbum"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         android:scaleType="centerCrop"
         android:src="@drawable/placeholder_image" />
 
@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="630dp"
+        android:layout_marginTop="451dp"
         android:padding="8dp"
         android:text="Adicione uma descrição aqui"
         android:textColor="@android:color/white"
