@@ -2,26 +2,36 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+
     android:layout_height="500dp">
 
-    <ImageView
-        android:id="@+id/imageViewAlbum"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/placeholder_image" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textViewCaption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="451dp"
-        android:padding="8dp"
-        android:text="Adicione uma descrição aqui"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
+        <!-- Seu LinearLayout com o fundo e a imagem de plano de fundo -->
+        <LinearLayout
+            android:id="@id/linearLayout"
+            android:layout_width="400dp"
+            android:layout_height="500dp"
+            android:background="@drawable/bg_edit_animales2"
+            android:orientation="horizontal"
+            android:elevation="3dp"
+            android:gravity="bottom">
 
-    <!-- Adicione outros elementos conforme necessário -->
+            <!-- Adicione qualquer conteúdo adicional ao LinearLayout aqui -->
 
+        </LinearLayout>
+
+        <!-- Sua ImageView para a imagem -->
+        <ImageView
+            android:id="@+id/imageViewAlbum"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_image"
+            />
+    </RelativeLayout>
 </RelativeLayout>

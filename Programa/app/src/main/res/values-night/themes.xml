@@ -173,5 +173,8 @@
         <item name="android:src">@drawable/ic_iconmodoclaro2</item>
     </style>
 
+    <style name="BD_ALBUM">
+        <item name="android:background">@drawable/bd_album_roxo</item>
+    </style>
 
 </resources>

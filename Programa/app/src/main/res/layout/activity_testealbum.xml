@@ -58,124 +58,101 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Adicione o TextView para exibir o indicador de página -->
 
-    <TextView
-        android:id="@+id/txtPaginaAtual"
-        style="@style/TEXTDESTAQUE"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_above="@id/toolbar3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
 
     <LinearLayout
         android:id="@+id/altrhnome"
         style="@style/FUNDO"
         android:layout_width="350dp"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPaginaAtual">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="350dp">
+            android:layout_height="300dp"/>
 
-            <LinearLayout
-                android:layout_width="250dp"
-                android:layout_height="350dp"
-                android:background="@drawable/bg_edit_animales"
-                android:orientation="vertical"
-                android:gravity="bottom"/>
 
-        </androidx.viewpager.widget.ViewPager>
 
+    <LinearLayout
+        android:layout_marginTop="-50dp"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3">
+
+
+
+    <LinearLayout
+            android:layout_gravity="center"
+            android:elevation="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_width="45dp"
+            android:layout_centerInParent="true"
+            android:layout_height="45dp"
+            android:orientation="vertical"
+            android:background="@drawable/bd_rec_branco">
+
+
+
+            <Button
+                app:backgroundTint="@null"
+                android:id="@+id/iconene4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/iconeadicionar" />
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="-50dp"
-            android:layout_width="350dp"
-            android:layout_height="100dp"
-            android:gravity="end"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar3">
+            android:layout_gravity="center"
+            android:elevation="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="45dp"
+            android:layout_centerInParent="true"
+            android:layout_height="45dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            style="@style/BD_ALBUM">
 
 
 
-            <LinearLayout
-                android:layout_gravity="center"
-                android:elevation="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_width="35dp"
-                android:layout_centerInParent="true"
-                android:layout_height="35dp"
-                android:orientation="vertical"
-                android:background="@drawable/bd_rec_branco">
+            <Button
+                app:backgroundTint="@null"
+                android:id="@+id/btnAdicionarImagem"
+                android:onClick="adicionarImagem"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/iconecoracao" />
+        </LinearLayout>
 
-
-
-                <Button
-                    app:backgroundTint="@null"
-                    android:id="@+id/iconene4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/iconeadicionar" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_gravity="center"
-                android:elevation="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="35dp"
-                android:layout_centerInParent="true"
-                android:layout_height="35dp"
-                android:orientation="vertical"
-                android:padding="8dp"
-                style="@style/BD_ALBUM">
-
-
-
-                <Button
-                    app:backgroundTint="@null"
-                    android:id="@+id/btnAdicionarImagem"
-                    android:onClick="adicionarImagem"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/iconecoracao" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_gravity="center"
-                android:elevation="10dp"
-                android:layout_width="45dp"
-                android:layout_centerInParent="true"
-                android:layout_height="45dp"
-                android:orientation="vertical"
-                >
-
-
-            </LinearLayout>
+        <LinearLayout
+            android:layout_gravity="center"
+            android:elevation="10dp"
+            android:layout_width="45dp"
+            android:layout_centerInParent="true"
+            android:layout_height="45dp"
+            android:orientation="vertical"
+            >
 
 
         </LinearLayout>
 
+
+    </LinearLayout>
+
     </LinearLayout>
 
     <Button
-        app:backgroundTint="@null"
         android:id="@+id/btnToggle"
-        android:layout_width="20dp"
-        android:layout_height="15dp"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/vector__7_"
         app:layout_constraintEnd_toEndOf="parent"
@@ -183,19 +160,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/altrhnome" />
 
-
     <TextView
         android:id="@+id/idnormal"
-        style="@style/TEXTCOLOR"
+        style="@style/TEXTDESTAQUE"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="16dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Opções"
-        android:textSize="12dp"
+        android:text="Recuperação de Senha"
+        android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toEndOf="@+id/btnToggle"
-        app:layout_constraintTop_toBottomOf="@+id/altrhnome" />
+        tools:layout_editor_absoluteY="454dp" />
+
     <LinearLayout
         android:id="@+id/boxLayout"
         style="@style/HOME_CARDAPOTIONS"
@@ -209,7 +186,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnToggle"
-        android:visibility="gone"
         >
         <!--android:visibility="gone"-->
 
@@ -217,9 +193,9 @@
             android:layout_gravity="center"
             android:elevation="10dp"
             android:layout_marginLeft="30dp"
-            android:layout_width="40dp"
+            android:layout_width="45dp"
             android:layout_centerInParent="true"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:orientation="vertical"
             android:padding="1dp"
             style="@style/BD_ALBUM">
@@ -239,9 +215,9 @@
             android:layout_gravity="center"
             android:elevation="10dp"
             android:layout_marginLeft="20dp"
-            android:layout_width="40dp"
+            android:layout_width="45dp"
             android:layout_centerInParent="true"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:orientation="vertical"
             android:padding="10dp"
             style="@style/BD_ALBUM">
@@ -261,9 +237,9 @@
             android:layout_gravity="center"
             android:elevation="10dp"
             android:layout_marginLeft="20dp"
-            android:layout_width="40dp"
+            android:layout_width="45dp"
             android:layout_centerInParent="true"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:orientation="vertical"
             android:padding="10dp"
             style="@style/BD_ALBUM">
@@ -283,9 +259,9 @@
             android:layout_gravity="center"
             android:elevation="10dp"
             android:layout_marginLeft="20dp"
-            android:layout_width="40dp"
+            android:layout_width="45dp"
             android:layout_centerInParent="true"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:orientation="vertical"
             android:padding="11dp"
             style="@style/BD_ALBUM">
@@ -305,11 +281,11 @@
             android:layout_gravity="center"
             android:elevation="10dp"
             android:layout_marginLeft="20dp"
-            android:layout_width="40dp"
+            android:layout_width="45dp"
             android:layout_centerInParent="true"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:orientation="vertical"
-            android:padding="3dp"
+            android:padding="2dp"
             style="@style/BD_ALBUM">
 
 
@@ -318,9 +294,9 @@
                 app:backgroundTint="@null"
                 android:id="@+id/btnProximo"
                 android:onClick="navegarProximo"
-              wszs   android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/iconevoltar" />
+                android:background="@drawable/iconeproxio" />
         </LinearLayout>
 
 

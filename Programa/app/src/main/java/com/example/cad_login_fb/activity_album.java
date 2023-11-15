@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,12 +40,25 @@ public class activity_album extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album);
 
+        Button btnToggle = findViewById(R.id.btnToggle);
+        final LinearLayout boxLayout = findViewById(R.id.boxLayout);
+
         viewPager = findViewById(R.id.viewPager);
         albumPages = new ArrayList<>();
 
-        // Adicione as páginas do álbum (pode ser vazio inicialmente)
-        albumPages.add(fragment_album_page.newInstance(obterListaDeImagens()));
-        albumPages.add(fragment_album_page.newInstance(obterListaDeImagens()));
+        btnToggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (boxLayout.getVisibility() == View.VISIBLE) {
+                    boxLayout.setVisibility(View.GONE);
+                } else {
+                    boxLayout.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        // Adicione as páginas do álbum
+        adicionarPaginasDoAlbum();
 
         albumPagerAdapter = new AlbumPagerAdapter(getSupportFragmentManager(), albumPages);
         viewPager.setAdapter(albumPagerAdapter);
@@ -60,6 +74,18 @@ public class activity_album extends AppCompatActivity {
         txtPaginaAtual = findViewById(R.id.txtPaginaAtual);
 
         atualizarIndicadorPagina();  // Atualizar o indicador de página inicialmente
+    }
+
+    // Alteração na função obterListaDeImagens() para retornar uma lista vazia inicialmente
+    private List<String> obterListaDeImagens() {
+        // Retornar uma lista vazia inicialmente
+        return new ArrayList<>();
+    }
+
+    // Método para adicionar as páginas do álbum
+    private void adicionarPaginasDoAlbum() {
+        // Adicione as páginas do álbum (pode ser vazio inicialmente)
+        albumPages.add(fragment_album_page.newInstance(obterListaDeImagens()));
     }
 
     // Método para adicionar uma nova imagem ao álbum
@@ -147,17 +173,6 @@ public class activity_album extends AppCompatActivity {
         int totalPaginas = albumPages.size();
         String textoIndicador = getString(R.string.indicador_pagina, paginaAtual, totalPaginas);
         txtPaginaAtual.setText(textoIndicador);
-    }
-
-    // Método para obter uma lista de URIs de imagens (substitua isso pela lógica real)
-    private List<String> obterListaDeImagens() {
-        // Lógica para obter uma lista de URIs de imagens
-        // Por exemplo, você pode ter uma lista estática ou recuperar de um servidor.
-        List<String> listaDeImagens = new ArrayList<>();
-        listaDeImagens.add("URL_OU_CAMINHO_DA_IMAGEM_1");
-        listaDeImagens.add("URL_OU_CAMINHO_DA_IMAGEM_2");
-        // Adicione mais URIs conforme necessário
-        return listaDeImagens;
     }
 
     // Método para salvar a imagem no dispositivo
