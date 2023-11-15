@@ -230,18 +230,13 @@
 
             </LinearLayout>
 
-            <HorizontalScrollView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView2"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_height="match_parent">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal" />
-            </HorizontalScrollView>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dp"
+                android:orientation="horizontal" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -516,19 +511,12 @@
                     android:text="@string/atracoes"
                     android:textSize="20sp" />
 
-                <HorizontalScrollView
-                    android:id="@+id/ScrollAtracoes"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal" />
-
-                </HorizontalScrollView>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" />
 
             </LinearLayout>
 
@@ -546,24 +534,18 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
                     android:paddingLeft="5dp"
-                    android:paddingTop="20dp"
+                    android:paddingTop="10dp"
                     android:paddingRight="5dp"
                     android:text="@string/eventos"
                     android:textSize="20sp" />
 
-                <HorizontalScrollView
-                    android:id="@+id/ScrollEventos"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal" />
-
-                </HorizontalScrollView>
             </LinearLayout>
 
         </LinearLayout>
