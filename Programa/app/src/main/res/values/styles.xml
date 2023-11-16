@@ -14,4 +14,13 @@
         <item name="android:background">@color/transparent</item>
     </style>
 
+    <style name="YourAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Adicione as animações de transição -->
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
 </resources>
+
+
+
