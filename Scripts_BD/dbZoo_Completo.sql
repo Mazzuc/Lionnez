@@ -713,5 +713,5 @@ BEGIN
 END //
 DELIMITER ;
 
-CREATE USER 'Zoo'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678';
-GRANT ALL PRIVILEGES ON dbZoologico.* TO 'Zoo'@'localhost' WITH GRANT OPTION;
+CREATE USER 'zoo'@'localhost' IDENTIFIED BY '12345678';
+GRANT ALL PRIVILEGES ON dbZoologico.* TO 'zoo'@'localhost' WITH GRANT OPTION;

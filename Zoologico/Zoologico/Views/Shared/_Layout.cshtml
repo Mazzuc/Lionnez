@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="~/Zoologico.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <div class="p-2 ">
                 <nav class="nav flex-column shadow p-3 mb-5 rounded d-flex align-items-start flex-column bd-highlight mb-3" >
                     <a class="nav-link text-dark p-2 bd-highlight" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     <a class="nav-link text-dark p-2 bd-highlight" asp-area="" asp-controller="Habitat" asp-action="Select">Habitat</a>
@@ -24,7 +24,7 @@
                     <a class="nav-link text-dark mt-auto p-2 bd-highlight" asp-area="" asp-controller="Home" asp-action="Index">Sair</a>
                 </nav>
             </div>
-            <div class="col-10">
+            <div class="p-2 flex-grow-1">
                 <main role="main" class="pb-3">
                     <div class="d-flex bd-highlight">
                         <div class="p-2 bd-highlight"></div>
@@ -33,9 +33,9 @@
  
                 </main>
             </div>
-    
        </div>
     </div>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

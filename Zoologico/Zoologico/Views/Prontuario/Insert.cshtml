@@ -16,7 +16,7 @@
             <div class="row">
                 <p class="fs-3 fw-bold">Cadastre uma Consulta</p>
                 <p class="lh-sm">Ao cadastrar esta consulta, lembre-se de verificar se todos os campos foram preenchidos corretamente</p>
-                <form asp-action="Insert">
+                <form asp-controller="Prontuario" asp-action="Insert">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group mb-2">
                         <input asp-for="Alergia" class="form-control" placeholder="Alergia" />
@@ -27,7 +27,7 @@
                         <span asp-validation-for="Peso" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-3">
-                        <input asp-for="DescricaoHistorico" class="form-control" placeholder="Descrição" />
+                        <textarea asp-for="DescricaoHistorico" class="form-control" placeholder="Descrição" ></textarea>
                         <span asp-validation-for="DescricaoHistorico" class="text-danger"></span>
                     </div>
                     <div class="form-group">

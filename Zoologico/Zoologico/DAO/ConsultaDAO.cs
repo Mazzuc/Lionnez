@@ -11,6 +11,7 @@ namespace Zoologico.DAO
         private readonly MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexao"].ConnectionString);
         private readonly MySqlCommand cmd = new MySqlCommand();
 
+
         public void InsertConsulta(Consulta consulta, int Id)
         {
             Double buffer = Convert.ToDouble(consulta.Peso);
