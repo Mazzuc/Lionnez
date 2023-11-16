@@ -78,6 +78,7 @@ namespace Zoologico.DAO
                 {
                     IdAnimal = int.Parse(DR["Id do Animal"].ToString()),
                     NomeAnimal = DR["Nome"].ToString(),
+                    Peso = Double.Parse(DR["Peso"].ToString()),
                     DataNasc = DateTime.Parse(DR["Nascimento"].ToString()),
                     NomeHabitat = DR["Habitat"].ToString()
                 };

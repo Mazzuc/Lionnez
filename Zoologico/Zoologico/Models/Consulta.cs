@@ -30,5 +30,10 @@ namespace Zoologico.Models
         public DateTime DataCadas { get; set; }
 
 
+        [DisplayName("Prontuário")]
+        [DataType(DataType.MultilineText)]
+        public string ObsProntuario { get; set; }
+
+
     }
 }

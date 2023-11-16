@@ -1,81 +1,26 @@
 ﻿@model IEnumerable<Zoologico.Models.Animal>
 
+@Html.Partial("_MenuHabitat")
+
 @{
     ViewData["Title"] = "Details";
 }
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-success">@Html.DisplayFor(modelItem => item.NomeAnimal)</h2>
+                    <p class="card-text"><b>Identificação: </b>@Html.DisplayFor(modelItem => item.IdAnimal)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.NomeEspecie):</b> @Html.DisplayFor(modelItem => item.NomeEspecie)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.NomeDieta): </b>@Html.DisplayFor(modelItem => item.NomeDieta)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.NomePorte): </b>@Html.DisplayFor(modelItem => item.NomePorte)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.Sexo): </b>@Html.DisplayFor(modelItem => item.Sexo)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.DataNasc): </b>@Html.DisplayFor(modelItem => item.DataNasc)</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
-<h1>Animais dentro do Habitat</h1>
-
-<p>
-    <a asp-controller="Animal" asp-action="Insert">Cadastrar - Animal</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdAnimal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeAnimal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeEspecie)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataNasc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NomePorte)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Peso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sexo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescricaoAnimal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeDieta)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdAnimal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeAnimal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeEspecie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataNasc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomePorte)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Peso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sexo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescricaoAnimal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeDieta)
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

@@ -1,41 +1,43 @@
 ﻿@model Zoologico.Models.Consulta
 
+@Html.Partial("_MenuProntuario")
+
+
 @{
     ViewData["Title"] = "Insert";
 }
 
-<h1>Insert</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <p><img src="~/Image/animal.png" width="100%" /></p>
+        </div>
+        <div class="col-6 col-md-6 ">
+            <div class="row">
+                <p class="fs-3 fw-bold">Cadastre uma Consulta</p>
+                <p class="lh-sm">Ao cadastrar esta consulta, lembre-se de verificar se todos os campos foram preenchidos corretamente</p>
+                <form asp-action="Insert">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group mb-2">
+                        <input asp-for="Alergia" class="form-control" placeholder="Alergia" />
+                        <span asp-validation-for="Alergia" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input asp-for="Peso" class="form-control" placeholder="Peso" />
+                        <span asp-validation-for="Peso" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input asp-for="DescricaoHistorico" class="form-control" placeholder="Descrição" />
+                        <span asp-validation-for="DescricaoHistorico" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Cadastrar" class="btn btn-success" />
+                    </div>
+                </form>
 
-<h4>Consulta</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Insert">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Alergia" class="control-label"></label>
-                <input asp-for="Alergia" class="form-control" />
-                <span asp-validation-for="Alergia" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Peso" class="control-label"></label>
-                <input asp-for="Peso" class="form-control" />
-                <span asp-validation-for="Peso" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DescricaoHistorico" class="control-label"></label>
-                <textarea asp-for="DescricaoHistorico" class="form-control"></textarea>
-                <span asp-validation-for="DescricaoHistorico" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

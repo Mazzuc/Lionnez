@@ -1,54 +1,29 @@
 ﻿@model IEnumerable<Zoologico.Models.Animal>
 
+    @Html.Partial("_MenuAnimal")
+
+
 @{
     ViewData["Title"] = "Select";
 }
 
-<h1>Animais</h1>
 
-<p>
-    <a asp-action="Insert">Cadastrar</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>                                                                                                                                                                                               
-            <th>
-                @Html.DisplayNameFor(model => model.IdAnimal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeAnimal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeHabitat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataNasc)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdAnimal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeAnimal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeHabitat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataNasc)
-            </td>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-success">@Html.DisplayFor(modelItem => item.NomeAnimal)</h2>
+                    <p class="card-text"><b>Identificação: </b>@Html.DisplayFor(modelItem => item.IdAnimal)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.NomeHabitat):</b> @Html.DisplayFor(modelItem => item.NomeHabitat)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.Peso): </b>@Html.DisplayFor(modelItem => item.Peso)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.DataNasc): </b>@Html.DisplayFor(modelItem => item.DataNasc)</p>
+                    <a href="#" class="card-link"> @Html.ActionLink("Deletar", "Delete", new { id=item.IdAnimal},new { @class = "btn btn-outline-danger" }) </a>
+                    <a href="#" class="card-link"> @Html.ActionLink("Detalhes", "Edit", new { id=item.IdAnimal}, new { @class = "btn btn-success" }) </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
-            <td>
-                @Html.ActionLink("Detalhes", "Details", new { id=item.IdAnimal }) |
-                @Html.ActionLink("Editar", "Edit", new {  id=item.IdAnimal}) |
-                @Html.ActionLink("Deletar", "Delete", new { id=item.IdAnimal })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

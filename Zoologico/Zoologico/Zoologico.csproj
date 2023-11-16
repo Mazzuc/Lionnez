@@ -7,10 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Imagem\**" />
     <Compile Remove="Repositorio\**" />
+    <Content Remove="Imagem\**" />
     <Content Remove="Repositorio\**" />
+    <EmbeddedResource Remove="Imagem\**" />
     <EmbeddedResource Remove="Repositorio\**" />
+    <None Remove="Imagem\**" />
     <None Remove="Repositorio\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Image\habitat.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,28 +1,26 @@
 ﻿@model IEnumerable<Zoologico.Models.Habitat>
 
+@Html.Partial("_MenuHabitat")
+
 @{
     ViewData["Title"] = "Habitat";
 }
 
-<h1>Habitats</h1>
-
-<p>
-    <a asp-action="Insert">Cadastrar</a>
-</p>
-
-<div class="card-group">
+<div class="row row-cols-1 row-cols-md-3 g-4">
 @foreach (var item in Model) {
-    <div class="card" style="width: 18rem;">
+        <div class="col-sm-6">
+    <div class="card">
         <div class="card-body">
             <h2 class="card-title text-success">@Html.DisplayFor(modelItem => item.NomeHabitat)</h2>
             <p class="card-text"><b>@Html.DisplayNameFor(model => model.TipoHabitat): </b>@Html.DisplayFor(modelItem => item.TipoHabitat)</p>
             <p class="card-text"><b>@Html.DisplayNameFor(model => model.Vegetacao):</b> @Html.DisplayFor(modelItem => item.Vegetacao)</p>
-            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Clima): </b>@Html.DisplayFor(modelItem => item.Clima)</p>
-            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Solo): </b>@Html.DisplayFor(modelItem => item.Solo)</p>
-            <a href="#" class="card-link"> @Html.ActionLink("Deletar", "Delete", new { id=item.IdHabitat }) |</a>
-            <a href="#" class="card-link"> @Html.ActionLink("Detalhes", "Edit", new { id=item.IdHabitat}) |</a>
-            <a href="#" class="card-link"> @Html.ActionLink("Animais", "Details", new { id=item.IdHabitat})</a>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Capacidade): </b>@Html.DisplayFor(modelItem => item.Capacidade)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.QtdAnimais): </b>@Html.DisplayFor(modelItem => item.QtdAnimais)</p>
+                    <a href="#" class="card-link"> @Html.ActionLink("Deletar", "Delete", new { id=item.IdHabitat},new { @class = "btn btn-outline-danger" }) </a>
+                    <a href="#" class="card-link"> @Html.ActionLink("Detalhes", "Edit", new { id=item.IdHabitat}, new { @class = "btn btn-outline-success" }) </a>
+                    <a href="#" class="card-link"> @Html.ActionLink("Animais", "Details", new { id=item.IdHabitat}, new { @class = "btn btn-success" })</a>
         </div>
+    </div>
     </div>
 }
 </div>

@@ -1,44 +1,24 @@
 ﻿@model IEnumerable<Zoologico.Models.Consulta>
 
+@Html.Partial("_MenuProntuario")
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Select";
 }
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-success">@Html.DisplayFor(modelItem => item.DataCadas)</h2>
+                    <p class="card-text"><b>Identificação: </b>@Html.DisplayFor(modelItem => item.IdProntuario)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.Alergia):</b> @Html.DisplayFor(modelItem => item.Alergia)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.Peso): </b>@Html.DisplayFor(modelItem => item.Peso)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.DescricaoHistorico): </b>@Html.DisplayFor(modelItem => item.DescricaoHistorico)</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
-<h1>Histórico de Consultas</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCadas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Alergia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Peso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescricaoHistorico)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCadas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Alergia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Peso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescricaoHistorico)
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+

@@ -1,0 +1,19 @@
+﻿<nav class="navbar navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">Habitat</a>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search">
+            <div class="dropdown">
+                <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Habitat
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" asp-controller="Habitat" asp-action="Insert">Cadastrar</button></li>
+                    <li><button class="dropdown-item" asp-controller="Habitat" asp-action="Select">Consultar</button></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</nav>
+
+<br />

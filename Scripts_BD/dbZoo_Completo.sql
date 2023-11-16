@@ -535,6 +535,7 @@ begin
 SELECT 
 	tbAnimal.IdAnimal as "Id do Animal",
     tbAnimal.NomeAnimal as "Nome",
+    tbAnimal.Peso ,
     tbAnimal.DataNasc as "Nascimento",
     tbHabitat.NomeHabitat as "Habitat"
 FROM tbAnimal
