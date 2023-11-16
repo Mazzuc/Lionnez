@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "248171360840",
-    "project_id": "applionnezautentificacao",
-    "storage_bucket": "applionnezautentificacao.appspot.com"
+    "project_number": "884143710548",
+    "firebase_url": "https://applionnez-default-rtdb.firebaseio.com",
+    "project_id": "applionnez",
+    "storage_bucket": "applionnez.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:248171360840:android:cd53207abd741eeb8a5e7d",
+        "mobilesdk_app_id": "1:884143710548:android:62dee0aae89e5b504168c1",
         "android_client_info": {
           "package_name": "com.example.cad_login_fb"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBa6-2jusd-_c3pnx5QhklcBouy8Bzx4aQ"
+          "current_key": "AIzaSyCo--eEu-crXIRD2JWid7MLDStiu9VPUqY"
         }
       ],
       "services": {
