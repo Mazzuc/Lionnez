@@ -23,6 +23,9 @@
     </style>
 
     <!-- Text Color: Cor da letra -->
+    <style name="FundoHome">
+        <item name="android:background">@drawable/fundohome</item>
+    </style>
 
     <style name="TEXTCOLOR2">
         <item name="android:textColor">@color/cinza_medio</item>

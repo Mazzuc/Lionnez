@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,14 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         binding.btnCriarConta.setOnClickListener(v -> ValidaDados());
+
+        //Configurando "LinearVoltar"
+        LinearLayout linearVoltar = findViewById(R.id.LinearVoltar);
+        linearVoltar.setOnClickListener(view -> onVoltarLayoutClick());
+    }
+
+    public void onVoltarLayoutClick() {
+        finish();
     }
 
     private void ValidaDados() {

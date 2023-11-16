@@ -20,17 +20,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/LinearVoltar"
+            style="@style/FUNDOEDITTEXT"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            style="@style/FUNDOEDITTEXT"
-            android:padding="12dp">
+            android:padding="12dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="15dp">
 
             <ImageView
                 android:id="@+id/imageView4"
+                style="@style/CAMPOVOLTAR"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="@style/CAMPOVOLTAR" />
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -87,11 +90,12 @@
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="350dp">
 
             <LinearLayout
-                android:layout_width="250dp"
+                android:layout_width="270dp"
                 android:layout_height="350dp"
                 android:background="@drawable/bg_edit_animales"
                 android:orientation="vertical"
@@ -101,7 +105,7 @@
 
 
         <LinearLayout
-            android:layout_marginTop="-50dp"
+            android:layout_marginTop="-40dp"
             android:layout_width="350dp"
             android:layout_height="100dp"
             android:gravity="end"
@@ -196,6 +200,7 @@
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toEndOf="@+id/btnToggle"
         app:layout_constraintTop_toBottomOf="@+id/altrhnome" />
+
     <LinearLayout
         android:id="@+id/boxLayout"
         style="@style/HOME_CARDAPOTIONS"
@@ -206,121 +211,115 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:orientation="horizontal"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnToggle"
-        android:visibility="gone"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/btnToggle">
         <!--android:visibility="gone"-->
 
         <LinearLayout
+            style="@style/BD_ALBUM"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:elevation="10dp"
             android:layout_marginLeft="30dp"
-            android:layout_width="40dp"
-            android:layout_centerInParent="true"
-            android:layout_height="40dp"
+            android:elevation="10dp"
             android:orientation="vertical"
-            android:padding="1dp"
-            style="@style/BD_ALBUM">
-
+            android:padding="1dp">
 
 
             <Button
-                app:backgroundTint="@null"
                 android:id="@+id/btnAnterior"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/iconeproxio"
                 android:onClick="navegarAnterior"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/iconeproxio" />
+                app:backgroundTint="@null" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_gravity="center"
-            android:elevation="10dp"
-            android:layout_marginLeft="20dp"
+            style="@style/BD_ALBUM"
             android:layout_width="40dp"
-            android:layout_centerInParent="true"
             android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:elevation="10dp"
             android:orientation="vertical"
-            android:padding="10dp"
-            style="@style/BD_ALBUM">
-
+            android:padding="10dp">
 
 
             <Button
-                app:backgroundTint="@null"
                 android:id="@+id/btnAbrirCamera"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/iconecamera"
                 android:onClick="abrirCamera"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/iconecamera" />
+                app:backgroundTint="@null" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_gravity="center"
-            android:elevation="10dp"
-            android:layout_marginLeft="20dp"
+            style="@style/BD_ALBUM"
             android:layout_width="40dp"
-            android:layout_centerInParent="true"
             android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:elevation="10dp"
             android:orientation="vertical"
-            android:padding="10dp"
-            style="@style/BD_ALBUM">
-
+            android:padding="10dp">
 
 
             <Button
-                app:backgroundTint="@null"
                 android:id="@+id/btnAbrirGaleria"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/iconegaleria"
                 android:onClick="abrirGaleria"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/iconegaleria" />
+                app:backgroundTint="@null" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_gravity="center"
-            android:elevation="10dp"
-            android:layout_marginLeft="20dp"
+            style="@style/BD_ALBUM"
             android:layout_width="40dp"
-            android:layout_centerInParent="true"
             android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:elevation="10dp"
             android:orientation="vertical"
-            android:padding="11dp"
-            style="@style/BD_ALBUM">
-
+            android:padding="11dp">
 
 
             <Button
-                app:backgroundTint="@null"
                 android:id="@+id/btnBaixar"
-                android:onClick="baixarFoto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/iconebaixar" />
+                android:background="@drawable/iconebaixar"
+                android:onClick="baixarFoto"
+                app:backgroundTint="@null" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_gravity="center"
-            android:elevation="10dp"
-            android:layout_marginLeft="20dp"
+            style="@style/BD_ALBUM"
             android:layout_width="40dp"
-            android:layout_centerInParent="true"
             android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:elevation="10dp"
             android:orientation="vertical"
-            android:padding="3dp"
-            style="@style/BD_ALBUM">
-
+            android:padding="3dp">
 
 
             <Button
-                app:backgroundTint="@null"
                 android:id="@+id/btnProximo"
-                android:onClick="navegarProximo"
-              wszs   android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/iconevoltar" />
+                android:background="@drawable/iconevoltar"
+                android:onClick="navegarProximo"
+                app:backgroundTint="@null" />
         </LinearLayout>
 
 

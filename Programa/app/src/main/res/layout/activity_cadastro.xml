@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/L"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="27dp"
-    android:paddingRight="22dp"
     android:paddingTop="15dp"
+    android:paddingRight="22dp"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -35,17 +36,18 @@
             android:paddingRight="40dp">
 
             <LinearLayout
+                android:id="@+id/LinearVoltar"
+                style="@style/FUNDOEDITTEXT"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                style="@style/FUNDOEDITTEXT"
                 android:padding="12dp">
 
                 <ImageView
                     android:id="@+id/imageView4"
+                    style="@style/CAMPOVOLTAR"
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/CAMPOVOLTAR" />
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -57,8 +59,8 @@
                 app:cardElevation="0dp" />
 
             <TextView
-                style="@style/TEXTDESTAQUE"
                 android:id="@+id/textView"
+                style="@style/TEXTDESTAQUE"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
@@ -74,12 +76,12 @@
 
     <TextView
         android:id="@+id/facalogin"
+        style="@style/TEXTCOLOR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/outifit"
         android:text="Inscreva-se com uma das seguintes opções:"
-        style="@style/TEXTCOLOR"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.043"
@@ -88,10 +90,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
+        style="@style/FUNDO"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="20dp"
-        style="@style/FUNDO"
         android:orientation="horizontal"
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
@@ -100,9 +102,9 @@
         app:layout_constraintTop_toBottomOf="@+id/facalogin">
 
         <LinearLayout
+            style="@style/FUNDOEDITTEXT"
             android:layout_width="100dp"
             android:layout_height="60dp"
-            style="@style/FUNDOEDITTEXT"
             android:orientation="horizontal"
             android:padding="15dp"
             app:cardElevation="0dp">
@@ -116,17 +118,17 @@
         </LinearLayout>
 
         <LinearLayout
+            style="@style/FUNDO"
             android:layout_width="20dp"
             android:layout_height="70dp"
-            style="@style/FUNDO"
             android:orientation="horizontal"
             android:paddingLeft="20dp"
             app:cardElevation="0dp" />
 
         <LinearLayout
+            style="@style/FUNDOEDITTEXT"
             android:layout_width="100dp"
             android:layout_height="60dp"
-            style="@style/FUNDOEDITTEXT"
             android:orientation="horizontal"
             android:padding="15dp"
             app:cardElevation="0dp">
@@ -140,17 +142,17 @@
         </LinearLayout>
 
         <LinearLayout
+            style="@style/FUNDO"
             android:layout_width="20dp"
             android:layout_height="70dp"
-            style="@style/FUNDO"
             android:orientation="horizontal"
             android:paddingLeft="20dp"
             app:cardElevation="0dp" />
 
         <LinearLayout
+            style="@style/FUNDOEDITTEXT"
             android:layout_width="100dp"
             android:layout_height="60dp"
-            style="@style/FUNDOEDITTEXT"
             android:orientation="horizontal"
             android:padding="15dp"
             app:cardElevation="0dp">
@@ -165,12 +167,12 @@
 
     <TextView
         android:id="@+id/textnomee"
+        style="@style/TEXTCOLOR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/outifit"
         android:text="Nome"
-        style="@style/TEXTCOLOR"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -179,11 +181,11 @@
 
     <EditText
         android:id="@+id/editNome"
+        style="@style/FUNDOEDITTEXT"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="5dp"
-        style="@style/FUNDOEDITTEXT"
         android:ems="10"
         android:hint="Digite seu nome..."
         android:inputType="textEmailAddress"
@@ -196,12 +198,12 @@
 
     <TextView
         android:id="@+id/terhrh"
+        style="@style/TEXTCOLOR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/outifit"
         android:text="E-mail"
-        style="@style/TEXTCOLOR"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -210,11 +212,11 @@
 
     <EditText
         android:id="@+id/editEmail"
+        style="@style/FUNDOEDITTEXT"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="5dp"
-        style="@style/FUNDOEDITTEXT"
         android:ems="10"
         android:hint="Digite seu e-mail..."
         android:inputType="textEmailAddress"
@@ -227,11 +229,11 @@
 
     <TextView
         android:id="@+id/terhrrh"
+        style="@style/TEXTCOLOR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Senha"
-        style="@style/TEXTCOLOR"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -240,11 +242,11 @@
 
     <EditText
         android:id="@+id/editsenha"
+        style="@style/FUNDOEDITTEXT"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="5dp"
-        style="@style/FUNDOEDITTEXT"
         android:ems="10"
         android:hint="Digite sua senha..."
         android:inputType="textPassword"
@@ -257,12 +259,12 @@
 
     <TextView
         android:id="@+id/terrh"
+        style="@style/TEXTCOLOR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/outifit"
         android:text="Confirmar Senha"
-        style="@style/TEXTCOLOR"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -271,11 +273,11 @@
 
     <EditText
         android:id="@+id/editconfirmarsenha"
+        style="@style/FUNDOEDITTEXT"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="5dp"
-        style="@style/FUNDOEDITTEXT"
         android:ems="10"
         android:hint="Digite sua senha..."
         android:inputType="textPassword"
@@ -288,10 +290,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
+        style="@style/FUNDO"
         android:layout_width="match_parent"
         android:layout_height="23dp"
         android:layout_marginTop="8dp"
-        style="@style/FUNDO"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="35dp"
@@ -300,25 +302,25 @@
 
         <TextView
             android:id="@+id/facalo4gin"
+            style="@style/TEXTCOLOR"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="20dp"
             android:fontFamily="@font/outifit"
             android:text="Já tem uma conta?"
-            style="@style/TEXTCOLOR"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textcadastro"
+            style="@style/TEXTCOLORDEST"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:fontFamily="@font/outifit"
             android:text="Conecte-se!"
-            style="@style/TEXTCOLORDEST"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -341,11 +343,11 @@
 
     <Button
         android:id="@+id/btnCriarConta"
+        style="@style/BUTTON"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="5dp"
-        style="@style/BUTTON"
         android:fontFamily="@font/poppins_medium"
         android:text="Criar Conta"
         android:textAllCaps="false"

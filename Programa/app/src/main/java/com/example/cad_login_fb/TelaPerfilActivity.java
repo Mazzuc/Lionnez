@@ -107,6 +107,14 @@ public class TelaPerfilActivity extends AppCompatActivity {
                 showCustomDialog();
             }
         });
+
+        //Configurando "LinearVoltar"
+        LinearLayout linearVoltar = findViewById(R.id.LinearVoltar);
+        linearVoltar.setOnClickListener(view -> onVoltarLayoutClick());
+    }
+
+    public void onVoltarLayoutClick() {
+        finish();
     }
 
     @Override

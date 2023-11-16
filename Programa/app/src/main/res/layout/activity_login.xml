@@ -114,7 +114,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/voltar"
+            android:id="@+id/LinearVoltar"
             android:layout_width="40dp"
             android:layout_height="40dp"
             style="@style/FUNDOEDITTEXT"

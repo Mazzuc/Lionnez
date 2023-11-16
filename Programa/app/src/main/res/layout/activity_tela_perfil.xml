@@ -21,10 +21,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/LinearVoltar"
             style="@style/FUNDOEDITTEXT"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="12dp">
+            android:padding="12dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="15dp">
 
             <ImageView
                 android:id="@+id/imageView4"
