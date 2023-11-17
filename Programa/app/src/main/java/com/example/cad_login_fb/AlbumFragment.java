@@ -45,7 +45,6 @@ public class AlbumFragment extends Fragment {
     private Button btnAbrirGaleria;
     private TextView txtPaginaAtual;
 
-    private LinearLayout linearVoltar;
 
     public AlbumFragment() {
         // Required empty public constructor
@@ -123,20 +122,6 @@ public class AlbumFragment extends Fragment {
         });
 
         atualizarIndicadorPagina();
-
-        //Configurando "LinearVoltar"
-        linearVoltar = view.findViewById(R.id.LinearVoltar);
-
-        linearVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                voltarParaPaginaAnterior();
-            }
-        });
-    }
-
-    private void voltarParaPaginaAnterior() {
-        navegarAnterior(null); // Ou forneça a View desejada para navegarAnterior se necessário
     }
 
     private void checkCameraPermission() {
