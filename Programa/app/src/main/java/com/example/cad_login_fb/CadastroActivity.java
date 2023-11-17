@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -43,6 +44,14 @@ public class CadastroActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         binding.btnCriarConta.setOnClickListener(v -> ValidaDados());
+
+        //Configurando "LinearVoltar"
+        LinearLayout linearVoltar = findViewById(R.id.LinearVoltar);
+        linearVoltar.setOnClickListener(view -> onVoltarLayoutClick());
+    }
+
+    public void onVoltarLayoutClick() {
+        finish();
     }
 
     private void ValidaDados() {
