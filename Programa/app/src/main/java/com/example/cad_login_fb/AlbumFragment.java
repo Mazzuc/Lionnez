@@ -2,6 +2,8 @@ package com.example.cad_login_fb;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -13,8 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -45,6 +49,9 @@ public class AlbumFragment extends Fragment {
     private Button btnAbrirGaleria;
     private TextView txtPaginaAtual;
 
+    private ImageView imageView;
+    private Button btnDelete;
+    private List<String> imagePaths;
 
     public AlbumFragment() {
         // Required empty public constructor
@@ -122,15 +129,79 @@ public class AlbumFragment extends Fragment {
         });
 
         atualizarIndicadorPagina();
+
+        // Código referente à tentativa de deletar
+        imageView = view.findViewById(R.id.imageView);
+        btnDelete = view.findViewById(R.id.btnDelete);
+
+        // Tentativa de localizar a imagem
+        Bundle args = getArguments();
+        if (args != null) {
+            imagePaths = args.getStringArrayList("imagePaths");
+        }
+
+        // Exiba a primeira imagem (se houver)
+        if (imagePaths != null && !imagePaths.isEmpty()) {
+            exibirImagem(imagePaths.get(0));
+        }
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exibirConfirmacaoExclusao();
+            }
+        });
+    }
+
+    private void exibirImagem(String imagePath) {
+        // Não posso esquecer de achar uma biblioteca para carregar a imagem no ImageView
+        // Exemplo com Glide:
+        // Glide.with(requireContext()).load(imagePath).into(imageView);
+    }
+
+    // Criando a confirmação na hora de deletar a imagem
+    private void exibirConfirmacaoExclusao() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setMessage("Tem certeza que deseja deletar a imagem?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        deletarImagem();
+                    }
+                })
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Não fazer nada, o usuário optou por não excluir
+                    }
+                })
+                .show();
+    }
+
+    private void deletarImagem() {
+        // Implementar a lógica para deletar a imagem
+        // Certifique-se de remover a imagem da lista e atualizar a exibição
+        // Exemplo:
+        // imagePaths.remove(0); // Supondo que você queira excluir a primeira imagem na lista
+
+        // Verifique se há uma página selecionada
+        int currentItem = viewPager.getCurrentItem();
+        if (currentItem >= 0 && currentItem < albumPages.size()) {
+            albumPages.remove(currentItem);
+            albumPagerAdapter.setPages(albumPages);
+            albumPagerAdapter.notifyDataSetChanged();
+            atualizarIndicadorPagina();
+
+            // Mostrar um Toast informando que a imagem foi excluída
+            Toast.makeText(requireContext(), "Imagem excluída com sucesso", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
-            // Permission is not granted, request it
             requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
         } else {
-            // Permission is already granted, proceed with camera action
             adicionarImagem();
         }
     }
@@ -138,10 +209,8 @@ public class AlbumFragment extends Fragment {
     private void checkStoragePermission() {
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
-            // Permission is not granted, request it
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_STORAGE_PERMISSION);
         } else {
-            // Permission is already granted, proceed with gallery action
             abrirGaleria();
         }
     }
@@ -153,26 +222,21 @@ public class AlbumFragment extends Fragment {
         switch (requestCode) {
             case REQUEST_CAMERA_PERMISSION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // Camera permission granted, proceed with camera action
                     adicionarImagem();
                 } else {
-                    // Camera permission denied
-                    // Handle this case, show a message or disable camera functionality
+                    // Permissão da câmera negada
+                    // Lidar com este caso, mostrar uma mensagem ou desativar a funcionalidade da câmera
                 }
                 break;
 
             case REQUEST_STORAGE_PERMISSION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // Storage permission granted, proceed with gallery action
                     abrirGaleria();
                 } else {
-                    // Storage permission denied
-                    // Handle this case, show a message or disable gallery functionality
+                    // Permissão de armazenamento negada
+                    // Lidar com este caso, mostrar uma mensagem ou desativar a funcionalidade da galeria
                 }
                 break;
-
-            // Add more cases if needed for other permissions
-
         }
     }
 
@@ -186,6 +250,7 @@ public class AlbumFragment extends Fragment {
 
     private void adicionarNovaImagem(fragment_album_page page) {
         albumPages.add(page);
+        albumPagerAdapter.setPages(albumPages);
         albumPagerAdapter.notifyDataSetChanged();
         atualizarIndicadorPagina();
     }
@@ -300,6 +365,10 @@ public class AlbumFragment extends Fragment {
         @Override
         public int getCount() {
             return pages.size();
+        }
+
+        public void setPages(List<fragment_album_page> pages) {
+            this.pages = pages;
         }
     }
 }

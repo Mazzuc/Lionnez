@@ -211,7 +211,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:orientation="horizontal"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnToggle">
@@ -279,7 +278,7 @@
                 android:onClick="abrirGaleria"
                 app:backgroundTint="@null" />
         </LinearLayout>
-
+<!--
         <LinearLayout
             style="@style/BD_ALBUM"
             android:layout_width="40dp"
@@ -300,7 +299,15 @@
                 android:onClick="baixarFoto"
                 app:backgroundTint="@null" />
         </LinearLayout>
-
+        -->
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:text="Delete"
+            />
         <LinearLayout
             style="@style/BD_ALBUM"
             android:layout_width="40dp"
@@ -321,6 +328,7 @@
                 android:onClick="navegarProximo"
                 app:backgroundTint="@null" />
         </LinearLayout>
+
 
 
     </LinearLayout>
