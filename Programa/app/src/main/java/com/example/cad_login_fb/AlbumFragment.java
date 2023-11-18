@@ -28,6 +28,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -154,12 +156,10 @@ public class AlbumFragment extends Fragment {
     }
 
     private void exibirImagem(String imagePath) {
-        // Não posso esquecer de achar uma biblioteca para carregar a imagem no ImageView
-        // Exemplo com Glide:
-        // Glide.with(requireContext()).load(imagePath).into(imageView);
+        // Utilize o Glide para carregar a imagem no ImageView
+        Glide.with(requireContext()).load(imagePath).into(imageView);
     }
 
-    // Criando a confirmação na hora de deletar a imagem
     private void exibirConfirmacaoExclusao() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setMessage("Tem certeza que deseja deletar a imagem?")
@@ -179,20 +179,13 @@ public class AlbumFragment extends Fragment {
     }
 
     private void deletarImagem() {
-        // Implementar a lógica para deletar a imagem
-        // Certifique-se de remover a imagem da lista e atualizar a exibição
-        // Exemplo:
-        // imagePaths.remove(0); // Supondo que você queira excluir a primeira imagem na lista
-
-        // Verifique se há uma página selecionada
         int currentItem = viewPager.getCurrentItem();
         if (currentItem >= 0 && currentItem < albumPages.size()) {
             albumPages.remove(currentItem);
             albumPagerAdapter.setPages(albumPages);
-            albumPagerAdapter.notifyDataSetChanged();
+            viewPager.setAdapter(albumPagerAdapter);
             atualizarIndicadorPagina();
 
-            // Mostrar um Toast informando que a imagem foi excluída
             Toast.makeText(requireContext(), "Imagem excluída com sucesso", Toast.LENGTH_SHORT).show();
         }
     }

@@ -130,7 +130,7 @@
 
                 <Button
                     app:backgroundTint="@null"
-                    android:id="@+id/iconene4"
+                    android:id="@+id/btnAdicionarImagem"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/iconeadicionar" />
@@ -151,7 +151,7 @@
 
                 <Button
                     app:backgroundTint="@null"
-                    android:id="@+id/btnAdicionarImagem"
+                    android:id="@+id/btnfavoritar"
                     android:onClick="adicionarImagem"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -229,7 +229,7 @@
 
 
             <Button
-                android:id="@+id/btnAnterior"
+                android:id="@+id/btnProximo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/iconeproxio"
@@ -300,14 +300,29 @@
                 app:backgroundTint="@null" />
         </LinearLayout>
         -->
+    <LinearLayout
+        style="@style/BD_ALBUM"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
         <Button
             android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:backgroundTint="@null"
+            android:background="@drawable/ic_deletar"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:text="Delete"
-            />
+         />
+
+    </LinearLayout>
+
         <LinearLayout
             style="@style/BD_ALBUM"
             android:layout_width="40dp"
@@ -317,11 +332,11 @@
             android:layout_marginLeft="20dp"
             android:elevation="10dp"
             android:orientation="vertical"
-            android:padding="3dp">
+            android:padding="4dp">
 
 
             <Button
-                android:id="@+id/btnProximo"
+                android:id="@+id/btnAnterior"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/iconevoltar"
