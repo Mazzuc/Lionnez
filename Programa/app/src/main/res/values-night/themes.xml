@@ -184,4 +184,10 @@
         <item name="android:background">@drawable/iconeadicionarroxo</item>
     </style>
 
+    <style name="FUNDOEDITTEXTPESQUISA">
+        <item name="android:textColor">@color/cinza_escuro</item>
+        <item name="android:background">@drawable/bg_edit_branco</item>
+
+    </style>
+
 </resources>

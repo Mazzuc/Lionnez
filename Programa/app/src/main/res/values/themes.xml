@@ -196,4 +196,16 @@
         <item name="android:background">@drawable/bd_album_verde</item>
     </style>
 
+
+    <style name="BUTTTESTE">
+        <item name="android:background">@drawable/item_selector_edit_pesquisa</item>
+        <item name="android:textColor">@drawable/item_color_verde_edit</item>
+
+    </style>
+
+    <style name="FUNDOEDITTEXTPESQUISA">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/bg_edit_preto</item>
+
+    </style>
 </resources>
