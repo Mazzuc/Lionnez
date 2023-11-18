@@ -24,8 +24,8 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
@@ -163,6 +163,22 @@ public class AlbumFragment extends Fragment {
         Glide.with(requireContext()).load(imagePath).into(imageView);
     }
 
+    // Método adicionado para exibir o Toast personalizado
+    private void exibirToastPersonalizado(String mensagem) {
+        // Inflar o layout personalizado do Toast
+        View toastView = LayoutInflater.from(requireContext()).inflate(R.layout.activity_custon_toast_correct, null);
+
+        // Configurar o TextView do Toast com a mensagem
+        TextView textCarregarResultado = toastView.findViewById(R.id.TextCarregarResultado);
+        textCarregarResultado.setText(mensagem);
+
+        // Criar e exibir o Toast personalizado
+        Toast customToast = new Toast(requireContext());
+        customToast.setView(toastView);
+        customToast.setDuration(Toast.LENGTH_SHORT);
+        customToast.show();
+    }
+
     private void exibirConfirmacaoExclusao() {
         // Inflar o layout personalizado
         View customDialogView = LayoutInflater.from(requireContext()).inflate(R.layout.activity_custom_dialog_layout, null);
@@ -212,7 +228,8 @@ public class AlbumFragment extends Fragment {
             viewPager.setAdapter(albumPagerAdapter);
             atualizarIndicadorPagina();
 
-            Toast.makeText(requireContext(), "Imagem excluída com sucesso", Toast.LENGTH_SHORT).show();
+            // Exibir o Toast personalizado ao excluir a imagem com sucesso
+            exibirToastPersonalizado("Imagem excluída com sucesso");
         }
     }
 
@@ -358,24 +375,25 @@ public class AlbumFragment extends Fragment {
         String[] projection = {MediaStore.Images.Media.DATA};
         Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
         if (cursor != null) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(projection[0]);
-            String imagePath = cursor.getString(columnIndex);
+            String imagePath = cursor.getString(column_index);
             cursor.close();
             return imagePath;
         }
         return null;
     }
 
-    private static class AlbumPagerAdapter extends FragmentPagerAdapter {
+    private class AlbumPagerAdapter extends FragmentPagerAdapter {
 
         private List<fragment_album_page> pages;
 
-        public AlbumPagerAdapter(FragmentManager fm, List<fragment_album_page> pages) {
-            super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        AlbumPagerAdapter(FragmentManager fm, List<fragment_album_page> pages) {
+            super(fm);
             this.pages = pages;
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             return pages.get(position);
@@ -386,8 +404,44 @@ public class AlbumFragment extends Fragment {
             return pages.size();
         }
 
-        public void setPages(List<fragment_album_page> pages) {
+        void setPages(List<fragment_album_page> pages) {
             this.pages = pages;
         }
     }
+
+    // Classe transformadora de páginas
+    public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
+        private static final float MIN_SCALE = 0.85f;
+        private static final float MIN_ALPHA = 0.5f;
+
+        @Override
+        public void transformPage(@NonNull View view, float position) {
+            int pageWidth = view.getWidth();
+            int pageHeight = view.getHeight();
+
+            if (position < -1) { // Fora da tela à esquerda
+                view.setAlpha(0f);
+            } else if (position <= 1) { // Página visível na tela
+                float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
+                float verticalMargin = pageHeight * (1 - scaleFactor) / 2;
+                float horizontalMargin = pageWidth * (1 - scaleFactor) / 2;
+
+                if (position < 0) {
+                    view.setTranslationX(horizontalMargin - verticalMargin / 2);
+                } else {
+                    view.setTranslationX(-horizontalMargin + verticalMargin / 2);
+                }
+
+                // Escala a página
+                view.setScaleX(scaleFactor);
+                view.setScaleY(scaleFactor);
+
+                // Diminui a opacidade conforme a escala
+                view.setAlpha(MIN_ALPHA + (scaleFactor - MIN_SCALE) / (1 - MIN_SCALE) * (1 - MIN_ALPHA));
+            } else { // Fora da tela à direita
+                view.setAlpha(0f);
+            }
+        }
+    }
 }
+

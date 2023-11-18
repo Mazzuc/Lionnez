@@ -133,7 +133,7 @@
                     android:id="@+id/btnAdicionarImagem"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/iconeadicionar" />
+                    style="@style/ICOADICIONAR" />
             </LinearLayout>
 
             <LinearLayout
