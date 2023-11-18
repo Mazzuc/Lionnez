@@ -55,6 +55,9 @@ public class AlbumFragment extends Fragment {
     private Button btnDelete;
     private List<String> imagePaths;
 
+    // Variável adicionada para manter a referência da caixa de diálogo
+    private AlertDialog alertDialog;
+
     public AlbumFragment() {
         // Required empty public constructor
     }
@@ -142,7 +145,7 @@ public class AlbumFragment extends Fragment {
             imagePaths = args.getStringArrayList("imagePaths");
         }
 
-        // Exiba a primeira imagem (se houver)
+        // Exiba a primeira imagem (se houver), isso pode acarretar o delet da imagem da capa (pensar em algo)
         if (imagePaths != null && !imagePaths.isEmpty()) {
             exibirImagem(imagePaths.get(0));
         }
@@ -161,21 +164,44 @@ public class AlbumFragment extends Fragment {
     }
 
     private void exibirConfirmacaoExclusao() {
+        // Inflar o layout personalizado
+        View customDialogView = LayoutInflater.from(requireContext()).inflate(R.layout.activity_custom_dialog_layout, null);
+
+        // Configurar elementos do layout
+        TextView customDialogTitle = customDialogView.findViewById(R.id.customDialogTitle);
+        customDialogTitle.setText("Tem certeza que deseja deletar a imagem?");
+
+        Button btnSim = customDialogView.findViewById(R.id.btnCustomDialogSim);
+        Button btnNao = customDialogView.findViewById(R.id.btnCustomDialogNao);
+
+        // Configurar ações dos botões
+        btnSim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deletarImagem();
+                // Fechar a caixa de diálogo
+                alertDialog.dismiss();
+            }
+        });
+
+        btnNao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Não fazer nada, o usuário optou por não excluir
+                // Fechar a caixa de diálogo
+                alertDialog.dismiss();
+            }
+        });
+
+        // Criar o AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setMessage("Tem certeza que deseja deletar a imagem?")
-                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        deletarImagem();
-                    }
-                })
-                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // Não fazer nada, o usuário optou por não excluir
-                    }
-                })
-                .show();
+        builder.setView(customDialogView);
+
+        // Criar o AlertDialog
+        alertDialog = builder.create();
+
+        // Mostrar o diálogo
+        alertDialog.show();
     }
 
     private void deletarImagem() {
