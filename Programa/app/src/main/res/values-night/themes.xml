@@ -190,4 +190,11 @@
 
     </style>
 
+
+    <style name="BUTTTESTE">
+        <item name="android:background">@drawable/item_selector_edtit2</item>
+        <item name="android:textColor">@drawable/item_color_roxo_edit</item>
+
+    </style>
+
 </resources>
