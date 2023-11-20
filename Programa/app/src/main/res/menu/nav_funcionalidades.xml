@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+
+    <item
+        android:id="@+id/na_home"
+        android:icon="@drawable/perfil"
+        android:title="Interação"/>
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/icon_mapa"
+            android:title="Álbum"/>
+
+        <item
+            android:id="@+id/nav_algo1"
+            android:icon="@drawable/icon_book"
+            android:title="Recordações"/>
+
+        <item
+            android:id="@+id/nav_algo2"
+            android:icon="@drawable/icon_email"
+            android:title="Contato"/>
+
+        <item
+            android:id="@+id/nav_algo3"
+            android:icon="@drawable/icon_selected_scanner"
+            android:title="Localização"/>
+    </group>
+
+    <item
+        android:title="">
+    <menu>
+        <item
+            android:id="@+id/navgo2"
+            android:icon="@drawable/icon_email"
+            android:title="Não-Binário"/>
+</menu>
+
+    </item>
+
+
+
+</menu>

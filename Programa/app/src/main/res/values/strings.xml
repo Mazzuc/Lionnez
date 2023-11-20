@@ -6,6 +6,10 @@
     <string name="termosegu"><u>Termos de Uso</u></string>
 
     //Tela Home
+
+    <string name="open_nav">Novidades coisei aq</string>
+    <string name="close_nav">Novidades coisei aq</string>
+
     <string name="novidades">Novidades</string>
     <string name="info">Informações</string>
     <string name="animais">Nossos Animais</string>

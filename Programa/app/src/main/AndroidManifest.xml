@@ -10,7 +10,6 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.camera" />
 
@@ -27,6 +26,7 @@
         <activity
             android:name=".custom_dialog_layout"
             android:exported="false" />
+
         <activity
             android:name=".testealbum"
             android:exported="false" />
@@ -66,27 +66,29 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"> <!-- Remova a categoria LAUNCHER da MainActivity -->
+            android:exported="true"> <!-- Remova a categoria LAUNCHER da MainActivity -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/EstiloStatusBarVerde">
+            >
 
-            <!-- Outras configurações da activity aqui -->
+            <!-- Outras configurações da activity aqui               android:theme="@style/EstiloStatusBarVerde">
+ -->
         </activity>
 
         <meta-data

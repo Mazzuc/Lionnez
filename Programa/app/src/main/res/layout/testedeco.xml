@@ -1,135 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
-    android:layout_height="165dp"
-    android:id="@+id/imageView"
-    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/cinza_medio"
     >
 
-    <LinearLayout
-        android:id="@+id/LinearImage"
-        android:layout_width="300dp"
-        android:layout_height="165dp"
-        android:gravity="end"
-        android:orientation="horizontal"
-        android:padding="05dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/brgattse"
-            android:layout_width="150dp"
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/anfibios"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:gravity="end"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:inputType="text"/>
 
-            <TextView
-                android:id="@+id/nomeTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="33dp"
-                android:layout_marginTop="05dp"
-                android:fontFamily="@font/outifit"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="12dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/anfibios"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <LinearLayout
-                android:id="@+id/brttse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"/>
 
-                <TextView
-                    android:id="@+id/texthorariodecuracao"
-                    android:layout_width="50dp"
-                    android:text="Horário Duração Dia"
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="FeedBack"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="6dp"
 
-                    android:layout_height="40dp"
-                    android:fontFamily="@font/outifit"
-                    android:textColor="@color/white"
-                    android:textSize="10sp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                    />
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/editTextFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:lines="6"
+            android:gravity="top"
+            android:scrollbars="vertical"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
+            android:scrollHorizontally="false"/>
 
-                <LinearLayout
-                    android:id="@+id/btse"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                <TextView
-                    android:id="@+id/horarioTxt"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outifit"
-                    android:gravity="end"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/white"
-                    android:textSize="10sp"
-
-                    />
-                <TextView
-                    android:id="@+id/duracaoTxt"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outifit"
-                    android:gravity="end"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/white"
-                    android:textSize="10sp"
-
-                    />
-                    <TextView
-                        android:id="@+id/diaTxt"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outifit"
-                        android:gravity="end"
-                        android:textAlignment="textEnd"
-                        android:textColor="@color/white"
-                        android:textSize="10sp"
-
-                        />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/buttoncard1"
-                android:layout_width="70dp"
-                android:layout_height="15dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/roud_image"
-                android:gravity="center"
-                android:orientation="vertical"
-
-                >
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Informações"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="7sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="Enviar Feedback" />
+</LinearLayout>
