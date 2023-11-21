@@ -45,4 +45,13 @@
 
     <string name="indicador_pagina">%1$d/%2$d páginas</string>
 
+    <!-- Login com Facebook -->
+
+    <string name="facebook_app_id">309158275243602</string>
+    <string name="facebook_client_token">950a505e5f1578d64f4dddc521e76696</string>
+    <string name="fb_login_protocol_scheme">fb309158275243602</string>
+
+    <!-- Login com Google -->
+    <string name="default_web_client_id">884143710548-62t608m311hjcspba9m8325b4e9ada9c.apps.googleusercontent.com</string>
+
 </resources>
