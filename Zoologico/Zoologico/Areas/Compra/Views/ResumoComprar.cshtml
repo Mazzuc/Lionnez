@@ -1,29 +1,93 @@
-﻿@{
+
+@{
     ViewBag.Title = "ResumoComprar";
 }
 
-<h2>ResumoComprar</h2>
-<form name="frmpagamento" action="Pagamento" method="post">
-    <div>
-        <b>Data do Ingresso: </b> @*<textarea id="Teste" name="Teste" disabled>*@@ViewBag.Data@*</textarea>*@
-    </div>
-    <br />
-    <div>
-        <b>@ViewBag.QtdInteiraFormat Inteira </b>  @ViewBag.FormatInteira
-    </div>
-    <br />
-    <div>
-        <b>@ViewBag.QtdMeiaFormat Meia </b>  @ViewBag.FormatMeia
-    </div>
-    <br />
-    <div>
-        <b>Total: </b> @ViewBag.FormatTotal
-    </div>
-    <br />
-    <div>
-        <input id="pagamento" type="submit" value="Pagamento" />
-    </div>
-
-</form>
 
 
+<div class="row">
+    <div class="card green">
+        <form name="frmpagamento" action="Pagamento" method="post">
+
+            <h2>Resumo da sua compra</h2>
+            <br>
+
+            <div>
+                <b class="cmc-bold-green" >Data do Ingresso: </b> @*<textarea id="Teste" name="Teste" disabled>*@@ViewBag.Data@*</textarea>*@
+            </div>
+            <br />
+            <div>
+                <b class="cmc-bold-green">@ViewBag.QtdInteiraFormat Inteira </b>  @ViewBag.FormatInteira
+            </div>
+            <br />
+            <div>
+                <b class="cmc-bold-green">@ViewBag.QtdMeiaFormat Meia </b>  @ViewBag.FormatMeia
+            </div>
+            <br />
+            <div>
+                <b class="cmc-bold-green">Total: </b> @ViewBag.FormatTotal
+            </div>
+            <br />
+            <div>
+                <center><input id="pagamento" class="btn btn-outline-success" type="submit" value="Ir para o pagamento" /></center>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+@*parte do estilo*@
+
+
+<style type="text/css">
+    body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fafafa;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        border-radius: 5px;
+        box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+        padding: 30px;
+        margin: 20px;
+        width: 460px;
+        transition: all 0.3s ease-out;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            cursor: pointer;
+        }
+
+        .card td {
+            color: #a3a5ae;
+            font-size: 17px;
+        }
+
+    .green {
+        border-left: 3px solid #3bb54a;
+    }
+
+    .btn-outline-success {
+        height: 45px;
+        width: 200px;
+        border-radius: 5px;
+        margin-top: 25px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 17px;
+        font-weight: normal;
+    }
+
+    .cmc-bold-green {
+        color: #3bb54a;
+    }
+</style>
