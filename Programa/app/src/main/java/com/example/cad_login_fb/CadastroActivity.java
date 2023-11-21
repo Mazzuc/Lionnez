@@ -63,7 +63,6 @@ public class CadastroActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        // Inicializar o CallbackManager
         callbackManager = CallbackManager.Factory.create();
 
         // Configurar o clique do LinearLayout de login do Facebook
@@ -94,31 +93,25 @@ public class CadastroActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Verificar se o usuário já está logado ao retomar a atividade
         checkIfUserIsLoggedIn();
-        // Deslogar o usuário do Facebook ao retomar a atividade
         LoginManager.getInstance().logOut();
     }
 
     private void checkIfUserIsLoggedIn() {
-        // Verificar se o usuário está logado
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null && isUserFullyAuthenticated()) {
-            // O usuário está totalmente autenticado, vá para HomeActivity
             finish();
             startActivity(new Intent(this, HomeActivity.class));
         }
     }
 
     private boolean isUserFullyAuthenticated() {
-        // Verificar se o usuário está totalmente autenticado usando SharedPreferences
         SharedPreferences preferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
         return preferences.getBoolean("user_logged_in", false);
     }
 
     private void loginComFacebook() {
         if (mAuth.getCurrentUser() != null) {
-            // O usuário já está autenticado, vá para HomeActivity
             finish();
             startActivity(new Intent(this, HomeActivity.class));
         } else {
@@ -148,26 +141,17 @@ public class CadastroActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
-
-                        // Verificar se o usuário está autenticado
                         if (user != null) {
-                            // Verificar se o usuário já tem uma imagem de perfil no Firebase
                             if (user.getPhotoUrl() == null) {
-                                // Se não houver imagem de perfil no Firebase, obtenha a imagem do Facebook
                                 getFacebookUserProfileImage(token, user.getUid());
                             }
-
-                            // Salvar informações temporariamente
                             saveUserInfoLocally(user.getDisplayName());
 
                             // Deslogar o usuário do Facebook ao retomar a atividade
                             LoginManager.getInstance().logOut();
-
-                            // Redirecionar para a HomeActivity
                             finish();
                             startActivity(new Intent(this, HomeActivity.class));
                         } else {
-                            // Se o usuário não está autenticado, exiba uma mensagem de erro
                             Toast.makeText(CadastroActivity.this, "Erro ao autenticar usuário", Toast.LENGTH_SHORT).show();
                         }
                     } else {
@@ -190,8 +174,6 @@ public class CadastroActivity extends AppCompatActivity {
                             JSONObject pictureObject = object.getJSONObject("picture");
                             JSONObject dataObject = pictureObject.getJSONObject("data");
                             String profileImageUrl = dataObject.getString("url");
-
-                            // Salvar a imagem de perfil no Firebase Storage
                             saveProfileImageToFirebaseStorage(userId, profileImageUrl);
                         }
                     } catch (JSONException e) {
@@ -236,22 +218,15 @@ public class CadastroActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
 
-                        // Verificar se o usuário está autenticado
                         if (user != null) {
-                            // Verificar se o usuário já tem uma imagem de perfil no Firebase
                             if (user.getPhotoUrl() == null) {
-                                // Se não houver imagem de perfil no Firebase, obtenha a imagem do Google
                                 saveProfileImageToFirebaseStorage(user.getUid(), user.getPhotoUrl().toString());
                             }
 
-                            // Salvar informações temporariamente
                             saveUserInfoLocally(user.getDisplayName());
-
-                            // Redirecionar para a HomeActivity
                             finish();
                             startActivity(new Intent(this, HomeActivity.class));
                         } else {
-                            // Se o usuário não está autenticado, exiba uma mensagem de erro
                             Toast.makeText(CadastroActivity.this, "Erro ao autenticar usuário", Toast.LENGTH_SHORT).show();
                         }
                     } else {
@@ -270,28 +245,22 @@ public class CadastroActivity extends AppCompatActivity {
         StorageReference storageRef = storage.getReference();
         StorageReference profileImageRef = storageRef.child("profile_images").child(userId + ".jpg");
 
-        // Converta a URL da imagem para Uri
         Uri profileImageUri = Uri.parse(profileImageUrl);
 
-        // Faça o upload da imagem para o Firebase Storage
         profileImageRef.putFile(profileImageUri)
                 .addOnSuccessListener(taskSnapshot -> {
-                    // Imagem de perfil salva com sucesso
                     Log.d("FirebaseStorage", "Imagem de perfil salva com sucesso");
                 })
                 .addOnFailureListener(e -> {
-                    // Falha ao salvar a imagem de perfil
                     Log.e("FirebaseStorage", "Falha ao salvar a imagem de perfil: " + e.getMessage());
                 });
     }
 
     private void saveUserInfoLocally(String displayName) {
-        // Adicione aqui a lógica para salvar as informações localmente
-        saveAuthenticationState(); // Adicionado para salvar o estado de autenticação
+        saveAuthenticationState();
     }
 
     private String retrieveUserInfoLocally() {
-        // Adicione aqui a lógica para recuperar as informações armazenadas localmente
         return "";
     }
 
@@ -301,10 +270,7 @@ public class CadastroActivity extends AppCompatActivity {
         String nome = binding.editNome.getText().toString().trim();
 
         if (nome.isEmpty()) {
-            // Toast.makeText(this, "Informe seu nome", Toast.LENGTH_SHORT).show();
             ActivityCustonToatAlertBinding customToastBindingCorrect = ActivityCustonToatAlertBinding.inflate(getLayoutInflater());
-
-            // Personalize o texto da mensagem do Toast
             customToastBindingCorrect.textViewalerta.setText("Informe seu nome");
 
             Toast customToast = new Toast(this);
@@ -312,10 +278,7 @@ public class CadastroActivity extends AppCompatActivity {
             customToast.setView(customToastBindingCorrect.getRoot());
             customToast.show();
         } else if (email.isEmpty()) {
-            //   Toast.makeText(this, "Informe seu E-mail", Toast.LENGTH_SHORT).show();
             ActivityCustonToatAlertBinding customToastBindingCorrect = ActivityCustonToatAlertBinding.inflate(getLayoutInflater());
-
-            // Personalize o texto da mensagem do Toast
             customToastBindingCorrect.textViewalerta.setText("Informe seu E-mail");
 
             Toast customToast = new Toast(this);
@@ -323,10 +286,7 @@ public class CadastroActivity extends AppCompatActivity {
             customToast.setView(customToastBindingCorrect.getRoot());
             customToast.show();
         } else if (senha.isEmpty()) {
-            //  Toast.makeText(this, "Informe uma senha", Toast.LENGTH_SHORT).show();
             ActivityCustonToatAlertBinding customToastBindingCorrect = ActivityCustonToatAlertBinding.inflate(getLayoutInflater());
-
-            // Personalize o texto da mensagem do Toast
             customToastBindingCorrect.textViewalerta.setText("Informe uma senha");
 
             Toast customToast = new Toast(this);
@@ -343,7 +303,6 @@ public class CadastroActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, senha)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        // Registro com sucesso
                         FirebaseUser user = mAuth.getCurrentUser();
 
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
@@ -357,11 +316,7 @@ public class CadastroActivity extends AppCompatActivity {
                                 startActivity(new Intent(this, HomeActivity.class));
                             } else {
                                 binding.progressBar.setVisibility(View.GONE);
-                                // Toast.makeText(this, "Opa, ocorreu um erro ao atualizar o nome", Toast.LENGTH_SHORT).show();
-                                // Código para mostrar o Toast personalizado
                                 ActivityCustonToastBinding customToastBinding = ActivityCustonToastBinding.inflate(getLayoutInflater());
-
-                                // Personalize o texto da mensagem do Toast
                                 customToastBinding.textView.setText("Opa, verifique as informações: ocorreu um erro.");
 
                                 Toast customToast = new Toast(this);
@@ -372,12 +327,9 @@ public class CadastroActivity extends AppCompatActivity {
                         });
                     } else {
                         binding.progressBar.setVisibility(View.GONE);
-                        //  Toast.makeText(this, "Opa, verifique as informações: ocorreu um erro", Toast.LENGTH_SHORT).show();
 
-                        // Código para mostrar o Toast personalizado
                         ActivityCustonToastBinding customToastBinding = ActivityCustonToastBinding.inflate(getLayoutInflater());
 
-                        // Personalize o texto da mensagem do Toast
                         customToastBinding.textView.setText("Opa, verifique as informações: ocorreu um erro.");
 
                         Toast customToast = new Toast(this);
@@ -389,7 +341,6 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     private void saveAuthenticationState() {
-        // Salvar o estado de autenticação usando SharedPreferences
         SharedPreferences preferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("user_logged_in", true);
