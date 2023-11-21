@@ -37,21 +37,30 @@ namespace Zoologico.DAO
             conexao.Close();
         }
 
-        public void UpdateAnimal(Animal animal)
+        public void UpdateAnimal(int IdAnimal, string NomeHabitat, string DescricaoAnimal, string ObsProntuario)
         {
+            db.Open();
+            string strQuery = "call spUpdateAnimal('" + IdAnimal + "', '" + NomeHabitat + "', '" + DescricaoAnimal + "', '" + ObsProntuario + "');";
 
-            conexao.Open();
-            cmd.CommandText = ("call spUpdateAnimal(@IdAnimal, @NomeHabitat, @DescricaoAnimal, @ObsProntuario);");
-            cmd.Parameters.Add("@IdAnimal", MySqlDbType.Int64).Value = animal.IdAnimal;
-            cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = animal.NomeHabitat;
-            cmd.Parameters.Add("@DescricaoAnimal", MySqlDbType.VarChar).Value = animal.DescricaoAnimal;
-            cmd.Parameters.Add("@ObsProntuario", MySqlDbType.VarChar).Value = animal.ObsProntuario;
-
-
-            cmd.Connection = conexao;
-            cmd.ExecuteNonQuery();
-            conexao.Close();
+            db.ExecuteNowdSql(strQuery);
+            db.Close();
         }
+
+        //public void UpdateAnimal(Animal animal)
+        //{
+
+        //    conexao.Open();
+        //    cmd.CommandText = ("call spUpdateAnimal(@IdAnimal, @NomeHabitat, @DescricaoAnimal, @ObsProntuario);");
+        //    cmd.Parameters.Add("@IdAnimal", MySqlDbType.Int64).Value = animal.IdAnimal;
+        //    cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = animal.NomeHabitat;
+        //    cmd.Parameters.Add("@DescricaoAnimal", MySqlDbType.VarChar).Value = animal.DescricaoAnimal;
+        //    cmd.Parameters.Add("@ObsProntuario", MySqlDbType.VarChar).Value = animal.ObsProntuario;
+
+
+        //    cmd.Connection = conexao;
+        //    cmd.ExecuteNonQuery();
+        //    conexao.Close();
+        //}
 
         public void DeleteAnimal(int Id)
         {

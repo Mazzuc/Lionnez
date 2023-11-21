@@ -70,24 +70,35 @@ namespace Zoologico.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Animal vielmodel)
+        public ActionResult Edit(int IdAnimal, string NomeHabitat, string DescricaoAnimal, string ObsProntuario)
         {
             if (!ModelState.IsValid)
-            {
+                return View("select");
 
-                Animal animal = new Animal()
-                {
-                    IdAnimal = vielmodel.IdAnimal,
-                    NomeHabitat = vielmodel.NomeHabitat,
-                    DescricaoAnimal = vielmodel.DescricaoAnimal,
-                    ObsProntuario = vielmodel.ObsProntuario
-                };
-                ObjAnimal.UpdateAnimal(animal);
+            ObjAnimal.UpdateAnimal(IdAnimal, NomeHabitat, DescricaoAnimal, ObsProntuario);
 
-                return RedirectToAction("Select");
-            }
-            return View(vielmodel);
-
+            return RedirectToAction("Select");
         }
+
+        //[HttpPost]
+        //public ActionResult Edit(Animal vielmodel)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+
+        //        Animal animal = new Animal()
+        //        {
+        //            IdAnimal = vielmodel.IdAnimal,
+        //            NomeHabitat = vielmodel.NomeHabitat,
+        //            DescricaoAnimal = vielmodel.DescricaoAnimal,
+        //            ObsProntuario = vielmodel.ObsProntuario
+        //        };
+        //        ObjAnimal.UpdateAnimal(animal);
+
+        //        return RedirectToAction("Select");
+        //    }
+        //    return View(vielmodel);
+
+        //}
     }
 }
