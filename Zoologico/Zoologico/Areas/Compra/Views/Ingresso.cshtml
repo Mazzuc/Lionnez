@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Ingresso";
+}
+
+<form name="frmCad" method="post" action="ResumoComprar">
+    <div>
+        <h2>Dados Pessoais</h2>
+        <div class="form-group">
+            <label for="nome">Nome Completo</label>
+            <input id="nome" type="text" name="Nome" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" name="Email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input id="cpf" type="text" name="Cpf" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="data">Data de Nascimento</label>
+            <input id="data" type="date" name="Data" class="form-control">
+        </div>
+    </div>
+    <br />
+    <div>
+        <h2>Tipo de Ingressos</h2>
+        <label for="dataingresso">Escolha a Data</label>
+        <input id="dataingresso" type="date" name="DataIngresso" class="form-control">
+        <br />
+        <table>
+            <tr>
+                <th><label for="Inteira">Inteira</label></th>
+                <th>
+                    <select name="QtdInteira">
+                        <option value="0">Qtd</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </th>
+            </tr>
+            <tr>
+                <td>R$ 30,00</td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <div>
+        <table>
+            <tr>
+                <th><label for="Meia">Meia</label></th>
+                <th>
+                    <select name="QtdMeia">
+                        <option value="0">Qtd</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </th>
+            </tr>
+            <tr>
+                <td>R$ 15,00</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <input id="cadastrar" type="submit" value="Comprar" />
+    </div>
+</form>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

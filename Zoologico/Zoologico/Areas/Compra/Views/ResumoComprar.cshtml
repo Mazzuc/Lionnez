@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "ResumoComprar";
+}
+
+<h2>ResumoComprar</h2>
+<form name="frmpagamento" action="Pagamento" method="post">
+    <div>
+        <b>Data do Ingresso: </b> @*<textarea id="Teste" name="Teste" disabled>*@@ViewBag.Data@*</textarea>*@
+    </div>
+    <br />
+    <div>
+        <b>@ViewBag.QtdInteiraFormat Inteira </b>  @ViewBag.FormatInteira
+    </div>
+    <br />
+    <div>
+        <b>@ViewBag.QtdMeiaFormat Meia </b>  @ViewBag.FormatMeia
+    </div>
+    <br />
+    <div>
+        <b>Total: </b> @ViewBag.FormatTotal
+    </div>
+    <br />
+    <div>
+        <input id="pagamento" type="submit" value="Pagamento" />
+    </div>
+
+</form>
+
+

@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Pagamento";
+}
+
+<form name="frmpagamento" action="NotaFiscal" method="post">
+    <h3>Método de Pagamento</h3>
+    <input type="radio" id="pix" name="metodo" value="pix" class="form-check-input" onclick="habilitarDesabilitarCampos()">
+    <label for="pix">Pix</label>
+    <br>
+    <input type="radio" id="boleto" name="metodo" value="boleto" class="form-check-input" onclick="habilitarDesabilitarCampos()">
+    <label for="boleto">Boleto Bancário</label>
+    <br>
+    <input type="radio" id="cartao" name="metodo" value="cartao" class="form-check-input" onclick="habilitarDesabilitarCampos()">
+    <label for="cartao">Cartão de Crédito</label>
+    <br />
+    <br />
+    <h3>Cadastrar Cartão</h3>
+    <div class="form-group">
+        <label for="nome">Nome do Tutular</label>
+        <input id="nome" type="text" name="Nome" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="numcart">Número do Cartão</label>
+        <input id="numcart" type="text" name="Numcart" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="cvv">Cvv</label>
+        <input id="cvv" type="text" name="Cvv" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="dataven">Data de Vencimento</label>
+        <input id="dataven" type="date" name="Dataven" class="form-control">
+    </div>
+    <br />
+    <div>
+        <input id="notafiscal" type="submit" value="Finalizar Pagamento" />
+    </div>
+</form>
+
+<script src="~/Scripts/Script.js"></script>
+@*@ViewBag.Teste*@
