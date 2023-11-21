@@ -3,14 +3,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/cinza_medio"
-    >
+    android:background="@color/cinza_medio">
 
 
 
+<LinearLayout
+    android:padding="17dp"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:paddingTop="20dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cinza_escuro"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:text="Olá, escreva seu "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/verde"
+            android:text="Feedback!"/>
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/verde"
+         />
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/perfil"/>
+    </LinearLayout>
+
+    <TextView
+        android:paddingLeft="14dp"
+        android:layout_marginTop="8dp"
+        android:paddingRight="14dp"
+        android:textAlignment="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:textColor="@color/cinza_claro"
+        android:text="Sua opinião é muito importante para nós, sinta-se a vontade. Seus dados serão protegidos e armazeandos para a sua seurança.!"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -18,6 +71,7 @@
         android:hint="@string/anfibios"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        app:boxBackgroundColor="#EDEDED"
         android:layout_marginTop="16dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -35,6 +89,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
+        app:boxBackgroundColor="#EDEDED"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -51,14 +106,15 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="6dp"
-
+        app:boxBackgroundColor="#EDEDED"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText android:id="@+id/editTextFeedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:lines="6"
+            android:lines="3"
+            app:boxBackgroundColor="#EDEDED"
             android:gravity="top"
             android:scrollbars="vertical"
             android:overScrollMode="always"
@@ -66,11 +122,28 @@
             android:scrollHorizontally="false"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+
+<LinearLayout
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <Button
-        android:id="@+id/buttonSend"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:text="Enviar Feedback" />
+        android:id="@+id/buttonSend"
+        android:background="@drawable/bg_redondo_verde"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Enviar Feedback"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:backgroundTint="@null"
+   />
+
+</LinearLayout>
+</LinearLayout>
+
 </LinearLayout>
