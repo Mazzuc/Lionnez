@@ -20,7 +20,7 @@
             android:layout_height="56dp"
             android:id="@+id/toolbar"
             android:elevation="4dp"
-            android:background="@color/verde"/>
+            android:background="@color/transparent"/>
 
         <!-- Use layout_weight to make the FrameLayout take the remaining space -->
         <FrameLayout

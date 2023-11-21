@@ -2,8 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+
 
     android:layout_height="500dp">
 
@@ -11,21 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Seu LinearLayout com o fundo e a imagem de plano de fundo -->
         <LinearLayout
             android:id="@id/linearLayout"
-            android:layout_width="400dp"
+            android:layout_width="match_parent"
             android:layout_height="500dp"
             android:background="@drawable/bg_edit_animales2"
             android:orientation="horizontal"
             android:elevation="3dp"
             android:gravity="bottom">
 
-            <!-- Adicione qualquer conteúdo adicional ao LinearLayout aqui -->
 
         </LinearLayout>
 
-        <!-- Sua ImageView para a imagem -->
         <ImageView
             android:id="@+id/imageViewAlbum"
             android:layout_width="match_parent"
