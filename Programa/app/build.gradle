@@ -80,4 +80,7 @@ dependencies {
     //Login com Google
     implementation 'com.google.android.gms:play-services-auth:20.1.0' // Certifique-se de usar a versão mais recente
 
+    //Permissão RealtimeDataBase
+    implementation 'com.google.firebase:firebase-database:20.3.0'
+
 }
