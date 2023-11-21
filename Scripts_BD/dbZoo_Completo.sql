@@ -367,6 +367,45 @@ end
 $$
 
 delimiter $$
+create procedure spSearchHabitat(vNomeHabitat varchar(50))
+begin
+  if exists(select * from tbHabitat where NomeHabitat = vNomeHabitat) then
+		set @IdHabitat =(select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
+			SELECT 
+				tbHabitat.IdHabitat as "Id do Habitat",
+				tbHabitat.NomeHabitat as "Nome",
+				tbTipoHabitat.NomeTipoHabitat as "Tipo",
+				tbHabitat.Vegetacao as "Vegetação",
+				tbHabitat.Solo as "Solo",
+				tbHabitat.Clima as "Clima",
+				tbHabitat.Capacidade,
+				tbHabitat.QtdAnimal as "Animais"
+			FROM
+			tbHabitat
+			INNER JOIN 
+			tbTipoHabitat on tbHabitat.IdHabitat = @IdHabitat and tbHabitat.IdTipoHabitat = tbTipoHabitat.IdTipoHabitat;
+	elseif exists(select * from tbTipoHabitat where NomeTipoHabitat = vNomeHabitat) then
+		set @IdTipoHabitat =(select IdTipoHabitat from tbTipoHabitat where NomeTipoHabitat = vNomeHabitat);
+			SELECT 
+				tbHabitat.IdHabitat as "Id do Habitat",
+				tbHabitat.NomeHabitat as "Nome",
+				tbTipoHabitat.NomeTipoHabitat as "Tipo",
+				tbHabitat.Vegetacao as "Vegetação",
+				tbHabitat.Solo as "Solo",
+				tbHabitat.Clima as "Clima",
+				tbHabitat.Capacidade,
+				tbHabitat.QtdAnimal as "Animais"
+			FROM
+			tbHabitat
+			INNER JOIN 
+			tbTipoHabitat on tbHabitat.IdTipoHabitat = tbTipoHabitat.IdTipoHabitat and tbHabitat.IdTipoHabitat = @IdTipoHabitat;
+    else
+		select("Pesquisa Inválida");
+    end if;
+end
+$$
+
+delimiter $$
 create procedure spSelectHabitatUnic(vNomeHabitat int)
 begin
 	if not exists(select * from tbHabitat where IdHabitat = vNomeHabitat) then
@@ -545,6 +584,39 @@ end
 $$
 
 delimiter $$
+create procedure spSearchAnimal(vNomeAnimal varchar(50))
+begin
+  if exists(select * from tbEspecie where NomeEspecie = vNomeAnimal) then
+		set @IdEspecie =(select IdEspecie from tbEspecie where NomeEspecie = vNomeAnimal);
+			SELECT 
+				tbAnimal.IdAnimal as "Id do Animal",
+				tbAnimal.NomeAnimal as "Nome",
+				tbAnimal.Peso ,
+				tbAnimal.DataNasc as "Nascimento",
+				tbHabitat.NomeHabitat as "Habitat"
+			FROM
+			tbAnimal
+			INNER JOIN 
+			tbHabitat on tbAnimal.IdEspecie = @IdEspecie and tbAnimal.IdHabitat = tbHabitat.IdHabitat;
+	elseif exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
+		set @IdAnimal =(select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
+			SELECT 
+				tbAnimal.IdAnimal as "Id do Animal",
+				tbAnimal.NomeAnimal as "Nome",
+				tbAnimal.Peso ,
+				tbAnimal.DataNasc as "Nascimento",
+				tbHabitat.NomeHabitat as "Habitat"
+			FROM
+			tbAnimal
+			INNER JOIN 
+			tbHabitat on tbAnimal.IdAnimal = @IdAnimal and tbAnimal.IdHabitat = tbHabitat.IdHabitat;
+    else
+		select("Pesquisa Inválida");
+    end if;
+end
+$$
+
+delimiter $$
 create procedure spSelectAnimalEspecifico(vNomeAnimal int)
 begin
 	set @IdAnimal = (select IdAnimal from tbAnimal where IdAnimal = vNomeAnimal);
@@ -594,6 +666,31 @@ begin
 	insert into tbHistoricoProntuario(DataCadas, DescricaoHistorico, IdProntuario, Alergia, Peso) values (curdate(), vDescricao, @IdProntuario, vAlergia, vPeso);
     update tbAnimal set Peso = vPeso where IdAnimal = @IdAnimal;
 	end if;
+end
+$$
+
+delimiter $$
+create procedure spSearchProntuario(vNomeAnimal varchar(50))
+begin
+	if exists(select * from tbAnimal where NomeAnimal = vNomeAnimal) then
+		set @IdAnimal =(select IdAnimal from tbAnimal where NomeAnimal = vNomeAnimal);
+			SELECT 
+				tbProntuario.IdProntuario as "Id do Prontuário",
+				tbAnimal.NomeAnimal as "Nome",
+				tbAnimal.DataNasc as "Nascimento",
+				tbEspecie.NomeEspecie as "Espécie",
+				tbAnimal.Peso,
+				tbAnimal.Sexo,
+				tbProntuario.ObsProntuario as "Observação"
+			FROM
+			tbProntuario
+			INNER JOIN 
+			tbAnimal on tbAnimal.IdAnimal = tbProntuario.IdAnimal and tbAnimal.IdAnimal = @IdAnimal
+                    LEFT JOIN tbEspecie
+        ON tbEspecie.IdEspecie = tbAnimal.IdEspecie;
+    else
+		select("Pesquisa Inválida");
+    end if;
 end
 $$
 

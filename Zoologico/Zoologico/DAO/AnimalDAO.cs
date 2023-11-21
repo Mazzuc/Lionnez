@@ -46,22 +46,6 @@ namespace Zoologico.DAO
             db.Close();
         }
 
-        //public void UpdateAnimal(Animal animal)
-        //{
-
-        //    conexao.Open();
-        //    cmd.CommandText = ("call spUpdateAnimal(@IdAnimal, @NomeHabitat, @DescricaoAnimal, @ObsProntuario);");
-        //    cmd.Parameters.Add("@IdAnimal", MySqlDbType.Int64).Value = animal.IdAnimal;
-        //    cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = animal.NomeHabitat;
-        //    cmd.Parameters.Add("@DescricaoAnimal", MySqlDbType.VarChar).Value = animal.DescricaoAnimal;
-        //    cmd.Parameters.Add("@ObsProntuario", MySqlDbType.VarChar).Value = animal.ObsProntuario;
-
-
-        //    cmd.Connection = conexao;
-        //    cmd.ExecuteNonQuery();
-        //    conexao.Close();
-        //}
-
         public void DeleteAnimal(int Id)
         {
             db.Open();
@@ -70,10 +54,19 @@ namespace Zoologico.DAO
             db.Close();
         }
 
+
         public List<Animal> SelectList()
         {
             db.Open();
             string strQuery = "call spSelectAnimal;";
+            MySqlDataReader leitor = db.ExecuteReadSql(strQuery);
+            return ReaderList(leitor);
+        }
+
+        public List<Animal> Search(string NomeAnimal)
+        {
+            db.Open();
+            string strQuery = "call spSearchAnimal('" +NomeAnimal+ "');";
             MySqlDataReader leitor = db.ExecuteReadSql(strQuery);
             return ReaderList(leitor);
         }

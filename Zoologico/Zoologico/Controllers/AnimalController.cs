@@ -19,6 +19,12 @@ namespace Zoologico.Controllers
             var list = ObjAnimal.SelectList();
             return View(list);
         }
+
+        public ActionResult Search(string NomeAnimal)
+        {
+            var list = ObjAnimal.Search(NomeAnimal);
+            return View(list);
+        }
         [HttpGet]
         public ActionResult Insert()
         {
@@ -79,26 +85,5 @@ namespace Zoologico.Controllers
 
             return RedirectToAction("Select");
         }
-
-        //[HttpPost]
-        //public ActionResult Edit(Animal vielmodel)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-
-        //        Animal animal = new Animal()
-        //        {
-        //            IdAnimal = vielmodel.IdAnimal,
-        //            NomeHabitat = vielmodel.NomeHabitat,
-        //            DescricaoAnimal = vielmodel.DescricaoAnimal,
-        //            ObsProntuario = vielmodel.ObsProntuario
-        //        };
-        //        ObjAnimal.UpdateAnimal(animal);
-
-        //        return RedirectToAction("Select");
-        //    }
-        //    return View(vielmodel);
-
-        //}
     }
 }

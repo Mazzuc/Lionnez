@@ -65,6 +65,13 @@ namespace Zoologico.DAO
             return ReaderList(leitor);
         }
 
+        public List<Habitat> Search(string NomeHabitat)
+        {
+            db.Open();
+            string strQuery = "call spSearchHabitat('"+ NomeHabitat +"');";
+            MySqlDataReader leitor = db.ExecuteReadSql(strQuery);
+            return ReaderList(leitor);
+        }
         private List<Habitat> ReaderList(MySqlDataReader DR)
         {
             List<Habitat> list = new List<Habitat>();
