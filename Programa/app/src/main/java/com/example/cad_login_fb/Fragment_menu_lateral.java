@@ -79,7 +79,7 @@ public class Fragment_menu_lateral extends Fragment implements NavigationView.On
                 break;
 
             case R.id.nav_home:
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new testefragmenttt()).commit();
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Fragment_Feedback()).commit();
                 break;
 
             case R.id.nav_algo1:

@@ -5,18 +5,31 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/cinza_medio">
+    android:padding="24dp"
+    >
 
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:elevation="40dp"
+        app:cardCornerRadius="13dp"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="false"
+        >
 
 
 <LinearLayout
+    android:id="@+id/conteiner_tudo"
     android:padding="17dp"
     android:paddingRight="16dp"
     android:paddingLeft="16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    style="@style/FUNDOFEEDEBACK"
     android:orientation="vertical">
 
     <LinearLayout
@@ -29,17 +42,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/cinza_escuro"
+            style="@style/TEXTCOLORDES"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:text="Olá, escreva seu "/>
+            android:text="Envie seu "/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:textColor="@color/verde"
+            style="@style/TEXTCOLORDEST"
             android:text="Feedback!"/>
         <TextView
             android:layout_width="10dp"
@@ -51,10 +64,11 @@
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/perfil"/>
+            android:src="@drawable/piscadela"/>
     </LinearLayout>
 
     <TextView
+        style="@style/TEXTRARO"
         android:paddingLeft="14dp"
         android:layout_marginTop="8dp"
         android:paddingRight="14dp"
@@ -63,23 +77,71 @@
         android:layout_height="wrap_content"
         android:textSize="12dp"
         android:textColor="@color/cinza_claro"
-        android:text="Sua opinião é muito importante para nós, sinta-se a vontade. Seus dados serão protegidos e armazeandos para a sua seurança.!"/>
+        android:text="Sua opinião é muito importante para nós, sinta-se a vontade."/>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/anfibios"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="46dp"
+            android:src="@drawable/icone_depressivo"/>
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            />
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="46dp"
+            android:src="@drawable/icone_chateado"/>
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            />
+
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="46dp"
+            android:src="@drawable/icone_sorriso"/>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            />
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icone_felizz"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:boxBackgroundColor="#EDEDED"
         android:layout_marginTop="16dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:layout_marginEnd="16dp"
+        android:hint="@string/anfibios"
+        android:textColorHint="@color/roxo"
+        app:boxBackgroundColor="#EDEDED"
+        app:boxStrokeColor="@color/cinza_escuro"
+        app:prefixTextColor="#3F51B5"
+        app:suffixTextColor="#ED0000">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:textColorHighlight="@color/purple_200"
+            android:textColorHint="#FFC107" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -134,7 +196,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/buttonSend"
-        android:background="@drawable/bg_redondo_verde"
+        style="@style/BUTTON"
         android:fontFamily="@font/poppins_medium"
         android:text="Enviar Feedback"
         android:textAllCaps="false"
@@ -145,5 +207,6 @@
 
 </LinearLayout>
 </LinearLayout>
+</androidx.cardview.widget.CardView>
 
 </LinearLayout>

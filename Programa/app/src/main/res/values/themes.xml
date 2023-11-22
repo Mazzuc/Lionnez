@@ -209,5 +209,8 @@
 
     </style>
 
+    <style name="FUNDOFEEDEBACK">
+        <item name="android:background">@drawable/bd_card_redondo_feedback2</item>
+    </style>
 
 </resources>

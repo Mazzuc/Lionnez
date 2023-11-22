@@ -131,7 +131,7 @@
         android:padding="10dp"
         android:text="Recuperar Senha"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="15dp"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
