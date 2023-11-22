@@ -52,7 +52,7 @@ namespace Zoologico.Controllers
             };
             ObjAnimal.InsertAnimal(novoanimal);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Select");
         }
 
 

@@ -1,5 +1,6 @@
 ﻿<nav class="navbar navbar-light">
     <div class="container-fluid">
+        <form class="d-flex">
         <div class="dropdown">
             <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Habitat
@@ -9,6 +10,7 @@
                 <li><button class="dropdown-item" asp-controller="Habitat" asp-action="Select">Consultar</button></li>
             </ul>
         </div>
+        </form>
         <form class="d-flex" asp-controller="Habitat" asp-action="Search">
             <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search" id="NomeHabitat" name="NomeHabitat">
             <button class="btn btn-outline-success" type="submit">Enviar</button>
