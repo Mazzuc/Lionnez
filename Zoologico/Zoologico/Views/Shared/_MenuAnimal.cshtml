@@ -1,17 +1,17 @@
 ﻿<nav class="navbar navbar-light">
     <div class="container-fluid">
-        <a class="navbar-brand">Animal</a>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search">
-            <div class="dropdown">
-                <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Animal
-                </button>
-                <ul class="dropdown-menu">
-                    <li><button class="dropdown-item" asp-controller="Animal" asp-action="Insert">Cadastrar</button></li>
-                    <li><button class="dropdown-item" asp-controller="Animal" asp-action="Select">Consultar</button></li>
-                </ul>
-            </div>
+        <div class="dropdown">
+            <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Animal
+            </button>
+            <ul class="dropdown-menu">
+                <li><button class="dropdown-item" asp-controller="Animal" asp-action="Insert">Cadastrar</button></li>
+                <li><button class="dropdown-item" asp-controller="Animal" asp-action="Select">Consultar</button></li>
+            </ul>
+        </div>
+        <form class="d-flex" asp-controller="Animal" asp-action="Search">
+            <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search" id="NomeAnimal" name="NomeAnimal">
+            <button class="btn btn-outline-success" type="submit">Enviar</button>
         </form>
     </div>
 </nav>

@@ -1,6 +1,6 @@
 package com.example.cad_login_fb;
 
-import android.content.res.Configuration;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -8,44 +8,46 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
+    //Menu
     private int selectedTab = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        //Menu -- LinearLayout
         final LinearLayout homeLayout = findViewById(R.id.homelayout);
         final LinearLayout pesquisaLayout = findViewById(R.id.pesquisalayout);
         final LinearLayout scannerLayout = findViewById(R.id.scannerlayout);
         final LinearLayout mapaLayout = findViewById(R.id.mapalayout);
         final LinearLayout albumLayout = findViewById(R.id.albumlayout);
 
+        //Menu -- ImageView
         final ImageView homeImage = findViewById(R.id.homeImage);
         final ImageView pesquisaImage = findViewById(R.id.pesquisaImage);
         final ImageView scannerImage = findViewById(R.id.scannerImage);
         final ImageView mapaImage = findViewById(R.id.mapaImage);
         final ImageView albumImage = findViewById(R.id.albumImage);
 
+        //Menu -- TextView
         final TextView homeTxt = findViewById(R.id.homeTxt);
         final TextView pesquisaTxt = findViewById(R.id.pesquisaTxt);
         final TextView scannerTxt = findViewById(R.id.scannerTxt);
         final TextView mapaTxt = findViewById(R.id.mapaTxt);
         final TextView albumTxt = findViewById(R.id.albumTxt);
 
+        //set home
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
                 .replace(R.id.fragmentContainer, HomeFragment.class, null)
                 .commit();
-
         homeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selectedTab != 1) {
+                if(selectedTab != 1){
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
                             .replace(R.id.fragmentContainer, HomeFragment.class, null)
@@ -68,15 +70,9 @@ public class HomeActivity extends AppCompatActivity {
 
                     homeTxt.setVisibility(View.VISIBLE);
                     homeImage.setImageResource(R.drawable.icon_selected_home);
+                    homeLayout.setBackgroundResource(R.drawable.round_back_icon);
 
-                    int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-                    if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
-                        homeLayout.setBackgroundResource(R.drawable.round_back_icon2);
-                    } else {
-                        homeLayout.setBackgroundResource(R.drawable.round_back_icon);
-                    }
-
-                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f,1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                     scaleAnimation.setDuration(200);
                     scaleAnimation.setFillAfter(true);
                     homeLayout.startAnimation(scaleAnimation);
@@ -89,38 +85,34 @@ public class HomeActivity extends AppCompatActivity {
         pesquisaLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selectedTab != 2) {
+
+                if(selectedTab != 2){
+
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
                             .replace(R.id.fragmentContainer, PesquisaFragment.class, null)
                             .commit();
 
-                    pesquisaTxt.setVisibility(View.GONE);
+                    homeTxt.setVisibility(View.GONE);
                     scannerTxt.setVisibility(View.GONE);
                     mapaTxt.setVisibility(View.GONE);
                     albumTxt.setVisibility(View.GONE);
 
-                    pesquisaImage.setImageResource(R.drawable.icon_search);
+                    homeImage.setImageResource(R.drawable.icon_home);
                     scannerImage.setImageResource(R.drawable.icon_scanner);
                     mapaImage.setImageResource(R.drawable.icon_mapa);
                     albumImage.setImageResource(R.drawable.icon_book);
 
-                    pesquisaLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    homeLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
                     scannerLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
                     mapaLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
                     albumLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
                     pesquisaTxt.setVisibility(View.VISIBLE);
                     pesquisaImage.setImageResource(R.drawable.icon_selected_search);
+                    pesquisaLayout.setBackgroundResource(R.drawable.round_back_icon);
 
-                    int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-                    if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
-                        pesquisaLayout.setBackgroundResource(R.drawable.round_back_icon2);
-                    } else {
-                        pesquisaLayout.setBackgroundResource(R.drawable.round_back_icon);
-                    }
-
-                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f,1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                     scaleAnimation.setDuration(200);
                     scaleAnimation.setFillAfter(true);
                     pesquisaLayout.startAnimation(scaleAnimation);
@@ -133,52 +125,49 @@ public class HomeActivity extends AppCompatActivity {
         scannerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Chamando fragment QrCode para execução no BarCode Navigation
                 getSupportFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
                         .replace(R.id.fragmentContainer, QrCode.class, null)
                         .commit();
 
-                scannerTxt.setVisibility(View.GONE);
-                pesquisaTxt.setVisibility(View.GONE);
-                mapaTxt.setVisibility(View.GONE);
-                albumTxt.setVisibility(View.GONE);
+                if(selectedTab != 3){
+                    homeTxt.setVisibility(View.GONE);
+                    pesquisaTxt.setVisibility(View.GONE);
+                    mapaTxt.setVisibility(View.GONE);
+                    albumTxt.setVisibility(View.GONE);
 
-                homeImage.setImageResource(R.drawable.icon_home);
-                pesquisaImage.setImageResource(R.drawable.icon_search);
-                mapaImage.setImageResource(R.drawable.icon_mapa);
-                albumImage.setImageResource(R.drawable.icon_book);
+                    homeImage.setImageResource(R.drawable.icon_home);
+                    pesquisaImage.setImageResource(R.drawable.icon_search);
+                    mapaImage.setImageResource(R.drawable.icon_mapa);
+                    albumImage.setImageResource(R.drawable.icon_book);
 
-                homeLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                pesquisaLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                mapaLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                albumLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    homeLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    pesquisaLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    mapaLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    albumLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
-                scannerTxt.setVisibility(View.VISIBLE);
-                scannerImage.setImageResource(R.drawable.icon_selected_scanner);
-
-                int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-                if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
-                    scannerLayout.setBackgroundResource(R.drawable.round_back_icon2);
-                } else {
+                    scannerTxt.setVisibility(View.VISIBLE);
+                    scannerImage.setImageResource(R.drawable.icon_selected_scanner);
                     scannerLayout.setBackgroundResource(R.drawable.round_back_icon);
+
+                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f,1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+                    scaleAnimation.setDuration(200);
+                    scaleAnimation.setFillAfter(true);
+                    scannerLayout.startAnimation(scaleAnimation);
+
+                    selectedTab = 3;
                 }
-
-                ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
-                scaleAnimation.setDuration(200);
-                scaleAnimation.setFillAfter(true);
-                scannerLayout.startAnimation(scaleAnimation);
-
-                selectedTab = 3;
             }
         });
 
         mapaLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selectedTab != 4) {
+                if(selectedTab != 4){
+                    homeTxt.setVisibility(View.GONE);
                     pesquisaTxt.setVisibility(View.GONE);
                     scannerTxt.setVisibility(View.GONE);
-                    mapaTxt.setVisibility(View.GONE);
                     albumTxt.setVisibility(View.GONE);
 
                     homeImage.setImageResource(R.drawable.icon_home);
@@ -193,15 +182,9 @@ public class HomeActivity extends AppCompatActivity {
 
                     mapaTxt.setVisibility(View.VISIBLE);
                     mapaImage.setImageResource(R.drawable.icon_selected_mapa);
+                    mapaLayout.setBackgroundResource(R.drawable.round_back_icon);
 
-                    int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-                    if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
-                        mapaLayout.setBackgroundResource(R.drawable.round_back_icon2);
-                    } else {
-                        mapaLayout.setBackgroundResource(R.drawable.round_back_icon);
-                    }
-
-                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f,1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                     scaleAnimation.setDuration(200);
                     scaleAnimation.setFillAfter(true);
                     mapaLayout.startAnimation(scaleAnimation);
@@ -214,12 +197,12 @@ public class HomeActivity extends AppCompatActivity {
         albumLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selectedTab != 5) {
+                if(selectedTab != 5){
+                    //Chamando fragment QrCode para execução no BarCode Navigation
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
                             .replace(R.id.fragmentContainer, Fragment_menu_lateral.class, null)
                             .commit();
-
                     homeTxt.setVisibility(View.GONE);
                     pesquisaTxt.setVisibility(View.GONE);
                     scannerTxt.setVisibility(View.GONE);
@@ -237,15 +220,9 @@ public class HomeActivity extends AppCompatActivity {
 
                     albumTxt.setVisibility(View.VISIBLE);
                     albumImage.setImageResource(R.drawable.icon_selected_book);
+                    albumLayout.setBackgroundResource(R.drawable.round_back_icon);
 
-                    int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-                    if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
-                        albumLayout.setBackgroundResource(R.drawable.round_back_icon2);
-                    } else {
-                        albumLayout.setBackgroundResource(R.drawable.round_back_icon);
-                    }
-
-                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+                    ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f,1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                     scaleAnimation.setDuration(200);
                     scaleAnimation.setFillAfter(true);
                     albumLayout.startAnimation(scaleAnimation);

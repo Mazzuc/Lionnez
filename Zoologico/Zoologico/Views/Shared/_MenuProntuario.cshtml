@@ -1,8 +1,11 @@
 ﻿<nav class="navbar navbar-light">
     <div class="container-fluid">
-        <a class="navbar-brand">Prontuário</a>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search">
+        <button class="btn btn-outline-success " type="button"  aria-expanded="false">
+            Prontuários
+        </button>
+        <form class="d-flex" asp-controller="Prontuario" asp-action="Search">
+            <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search" id="NomeAnimal" name="NomeAnimal">
+            <button class="btn btn-outline-success" type="submit">Enviar</button>
         </form>
     </div>
 </nav>

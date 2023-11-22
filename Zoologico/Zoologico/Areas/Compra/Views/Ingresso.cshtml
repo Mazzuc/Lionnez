@@ -1,0 +1,194 @@
+@{
+    ViewBag.Title = "Ingresso";
+}
+
+
+<div class="row">
+    <div class="card green">
+        <form name="frmCad" method="post" action="ResumoComprar">
+            <div>
+                <h3>Dados Pessoais</h3>
+                <label class="add-dados">Adicione seus dados abaixo</label>
+
+                <div class="form-group">
+                    <input id="nome" type="text" name="Nome" class="form-control" placeholder="Nome  " />
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <input id="email" type="email" name="Email" class="form-control" placeholder="Email">
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <input id="cpf" type="text" name="Cpf" class="form-control" placeholder="CPF">
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="data">Data de Nascimento</label>
+                    <br>
+                    <input id="data" type="date" name="Data" class="form-control">
+                </div>
+            </div>
+
+
+            <br>
+            <br>
+
+
+            <div>
+                <h3>Tipos de Ingressos</h3>
+                <br>
+                <label for="dataingresso">Escolha a Data</label>
+                <br>
+                <input id="dataingresso" type="date" name="DataIngresso" class="form-control">
+
+                <br>
+                <div class="ln-divisao"></div>
+                <br>
+
+                <table>
+                    <tr>
+                        <th><label class="nm-ingresso" for="Inteira">Inteira</label></th>
+                        <th>
+                            <select class="slct-qtd" name="QtdInteira">
+                                <option value="0">Qtd</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>R$ 30,00</td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <div class="ln-divisao"></div>
+            <br>
+
+            <div>
+                <table>
+                    <tr>
+                        <th><label class="nm-ingresso" for="Meia">Meia</label></th>
+                        <th>
+                            <select class="slct-qtd" name="QtdMeia">
+                                <option value="0">Qtd</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>R$ 15,00</td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <center><input id="cadastrar" type="submit" class="btn btn-outline-success" value="Ver detalhes da compra" /></center>
+            </div>
+        </form>
+
+        <br >
+
+        <div class="vlt-detalhe">
+            <center>@Html.ActionLink("Voltar para página anterior", "Index")</center>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+@*parte do estilo*@
+
+
+<style type="text/css">
+    body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fafafa;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        border-radius: 5px;
+        box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+        padding: 30px;
+        margin: 20px;
+        width: 460px;
+        transition: all 0.3s ease-out;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            cursor: pointer;
+        }
+
+        .card td {
+            color: #a3a5ae;
+            font-size: 17px;
+        }
+
+    .green {
+        border-left: 3px solid #3bb54a;
+    }
+
+    .btn-outline-success {
+        height: 45px;
+        width: 200px;
+        border-radius: 5px;
+        margin-top: 25px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 17px;
+        font-weight:normal;
+    }
+
+    .add-dados {
+        color: #a3a5ae;
+        font-size: 15px;
+    }
+
+    .ActionLink {
+        color: #3bb54a;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    .slct-qtd {
+        width: 80px;
+        height: 35px;
+        border-left: 10px solid #3bb54a;
+        border-radius: 7px;
+        font-size: 15px;
+    }
+
+    .nm-ingresso{
+        font-size:20px;
+    }
+
+    .ln-divisao {
+        background: #a3a5ae;
+        height: 1px;
+    }
+
+</style>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

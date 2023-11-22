@@ -16,10 +16,16 @@ namespace Zoologico.Controllers
             var list = ObjAnimal.SelectListHabitat(Id);
             return View(list);
         }
-        [HttpGet]
+ 
         public ActionResult Select()
         {
             var list = ObjHabitat.SelectList();
+            return View(list);
+        }
+
+        public ActionResult Search(string NomeHabitat)
+        {
+            var list = ObjHabitat.Search(NomeHabitat);
             return View(list);
         }
         [HttpGet]

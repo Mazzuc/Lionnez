@@ -1,0 +1,110 @@
+
+@{
+    ViewBag.Title = "Pagamento";
+}
+
+<div class="row">
+    <div class="card green">
+        <form name="frmpagamento" action="NotaFiscal" method="post">
+
+            <h3>Método de Pagamento</h3>
+            <input type="radio" id="pix" name="metodo" value="pix" class="form-check-input" onclick="habilitarDesabilitarCampos()">
+            <label for="pix">Pix</label>
+
+            <br>
+
+            <input type="radio" id="boleto" name="metodo" value="boleto" class="form-check-input" onclick="habilitarDesabilitarCampos()">
+            <label for="boleto">Boleto Bancário</label>
+
+            <br>
+
+            <input type="radio" id="cartao" name="metodo" value="cartao" class="form-check-input" onclick="habilitarDesabilitarCampos()">
+            <label for="cartao">Cartão de Crédito</label>
+
+            <br />
+            <br />
+
+
+            <h3>Cadastrar Cartão</h3>
+            <div class="form-group">
+                <input id="nome" type="text" name="Nome" class="form-control" placeholder="Nome do Tutular" />
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <input id="numcart" type="text" name="Numcart" class="form-control" placeholder="Número do Cartão">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <input id="cvv" type="text" name="Cvv" class="form-control" placeholder="CVV">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="dataven">Data de Vencimento</label>
+                <input id="dataven" type="date" name="Dataven" class="form-control" placeholder="">
+            </div>
+
+            <br>
+
+            <div>
+                <center><input id="pagamento" type="submit" class="btn btn-outline-success" value="Realizar pagamento" /></center>
+            </div>
+        </form>
+
+        </div>
+    </div>
+
+<style type="text/css">
+    body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fafafa;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        border-radius: 5px;
+        box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+        padding: 30px;
+        margin: 20px;
+        width: 460px;
+        transition: all 0.3s ease-out;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            cursor: pointer;
+        }
+
+        .card td {
+            color: #a3a5ae;
+            font-size: 17px;
+        }
+
+    .green {
+        border-left: 3px solid #3bb54a;
+    }
+
+    .btn-outline-success {
+        height: 45px;
+        width: 200px;
+        border-radius: 5px;
+        margin-top: 25px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 17px;
+        font-weight:normal;
+    }
+
+    </style>
+
+        <script src="~/Scripts/Script.js"></script>
+        @*@ViewBag.Teste*@

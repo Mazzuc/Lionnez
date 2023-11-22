@@ -14,6 +14,12 @@ namespace Zoologico.Controllers
             return View(list);
         }
 
+        public ActionResult Search(string NomeAnimal)
+        {
+            var list = ObjProntuario.Search(NomeAnimal);
+            return View(list);
+        }
+
         public ActionResult Details(int Id)
         {
             var list = ObjConsulta.SelectListConsulta(Id);

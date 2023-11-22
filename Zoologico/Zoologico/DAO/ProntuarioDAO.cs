@@ -15,6 +15,13 @@ namespace Zoologico.DAO
             return ReaderList(leitor);
         }
 
+        public List<Prontuario> Search(string NomeAnimal)
+        {
+            db.Open();
+            string strQuery = "call spSearchProntuario('"+NomeAnimal+"');";
+            MySqlDataReader leitor = db.ExecuteReadSql(strQuery);
+            return ReaderList(leitor);
+        }
         private List<Prontuario> ReaderList(MySqlDataReader DR)
         {
             List<Prontuario> list = new List<Prontuario>();
