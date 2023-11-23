@@ -46,8 +46,9 @@ namespace Zoologico.Controllers
                 Peso = vielmodel.Peso
             };
             ObjConsulta.InsertConsulta(novaconsulta, Id);
+            TempData["MensagemCadastro"] = "Consulta cadastrada com sucesso";
 
-            return RedirectToAction("Select", "Prontuario");
+            return RedirectToAction("Details", "Prontuario");
         }
     }
 }

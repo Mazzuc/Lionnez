@@ -1,11 +1,6 @@
-﻿using MySql.Data.MySqlClient;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System;
-using System.Configuration;
-using System.Data;
-using ConfigurationManager = System.Configuration.ConfigurationManager;
-using Org.BouncyCastle.Asn1.Mozilla;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Zoologico.Models
 {
@@ -16,8 +11,9 @@ namespace Zoologico.Models
         public int IdHabitat { get; set; }
 
         [DisplayName("Nome")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "O nome é obrigatório")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
+        [Remote("ValidaHabitat", "Habitat", ErrorMessage = "Habitat já cadastrado")]
         public string NomeHabitat { get; set; }
 
         [DisplayName("Tipo")]
