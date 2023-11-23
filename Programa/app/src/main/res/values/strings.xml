@@ -48,7 +48,7 @@
     <!-- Login com Facebook -->
 
     <string name="facebook_app_id">309158275243602</string>
-    <string name="facebook_client_token">950a505e5f1578d64f4dddc521e76696</string>
+    <string name="facebook_client_token">2b9e633eb757aad98d5ac8daba3f5cca</string>
     <string name="fb_login_protocol_scheme">fb309158275243602</string>
 
     <!-- Login com Google -->
