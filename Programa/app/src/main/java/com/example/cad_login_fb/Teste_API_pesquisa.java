@@ -186,9 +186,37 @@ public class Teste_API_pesquisa extends AppCompatActivity {
         }
 
         // Adicione outros campos conforme necessário
+        if (jsonObject.has("habitat") && !jsonObject.get("habitat").isJsonNull()) {
+            searchResult.setHabitat(jsonObject.get("habitat").getAsString());
+        }
+
+        if (jsonObject.has("pais") && !jsonObject.get("pais").isJsonNull()) {
+            searchResult.setPais(jsonObject.get("pais").getAsString());
+        }
+
+        if (jsonObject.has("alimentacao") && !jsonObject.get("alimentacao").isJsonNull()) {
+            searchResult.setAlimentacao(jsonObject.get("alimentacao").getAsString());
+        }
+
+        if (jsonObject.has("peso") && !jsonObject.get("peso").isJsonNull()) {
+            searchResult.setPeso(jsonObject.get("peso").getAsString());
+        }
+
+        if (jsonObject.has("altura") && !jsonObject.get("altura").isJsonNull()) {
+            searchResult.setAltura(jsonObject.get("altura").getAsString());
+        }
+
+        if (jsonObject.has("curiosidades") && !jsonObject.get("curiosidades").isJsonNull()) {
+            searchResult.setCuriosidades(jsonObject.get("curiosidades").getAsString());
+        }
+
+        if (jsonObject.has("imagem") && !jsonObject.get("imagem").isJsonNull()) {
+            searchResult.setImagem(jsonObject.get("imagem").getAsString());
+        }
 
         return searchResult;
     }
+
 
 
     private void updateUI(List<SearchResult> searchResults) {
@@ -197,8 +225,16 @@ public class Teste_API_pesquisa extends AppCompatActivity {
 
     private void openDetalhesActivity(SearchResult item) {
         Intent intent = new Intent(Teste_API_pesquisa.this, DetalhesActivity.class);
-        intent.putExtra("nome", item.getNome());
-        intent.putExtra("descricao", item.getDescricao());
+        intent.putExtra("title", item.getNome());
+        intent.putExtra("description", item.getDescricao());
+        intent.putExtra("habitat", item.getHabitat());
+        intent.putExtra("pais", item.getPais());
+        intent.putExtra("alimentacao", item.getAlimentacao());
+        intent.putExtra("peso", item.getPeso());
+        intent.putExtra("altura", item.getAltura());
+        intent.putExtra("curiosidades", item.getCuriosidades());
+        intent.putExtra("imagem", item.getImagem());
         startActivity(intent);
     }
+
 }
