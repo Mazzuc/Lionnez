@@ -1796,3 +1796,10 @@ C:\Users\2ds\Downloads\Lionnez\Zoologico\Zoologico\obj\Debug\net6.0\refint\Zoolo
 C:\Users\2ds\Downloads\Lionnez\Zoologico\Zoologico\obj\Debug\net6.0\Zoologico.pdb
 C:\Users\2ds\Downloads\Lionnez\Zoologico\Zoologico\obj\Debug\net6.0\Zoologico.genruntimeconfig.cache
 C:\Users\2ds\Downloads\Lionnez\Zoologico\Zoologico\obj\Debug\net6.0\ref\Zoologico.dll
+C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

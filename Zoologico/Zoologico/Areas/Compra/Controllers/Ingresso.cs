@@ -2,7 +2,7 @@
 
 namespace Zoologico.Areas.Compra.Controllers
 {
-    public class Ingresso : Controller
+    public class IngressoController : Controller
     {
         public ActionResult Index()
         {

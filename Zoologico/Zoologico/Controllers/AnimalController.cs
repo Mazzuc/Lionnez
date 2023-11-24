@@ -52,6 +52,8 @@ namespace Zoologico.Controllers
             };
             ObjAnimal.InsertAnimal(novoanimal);
 
+            TempData["MensagemCadastro"] = "Cadastro de " + vielmodel.NomeAnimal + " realizado com sucesso";
+
             return RedirectToAction("Select");
         }
 

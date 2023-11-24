@@ -8,6 +8,9 @@ namespace Zoologico.DAO
     {
         MySQLConfig db = new MySQLConfig();
 
+        MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexao"].ConnectionString);
+        MySqlCommand cmd = new MySqlCommand();
+
         public void InsertHabitat(string NomeHabitat, string TipoHabitat, int Capacidade, string Vegetacao, string Clima, string Solo)
         {
             db.Open();
@@ -94,5 +97,20 @@ namespace Zoologico.DAO
             db.Close();
             return list;
         }
+
+        public string ValidaHabitat(string vNomeHabitat)
+        {
+            conexao.Open();
+            cmd.CommandText = "call spValidaHabitat(@NomeHabitat);";
+            cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = vNomeHabitat;
+            cmd.Connection = conexao;
+            string NomeHabitat = (string)cmd.ExecuteScalar();
+            conexao.Close();
+            if (NomeHabitat == null)
+                NomeHabitat = "";
+            return NomeHabitat;
+        }
+
+
     }
 }

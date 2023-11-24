@@ -34,7 +34,5 @@ namespace Zoologico
             cmd.Connection = conexao;
             cmd.ExecuteNonQuery();
         }
-
-
     }
 }

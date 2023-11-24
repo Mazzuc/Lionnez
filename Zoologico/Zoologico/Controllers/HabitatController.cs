@@ -42,6 +42,7 @@ namespace Zoologico.Controllers
 
             ObjHabitat.InsertHabitat(NomeHabitat, TipoHabitat, Capacidade, Vegetacao, Clima, Solo);
 
+            TempData["MensagemCadastro"] = "Cadastro de "+ NomeHabitat +" realizado com sucesso";
             return RedirectToAction("Select");
         }
 
@@ -51,9 +52,10 @@ namespace Zoologico.Controllers
             if (!ModelState.IsValid)
                 return View("select");
    
-                ObjHabitat.UpdateHabitat(IdHabitat, NomeHabitat, Capacidade, Vegetacao, Clima, Solo);
+            ObjHabitat.UpdateHabitat(IdHabitat, NomeHabitat, Capacidade, Vegetacao, Clima, Solo);
+            TempData["MensagemCadastro"] = "Cadastro de " + NomeHabitat + " atualizado com sucesso";
 
-                return RedirectToAction("Select");
+            return RedirectToAction("Select");
         }
 
         public ActionResult Delete(int Id)
@@ -65,9 +67,9 @@ namespace Zoologico.Controllers
         public ActionResult ConfirmeDelete(int Id)
         {
             ObjHabitat.DeleteHabitat(Id);
+            TempData["MensagemCadastro"] = "Cadastro excluído";
             return RedirectToAction("Select");
         }
-
         public ActionResult Edit(int Id)
         {
             var objHabitat = ObjHabitat.SelectHabitat(Id);
@@ -75,5 +77,17 @@ namespace Zoologico.Controllers
             return View(objHabitat);
         }
        
+        public ActionResult ValidaHabitat(string NomeHabitat)
+        {
+            bool HabitatExists;
+            string habitat = ObjHabitat.ValidaHabitat(NomeHabitat);
+
+            if (habitat.Length == 0)
+                HabitatExists = false;
+            else
+                HabitatExists = true;
+
+            return Json(!HabitatExists, new System.Text.Json.JsonSerializerOptions());
+        }
     }
 }
