@@ -4,10 +4,7 @@
         android:endColor="@color/white"
         android:angle="60"/>
 
-    <corners android:topRightRadius="13dp"
-        android:topLeftRadius="13dp"
-        android:bottomLeftRadius="13dp"
-        android:bottomRightRadius="13dp"/>
+    
 
     <stroke android:color="@color/cinza_escuro"
         android:width="1dp"/>

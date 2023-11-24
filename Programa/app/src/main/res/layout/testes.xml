@@ -10,6 +10,10 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+
+</androidx.drawerlayout.widget.DrawerLayout>
+
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +26,6 @@
             android:elevation="4dp"
             android:background="@color/verde"/>
 
-        <!-- Use layout_weight to make the FrameLayout take the remaining space -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -30,7 +33,6 @@
             android:id="@+id/fragment_container"/>
     </LinearLayout>
 
-    <!-- Set layout_height to match_parent to allow the NavigationView to overlay the entire layout -->
     <com.google.android.material.navigation.NavigationView
         style="@style/FUNDO"
         android:id="@+id/nav_view"
@@ -42,7 +44,9 @@
         app:itemTextColor="@color/verde"
         app:menu="@menu/nav_funcionalidades"/>
 </androidx.drawerlayout.widget.DrawerLayout>
-    <!--?xml version="1.0" encoding="utf-8"?>
+
+
+    ?xml version="1.0" encoding="utf-8"?>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"

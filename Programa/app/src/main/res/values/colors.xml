@@ -28,4 +28,8 @@
 
     <color name="roxo">#8F3486</color>
 
+
+    <color name="dialog_color_1">#FDD739</color>
+    <color name="dialog_color_2">#3B5796</color>
+
 </resources>

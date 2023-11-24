@@ -2,6 +2,7 @@ package com.example.cad_login_fb;
 
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
@@ -13,16 +14,24 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
-public class TelaTesteImg extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+// public class TelaTesteImg extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    public class TelaTesteImg extends AppCompatActivity{
 
-    private DrawerLayout drawerLayout;
+   // private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.testes);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        // mostrar caixa de diálogo de classificação
+
+        RateUsDialog rateUsDialog = new RateUsDialog(TelaTesteImg.this);
+        rateUsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+        rateUsDialog.setCancelable(false);
+        rateUsDialog.show();
+
+       /* Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -89,6 +98,6 @@ public class TelaTesteImg extends AppCompatActivity implements NavigationView.On
 
     private boolean isDarkTheme() {
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        return currentNightMode == Configuration.UI_MODE_NIGHT_YES;
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES; */
     }
 }

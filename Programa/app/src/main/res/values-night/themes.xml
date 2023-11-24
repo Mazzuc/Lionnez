@@ -202,4 +202,12 @@
         <item name="android:background">@drawable/bd_card_redondo_feedback</item>
     </style>
 
+    <style name="MYRATINGBAR" parent="Widget.AppCompat.RatingBar">
+
+        <item name="colorControlNormal">#4D000000</item>
+
+        <item name="colorControlActivated">@color/dialog_color_1</item>
+
+    </style>
+
 </resources>

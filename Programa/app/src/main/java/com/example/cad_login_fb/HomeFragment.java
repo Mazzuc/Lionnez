@@ -146,7 +146,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Crie um Intent para iniciar a MainActivity
-                Intent intent = new Intent(requireContext(), TelaPerfilActivity.class);
+                Intent intent = new Intent(requireContext(), Teste_API_pesquisa.class);
                 startActivity(intent);
             }
         });
