@@ -16,6 +16,7 @@
             android:layout_height="0dp"
             android:layout_weight="1" /> <!-- Espaço flexível para empurrar o TextView para a parte inferior -->
 
+
         <TextView
             android:id="@+id/nomeanimal"
             android:paddingLeft="10dp"
