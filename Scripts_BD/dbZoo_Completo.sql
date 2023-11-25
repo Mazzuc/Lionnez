@@ -310,9 +310,14 @@ begin
     set @NomeTipoHabitat = (select IdTipoHabitat from tbTipoHabitat where NomeTipoHabitat = vNomeTipoHabitat);
     set @QtdAnimal = 0;
 	insert into tbHabitat(NomeHabitat, IdTipoHabitat, Capacidade, QtdAnimal, Vegetacao, Clima, Solo) values (vNomeHabitat, @NomeTipoHabitat, vCapacidade, @QtdAnimal, vVegetacao, vClima, vSolo);
-    else 
-			select (3);
     end if;
+end
+$$ 
+
+delimiter $$
+create procedure spValidaHabitat(vNomeHabitat varchar(100))
+begin
+	select NomeHabitat from tbHabitat where NomeHabitat = vNomeHabitat;
 end
 $$ 
 
@@ -581,6 +586,28 @@ FROM tbAnimal
 LEFT JOIN tbHabitat
 ON tbAnimal.IdHabitat = tbHabitat.IdHabitat;
 end
+$$
+
+delimiter $$
+create procedure spValidaHabitatQts(vNomeHabitat varchar(200))
+begin
+	set @Capacidade = (select Capacidade from tbHabitat where NomeHabitat = vNomeHabitat);
+    set @IdHabitat = (select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
+    set @qtd = (select count(*) from tbAnimal where IdHabitat = @IdHabitat);
+    
+    if(@qtd = @Capacidade) then
+		select("");
+	else
+		select("true");
+	end if;
+end
+$$
+
+delimiter $$
+create procedure spValidaAnimal(vNomeAnimal varchar(50))
+begin
+	select NomeAnimal from tbAnimal where NomeAnimal = vNomeAnimal;
+end 
 $$
 
 delimiter $$

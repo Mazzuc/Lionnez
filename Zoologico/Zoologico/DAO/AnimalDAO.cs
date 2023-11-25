@@ -148,5 +148,31 @@ namespace Zoologico.DAO
             db.Close();
             return list;
         }
+
+        public string ValidaAnimal(string vNomeAnimal)
+        {
+            conexao.Open();
+            cmd.CommandText = "call spValidaAnimal(@NomeAnimal);";
+            cmd.Parameters.Add("@NomeAnimal", MySqlDbType.VarChar).Value = vNomeAnimal;
+            cmd.Connection = conexao;
+            string NomeAnimal = (string)cmd.ExecuteScalar();
+            conexao.Close();
+            if (NomeAnimal == null)
+                NomeAnimal = "";
+            return NomeAnimal;
+        }
+
+        public string ValidaHabitat(string vNomeHabitat)
+        {
+            conexao.Open();
+            cmd.CommandText = "call spValidaHabitatQts(@NomeHabitat);";
+            cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = vNomeHabitat;
+            cmd.Connection = conexao;
+            string qts = (string)cmd.ExecuteScalar();
+            conexao.Close();
+            if (qts == null)
+                qts = "";
+            return qts;
+        }
     }
 }

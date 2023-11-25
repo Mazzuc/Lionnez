@@ -8,6 +8,7 @@ namespace Zoologico.Controllers
     public class AnimalController : Controller
     {
         AnimalDAO ObjAnimal = new AnimalDAO();
+        HabitatDAO ObjHabitat = new HabitatDAO();
 
         public ActionResult Details(int Id)
         {
@@ -67,6 +68,8 @@ namespace Zoologico.Controllers
         public ActionResult ConfirmeDelete(int Id)
         {
             ObjAnimal.DeleteAnimal(Id);
+            TempData["MensagemCadastro"] = "Cadastro excluído";
+
             return RedirectToAction("Select");
         }
 
@@ -87,5 +90,35 @@ namespace Zoologico.Controllers
 
             return RedirectToAction("Select");
         }
+
+        public ActionResult ValidaAnimal(string NomeAnimal)
+        {
+            bool AnimalExists;
+            string animal = ObjAnimal.ValidaAnimal(NomeAnimal);
+
+            if (animal.Length == 0)
+                AnimalExists = false;
+            else
+                AnimalExists = true;
+
+            return Json(!AnimalExists, new System.Text.Json.JsonSerializerOptions());
+        }
+
+        public ActionResult ValidaHabitat(string NomeHabitat)
+        {
+            bool HabitatExists;
+            string habitat = ObjHabitat.ValidaHabitat(NomeHabitat);
+            string qts = ObjAnimal.ValidaHabitat(NomeHabitat);
+
+            if (habitat.Length == 0)
+                HabitatExists = true;
+            else if (qts.Length == 0)
+                HabitatExists = true;
+            else
+                HabitatExists = false;
+
+            return Json(!HabitatExists, new System.Text.Json.JsonSerializerOptions());
+        }
+
     }
 }

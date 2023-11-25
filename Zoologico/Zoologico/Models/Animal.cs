@@ -16,6 +16,8 @@ namespace Zoologico.Models
         [DisplayName("Nome")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "O nome é obrigatório")]
+        [Remote("ValidaAnimal", "Animal", ErrorMessage = "Animal já cadastrado")]
+
         public string NomeAnimal { get; set; }
 
         [DisplayName("Espécie")]
@@ -26,6 +28,7 @@ namespace Zoologico.Models
         [DisplayName("Habitat")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "Informe o habitat")]
+        [Remote("ValidaHabitat", "Animal", ErrorMessage = "Habitat não existe ou está sobrecarregado")]
         public string NomeHabitat { get; set; }
 
         [Required(ErrorMessage = "A data de nascimento é obrigatória")]

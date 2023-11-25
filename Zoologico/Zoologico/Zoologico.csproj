@@ -39,6 +39,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Cadastro\Controllers\" />
+    <Folder Include="Areas\Cadastro\Data\" />
+    <Folder Include="Areas\Cadastro\Models\" />
+    <Folder Include="Areas\Cadastro\Views\" />
     <Folder Include="Areas\Compra\Data\" />
     <Folder Include="Areas\Compra\Models\" />
   </ItemGroup>
