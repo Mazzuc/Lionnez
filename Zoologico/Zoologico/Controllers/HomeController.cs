@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Zoologico.Models;
+using Zoologico.Areas.Gerenciamento.Models;
+
 
 namespace Zoologico.Controllers
 {

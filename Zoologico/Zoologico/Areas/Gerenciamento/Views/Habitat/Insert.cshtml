@@ -1,0 +1,60 @@
+﻿@model Zoologico.Areas.Gerenciamento.Models.Habitat
+
+@Html.Partial("_MenuHabitat")
+
+
+@{
+    ViewData["Title"] = "Insert";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <p><img src="~/Image/habitat.png" width="100%"/></p>
+         </div>
+        <div class="col-6 col-md-6 ">
+        <div class="row">
+                <p class="fs-3 fw-bold">Cadastre o Habitat</p>
+                <p class="lh-sm">Ao cadastrar o habitat, lembre-se de verificar se todos os campos foram preenchidos corretamente</p>
+                <form asp-action="Insert">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group mb-2">
+                        <input asp-for="NomeHabitat" class="form-control" placeholder="Nome"/>
+                            <span asp-validation-for="NomeHabitat" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <select asp-for="TipoHabitat" class="form-select" aria-label="Default select example">
+                            <option>Terrestre</option>
+                            <option>Aquático</option>
+                            <option>Aéreo</option>
+                        </select>
+                        <span asp-validation-for="TipoHabitat" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input asp-for="Capacidade" class="form-control" placeholder="Capacidade"/>
+                        <span asp-validation-for="Capacidade" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input asp-for="Vegetacao" class="form-control" placeholder="Vegetação"/>
+                        <span asp-validation-for="Vegetacao" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input asp-for="Clima" class="form-control" placeholder="Clima"/>
+                        <span asp-validation-for="Clima" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input asp-for="Solo" class="form-control" placeholder="Solo"/>
+                        <span asp-validation-for="Solo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Cadastrar" class="btn btn-success" />
+                    </div>
+                </form>
+          
+        </div>
+    </div>
+</div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

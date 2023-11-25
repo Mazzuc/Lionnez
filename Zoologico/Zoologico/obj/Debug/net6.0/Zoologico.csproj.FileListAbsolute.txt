@@ -1803,3 +1803,4 @@ C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\bin\Debug\net6.0\Sys
 C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
 C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\bin\Debug\net6.0\System.Web.WebPages.dll
 C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\obj\Debug\net6.0\scopedcss\Areas\Gerenciamento\Views\Shared\_Layout.cshtml.rz.scp.css

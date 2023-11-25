@@ -1,0 +1,85 @@
+﻿@model Zoologico.Areas.Gerenciamento.Models.Animal
+
+
+    @Html.Partial("_MenuAnimal")
+
+@{
+    ViewData["Title"] = "Insert";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <p><img src="~/Image/animal.png" width="100%" /></p>
+        </div>
+        <div class="col-6 col-md-6 ">
+            <div class="row">
+                <p class="fs-3 fw-bold">Cadastre o Animal</p>
+                <p class="lh-sm">Ao cadastrar o animal, lembre-se de verificar se todos os campos foram preenchidos corretamente</p>
+                <form asp-action="Insert">
+                    <div class="form-group mb-2">
+                        <input asp-for="NomeAnimal" class="form-control" placeholder="Nome" />
+                        <span asp-validation-for="NomeAnimal" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input asp-for="NomeEspecie" class="form-control" placeholder="Espécie" />
+                        <span asp-validation-for="NomeEspecie" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input asp-for="Peso" class="form-control" placeholder="Peso" />
+                        <span asp-validation-for="Peso" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <select asp-for="NomePorte" class="form-select" aria-label="Default select example">
+                            <option>Pequeno</option>
+                            <option>Médio</option>
+                            <option>Grande</option>
+                        </select>
+                        <span asp-validation-for="NomePorte" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <select asp-for="Sexo" class="form-select" aria-label="Default select example">
+                            <option>F</option>
+                            <option>M</option>
+                        </select>
+                        <span asp-validation-for="Sexo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input asp-for="DataNasc" class="form-control" placeholder="Data de Nascimento" />
+                        <span asp-validation-for="DataNasc" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <select asp-for="NomeDieta" class="form-select" aria-label="Default select example">
+                            <option>Carnívoro</option>
+                            <option>Onívoro</option>
+                            <option>Herbívoro</option>
+                        </select>
+                        <span asp-validation-for="NomeDieta" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input asp-for="NomeHabitat" class="form-control" placeholder="Habitat" />
+                        <span asp-validation-for="NomeHabitat" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <textarea asp-for="DescricaoAnimal" class="form-control" placeholder="Descrição"></textarea>
+                        <span asp-validation-for="DescricaoAnimal" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <textarea asp-for="ObsProntuario" class="form-control" placeholder="Prontuário"></textarea>
+                        <span asp-validation-for="ObsProntuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Cadastrar" class="btn btn-success" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
