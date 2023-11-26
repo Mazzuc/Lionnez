@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="24dp"
-    >
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"    >
 
 
 
@@ -20,6 +20,7 @@
         app:cardUseCompatPadding="true"
         app:cardPreventCornerOverlap="false"
         >
+
 
 
         <LinearLayout
@@ -38,6 +39,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/verde"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -75,7 +84,7 @@
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 android:textColor="@color/cinza_claro"
                 android:text="Sua opinião é muito importante para nós, sinta-se a vontade."/>
 
@@ -193,7 +202,7 @@
                 android:orientation="vertical">
                 <Button
                     android:gravity="center"
-                    android:layout_width="250dp"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/buttonSend"
                     style="@style/BUTTON"
@@ -206,6 +215,23 @@
                     />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnClose"
+                    android:background="@drawable/iconevoltar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:backgroundTint="@null"
+                    />
+
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

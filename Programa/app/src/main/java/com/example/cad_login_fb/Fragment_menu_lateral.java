@@ -79,12 +79,18 @@ public class Fragment_menu_lateral extends Fragment implements NavigationView.On
                 break;
 
             case R.id.nav_home:
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Fragment_Feedback()).commit();
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new feedback_geral()).commit();
                 break;
 
             case R.id.nav_algo1:
                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AlbumFragment()).commit();
                 break;
+
+            case R.id.nav_algo2:
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RateUsDialogFragment()).commit();
+                break;
+
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

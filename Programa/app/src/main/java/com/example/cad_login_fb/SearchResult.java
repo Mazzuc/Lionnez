@@ -1,12 +1,11 @@
 package com.example.cad_login_fb;
-import com.google.gson.annotations.SerializedName;
+
 import com.google.gson.annotations.SerializedName;
 
 public class SearchResult {
 
     @SerializedName("nome")
     private String nome;
-
 
     @SerializedName("descricao")
     private String descricao;
@@ -32,7 +31,7 @@ public class SearchResult {
     @SerializedName("imagem")
     private String imagem;
 
-    // Adicione getters e setters conforme necessário
+    // Adicione getters e setters conforme necessário...
 
     public String getNome() {
         return nome;
@@ -41,7 +40,6 @@ public class SearchResult {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
 
     public String getDescricao() {
         return descricao;
@@ -106,4 +104,10 @@ public class SearchResult {
     public void setImagem(String imagem) {
         this.imagem = imagem;
     }
+
+    // Método adicionado para obter a URL da imagem
+    public String getImagemUrl() {
+        return imagem;
+    }
+
 }

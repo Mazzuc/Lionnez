@@ -12,8 +12,8 @@
     <gradient
 
         android:startColor="@color/cinza_escuro"
-        android:centerColor="@color/cinza_escuro"
-        android:endColor="@color/black"
+        android:centerColor="@color/black"
+        android:endColor="@color/cinza_escuro"
         />
 
 </shape>

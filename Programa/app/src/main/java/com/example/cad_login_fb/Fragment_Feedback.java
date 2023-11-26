@@ -1,64 +1,92 @@
 package com.example.cad_login_fb;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.util.Log;  // Importe necessário para Log
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import com.google.android.material.textfield.TextInputEditText;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_Feedback#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class Fragment_Feedback extends Fragment {
+public class Fragment_Feedback extends Fragment implements BaseFragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Fragment_Feedback() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_Feedback.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Fragment_Feedback newInstance(String param1, String param2) {
-        Fragment_Feedback fragment = new Fragment_Feedback();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private TextInputEditText nameEditText;
+    private TextInputEditText emailEditText;
+    private TextInputEditText feedbackEditText;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment__feedback, container, false);
+
+        nameEditText = view.findViewById(R.id.editTextName);
+        emailEditText = view.findViewById(R.id.editTextEmail);
+        feedbackEditText = view.findViewById(R.id.editTextFeedback);
+        Button sendButton = view.findViewById(R.id.buttonSend);
+        Button closeButton = view.findViewById(R.id.btnClose);
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = nameEditText.getText().toString();
+                String email = emailEditText.getText().toString();
+                String feedbackMessage = feedbackEditText.getText().toString();
+
+                if (name.isEmpty() || email.isEmpty() || feedbackMessage.isEmpty()) {
+                    Toast.makeText(requireContext(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
+                } else {
+                    sendEmail(name, email, feedbackMessage);
+                }
+            }
+        });
+
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Lógica para fechar o fragmento
+                getActivity().getSupportFragmentManager().popBackStack();
+                Log.d("FeedbackFragment", "Botão fechar clicado");
+            }
+        });
+
+        return view;
+    }
+
+    private void sendEmail(String name, String email, String feedbackMessage) {
+        String[] TO = {"seu@email.com"}; // Substitua pelo seu endereço de email
+        String[] CC = {""};
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback do App");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Nome: " + name + "\nEmail: " + email + "\n\n" + feedbackMessage);
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Enviar email..."));
+        } catch (ActivityNotFoundException ex) {
+            ex.printStackTrace();
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment__feedback, container, false);
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.item_done) {
+            message("Done");
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void message(String msg) {
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show();
     }
 }

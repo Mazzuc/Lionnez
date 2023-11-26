@@ -90,7 +90,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
-                            .replace(R.id.fragmentContainer, PesquisaFragment.class, null)
+                            .replace(R.id.fragmentContainer, TesteApiPesquisaFragment.class, null)
                             .commit();
 
                     homeTxt.setVisibility(View.GONE);

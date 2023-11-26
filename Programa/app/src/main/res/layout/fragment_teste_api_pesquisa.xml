@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="15dp"
-    tools:context=".activity_barra_buscar">
+    tools:context=".TesteApiPesquisaFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -112,18 +112,19 @@
 
 
 
-                <Button
-                    style="@style/BUTTTESTE"
-                    app:backgroundTint="@null"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:padding="0dp"
-                    android:textAllCaps="false"
-                    android:text="Mamíferos"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:textSize="9sp" />
+            <Button
+                android:id="@+id/btmamifero"
+                style="@style/BUTTTESTE"
+                app:backgroundTint="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="0dp"
+                android:textAllCaps="false"
+                android:text="Mamíferos"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="9sp" />
 
         </LinearLayout>
 
@@ -142,19 +143,19 @@
 
 
 
-                <Button
-                    android:id="@+id/btnaves"
-                    style="@style/BUTTTESTE"
-                    app:backgroundTint="@null"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:padding="0dp"
-                    android:text="Aves"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textSize="9sp" />
+            <Button
+                android:id="@+id/btnaves"
+                style="@style/BUTTTESTE"
+                app:backgroundTint="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="0dp"
+                android:text="Aves"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="9sp" />
 
         </LinearLayout>
 
@@ -172,7 +173,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnAnfibios"
+                android:id="@+id/btAnfibios"
                 style="@style/BUTTTESTE"
                 app:backgroundTint="@null"
                 android:layout_width="match_parent"
@@ -202,19 +203,19 @@
 
 
 
-                <Button
-                    android:id="@+id/btnReptil"
-                    style="@style/BUTTTESTE"
-                    app:backgroundTint="@null"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:padding="0dp"
-                    android:text="Répteis"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textSize="9sp" />
+            <Button
+                android:id="@+id/btReptil"
+                style="@style/BUTTTESTE"
+                app:backgroundTint="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="0dp"
+                android:text="Répteis"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="9sp" />
 
         </LinearLayout>
 
@@ -231,19 +232,19 @@
             android:layout_height="25dp"
             android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnAquaticos"
-                    style="@style/BUTTTESTE"
-                    app:backgroundTint="@null"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:padding="0dp"
-                    android:text="Aquáticos"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textSize="9sp" />
+            <Button
+                android:id="@+id/btnAquaticos"
+                style="@style/BUTTTESTE"
+                app:backgroundTint="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="0dp"
+                android:text="Aquáticos"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="9sp" />
 
         </LinearLayout>
     </LinearLayout>

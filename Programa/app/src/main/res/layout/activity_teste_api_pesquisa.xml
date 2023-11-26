@@ -1,23 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cinza_claro"
-    tools:context=".Teste_API_pesquisa">
+    android:paddingTop="15dp"
+    tools:context=".activity_barra_buscar">
 
-    <EditText
-        android:id="@+id/editTextSearch"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="@color/verde"
-        android:textColor="@color/roxo"
-        android:hint="Digite a pesquisa"/>
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="0dp"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="360dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="180dp"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp">
+
+            <LinearLayout
+                style="@style/FUNDOEDITTEXT"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    style="@style/CAMPOVOLTAR"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/FUNDO"
+                android:layout_width="20dp"
+                android:layout_height="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="40dp"
+                app:cardElevation="0dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:padding="2dp"
+                android:layout_height="40dp"
+                style="@style/BUTTTESTE"
+                android:orientation="horizontal"
+                android:layout_marginRight="5dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/pesquisaImage"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/icon_search" />
+
+                </LinearLayout>
+
+                <EditText
+                    style="@style/FUNDOEDITTEXTPESQUISA"
+                    android:id="@+id/editTextSearch"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="5dp"
+                    android:ems="10"
+                    android:paddingLeft="10dp"
+                    android:hint="Buscar em Zoocuritiba..."
+                    android:textColorHint="@color/cinza_medio"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idgrupos"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        tools:layout_editor_absoluteX="27dp">
+
+        <LinearLayout
+            style="@style/FUNDOEDITTEXT"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:orientation="horizontal">
+
+
+
+            <Button
+                style="@style/BUTTTESTE"
+                app:backgroundTint="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="0dp"
+                android:textAllCaps="false"
+                android:text="Mamíferos"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/FUNDOEDITTEXT"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:orientation="horizontal">
+
+
+
+            <Button
+                android:id="@+id/btnaves"
+                style="@style/BUTTTESTE"
+                app:backgroundTint="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="0dp"
+                android:text="Aves"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/FUNDOEDITTEXT"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAnfibios"
+                style="@style/BUTTTESTE"
+                app:backgroundTint="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="0dp"
+                android:text="Anfíbios"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/FUNDOEDITTEXT"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:orientation="horizontal">
+
+
+
+            <Button
+                android:id="@+id/btnReptil"
+                style="@style/BUTTTESTE"
+                app:backgroundTint="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="0dp"
+                android:text="Répteis"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/FUNDOEDITTEXT"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAquaticos"
+                style="@style/BUTTTESTE"
+                app:backgroundTint="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="0dp"
+                android:text="Aquáticos"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewResults"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/editTextSearch"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idgrupos"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idgrupos" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
