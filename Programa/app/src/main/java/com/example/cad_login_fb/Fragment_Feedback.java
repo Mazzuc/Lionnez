@@ -4,7 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;  // Importe necessário para Log
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,8 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
 import com.google.android.material.textfield.TextInputEditText;
 
 public class Fragment_Feedback extends Fragment implements BaseFragment {
@@ -51,8 +52,11 @@ public class Fragment_Feedback extends Fragment implements BaseFragment {
             @Override
             public void onClick(View view) {
                 // Lógica para fechar o fragmento
-                getActivity().getSupportFragmentManager().popBackStack();
-                Log.d("FeedbackFragment", "Botão fechar clicado");
+                FragmentActivity activity = getActivity();
+                if (activity != null) {
+                    activity.getSupportFragmentManager().popBackStack();
+                    Log.d("FeedbackFragment", "Botão fechar clicado");
+                }
             }
         });
 
