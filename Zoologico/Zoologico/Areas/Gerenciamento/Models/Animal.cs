@@ -13,7 +13,6 @@ namespace Zoologico.Areas.Gerenciamento.Models
         [DisplayName("Nome")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "O nome é obrigatório")]
-        [Remote("ValidaAnimal", "Animal", ErrorMessage = "Animal já cadastrado")]
 
         public string NomeAnimal { get; set; }
 
@@ -30,6 +29,7 @@ namespace Zoologico.Areas.Gerenciamento.Models
 
         [Required(ErrorMessage = "A data de nascimento é obrigatória")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
+        [Remote("selectDate", "Animal", ErrorMessage = "A data deve ser igual ou inferior a data de hoje.")]
         [DisplayName("Nascimento")]
         public DateTime DataNasc { get; set; }
 

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Zoologico.Areas.Gerenciamento.Models;
+using Zoologico.Areas.Gerenciamento.ViewModels;
 using Zoologico.DAO;
 
 
@@ -33,14 +35,24 @@ namespace Zoologico.Controllers
         }
 
         [HttpPost]
-        public ActionResult Insert(string NomeHabitat, string TipoHabitat, int Capacidade, string Vegetacao, string Clima, string Solo)
+        public ActionResult Insert(CadastroHabitatViewModel vielmodel)
         {
             if (!ModelState.IsValid)
-                return View("Select");
+                return View(vielmodel);
 
-            ObjHabitat.InsertHabitat(NomeHabitat, TipoHabitat, Capacidade, Vegetacao, Clima, Solo);
+            Habitat novoanimal = new Habitat()
+            {
+                NomeHabitat = vielmodel.NomeHabitat,
+                TipoHabitat = vielmodel.TipoHabitat,
+                Capacidade = vielmodel.Capacidade,
+                Vegetacao = vielmodel.Vegetacao,
+                Clima = vielmodel.Clima,
+                Solo = vielmodel.Solo
+            };
+            ObjHabitat.InsertHabitat(novoanimal);
 
-            TempData["MensagemCadastro"] = "Cadastro de "+ NomeHabitat +" realizado com sucesso";
+            TempData["MensagemCadastro"] = "Cadastro de " + vielmodel.NomeHabitat + " realizado com sucesso";
+
             return RedirectToAction("Select");
         }
 

@@ -10,18 +10,33 @@ create table tbCadastro(
 IdCadastro int primary key auto_increment, 
 CPF char(11) not null,
 Nome varchar(150) not null,
-Email varchar(200) not null
-); 
-
--- Login
-create table tbLogin(
-IdLogin int primary key auto_increment, 
-IdCadastro int not null,
-foreign key (IdCadastro) references tbCadastro(IdCadastro),
+Email varchar(200) not null,
 Usuario varchar(100) not null,
 Senha char(8) not null,
 Acesso int not null
 ); 
+
+delimiter $$
+create procedure spInsertUsuario(vNome varchar(200), vEmail varchar(200), vCPF char(11), vUsuario varchar(20), vSenha char(8))
+begin
+	insert into tbCadastro(Nome, Email, CPF, Usuario, Senha, Acesso)
+		values(vNome, vEmail, vCPF, vUsuario, vSenha, 0);
+end
+$$
+
+delimiter $$
+create procedure spSelectLogin(vUsuario varchar(20))
+begin
+	select Login from tbCadastro where Usuario = vUsuario;
+end
+$$
+
+delimiter $$
+create procedure spSelectUsuario(vUsuario varchar(20))
+begin
+	select * from tbCadastro where Usuario = vUsuario;
+end 
+$$
 
 -- Funcionário
 create table tbCadastroFuncionario(

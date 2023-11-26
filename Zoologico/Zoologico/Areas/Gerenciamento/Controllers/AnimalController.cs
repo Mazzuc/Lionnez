@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Zoologico.Areas.Gerenciamento.Models;
 using Zoologico.DAO;
+using Zoologico.Areas.Gerenciamento.ViewModels;
+using ActionResult = Microsoft.AspNetCore.Mvc.ActionResult;
 
 namespace Zoologico.Areas.Gerenciamento.Controllers
 {
-    public class AnimalController : Controller
+    public class AnimalController : Microsoft.AspNetCore.Mvc.Controller
     {
         AnimalDAO ObjAnimal = new AnimalDAO();
         HabitatDAO ObjHabitat = new HabitatDAO();
@@ -32,7 +34,7 @@ namespace Zoologico.Areas.Gerenciamento.Controllers
         }
 
         [HttpPost]
-        public ActionResult Insert(Animal vielmodel)
+        public ActionResult Insert(CadastroAnimalViewModel vielmodel)
         {
             if (!ModelState.IsValid)
                 return View(vielmodel);
@@ -58,10 +60,9 @@ namespace Zoologico.Areas.Gerenciamento.Controllers
         }
 
 
-        public ActionResult Delete(int Id)
+        public ActionResult Delete()
         {
-            var objAnimal = ObjAnimal.SelectAnimal(Id);
-            return View(objAnimal);
+            return View();
         }
         [HttpPost, ActionName("Delete")]
         public ActionResult ConfirmeDelete(int Id)
@@ -90,7 +91,7 @@ namespace Zoologico.Areas.Gerenciamento.Controllers
             return RedirectToAction("Select");
         }
 
-        public ActionResult ValidaAnimal(string NomeAnimal)
+        public Microsoft.AspNetCore.Mvc.ActionResult ValidaAnimal(string NomeAnimal)
         {
             bool AnimalExists;
             string animal = ObjAnimal.ValidaAnimal(NomeAnimal);
@@ -117,6 +118,12 @@ namespace Zoologico.Areas.Gerenciamento.Controllers
                 HabitatExists = false;
 
             return Json(!HabitatExists, new System.Text.Json.JsonSerializerOptions());
+        }
+
+        public ActionResult SelectDate(DateTime DataNasc)
+        {
+            DateTime dthj = DateTime.Today;
+            return Json(DataNasc <= dthj, new System.Text.Json.JsonSerializerOptions());
         }
     }
 }

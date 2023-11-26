@@ -13,7 +13,6 @@ namespace Zoologico.Areas.Gerenciamento.Models
         [DisplayName("Nome")]
         [Required(ErrorMessage = "O nome é obrigatório")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
-        [Remote("ValidaHabitat", "Habitat", ErrorMessage = "Habitat já cadastrado")]
         public string NomeHabitat { get; set; }
 
         [DisplayName("Tipo")]

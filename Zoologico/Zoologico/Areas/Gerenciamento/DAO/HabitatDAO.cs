@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
 using Zoologico.Areas.Gerenciamento.Models;
 using ConfigurationManager = System.Configuration.ConfigurationManager;
 
@@ -11,15 +12,26 @@ namespace Zoologico.DAO
         MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexao"].ConnectionString);
         MySqlCommand cmd = new MySqlCommand();
 
-        public void InsertHabitat(string NomeHabitat, string TipoHabitat, int Capacidade, string Vegetacao, string Clima, string Solo)
+        public void InsertHabitat(Habitat habitat)
         {
-            db.Open();
-            string strQuery = "call spInsertHabitat('"+ NomeHabitat + "', '"+ TipoHabitat + "', "+ Capacidade + ", '"+ Vegetacao + "', '"+ Clima + "', '"+ Solo + "');";
+            {
+                conexao.Open();
+                cmd.CommandText = ("call spInsertHabitat(@NomeHabitat, @TipoHabitat, @Capacidade, @Vegetacao, @Clima, @Solo);");
+                cmd.Parameters.Add("@NomeHabitat", MySqlDbType.VarChar).Value = habitat.NomeHabitat;
+                cmd.Parameters.Add("@TipoHabitat", MySqlDbType.VarChar).Value = habitat.TipoHabitat;
+                cmd.Parameters.Add("@Capacidade", MySqlDbType.Int64).Value = habitat.Capacidade;
+                cmd.Parameters.Add("@Vegetacao", MySqlDbType.VarChar).Value = habitat.Vegetacao;
+                cmd.Parameters.Add("@Clima", MySqlDbType.VarChar).Value = habitat.Clima;
+                cmd.Parameters.Add("@Solo", MySqlDbType.VarChar).Value = habitat.Solo;
 
-            db.ExecuteNowdSql(strQuery);
-            db.Close();
+
+                cmd.Connection = conexao;
+                cmd.ExecuteNonQuery();
+
+
+                conexao.Close();
+            }
         }
-
 
         public void UpdateHabitat(int IdHabitat, string NomeHabitat, int Capacidade, string Vegetacao, string Clima, string Solo)
         {
