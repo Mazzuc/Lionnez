@@ -1,32 +1,77 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using System.Security.Claims;
 using Zoologico.Models;
+using Zoologico.ViewModels;
+using Microsoft.Owin.Host.SystemWeb;
 
 namespace Zoologico.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public ActionResult Insert()
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public ActionResult Insert(CadastroUsuarioViewModel vielmodel)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (!ModelState.IsValid)
+                return View(vielmodel);
+            Cadastro novousuario = new Cadastro
+            {
+                Nome = vielmodel.Nome,
+                Email = vielmodel.Email,
+                CPF = vielmodel.CPF,
+                Usuario = vielmodel.Usuario,
+                Senha = vielmodel.Senha
+            };
+            novousuario.InsertCadastro(novousuario);
+            return View();
         }
+
+        public ActionResult Login(string ReturnUrl)
+        {
+            var vielmodel = new LoginViewModel
+            {
+                UrlRetorno = ReturnUrl
+            };
+            return View(vielmodel);
+        }
+        //[HttpPost]
+        //public ActionResult Login(LoginViewModel viewmodel)
+        //{
+        //    if(!ModelState.IsValid)
+        //    {
+        //        return View(viewmodel);
+        //    }
+        //    Cadastro cadastro = new Cadastro();
+        //    cadastro = cadastro.SelectUsuario(viewmodel.Usuario);
+
+        //    if(cadastro == null | cadastro.Usuario != viewmodel.Usuario)
+        //    {
+        //        ModelState.AddModelError("Usuario", "Login incorreto");
+        //        return View(viewmodel);
+        //    }
+        //    if(cadastro.Senha != viewmodel.Senha)
+        //    {
+        //        ModelState.AddModelError("Senha", "Senha incorreta");
+        //        return View(viewmodel);
+        //    }
+
+        //    var identity = new ClaimsIdentity(new[]
+        //    {
+        //        new Claim(ClaimTypes.Name,cadastro.Usuario),
+        //        new Claim("Usuario", cadastro.Usuario)
+        //    }, "AppAplicationCookie");
+
+        //    Request.GetOwinContext().Authentication.SingIn(identity);
+        //    return View();
+        //}
     }
 }

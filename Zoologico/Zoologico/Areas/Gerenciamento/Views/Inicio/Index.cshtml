@@ -1,0 +1,19 @@
+﻿<nav class="navbar navbar-light">
+    <div class="container-fluid">
+        <button class="btn btn-outline-success" aria-expanded="false">
+            Menu
+        </button>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Enviar</button>
+        </form>
+    </div>
+</nav>
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bem - Vindo ao Sistema</h1>
+    @TempData["MensagemCadastro"]
+</div>

@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
-using Zoologico.Models;
 using ConfigurationManager = System.Configuration.ConfigurationManager;
 
 namespace Zoologico

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Zoologico.Areas.Gerenciamento.Models.Animal>
+
+@Html.Partial("_MenuAnimal")
+
+
+@{
+    ViewData["Title"] = "Select";
+}
+
+
+<div class="row row-cols-1 row-cols-md-3 g-3">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-success">@Html.DisplayFor(modelItem => item.NomeAnimal)</h2>
+                    <p class="card-text"><b>Identificação: </b>@Html.DisplayFor(modelItem => item.IdAnimal)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.NomeHabitat):</b> @Html.DisplayFor(modelItem => item.NomeHabitat)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.Peso): </b>@Html.DisplayFor(modelItem => item.Peso)</p>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.DataNasc): </b>@Html.DisplayFor(modelItem => item.DataNasc)</p>
+                    <a href="#" class="card-link"> @Html.ActionLink("Deletar", "Delete", new { id=item.IdAnimal},new { @class = "btn btn-outline-danger" }) </a>
+                    <a href="#" class="card-link"> @Html.ActionLink("Detalhes", "Edit", new { id=item.IdAnimal}, new { @class = "btn btn-success" }) </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

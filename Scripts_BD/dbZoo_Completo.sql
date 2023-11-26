@@ -10,18 +10,33 @@ create table tbCadastro(
 IdCadastro int primary key auto_increment, 
 CPF char(11) not null,
 Nome varchar(150) not null,
-Email varchar(200) not null
-); 
-
--- Login
-create table tbLogin(
-IdLogin int primary key auto_increment, 
-IdCadastro int not null,
-foreign key (IdCadastro) references tbCadastro(IdCadastro),
+Email varchar(200) not null,
 Usuario varchar(100) not null,
 Senha char(8) not null,
 Acesso int not null
 ); 
+
+delimiter $$
+create procedure spInsertUsuario(vNome varchar(200), vEmail varchar(200), vCPF char(11), vUsuario varchar(20), vSenha char(8))
+begin
+	insert into tbCadastro(Nome, Email, CPF, Usuario, Senha, Acesso)
+		values(vNome, vEmail, vCPF, vUsuario, vSenha, 0);
+end
+$$
+
+delimiter $$
+create procedure spSelectLogin(vUsuario varchar(20))
+begin
+	select Login from tbCadastro where Usuario = vUsuario;
+end
+$$
+
+delimiter $$
+create procedure spSelectUsuario(vUsuario varchar(20))
+begin
+	select * from tbCadastro where Usuario = vUsuario;
+end 
+$$
 
 -- Funcionário
 create table tbCadastroFuncionario(
@@ -310,9 +325,14 @@ begin
     set @NomeTipoHabitat = (select IdTipoHabitat from tbTipoHabitat where NomeTipoHabitat = vNomeTipoHabitat);
     set @QtdAnimal = 0;
 	insert into tbHabitat(NomeHabitat, IdTipoHabitat, Capacidade, QtdAnimal, Vegetacao, Clima, Solo) values (vNomeHabitat, @NomeTipoHabitat, vCapacidade, @QtdAnimal, vVegetacao, vClima, vSolo);
-    else 
-			select (3);
     end if;
+end
+$$ 
+
+delimiter $$
+create procedure spValidaHabitat(vNomeHabitat varchar(100))
+begin
+	select NomeHabitat from tbHabitat where NomeHabitat = vNomeHabitat;
 end
 $$ 
 
@@ -581,6 +601,28 @@ FROM tbAnimal
 LEFT JOIN tbHabitat
 ON tbAnimal.IdHabitat = tbHabitat.IdHabitat;
 end
+$$
+
+delimiter $$
+create procedure spValidaHabitatQts(vNomeHabitat varchar(200))
+begin
+	set @Capacidade = (select Capacidade from tbHabitat where NomeHabitat = vNomeHabitat);
+    set @IdHabitat = (select IdHabitat from tbHabitat where NomeHabitat = vNomeHabitat);
+    set @qtd = (select count(*) from tbAnimal where IdHabitat = @IdHabitat);
+    
+    if(@qtd = @Capacidade) then
+		select("");
+	else
+		select("true");
+	end if;
+end
+$$
+
+delimiter $$
+create procedure spValidaAnimal(vNomeAnimal varchar(50))
+begin
+	select NomeAnimal from tbAnimal where NomeAnimal = vNomeAnimal;
+end 
 $$
 
 delimiter $$

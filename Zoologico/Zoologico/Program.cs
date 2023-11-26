@@ -1,7 +1,20 @@
+using Microsoft.AspNetCore.Mvc.Razor;
 using MySql.Data.MySqlClient;
 using Zoologico;
 
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.Configure<RazorViewEngineOptions>(options =>
+{
+    options.AreaViewLocationFormats.Clear();
+    options.AreaViewLocationFormats.Add("/MyAreaGerenciamento/{2}/Views/{1}/{0}.cshtml");
+    options.AreaViewLocationFormats.Add("/MyAreaGerenciamento/{2}/Views/Shared/{0}.cshtml");
+    options.AreaViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
+
+
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -22,6 +35,11 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapAreaControllerRoute(
+    name: "MyAreaGerenciamento",
+    areaName: "Gerenciamento",
+    pattern: "Gerenciamento/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
