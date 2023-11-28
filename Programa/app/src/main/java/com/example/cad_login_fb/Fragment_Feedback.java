@@ -4,16 +4,13 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
+
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -31,7 +28,7 @@ public class Fragment_Feedback extends Fragment implements BaseFragment {
         emailEditText = view.findViewById(R.id.editTextEmail);
         feedbackEditText = view.findViewById(R.id.editTextFeedback);
         Button sendButton = view.findViewById(R.id.buttonSend);
-        Button closeButton = view.findViewById(R.id.btnClose);
+        Button btnClose = view.findViewById(R.id.btnClose);
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,22 +38,19 @@ public class Fragment_Feedback extends Fragment implements BaseFragment {
                 String feedbackMessage = feedbackEditText.getText().toString();
 
                 if (name.isEmpty() || email.isEmpty() || feedbackMessage.isEmpty()) {
-                    Toast.makeText(requireContext(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
+                    // Mostrar Toast personalizado com mensagens específicas
+                    showCustomToast("Por favor, preencha todos os campos");
                 } else {
                     sendEmail(name, email, feedbackMessage);
                 }
             }
         });
 
-        closeButton.setOnClickListener(new View.OnClickListener() {
+        btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Lógica para fechar o fragmento
-                FragmentActivity activity = getActivity();
-                if (activity != null) {
-                    activity.getSupportFragmentManager().popBackStack();
-                    Log.d("FeedbackFragment", "Botão fechar clicado");
-                }
+                // Fechar o Fragment_Feedback
+                removeFragment();
             }
         });
 
@@ -64,7 +58,7 @@ public class Fragment_Feedback extends Fragment implements BaseFragment {
     }
 
     private void sendEmail(String name, String email, String feedbackMessage) {
-        String[] TO = {"seu@email.com"}; // Substitua pelo seu endereço de email
+        String[] TO = {"lionnez.empresa@email.com"};
         String[] CC = {""};
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
         emailIntent.setData(Uri.parse("mailto:"));
@@ -74,23 +68,42 @@ public class Fragment_Feedback extends Fragment implements BaseFragment {
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Nome: " + name + "\nEmail: " + email + "\n\n" + feedbackMessage);
 
         try {
-            startActivity(Intent.createChooser(emailIntent, "Enviar email..."));
+            startActivity(Intent.createChooser(emailIntent, "Enviar e-mail..."));
+            // Mostrar Toast de sucesso
+            showSuccessToast();
         } catch (ActivityNotFoundException ex) {
             ex.printStackTrace();
+            // Adicione a lógica de tratamento de erro aqui, se desejar
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.item_done) {
-            message("Done");
+    private void removeFragment() {
+        if (getFragmentManager() != null) {
+            getFragmentManager().beginTransaction().remove(this).commit();
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
-    public void message(String msg) {
-        Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show();
+    private void showCustomToast(String message) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.activity_custon_toat_alert, null);
+
+        // Configurar TextView do Toast
+        // Este é apenas um exemplo, ajuste conforme necessário
+        Toast toast = new Toast(requireContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
+    }
+
+    private void showSuccessToast() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.activity_custon_toast_correct, null);
+
+        // Configurar TextView do Toast
+        // Este é apenas um exemplo, ajuste conforme necessário
+        Toast toast = new Toast(requireContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
     }
 }

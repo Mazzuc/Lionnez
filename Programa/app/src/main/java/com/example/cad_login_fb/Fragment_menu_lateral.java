@@ -90,6 +90,10 @@ public class Fragment_menu_lateral extends Fragment implements NavigationView.On
                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RateUsDialogFragment()).commit();
                 break;
 
+            case R.id.nav_algo3:
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MessageFragment()).commit();
+                break;
+
 
         }
 
