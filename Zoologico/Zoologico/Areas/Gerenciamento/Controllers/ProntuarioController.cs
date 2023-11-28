@@ -49,7 +49,7 @@ namespace Zoologico.Controllers
             ObjConsulta.InsertConsulta(novaconsulta, Id);
             TempData["MensagemCadastro"] = "Consulta cadastrada com sucesso";
 
-            return RedirectToAction("Details", "Prontuario");
+            return RedirectToAction("Select", "Prontuario");
         }
     }
 }
