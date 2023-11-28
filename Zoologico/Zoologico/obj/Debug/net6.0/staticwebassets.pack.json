@@ -5,16 +5,48 @@
       "PackagePath": "staticwebassets\\Zoologico.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\admin.png",
+      "PackagePath": "staticwebassets\\Image\\admin.png"
+    },
+    {
       "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\animal.png",
       "PackagePath": "staticwebassets\\Image\\animal.png"
+    },
+    {
+      "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\animalMenu.png",
+      "PackagePath": "staticwebassets\\Image\\animalMenu.png"
     },
     {
       "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\excluir.png",
       "PackagePath": "staticwebassets\\Image\\excluir.png"
     },
     {
+      "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\exit.png",
+      "PackagePath": "staticwebassets\\Image\\exit.png"
+    },
+    {
       "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\habitat.png",
       "PackagePath": "staticwebassets\\Image\\habitat.png"
+    },
+    {
+      "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\habitatMenu.png",
+      "PackagePath": "staticwebassets\\Image\\habitatMenu.png"
+    },
+    {
+      "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\home.png",
+      "PackagePath": "staticwebassets\\Image\\home.png"
+    },
+    {
+      "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\icon.png",
+      "PackagePath": "staticwebassets\\Image\\icon.png"
+    },
+    {
+      "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\logo.png",
+      "PackagePath": "staticwebassets\\Image\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\menu.png",
+      "PackagePath": "staticwebassets\\Image\\menu.png"
     },
     {
       "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\css\\site.css",

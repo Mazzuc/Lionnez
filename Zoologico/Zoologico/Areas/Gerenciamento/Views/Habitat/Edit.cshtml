@@ -5,11 +5,13 @@
 @{
     ViewData["Title"] = "Edit";
 }
-<div class="card mx-auto p-2" style=" width: 18rem;">
-    <div class="card-body">
+
+<div class="card mx-auto p-2 shadow-lg mb-5" style=" width: 18rem;">
+    <div class="card-body ">
 <div class="row ">
     <div class="col-md-12">
         <form asp-action="Edit">
+                    <h5>Habitat</h5>
             <div class="form-floating mb-2">
                 <input readonly class="form-control" asp-for="IdHabitat"/>
                 <label asp-for="IdHabitat" class="control-label"></label>
