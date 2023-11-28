@@ -51,7 +51,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
 
         holder.textViewTitle.setText(currentItem.getNome());
         holder.textViewDescription.setText(currentItem.getPais());
-        holder.textViewHabitat.setText(currentItem.getHabitat());
+        holder.textViewHabitat.setText(currentItem.getHabitat()); // Alteração aqui
 
         String imageUrl = currentItem.getImagemUrl(); // Correção aqui
 

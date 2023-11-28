@@ -20,6 +20,11 @@
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
 
+    //Layout CardApi - QrCode
+    <style name="TransparentDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
 </resources>
 
 

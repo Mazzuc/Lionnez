@@ -22,6 +22,9 @@ public class SearchResult {
     @SerializedName("peso")
     private String peso;
 
+    @SerializedName("habitatResum")
+    private String habitatResum;
+
     @SerializedName("altura")
     private String altura;
 
@@ -108,6 +111,14 @@ public class SearchResult {
     // Método adicionado para obter a URL da imagem
     public String getImagemUrl() {
         return imagem;
+    }
+
+    public String getHabitatResum() {
+        return habitatResum;
+    }
+
+    public void setHabitatResum(String habitatResum) {
+        this.habitatResum = habitatResum;
     }
 
 }
