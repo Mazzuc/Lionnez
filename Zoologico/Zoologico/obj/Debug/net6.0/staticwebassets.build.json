@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OsXUKY7Fl1mOpWol+ExL8p9xW+HOQgwphm72gvzcKzg=",
+  "Hash": "zLwDPyOcKmfkG6wkm3QLNQSUGxNPwytAtl3tbMOwI0U=",
   "Source": "Zoologico",
   "BasePath": "_content/Zoologico",
   "Mode": "Default",
@@ -270,6 +270,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Image\\menu.png"
+    },
+    {
+      "Identity": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\prontuario.png",
+      "SourceId": "Zoologico",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\",
+      "BasePath": "_content/Zoologico",
+      "RelativePath": "Image/prontuario.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\prontuario.png"
     },
     {
       "Identity": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\js\\site.js",

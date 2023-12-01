@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\Image\\menu.png"
     },
     {
+      "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\prontuario.png",
+      "PackagePath": "staticwebassets\\Image\\prontuario.png"
+    },
+    {
       "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
