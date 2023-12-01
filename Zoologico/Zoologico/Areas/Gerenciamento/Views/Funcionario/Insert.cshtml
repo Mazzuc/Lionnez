@@ -1,5 +1,92 @@
 ﻿@model Zoologico.Areas.Gerenciamento.Models.Funcionario
 
+@Html.Partial("_MenuFuncionario")
+
+
+@{
+    ViewData["Title"] = "Funcionário";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <p><img src="~/Image/CadasFuncionario.png" width="100%" /></p>
+        </div>
+        <div class="col-6 col-md-6 ">
+            <div class="row">
+                <p class="fs-3 fw-bold">Cadastre um Funcionário</p>
+                <p class="lh-sm">Ao cadastrar o funcionário, lembre-se de verificar se todos os campos foram preenchidos corretamente</p>
+                <form asp-action="Insert">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div id="carouselExampleDark" class="carousel carousel-dark slide">
+                        <div class="carousel-indicators ">
+                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                    <div class="form-group mb-2">
+                        <input asp-for="Nome" class="form-control" placeholder="Nome" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input asp-for="Email" class="form-control" placeholder="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input asp-for="CPF" class="form-control" placeholder="CPF" />
+                        <span asp-validation-for="CPF" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input asp-for="RG" class="form-control" placeholder="RG" />
+                        <span asp-validation-for="RG" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input asp-for="Cargo" class="form-control" placeholder="Cargo" />
+                        <span asp-validation-for="Cargo" class="text-danger"></span>
+                    </div>
+                                <br />
+                            </div>
+                            <div class="carousel-item">
+                    <div class="form-group mb-3">
+                        <input asp-for="DataNasc" class="form-control" placeholder="Solo" />
+                        <span asp-validation-for="DataNasc" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input asp-for="DataAdm" class="form-control" placeholder="Solo" />
+                        <span asp-validation-for="DataAdm" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input asp-for="Usuario" class="form-control" placeholder="Usuário" />
+                        <span asp-validation-for="Usuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input asp-for="Senha" class="form-control" placeholder="Senha" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+                    </div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Cadastrar" class="btn btn-success" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+@*@model Zoologico.Areas.Gerenciamento.Models.Funcionario
+
 @{
     ViewData["Title"] = "Insert";
 }
@@ -70,4 +157,4 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+}*@

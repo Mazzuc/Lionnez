@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zLwDPyOcKmfkG6wkm3QLNQSUGxNPwytAtl3tbMOwI0U=",
+  "Hash": "8WBJ9+6Dql7Uip8YZybciNNUISAS/uLJDo9aHSLBUrQ=",
   "Source": "Zoologico",
   "BasePath": "_content/Zoologico",
   "Mode": "Default",
@@ -134,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Image\\animalMenu.png"
+    },
+    {
+      "Identity": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\CadasFuncionario.png",
+      "SourceId": "Zoologico",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\",
+      "BasePath": "_content/Zoologico",
+      "RelativePath": "Image/CadasFuncionario.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\CadasFuncionario.png"
     },
     {
       "Identity": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\excluir.png",
