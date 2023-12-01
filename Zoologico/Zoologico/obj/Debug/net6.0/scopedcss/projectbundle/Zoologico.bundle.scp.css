@@ -1,56 +1,56 @@
-/* _content/Zoologico/Areas/Gerenciamento/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* _content/Zoologico/Areas/Gerenciamento/Views/Shared/_Layoutt.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-*[b-e9g8qt93wz] {
+*[b-zteuvtxhrq] {
     padding: 0;
     margin: 0;
 }
 
-.wrapper[b-e9g8qt93wz] {
+.wrapper[b-zteuvtxhrq] {
     display: flex;
     width: 100%;
     align-items: stretch;
 }
 
-a.navbar-brand[b-e9g8qt93wz] {
+a.navbar-brand[b-zteuvtxhrq] {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
 
-a[b-e9g8qt93wz] {
+a[b-zteuvtxhrq] {
   color: #0077cc;
 }
 
-.btn-primary[b-e9g8qt93wz] {
+.btn-primary[b-zteuvtxhrq] {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active[b-e9g8qt93wz], .nav-pills .show > .nav-link[b-e9g8qt93wz] {
+.nav-pills .nav-link.active[b-zteuvtxhrq], .nav-pills .show > .nav-link[b-zteuvtxhrq] {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
 
-.border-top[b-e9g8qt93wz] {
+.border-top[b-zteuvtxhrq] {
   border-top: 1px solid #e5e5e5;
 }
-.border-bottom[b-e9g8qt93wz] {
+.border-bottom[b-zteuvtxhrq] {
   border-bottom: 1px solid #e5e5e5;
 }
 
-.box-shadow[b-e9g8qt93wz] {
+.box-shadow[b-zteuvtxhrq] {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-button.accept-policy[b-e9g8qt93wz] {
+button.accept-policy[b-zteuvtxhrq] {
   font-size: 1rem;
   line-height: inherit;
 }
 
-.footer[b-e9g8qt93wz] {
+.footer[b-zteuvtxhrq] {
   position: absolute;
   bottom: 0;
   width: 100%;

@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Image/icon.png" />
+    <title>@ViewData["Title"] - Zoologico</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Zoologico.styles.css" asp-append-version="true" />
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-2 col-xl-2">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-0 px-sm-2 px-3 pt-2 text-black h-100 col-xl-2 bg-light shadow-lg rounded position-fixed">
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <div class="d-flex flex-row mb-2">
+                                <div class="p-2"><img src="~/Image/menu.png" width="40" /></div>
+                                <div class="p-2">
+                                    <a class="nav-link text-dark p-2 bd-highlight navbar-brand" asp-area="Gerenciamento" asp-controller="Inicio" asp-action="Index">
+                                        Menu
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="d-flex flex-row mb-2">
+                                <div class="p-2"><img src="~/Image/habitatMenu.png" width="40" /></div>
+                                <div class="p-2">
+                                    <a class="nav-link text-dark p-2 bd-highlight navbar-brand" asp-controller="Habitat" asp-action="Select">
+                                        Habitat
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="d-flex flex-row mb-2">
+                                <div class="p-2"><img src="~/Image/animalMenu.png" width="40" /></div>
+                                <div class="p-2">
+                                    <a class="nav-link text-dark p-2 bd-highlight navbar-brand" asp-controller="Animal" asp-action="Select">
+                                        Animal
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="d-flex flex-row mb-2">
+                                <div class="p-2"><img src="~/Image/animalMenu.png" width="40" /></div>
+                                <div class="p-2">
+                                    <a class="nav-link text-dark p-2 bd-highlight navbar-brand" asp-controller="Prontuario" asp-action="Select">
+                                        Área Médica
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="d-flex flex-row mb-2">
+                                <div class="p-2"><img src="~/Image/admin.png" width="40" /></div>
+                                <div class="p-2">
+                                    <a class="nav-link text-dark p-2 bd-highlight navbar-brand" asp-controller="Funcionario" asp-action="Insert">
+                                        Admin
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <hr>
+
+
+                    <div class="d-flex flex-row mb-2">
+                        <div class="p-2"><img src="~/Image/exit.png" width="40" /></div>
+                        <div class="p-2">
+                            <a class="nav-link text-dark p-2 bd-highlight navbar-brand" asp-controller="Habitat" asp-action="Select">
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col py-3 ">
+                <main role="main" class="pb-3">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 bd-highlight"></div>
+                        <div class="p-2 flex-grow-1">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </main>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

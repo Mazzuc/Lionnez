@@ -1,10 +1,12 @@
-﻿@model Zoologico.ViewModels.CadastroUsuarioViewModel
+﻿@model Zoologico.Areas.Gerenciamento.Models.Funcionario
 
 @{
     ViewData["Title"] = "Insert";
 }
 
-<h4>Cadastrar um usuário</h4>
+<h1>Insert</h1>
+
+<h4>Funcionario</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -26,6 +28,26 @@
                 <span asp-validation-for="CPF" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="RG" class="control-label"></label>
+                <input asp-for="RG" class="form-control" />
+                <span asp-validation-for="RG" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cargo" class="control-label"></label>
+                <input asp-for="Cargo" class="form-control" />
+                <span asp-validation-for="Cargo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataNasc" class="control-label"></label>
+                <input asp-for="DataNasc" class="form-control" />
+                <span asp-validation-for="DataNasc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataAdm" class="control-label"></label>
+                <input asp-for="DataAdm" class="form-control" />
+                <span asp-validation-for="DataAdm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Usuario" class="control-label"></label>
                 <input asp-for="Usuario" class="form-control" />
                 <span asp-validation-for="Usuario" class="text-danger"></span>
@@ -36,12 +58,7 @@
                 <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ConfirmaSenha" class="control-label"></label>
-                <input asp-for="ConfirmaSenha" class="form-control" />
-                <span asp-validation-for="ConfirmaSenha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
