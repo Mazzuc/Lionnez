@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="Img_logo">
+    <img class="img-logos" src="~/Imagens/Logo.png" />
+</div>
+
+<div class="Img_fundo">
+    <img class="img-plantas" src="~/Imagens/Plantas.jpg" />
+</div>
+
+<div class="tudo">
+    <div class="cnc-zoo">
+        <b>Venha Conhecer</b>
+    </div>
+
+    <div class="nm-zoo">
+
+        <b>ZOOLÓGICO ZOO</b>
+    </div>
+
+    <div class="txt-sbr">
+        <p>
+            Explore a magia da natureza no Zoológico Zoo, onde a missão é proporcionar uma experiência única, conectando visitantes à diversidade da fauna e flora. Ambientes replicam habitats naturais, garantindo um lar seguro e enriquecedor para nossos habitantes. Venha vivenciar a interação e aprendizado em um refúgio encantador!
+        </p>
+    </div>
+</div>
+
+
+<div class="btn-cmpr">
+
+    @*<a href="~/Views/Home/Ingresso.cshtml" class="btn btn-outline-light" title="Compra Ingresso">Comprar Ingresso</a>*@
+    <button type="button" class="btn btn-outline-light">Comprar Ingresso</button>
+</div>
+
+
+<div class="onca">
+    <img class="img-onca" src="~/Imagens/Onça.png" />
+</div>
+
+
+@*parte do estilo*@
+
+
+<style type="text/css">
+
+    .img-plantas {
+        width: 1366px;
+        height: 680px;
+        margin-top: -100px;
+        margin-left: -128px;
+    }
+
+    .img-logos {
+        width: 80px;
+        height: 50px;
+        position: absolute;
+        margin-top: -70px;
+        margin-left: -115px;
+    }
+
+    .cnc-zoo {
+        font-size: 28px;
+        color: white;
+        margin-top: -555px;
+    }
+
+    .nm-zoo {
+        font-size: 125px;
+        color: white;
+        letter-spacing: -7px;
+        margin-top: -40px;
+    }
+
+    .txt-sbr {
+        font-size: 14px;
+        width: 910px;
+        color: white;
+        text-align: justify;
+        margin-top: -10px;
+    }
+
+
+    .tudo {
+        margin-top: 25px;
+    }
+
+    .img-onca {
+        width: 320px;
+        margin-top: 12px;
+        height: 220px;
+        margin-left: 912px;
+    }
+</style>

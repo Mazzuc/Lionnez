@@ -3,17 +3,24 @@
     ViewBag.Title = "ResumoComprar";
 }
 
+<div class="Img_logo">
+    <img class="img-logos" src="~/Imagens/Logo.png" />
+</div>
+
+<div class="Img_fundo">
+    <img class="img-plantas" src="~/Imagens/Plantas.jpg" />
+</div>
 
 
 <div class="row">
     <div class="card green">
         <form name="frmpagamento" action="Pagamento" method="post">
 
-            <h2>Resumo da sua compra</h2>
+            <div class="nm-idicacao"><label>Resumo da sua compra</label></div>
             <br>
 
             <div>
-                <b class="cmc-bold-green" >Data do Ingresso: </b> @*<textarea id="Teste" name="Teste" disabled>*@@ViewBag.Data@*</textarea>*@
+                <b class="cmc-bold-green">Data do Ingresso: </b> @*<textarea id="Teste" name="Teste" disabled>*@@ViewBag.Data@*</textarea>*@
             </div>
             <br />
             <div>
@@ -29,14 +36,18 @@
             </div>
             <br />
             <div>
+                <input type="hidden" name="data" value="@ViewBag.Data" />
+                <input type="hidden" name="QtdInteira" value="@ViewBag.QtdInteiraFormat" />
+                <input type="hidden" name="FormatInteira" value="@ViewBag.FormatInteira" />
+                <input type="hidden" name="QtdMeia" value="@ViewBag.QtdMeiaFormat" />
+                <input type="hidden" name="FormatMeia" value="@ViewBag.FormatMeia" />
+                <input type="hidden" name="FormatTotal" value="@ViewBag.FormatTotal" />
                 <center><input id="pagamento" class="btn btn-outline-success" type="submit" value="Ir para o pagamento" /></center>
-
             </div>
 
         </form>
 
     </div>
-
 </div>
 
 @*parte do estilo*@
@@ -52,6 +63,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: -550px;
     }
 
     .card {
@@ -74,7 +86,7 @@
         }
 
     .green {
-        border-left: 3px solid #3bb54a;
+        border-left: 3px solid #008a50;
     }
 
     .btn-outline-success {
@@ -88,6 +100,29 @@
     }
 
     .cmc-bold-green {
-        color: #3bb54a;
+        color: #008a50;
+    }
+
+    /*imagem-fundo-logo*/
+    .img-plantas {
+        width: 1365px;
+        height: 680px;
+        margin-top: -100px;
+        margin-left: -128px;
+    }
+
+    .img-logos {
+        width: 80px;
+        height: 50px;
+        position: absolute;
+        margin-top: -70px;
+        margin-left: -115px;
+    }
+
+    /*titulo*/
+
+    .nm-idicacao {
+        color: black;
+        font-size: 27px;
     }
 </style>

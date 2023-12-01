@@ -3,114 +3,145 @@
 }
 
 
+<div class="Img_logo">
+    <img class="img-logos" src="~/Imagens/Logo.png" />
+</div>
+
+<div class="Img_fundo">
+    <img class="img-plantas" src="~/Imagens/Plantas.jpg" />
+</div>
+
 <div class="row">
     <div class="card green">
+
         <form name="frmCad" method="post" action="ResumoComprar">
             <div>
-                <h3>Dados Pessoais</h3>
+                <div class="nm-idicacao"><label>Dados Pessoais</label></div>
                 <label class="add-dados">Adicione seus dados abaixo</label>
+                <div class="prt-pessoal">
+                    <div class="form-group">
+                        <input id="nome" type="text" name="Nome" class="form-control" placeholder="Nome  " />
+                    </div>
 
-                <div class="form-group">
-                    <input id="nome" type="text" name="Nome" class="form-control" placeholder="Nome  " />
-                </div>
-
-                <br>
-
-                <div class="form-group">
-                    <input id="email" type="email" name="Email" class="form-control" placeholder="Email">
-                </div>
-
-                <br>
-
-                <div class="form-group">
-                    <input id="cpf" type="text" name="Cpf" class="form-control" placeholder="CPF">
-                </div>
-
-                <br>
-
-                <div class="form-group">
-                    <label for="data">Data de Nascimento</label>
                     <br>
-                    <input id="data" type="date" name="Data" class="form-control">
+
+                    <div class="form-group">
+                        <input id="email" type="email" name="Email" class="form-control" placeholder="Email">
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+                        <input id="cpf" type="text" name="Cpf" class="form-control" placeholder="CPF">
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+                        <div class="nm-idicacao">
+                            <label for="data">Data de Nascimento</label>
+                        </div>
+                        <label class="add-dados">Adicione sua data de nascimento</label>
+
+                        <input id="data" type="date" name="Data" class="form-control">
+                    </div>
                 </div>
             </div>
 
 
             <br>
             <br>
+            <br>
+            <br>
+            <br>
+            <br>
 
 
-            <div>
-                <h3>Tipos de Ingressos</h3>
-                <br>
+
+            <div id="Dd-Ingressos">
+                <div class="nm-idicacao"><label>Dados do Ingresso</label></div>
+
+                @*<div class="nm-idicacao">
                 <label for="dataingresso">Escolha a Data</label>
+                </div>*@
+                <label class="add-dados">Escolha a data de visita ao Zoológico</label>
                 <br>
                 <input id="dataingresso" type="date" name="DataIngresso" class="form-control">
 
+
                 <br>
+
+
+
+
+                <div class="nm-tipoIngreso">
+                    <label>Tipo de ingresso</label>
+                </div>
+
+                <label class="add-dados">Escolha o tipo do seu ingresso</label>
+                <br>
+
                 <div class="ln-divisao"></div>
                 <br>
+                <br>
+                <br>
+                <div class="td-meia-inteiro">
+                    <table>
+                        <tr>
+                            <th><label class="nm-ingresso" for="Inteira">Inteira</label></th>
+                            <th>
+                                <select class="slct-qtd" name="QtdInteira">
+                                    <option value="0">Qtd</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>R$ 30,00</td>
+                        </tr>
+                    </table>
 
-                <table>
-                    <tr>
-                        <th><label class="nm-ingresso" for="Inteira">Inteira</label></th>
-                        <th>
-                            <select class="slct-qtd" name="QtdInteira">
-                                <option value="0">Qtd</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>R$ 30,00</td>
-                    </tr>
-                </table>
+
+                    <table>
+                        <tr>
+
+                            <th><label class="nm-ingresso" for="Meia">Meia</label></th>
+                            <th>
+                                <select class="slct-qtd" name="QtdMeia">
+                                    <option value="0">Qtd</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>R$ 15,00</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <br>
-            <div class="ln-divisao"></div>
-            <br>
-
-            <div>
-                <table>
-                    <tr>
-                        <th><label class="nm-ingresso" for="Meia">Meia</label></th>
-                        <th>
-                            <select class="slct-qtd" name="QtdMeia">
-                                <option value="0">Qtd</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>R$ 15,00</td>
-                    </tr>
-                </table>
-            </div>
             <div>
                 <center><input id="cadastrar" type="submit" class="btn btn-outline-success" value="Ver detalhes da compra" /></center>
             </div>
+
         </form>
 
-        <br >
-
-        <div class="vlt-detalhe">
-            <center>@Html.ActionLink("Voltar para página anterior", "Index")</center>
-        </div>
-
-
     </div>
-
 </div>
 
+
+<div class="ln-divisao-vert"></div>
 
 @*parte do estilo*@
 
 
 <style type="text/css">
+
+    /*card*/
     body {
         font-family: "Poppins", sans-serif;
         background-color: #fafafa;
@@ -120,6 +151,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: -550px;
     }
 
     .card {
@@ -127,7 +159,8 @@
         box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
         padding: 30px;
         margin: 20px;
-        width: 460px;
+        width: 815px;
+        height: 470px;
         transition: all 0.3s ease-out;
     }
 
@@ -142,8 +175,11 @@
         }
 
     .green {
-        border-left: 3px solid #3bb54a;
+        border-left: 3px solid #008a50;
     }
+
+
+    /*button enviar*/
 
     .btn-outline-success {
         height: 45px;
@@ -152,18 +188,14 @@
         margin-top: 25px;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 17px;
-        font-weight:normal;
+        font-weight: normal;
     }
+
+    /*dados do card*/
 
     .add-dados {
         color: #a3a5ae;
         font-size: 15px;
-    }
-
-    .ActionLink {
-        color: #3bb54a;
-        font-size: 15px;
-        text-decoration: none;
     }
 
     .slct-qtd {
@@ -174,18 +206,59 @@
         font-size: 15px;
     }
 
-    .nm-ingresso{
-        font-size:20px;
+    .nm-ingresso {
+        font-size: 17px;
+        color: black;
     }
 
     .ln-divisao {
         background: #a3a5ae;
         height: 1px;
+        width: 153px;
+        margin-left: 127px;
+        margin-top: -38px;
+    }
+
+
+    /*imagens*/
+
+    .img-plantas {
+        width: 1365px;
+        height: 680px;
+        margin-top: -100px;
+        margin-left: -128px;
+    }
+
+    .img-logos {
+        width: 80px;
+        height: 50px;
+        position: absolute;
+        margin-top: -70px;
+        margin-left: -115px;
+    }
+
+
+    /*divisão a esquerda*/
+    #Dd-Ingressos {
+        margin-left: 420px;
+        margin-top: -468px;
+    }
+
+    /*label input*/
+    .nm-idicacao {
+        color: black;
+        font-size: 17px;
+    }
+
+    .nm-tipoIngreso {
+        color: black;
+    }
+
+    .td-meia-inteiro {
+        margin-top: -17px;
     }
 
 </style>
-
-
 
 @*@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

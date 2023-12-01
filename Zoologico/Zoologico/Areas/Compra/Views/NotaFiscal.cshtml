@@ -2,14 +2,264 @@
     ViewBag.Title = "NotaFiscal";
 }
 
-<h2>NotaFiscal</h2>
+<div class="Img_logo">
+    <img class="img-logos" src="~/Imagens/Logo.png" />
+</div>
 
-@if (@ViewBag.Metodo == "pix")
-{
-    <label>Pix</label>
-}
-else
-{
-    <label>Outro Pagamento</label>
+<div class="Img_fundo">
+    <img class="img-plantas" src="~/Imagens/Plantas.jpg" />
+</div>
+
+<div class="row">
+    <div class="card green">
+        @if (@ViewBag.Metodo == "pix")
+        {
+            <div>
+
+                <center>
+                    <label class="tit-zoo"><b>Zoológico Zoo</b></label><br>
+
+                    <label class="rua-zoo">R.Guaipá, 678 - Vila Leoplodina, São Paulo - SP, 05089-000</label><br>
+
+                    <label class="dd-num"><b style="color:black;">CNPJ:</b> 81.601.264/0001-00 <b style="color:black;">IE:</b> 291.498.630.974</label><br>
+
+                    <label class="frm-pag"><b>Forma de pagamento:</b> @ViewBag.Metodo</label>
+                    <hr />
+
+                    <label class="extrato"><b>Extrato</b>ㅤㅤㅤOOOOO</label><br />
+                    <label class="cpm-sat">CUPOM FISCAL ELETRÔNICO - SAT</label>
+                    <hr />
+                </center>
+                <div class="vlr-mi">
+                    <b style="color:black;">@ViewBag.QtdInteira Inteira </b>  @ViewBag.FormatInteira
+                </div>
+                <br />
+
+                <div class="vlr-mi">
+                    <b style="color:black;">@ViewBag.QtdMeia Meia </b>  @ViewBag.FormatMeia
+                </div>
+                <br />
+
+                <div class="vlr-mi">
+                    <b style="color:black;">Total: </b> @ViewBag.FormatTotal
+                </div>
+                <hr />
+                <center>
+                    <label class="n-ped">no. Ped. 123456789</label>
+
+                    <div class="data">@ViewBag.Data</div>
+
+                    <img class="img-codigo" src="~/Imagens/codigo-barras.png" />
+                    <br />
+                    @foreach (var numero in Model)
+                    {
+                        <label class="nmr-cdBarra">@numero</label>
+                    }
+                </center>
+            </div>
+        }
+        else if (ViewBag.Metodo == "boleto")
+        {
+            <div>
+
+                <center>
+                    <label class="tit-zoo"><b>Zoológico Zoo</b></label><br>
+
+                    <label class="rua-zoo">R.Guaipá, 678 - Vila Leoplodina, São Paulo - SP, 05089-000</label><br>
+
+                    <label class="dd-num"><b style="color:black;">CNPJ:</b> 81.601.264/0001-00 <b style="color:black;">IE:</b> 291.498.630.974</label><br>
+
+                    <label class="frm-pag"><b>Forma de pagamento:</b> @ViewBag.Metodo</label><br>
+                    <hr />
+
+                    <label class="extrato"><b>Extrato</b>ㅤㅤㅤOOOOO</label><br>
+
+                    <label class="cpm-sat">CUPOM FISCAL ELETRÔNICO - SAT</label>
+                    <hr />
+                </center>
+                <div class="vlr-mi">
+                    <b>@ViewBag.QtdInteira Inteira </b>  @ViewBag.FormatInteira
+                </div>
+                <br />
+
+                <div class="vlr-mi">
+                    <b>@ViewBag.QtdMeia Meia </b>  @ViewBag.FormatMeia
+                </div>
+                <br />
+
+                <div class="vlr-mi">
+                    <b>Total: </b> @ViewBag.FormatTotal
+                </div>
+                <hr />
+                <center>
+                    <label class="n-ped">no. Ped. 123456789</label>
+
+                    <div class="data">@ViewBag.Data</div>
+
+
+                    <img class="img-codigo" src="~/Imagens/codigo-barras.png" />
+                    <br />
+                    @foreach (var numero in Model)
+                    {
+                        <label class="nmr-cdBarra">@numero</label>
+                    }
+                </center>
+            </div>
+        }
+        else
+        {
+            <div>
+                <center>
+                    <label class="tit-zoo"><b>Zoológico Zoo</b></label>
+
+                    <label class="rua-zoo">R.Guaipá, 678 - Vila Leoplodina, São Paulo - SP, 05089-000</label><br />
+
+                    <label class="dd-num"><b style="color:black;">CNPJ:</b> 81.601.264/0001-00 <b style="color:black;">IE:</b> 291.498.630.974</label><br />
+
+                    <label class="frm-pag"><b>Forma de pagamento:</b> @ViewBag.Metodo</label>
+                    <hr />
+
+                    <label class="extrato"><b>Extrato</b>ㅤㅤㅤOOOOO</label><br />
+
+                    <label class="cpm-sat">CUPOM FISCAL ELETRÔNICO - SAT</label>
+                    <hr />
+                </center>
+                <div class="vlr-mi">
+                    <b>@ViewBag.QtdInteira Inteira </b>  @ViewBag.FormatInteira
+                </div>
+                <br />
+
+                <div class="vlr-mi">
+                    <b>@ViewBag.QtdMeia Meia </b>  @ViewBag.FormatMeia
+                </div>
+                <br />
+
+                <div class="vlr-mi">
+                    <b>Total: </b> @ViewBag.FormatTotal
+                </div>
+                <hr />
+                <center>
+                    <label class="n-ped">no. Ped. 123456789</label>
+
+                    <div class="data">@ViewBag.Data</div>
+
+
+                    <img class="img-codigo" src="~/Imagens/codigo-barras.png" />
+                    <br />
+                    @foreach (var numero in Model)
+                    {
+                        <label class="nmr-cdBarra">@numero</label>
+                    }
+                </center>
+            </div>
+        }
+
+    </div>
+</div>
+
+
+@*parte do estilo*@
+
+
+<style type="text/css">
+
+    /*card*/
+    body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fafafa;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -585px;
+    }
+
+    .card {
+        border-radius: 5px;
+        box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+        padding: 30px;
+        margin: 20px;
+        width: 475px;
+        height: 545px;
+        transition: all 0.3s ease-out;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            cursor: pointer;
+        }
+
+        .card td {
+            color: #a3a5ae;
+            font-size: 17px;
+        }
+
+    .green {
+        border-left: 3px solid #008a50;
+    }
+
+    /*imagens*/
+
+    .img-plantas {
+        width: 1365px;
+        height: 680px;
+        margin-top: -100px;
+        margin-left: -128px;
+    }
+
+    .img-logos {
+        width: 80px;
+        height: 50px;
+        position: absolute;
+        margin-top: -70px;
+        margin-left: -115px;
+    }
+
+    .tit-zoo {
+        font-size: 23px;
+    }
+
+    .rua-zoo {
+        font-size: 14px;
+    }
+
+    .dd-num {
+        font-size: 14px;
+        color: #575658;
+    }
+
+    .frm-pag {
+        font-size: 14px;
+    }
+
+    .extrato {
+        font-size: 14px;
+    }
+
+    .cpm-sat {
+        font-size: 14px;
+    }
+
+    .vlr-mi {
+        font-size: 15px;
+        color: #575658;
+    }
+
+    .n-ped {
+        font-size: 13px;
+    }
+
+    .data {
+        font-size: 12px;
+    }
+
+    .img-codigo {
+        width: 261px;
+        height: 56px;
+    }
+
+</style>
 }
 
