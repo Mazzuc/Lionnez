@@ -16,11 +16,19 @@
         <item name="android:windowBackground">@color/white</item>
 
     </style>
+    <style name="FUNDOQR">
+        <item name="android:background">@drawable/back_scanner2</item>
 
+    </style>
     <style name="FundoHome">
         <item name="android:background">@drawable/fundohomewhite</item>
     </style>
     <style name="TEXTCOLOR2">
+        <item name="android:textColor">@color/cinza_claro</item>
+
+    </style>
+
+    <style name="TEXTCOLOR3">
         <item name="android:textColor">@color/cinza_claro</item>
 
     </style>
@@ -110,6 +118,10 @@
 
     <style name="HOME_CARDAPOTIONS">
         <item name="android:background">@drawable/home_cardopitions2</item>
+    </style>
+
+    <style name="ALBUMALERT">
+        <item name="android:background">@drawable/album_alert2</item>
     </style>
 
     <style name="HOME_MENU">

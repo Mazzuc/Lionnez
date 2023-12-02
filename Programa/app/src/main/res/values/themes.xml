@@ -45,6 +45,14 @@
 
     </style>
 
+    <style name="FUNDOQR">
+        <item name="android:background">@drawable/back_scanner</item>
+
+    </style>
+
+    <style name="ALBUMALERT">
+        <item name="android:background">@drawable/album_alert</item>
+    </style>
     <style name="TEXTCOLORDEST">
         <item name="android:textColor">@color/verde</item>
 
@@ -52,6 +60,11 @@
 
     <style name="TEXTDESTAQUE">
         <item name="android:textColor">@color/white</item>
+
+    </style>
+
+    <style name="TEXTCOLOR3">
+        <item name="android:textColor">@color/cinza_medio</item>
 
     </style>
 

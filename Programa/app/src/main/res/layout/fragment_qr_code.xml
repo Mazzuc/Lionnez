@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+   style="@style/FUNDO">
 
     <LinearLayout
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="305dp"
-        android:background="@drawable/back_scanner"
         android:elevation="10dp"
+        style="@style/FUNDOQR"
         android:orientation="vertical"
         android:paddingLeft="27dp"
         android:paddingTop="15dp"
@@ -85,7 +85,7 @@
 
         <TextView
             android:id="@+id/facalogin3"
-            style="@style/TEXTCOLOR"
+            style="@style/TEXTCOLOR3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
