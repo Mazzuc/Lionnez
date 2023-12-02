@@ -6,50 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".feedback_geral">
 
-
-    <LinearLayout
-        android:layout_marginTop="100dp"
-        android:id="@+id/linearLayout6"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:background="@drawable/baleia"
-        android:orientation="horizontal"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        style="@style/HOME_CARDAPOTIONS"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
+        <FrameLayout
+            android:id="@+id/subFragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <LinearLayout
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
-
-        <Button
-            android:id="@+id/btnOpenFragment1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="16dp"
-            android:text="Abrir Fragment 1" />
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnOpenFragment2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnOpenFragment1"
-            android:layout_centerHorizontal="true"
-            android:text="Abrir Fragment 2" />
+            <Button
+                android:id="@+id/btnOpenRateUs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
+                android:text="Abrir Fragment 1" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnOpenFeedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Abrir Fragment 2" />
 
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -113,12 +113,13 @@ public class SearchResult {
         return imagem;
     }
 
+
+
+    public void setHabitatResum(String habitatResum) { this.habitatResum = habitatResum; }
+
     public String getHabitatResum() {
         return habitatResum;
     }
 
-    public void setHabitatResum(String habitatResum) {
-        this.habitatResum = habitatResum;
-    }
 
 }

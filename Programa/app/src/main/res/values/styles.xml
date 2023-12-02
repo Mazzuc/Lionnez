@@ -3,6 +3,11 @@
     <style name="EstiloStatusBarVerde" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@color/verde</item>
     </style>
+    <style name="YourFragmentStyle" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Personalize outros atributos do estilo, se necessário -->
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Adicione essa linha para remover a barra de ação -->
         <item name="windowActionBar">false</item>

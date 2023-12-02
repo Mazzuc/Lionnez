@@ -201,7 +201,7 @@ public class HomeActivity extends AppCompatActivity {
                     //Chamando fragment QrCode para execução no BarCode Navigation
                     getSupportFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
-                            .replace(R.id.fragmentContainer, Fragment_menu_lateral.class, null)
+                            .replace(R.id.fragmentContainer, AlbumFragment.class, null)
                             .commit();
                     homeTxt.setVisibility(View.GONE);
                     pesquisaTxt.setVisibility(View.GONE);

@@ -185,11 +185,13 @@ public class Teste_API_pesquisa extends AppCompatActivity {
             searchResult.setDescricao(jsonObject.get("descricao").getAsString());
         }
 
-        // Adicione outros campos conforme necessário
         if (jsonObject.has("habitat") && !jsonObject.get("habitat").isJsonNull()) {
             searchResult.setHabitat(jsonObject.get("habitat").getAsString());
         }
-
+        // Adicione outros campos conforme necessário
+        if (jsonObject.has("habitatResum") && !jsonObject.get("habitatResum").isJsonNull()) {
+            searchResult.setHabitatResum(jsonObject.get("habitatResum").getAsString());
+        }
         if (jsonObject.has("pais") && !jsonObject.get("pais").isJsonNull()) {
             searchResult.setPais(jsonObject.get("pais").getAsString());
         }
@@ -226,6 +228,7 @@ public class Teste_API_pesquisa extends AppCompatActivity {
     private void openDetalhesActivity(SearchResult item) {
         Intent intent = new Intent(Teste_API_pesquisa.this, DetalhesActivity.class);
         intent.putExtra("title", item.getNome());
+        intent.putExtra("habitatResum", item.getHabitatResum());
         intent.putExtra("description", item.getDescricao());
         intent.putExtra("habitat", item.getHabitat());
         intent.putExtra("pais", item.getPais());

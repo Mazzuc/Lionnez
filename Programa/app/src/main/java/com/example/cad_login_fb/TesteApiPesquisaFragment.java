@@ -275,6 +275,10 @@ public class TesteApiPesquisaFragment extends Fragment {
             searchResult.setHabitat(jsonObject.get("habitat").getAsString());
         }
 
+        if (jsonObject.has("habitatResum") && !jsonObject.get("habitatResum").isJsonNull()) {
+            searchResult.setHabitatResum(jsonObject.get("habitatResum").getAsString());
+        }
+
         if (jsonObject.has("pais") && !jsonObject.get("pais").isJsonNull()) {
             searchResult.setPais(jsonObject.get("pais").getAsString());
         }
