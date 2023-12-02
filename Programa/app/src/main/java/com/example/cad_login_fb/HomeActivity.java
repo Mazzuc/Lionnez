@@ -165,6 +165,12 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(selectedTab != 4){
+
+                    getSupportFragmentManager().beginTransaction()
+                            .setReorderingAllowed(true)
+                            .replace(R.id.fragmentContainer, FragmentMapa.class, null)
+                            .commit();
+
                     homeTxt.setVisibility(View.GONE);
                     pesquisaTxt.setVisibility(View.GONE);
                     scannerTxt.setVisibility(View.GONE);
