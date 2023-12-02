@@ -9,157 +9,157 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Zoologico
 build_property.RootNamespace = Zoologico
-build_property.ProjectDir = C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico\
+build_property.ProjectDir = C:\Users\luany\OneDrive\Documentos\GitHub\Lionnez\Zoologico\Zoologico\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\dudin\Documents\GitHub\Lionnez\Zoologico\Zoologico
+build_property.MSBuildProjectDirectory = C:\Users\luany\OneDrive\Documentos\GitHub\Lionnez\Zoologico\Zoologico
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Compra/Views/Index.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Compra/Views/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29tcHJhXFZpZXdzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Compra/Views/Ingresso.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Compra/Views/Ingresso.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29tcHJhXFZpZXdzXEluZ3Jlc3NvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Compra/Views/NotaFiscal.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Compra/Views/NotaFiscal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29tcHJhXFZpZXdzXE5vdGFGaXNjYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Compra/Views/Pagamento.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Compra/Views/Pagamento.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29tcHJhXFZpZXdzXFBhZ2FtZW50by5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Compra/Views/ResumoComprar.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Compra/Views/ResumoComprar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29tcHJhXFZpZXdzXFJlc3Vtb0NvbXByYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Animal/Delete.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Animal/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xBbmltYWxcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Animal/Edit.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Animal/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xBbmltYWxcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Animal/Insert.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Animal/Insert.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xBbmltYWxcSW5zZXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Animal/Search.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Animal/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xBbmltYWxcU2VhcmNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Animal/Select.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Animal/Select.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xBbmltYWxcU2VsZWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Funcionario/Insert.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Funcionario/Insert.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xGdW5jaW9uYXJpb1xJbnNlcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Delete.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xIYWJpdGF0XERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Details.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xIYWJpdGF0XERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Edit.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xIYWJpdGF0XEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Insert.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Insert.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xIYWJpdGF0XEluc2VydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Search.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xIYWJpdGF0XFNlYXJjaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Select.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Habitat/Select.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xIYWJpdGF0XFNlbGVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Inicio/home.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Inicio/home.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xJbmljaW9caG9tZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Prontuario/Details.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Prontuario/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xQcm9udHVhcmlvXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Prontuario/Insert.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Prontuario/Insert.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xQcm9udHVhcmlvXEluc2VydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Prontuario/Search.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Prontuario/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xQcm9udHVhcmlvXFNlYXJjaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Prontuario/Select.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Prontuario/Select.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xQcm9udHVhcmlvXFNlbGVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/Error.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xTaGFyZWRcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_MenuAnimal.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_MenuAnimal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xTaGFyZWRcX01lbnVBbmltYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_MenuFuncionario.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_MenuFuncionario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xTaGFyZWRcX01lbnVGdW5jaW9uYXJpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_MenuHabitat.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_MenuHabitat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xTaGFyZWRcX01lbnVIYWJpdGF0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_MenuProntuario.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_MenuProntuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xTaGFyZWRcX01lbnVQcm9udHVhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_ValidationScripts.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_ValidationScripts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xTaGFyZWRcX1ZhbGlkYXRpb25TY3JpcHRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/_ViewImports.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/_ViewStart.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Home/Index.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Shared/Error.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/_ViewImports.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/_ViewStart.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_Layoutt.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Areas/Gerenciamento/Views/Shared/_Layoutt.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2VyZW5jaWFtZW50b1xWaWV3c1xTaGFyZWRcX0xheW91dHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-zteuvtxhrq
 
-[C:/Users/dudin/Documents/GitHub/Lionnez/Zoologico/Zoologico/Views/Shared/_Layout.cshtml]
+[C:/Users/luany/OneDrive/Documentos/GitHub/Lionnez/Zoologico/Zoologico/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-8p1q74l5me
