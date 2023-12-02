@@ -68,10 +68,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rate our app"
+                android:text="Avalie nosso App!"
                 android:layout_marginTop="10dp"
                 style="@style/TEXTCOLOR"
-                android:textSize="25dp"
+                android:textSize="23dp"
                 android:textStyle="bold"
                 android:layout_gravity="center"/>
 
@@ -83,9 +83,9 @@
                 android:gravity="center"
                 style="@style/TEXTCOLOR2"
                 android:layout_gravity="center"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:layout_marginTop="10dp"
-                android:text="If youare enjoy our app. Would you mind reting us on the App Store."/>
+                android:text="Caso estiver gostando, claissifique-nos para podemos atender suas expectativas"/>
 
             <androidx.appcompat.widget.AppCompatRatingBar
                 android:id="@+id/ratingBar"
@@ -114,7 +114,7 @@
                     android:id="@+id/laterBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text="May be, later"
+                    android:text="Cancelar"
                     android:textAllCaps="false"
                     android:textColor="#CC000000"
                     android:paddingStart="20dp"
@@ -126,7 +126,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text="Rate Now"
+                    android:text="Avaliar"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     android:paddingEnd="20dp"
