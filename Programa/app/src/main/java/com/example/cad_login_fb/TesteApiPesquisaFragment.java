@@ -302,6 +302,15 @@ public class TesteApiPesquisaFragment extends Fragment {
         if (jsonObject.has("imagem") && !jsonObject.get("imagem").isJsonNull()) {
             searchResult.setImagem(jsonObject.get("imagem").getAsString());
         }
+        if (jsonObject.has("imagemDois") && !jsonObject.get("imagemDois").isJsonNull()) {
+            searchResult.setImagemDois(jsonObject.get("imagemDois").getAsString());
+        }
+        if (jsonObject.has("imagemTres") && !jsonObject.get("imagemTres").isJsonNull()) {
+            searchResult.setImagemTres(jsonObject.get("imagemTres").getAsString());
+        }
+        if (jsonObject.has("imagemQuatro") && !jsonObject.get("imagemQuatro").isJsonNull()) {
+            searchResult.setImagemQuatro(jsonObject.get("imagemQuatro").getAsString());
+        }
 
         return searchResult;
     }
@@ -321,6 +330,9 @@ public class TesteApiPesquisaFragment extends Fragment {
         intent.putExtra("altura", item.getAltura());
         intent.putExtra("curiosidades", item.getCuriosidades());
         intent.putExtra("imagem", item.getImagem());
+        intent.putExtra("imagemDois", item.getImagemDois());
+        intent.putExtra("imagemTres", item.getImagemTres());
+        intent.putExtra("imagemQuatro", item.getImagemQuatro());
         startActivity(intent);
     }
 }

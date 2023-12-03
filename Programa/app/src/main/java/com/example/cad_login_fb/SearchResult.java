@@ -34,6 +34,17 @@ public class SearchResult {
     @SerializedName("imagem")
     private String imagem;
 
+    @SerializedName("imagemDois")
+    private String imagemDois;
+
+    @SerializedName("imagemTres")
+    private String imagemTres;
+
+    @SerializedName("imagemQuatro")
+    private String imagemQuatro;
+
+
+
     // Adicione getters e setters conforme necessário...
 
     public String getNome() {
@@ -121,5 +132,27 @@ public class SearchResult {
         return habitatResum;
     }
 
+    public String getImagemDois() {
+        return imagemDois;
+    }
 
+    public void setImagemDois(String imagemDois) {
+        this.imagemDois = imagemDois;
+    }
+
+    public String getImagemTres() {
+        return imagemTres;
+    }
+
+    public void setImagemTres(String imagemTres) {
+        this.imagemTres = imagemTres;
+    }
+
+    public String getImagemQuatro() {
+        return imagemQuatro;
+    }
+
+    public void setImagemQuatro(String imagemQuatro) {
+        this.imagemQuatro = imagemQuatro;
+    }
 }
