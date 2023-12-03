@@ -81,6 +81,8 @@ public class RateUsDialog extends Dialog {
 
 
         });
+
+        getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
 
     private void animateImage(ImageView ratingImage){
