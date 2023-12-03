@@ -2,6 +2,8 @@ package com.example.cad_login_fb;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -162,14 +164,19 @@ public class HomeFragment extends Fragment {
         RateUsDialogFragment feedbackGeralFragment = new RateUsDialogFragment();
         feedbackGeralFragment.show(getFragmentManager(), "feedback_dialog");
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.AlertDialogCustomStyle);
-
-        final AlertDialog customDialog = builder.create();
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.TransparentDialog);
 
         // Configurar o clique fora do AlertDialog para fechá-lo
-        customDialog.setCanceledOnTouchOutside(true);
+        builder.setCancelable(true);
 
         // Exibir o AlertDialog
-        customDialog.show();
+        AlertDialog alertDialog = builder.create();
+
+        // Configurar o fundo do AlertDialog como transparente
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        }
+
+        alertDialog.show();
     }
 }
