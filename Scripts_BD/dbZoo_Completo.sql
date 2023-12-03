@@ -10,33 +10,17 @@ create table tbCadastro(
 IdCadastro int primary key auto_increment, 
 CPF char(11) not null,
 Nome varchar(150) not null,
-Email varchar(200) not null,
-Usuario varchar(100) not null,
-Senha char(8) not null,
-Acesso int not null
+Email varchar(200) not null
 ); 
 
-delimiter $$
-create procedure spInsertUsuario(vNome varchar(200), vEmail varchar(200), vCPF char(11), vUsuario varchar(20), vSenha char(8))
-begin
-	insert into tbCadastro(Nome, Email, CPF, Usuario, Senha, Acesso)
-		values(vNome, vEmail, vCPF, vUsuario, vSenha, 0);
-end
-$$
-
-delimiter $$
-create procedure spSelectLogin(vUsuario varchar(20))
-begin
-	select Login from tbCadastro where Usuario = vUsuario;
-end
-$$
-
-delimiter $$
-create procedure spSelectUsuario(vUsuario varchar(20))
-begin
-	select * from tbCadastro where Usuario = vUsuario;
-end 
-$$
+-- Login
+create table tbLogin(
+IdLogin int primary key auto_increment, 
+IdCadastro int not null,
+foreign key (IdCadastro) references tbCadastro(IdCadastro),
+Usuario varchar(100) not null,
+Senha char(8) not null
+); 
 
 -- Funcionário
 create table tbCadastroFuncionario(
@@ -203,8 +187,7 @@ begin
 	insert into tbCadastro(CPF, Nome, Email) values (vCPF, VNome, vEmail);
     
     set @IdCadastro = (select IdCadastro from tbCadastro where CPF = vCPF);
-    set @Acesso = 1;
-    insert into tbLogin(IdCadastro, Usuario, Senha, Acesso) values (@IdCadastro, vUsuario, vSenha, @Acesso);
+    insert into tbLogin(IdCadastro, Usuario, Senha) values (@IdCadastro, vUsuario, vSenha);
     insert into tbCadastroFuncionario(IdCadastro, Cargo, RGCad, DataNasc, DataAdm) values (@IdCadastro, vCargo, vRG, vDataNasc, vDataAdm);
     else 
 			select ("Funcionário já cadastrado");
@@ -288,32 +271,22 @@ begin
 end
 $$
 
+create table tbLogado(
+IdLogado int unique,
+Nome varchar(200)
+);
+
 delimiter $$
-create procedure spLogin(vUsuario varchar(100), vSenha char(8))
+create procedure spLogout()
 begin
-	set @IdCadastro = (select IdCadastro from tbLogin where Usuario = vUsuario);
-	set @Acesso = (select Acesso from tbLogin where Usuario = vUsuario);
-    
-    set @Login = (select IdCadastro from tbLogin where Usuario = vUsuario);
-    set @Senha = (select Senha from tbLogin where Usuario = vUsuario);
-        
-	if(@Acesso = 0) then
-    
-		if(@Login = @IdCadastro and @Senha = vSenha) then
-		select ("Usuário logado - Visitante");
-        else
-        select ("Usuário ou senha inválidos");
-        end if;
-        
-    else
-    
-		if(@Login = @IdCadastro and @Senha = vSenha) then
-		select ("Usuário logado - Funcionário");
-        else
-        select ("Usuário ou senha inválidos");
-        end if;
-        
-    end if;
+delete from tbLogado where IdLogado = 1;
+end
+$$
+call spLogin("MarCansada");
+delimiter $$
+create procedure spLogin(vUsuario varchar(100))
+begin
+	select Usuario from tbLogin where Usuario = vUsuario;
 end
 $$
 

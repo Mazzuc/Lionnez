@@ -16,15 +16,15 @@ namespace Zoologico.Controllers
         {
             return View();
         }
-        public ActionResult ValidaLogin(string vLogin, string vSenha)
+        public ActionResult ValidaLogin(string vLogin)
         {
             bool UsuarioExists;
-            string usuario = ObjLogin.ValidaLogin(vLogin, vSenha);
+            string usuario = ObjLogin.ValidaLogin(vLogin);
 
             if (usuario.Length == 0)
-                UsuarioExists = false;
-            else
                 UsuarioExists = true;
+            else
+                UsuarioExists = false;
 
             return Json(!UsuarioExists, new System.Text.Json.JsonSerializerOptions());
         }

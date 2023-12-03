@@ -40,7 +40,7 @@ namespace Zoologico.Areas.Gerenciamento.Controllers
 
             TempData["MensagemCadastro"] = "Cadastro de " + vielmodel.Nome + " realizado com sucesso";
 
-            return RedirectToAction("Insert");
+            return RedirectToAction("Index");
         }
     }
 }

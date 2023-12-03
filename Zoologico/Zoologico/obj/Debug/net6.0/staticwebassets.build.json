@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8WBJ9+6Dql7Uip8YZybciNNUISAS/uLJDo9aHSLBUrQ=",
+  "Hash": "m+PMTX6yh+xTQ9dpS9VSCF1AARHIo3c015Z4BNH6+b0=",
   "Source": "Zoologico",
   "BasePath": "_content/Zoologico",
   "Mode": "Default",
@@ -255,6 +255,23 @@
       "OriginalItemSpec": "wwwroot\\Image\\icon.png"
     },
     {
+      "Identity": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\login.svg",
+      "SourceId": "Zoologico",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\",
+      "BasePath": "_content/Zoologico",
+      "RelativePath": "Image/login.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\login.svg"
+    },
+    {
       "Identity": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\logo.png",
       "SourceId": "Zoologico",
       "SourceType": "Discovered",
@@ -287,6 +304,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Image\\menu.png"
+    },
+    {
+      "Identity": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\Ou.png",
+      "SourceId": "Zoologico",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\",
+      "BasePath": "_content/Zoologico",
+      "RelativePath": "Image/Ou.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\Ou.png"
     },
     {
       "Identity": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\prontuario.png",

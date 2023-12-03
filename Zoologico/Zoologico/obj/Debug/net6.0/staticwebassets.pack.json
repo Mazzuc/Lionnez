@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\Image\\CadasFuncionario.png"
     },
     {
+      "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\Ou.png",
+      "PackagePath": "staticwebassets\\Image\\Ou.png"
+    },
+    {
       "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\admin.png",
       "PackagePath": "staticwebassets\\Image\\admin.png"
     },
@@ -43,6 +47,10 @@
     {
       "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\icon.png",
       "PackagePath": "staticwebassets\\Image\\icon.png"
+    },
+    {
+      "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\login.svg",
+      "PackagePath": "staticwebassets\\Image\\login.svg"
     },
     {
       "Id": "C:\\Users\\dudin\\Documents\\GitHub\\Lionnez\\Zoologico\\Zoologico\\wwwroot\\Image\\logo.png",

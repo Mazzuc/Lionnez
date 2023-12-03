@@ -19,25 +19,23 @@ namespace Zoologico.Models
         [DisplayName("Senha")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "Informe a senha")]
-        [Remote("ValidaLogin", "Home", ErrorMessage = "Senha ou Login incorreto")]
         public string Senha { get; set; }
 
 
         private readonly MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexao"].ConnectionString);
         private readonly MySqlCommand cmd = new MySqlCommand();
 
-        public string ValidaLogin(string vLogin, string vSenha)
+        public string ValidaLogin(string Login)
         {
             conexao.Open();
-            cmd.CommandText = "call spLogin(@Login, @Senha);";
-            cmd.Parameters.Add("@Login", MySqlDbType.VarChar).Value = vLogin;
-            cmd.Parameters.Add("@Senha", MySqlDbType.VarChar).Value = vSenha;
+            cmd.CommandText = "call spLogin(@Login);";
+            cmd.Parameters.Add("@Login", MySqlDbType.VarChar).Value = Login;
             cmd.Connection = conexao;
-            string Login = (string)cmd.ExecuteScalar();
+            string login = (string)cmd.ExecuteScalar();
             conexao.Close();
-            if (Login == null)
-                Login = " ";
-            return Login;
+            if (login == null)
+                login = "";
+            return login;
         }
     }
 }
