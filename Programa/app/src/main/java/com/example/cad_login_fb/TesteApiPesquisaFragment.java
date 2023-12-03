@@ -314,7 +314,7 @@ public class TesteApiPesquisaFragment extends Fragment {
         Intent intent = new Intent(getActivity(), DetalhesActivity.class);
         intent.putExtra("title", item.getNome());
         intent.putExtra("description", item.getDescricao());
-        intent.putExtra("habitat", item.getHabitat());
+        intent.putExtra("habitatResum", item.getHabitatResum());
         intent.putExtra("pais", item.getPais());
         intent.putExtra("alimentacao", item.getAlimentacao());
         intent.putExtra("peso", item.getPeso());
