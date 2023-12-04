@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="500dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/fundoalbum"
+            android:src="@drawable/albumzoo"
             />
     </RelativeLayout>
 </RelativeLayout>
