@@ -10,6 +10,9 @@ public class SearchResult {
     @SerializedName("descricao")
     private String descricao;
 
+    @SerializedName("tipoAnim")
+    private String tipoAnim;
+
     @SerializedName("habitat")
     private String habitat;
 
@@ -57,6 +60,14 @@ public class SearchResult {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public String getTipoAnim() {
+        return tipoAnim;
+    }
+
+    public void setTipoAnim(String tipoAnim) {
+        this.tipoAnim = tipoAnim;
     }
 
     public void setDescricao(String descricao) {

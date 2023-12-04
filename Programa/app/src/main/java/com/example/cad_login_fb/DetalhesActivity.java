@@ -28,6 +28,7 @@ public class DetalhesActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
         String description = intent.getStringExtra("description");
+        String tipoAnim = intent.getStringExtra("tipoAnim");
         String habitat = intent.getStringExtra("habitatResum");
         String pais = intent.getStringExtra("pais");
         String alimentacao = intent.getStringExtra("alimentacao");
@@ -43,6 +44,7 @@ public class DetalhesActivity extends AppCompatActivity {
         TextView textViewTitle = findViewById(R.id.textViewTitleDetalhes);
         TextView textViewTitle2 = findViewById(R.id.txtNomeAni);
         TextView textViewDescription = findViewById(R.id.textViewDescriptionDetalhes);
+        TextView textViewTipoAnim = findViewById(R.id.txttipoanim);
         TextView textViewHabitat = findViewById(R.id.textViewHabitatDetalhes);
         TextView textViewPais = findViewById(R.id.textViewPaisDetalhes);
         TextView textViewAlimentacao = findViewById(R.id.textViewAlimentacaoDetalhes);
@@ -58,6 +60,7 @@ public class DetalhesActivity extends AppCompatActivity {
 
         textViewTitle.setText(title);
         textViewTitle2.setText(title);
+        textViewTipoAnim.setText(tipoAnim);
         textViewDescription.setText(description);
         textViewHabitat.setText(habitat);
         textViewPais.setText(pais);

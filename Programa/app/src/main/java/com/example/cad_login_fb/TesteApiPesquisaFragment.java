@@ -270,6 +270,10 @@ public class TesteApiPesquisaFragment extends Fragment {
             searchResult.setDescricao(jsonObject.get("descricao").getAsString());
         }
 
+        if (jsonObject.has("tipoAnim")) {
+            searchResult.setTipoAnim(jsonObject.get("tipoAnim").getAsString());
+        }
+
         // Adicione outros campos conforme necessário
         if (jsonObject.has("habitat") && !jsonObject.get("habitat").isJsonNull()) {
             searchResult.setHabitat(jsonObject.get("habitat").getAsString());
@@ -325,6 +329,7 @@ public class TesteApiPesquisaFragment extends Fragment {
         intent.putExtra("description", item.getDescricao());
         intent.putExtra("habitatResum", item.getHabitatResum());
         intent.putExtra("pais", item.getPais());
+        intent.putExtra("tipoAnim", item.getTipoAnim());
         intent.putExtra("alimentacao", item.getAlimentacao());
         intent.putExtra("peso", item.getPeso());
         intent.putExtra("altura", item.getAltura());

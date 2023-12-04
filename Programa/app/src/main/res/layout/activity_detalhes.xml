@@ -136,7 +136,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
                     <TextView
-                        android:id="@+id/textnform"
+                        android:id="@+id/txttipoanim"
                         style="@style/TEXTCOLORDES"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
