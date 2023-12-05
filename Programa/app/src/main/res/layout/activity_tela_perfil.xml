@@ -100,10 +100,10 @@
         <Button
             android:id="@+id/btn_selectphoto"
             android:layout_width="155dp"
-            android:elevation="5dp"
             android:layout_height="155dp"
             android:layout_marginTop="-150dp"
-            app:backgroundTint="@color/transparent" />
+            android:elevation="5dp"
+            android:background="@drawable/bg_redondo_transp"/>
 
         <LinearLayout
             android:layout_gravity="center"
