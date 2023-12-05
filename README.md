@@ -4,6 +4,18 @@
 <img src="http://img.shields.io/static/v1?label=PROJETO&message=TRABALHO%20DADO%20REFERENTE%20AO%20PROJETO%20DO%20TCC:%20ZOOLOGICO, FUNCIONALIDADES, SISTEMA%20E%20 APLICATIVOS&color=black&style=for-the-badge"/>
 
 
+
+<details close="part4">
+<summary><b>Repositórios:</summary></b> <br>
+<a href="https://github.com/Mazzuc/Tcc_Lionnez_Aplicativo">Aplicativo ZooCuritiba - Mobile</a> <bR>
+<a href="https://github.com/Mazzuc/Tcc_Lionnez_Sistema">Sistema ZooCuritiba - MVC</a> <bR>
+<a href="https://github.com/Mazzuc/Tcc_Lionnez_Site_Zoo">Site ZooCuritiba- Empresa Cliente</a> <bR>
+<a href="https://github.com/Mazzuc/Tcc_Lionnez_Site_Desenvolvedora">Site Lionnez - Empresa Desenvolvedora</a> <bR>
+
+
+  </details>
+
+
 ## :computer: Desenvolvedores
 
 
