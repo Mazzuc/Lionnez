@@ -5,7 +5,7 @@
 
 
 
-<details close="part4">
+<details close="part8">
 <summary><b>Repositórios:</summary></b> <br>
 <a href="https://github.com/Mazzuc/Tcc_Lionnez_Aplicativo">Aplicativo ZooCuritiba - Mobile</a> <bR>
 <a href="https://github.com/Mazzuc/Tcc_Lionnez_Sistema">Sistema ZooCuritiba - MVC</a> <bR>
@@ -35,7 +35,7 @@
 
 
 
-## :computer: Para mais informações, acesse: <br>
+Para mais informações, acesse: <br>
 
 <a href="https://github.com/Mazzuc/Lionnez/wiki">Home;</a><br>
 <a href="https://github.com/Mazzuc/Lionnez/wiki/Documenta%C3%A7%C3%A3o">Documentação;</a><br>
