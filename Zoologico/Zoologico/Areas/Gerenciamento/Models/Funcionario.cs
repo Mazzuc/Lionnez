@@ -54,7 +54,7 @@ namespace Zoologico.Areas.Gerenciamento.Models
         public string Usuario { get; set; }
 
         [DisplayName("Senha")]
-        [StringLength(8, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
+        [StringLength(200, MinimumLength = 5, ErrorMessage = "O campo deve conter no mínimo 5 caracteres")]
         [Required(ErrorMessage = "A senha é obrigatório")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }

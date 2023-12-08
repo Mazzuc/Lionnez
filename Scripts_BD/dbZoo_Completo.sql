@@ -179,7 +179,7 @@ INSERT INTO Ingresso (Nome, Valor) VALUES ('Inteira', 40.00);
 
 -- CADASTRO 
 delimiter $$
-create procedure spInsertFuncionario(vNome varchar(200), vEmail varchar(200), vCPF char(11), vCargo varchar(50), vSenha char(8), vUsuario varchar(20), vRG char(9), vDataNasc date, vDataAdm date)
+create procedure spInsertFuncionario(vNome varchar(200), vEmail varchar(200), vCPF char(11), vCargo varchar(50), vSenha varchar(100), vUsuario varchar(20), vRG char(9), vDataNasc date, vDataAdm date)
 begin
 	if exists(select * from tbLogin where Usuario = vUsuario) then
    	select ("Usuário Inválido");
@@ -271,22 +271,17 @@ begin
 end
 $$
 
-create table tbLogado(
-IdLogado int unique,
-Nome varchar(200)
-);
-
-delimiter $$
-create procedure spLogout()
-begin
-delete from tbLogado where IdLogado = 1;
-end
-$$
-call spLogin("MarCansada");
 delimiter $$
 create procedure spLogin(vUsuario varchar(100))
 begin
-	select Usuario from tbLogin where Usuario = vUsuario;
+	select Usuario from tbLogin where Usuario = vUsuario and IdLogin = 1;
+end
+$$
+
+delimiter $$
+create procedure spSenha(vSenha varchar(100))
+begin
+	select Usuario from tbLogin where Senha = vSenha and IdLogin = 1;
 end
 $$
 
@@ -824,6 +819,8 @@ BEGIN
  
 END //
 DELIMITER ;
+
+Call spInsertFuncionario("Olivia Machado", "olivia@gmail.com", '45544350890', "Gerente", '12345678', "Admin", '123456789', '1990-05-25', '2018-05-20');
 
 CREATE USER 'zoo'@'localhost' IDENTIFIED BY '12345678';
 GRANT ALL PRIVILEGES ON dbZoologico.* TO 'zoo'@'localhost' WITH GRANT OPTION;

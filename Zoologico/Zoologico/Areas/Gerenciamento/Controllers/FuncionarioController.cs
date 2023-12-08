@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Zoologico.Areas.Gerenciamento.DAO;
 using Zoologico.Areas.Gerenciamento.Models;
+using Zoologico.Utils;
 using Zoologico.Areas.Gerenciamento.ViewModels;
 
 namespace Zoologico.Areas.Gerenciamento.Controllers
@@ -30,7 +31,7 @@ namespace Zoologico.Areas.Gerenciamento.Controllers
                 Email = vielmodel.Email,
                 CPF = vielmodel.CPF,
                 Cargo = vielmodel.Cargo,
-                Senha = vielmodel.Senha,
+                Senha = Hash.GerarHash(vielmodel.Senha),
                 Usuario = vielmodel.Usuario,
                 RG = vielmodel.RG,
                 DataNasc = vielmodel.DataNasc,

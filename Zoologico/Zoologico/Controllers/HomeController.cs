@@ -22,9 +22,22 @@ namespace Zoologico.Controllers
             string usuario = ObjLogin.ValidaLogin(vLogin);
 
             if (usuario.Length == 0)
-                UsuarioExists = true;
-            else
                 UsuarioExists = false;
+            else
+                UsuarioExists = true;
+
+            return Json(!UsuarioExists, new System.Text.Json.JsonSerializerOptions());
+        }
+
+        public ActionResult ValidaSenha(string vSenha)
+        {
+            bool UsuarioExists;
+            string senha = ObjLogin.ValidaSenha(vSenha);
+
+            if (senha.Length == 0)
+                UsuarioExists = false;
+            else
+                UsuarioExists = true;
 
             return Json(!UsuarioExists, new System.Text.Json.JsonSerializerOptions());
         }
