@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+
+    <title>Zoo</title>
+
+</head>
+
+<body>
+
+    <!--NAV-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav_logo">
+                <img src="source/img/logo_nav.svg" alt="" class="nav_logo-img img_logo-branca">
+                <img src="source/img/logo_nav_verde.svg" class="nav_logo-img img_logo-verde">
+            </a>
+
+            <div class="nav_menu" id="nav-menu">
+                <ul class="nav_lista">
+                    <li class="nav_item">
+                        <a href="#home" class="nav_link active-link">Home</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="#about" class="nav_link">Sobre nós</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="#animais" class="nav_link">Animais</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="#atracao" class="nav_link">Atrações</a>
+                    </li>
+
+                    <a href="ingresso" class="button_nav button-ghost">Comprar Ingresso</a>
+
+                </ul>
+
+                <div class="nav_close" id="nav-close">
+                    <i class="ri-close-fill"></i>
+                </div>
+
+                <img src="source/img/img_nav.png" alt="" class="nav_img">
+
+            </div>
+
+            <div class="nav_toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+
+        </nav>
+    </header>
+
+    <main class="main">
+
+        <!-- HOME -->
+        <section class="home" id="home">
+            <img src="source/img/img_home.jpg" alt="" class="home_img">
+
+
+            <div class="home_container container grid">
+                <div class="home_content">
+                    <span class="home_content-subtitulo">Zoológico Curituba</span>
+                    <h1 class="home_content-titulo">Um Mundo de <br> Criaturas <b
+                            class="home_content-titulo-bold">Incríveis <br>& Fantásticas <br></b></h1>
+                    <a href="#" class="button_home">Aventure-se <i class="ri-arrow-right-line"></i></a>
+
+                </div>
+
+                <div class="home_media">
+                    <a href="#" class="home_media-link" target="_blank">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                    <a href="#" class="home_media-link" target="_blank">
+                        <i class="ri-facebook-circle-fill"></i>
+                    </a>
+                    <a href="#" class="home_media-link" target="_blank">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                </div>
+
+                <div class="home_info">
+                    <div>
+                        <span class="home_info-titulo">3 animais para visitar</span>
+                        <a href="#" class="button_flex button_link home_info-button">
+                            Verifique <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+
+                    <div class="home_info-overlay">
+                        <img src="source/img/img_home-info.jpg" alt="" class="home_info-img">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ABOUT US -->
+        <section class="about section container" id="about">
+
+            <div class="about_container grid">
+                <img src="source/img/img_about.png" class="about_img">
+
+                <div class="about_content">
+                    <h2 class="section_titulo about_titulo">
+                        Veja como nós realmente <br> cuidamos dos animais
+                    </h2>
+
+                    <p class="about_descricao">
+                        Em nosso compromisso apaixonado com o bem-estar animal, vai muito além do cuidado básico.
+                        Descubra como nosso cuidado dedicado e práticas éticas estão moldando um futuro melhor para os
+                        nossos amigos de quatro patas.
+                    </p>
+
+                    <div class="about_lista">
+                        <p class="about_lista-descricao">
+                            <i class="ri-checkbox-multiple-fill about_icon"></i>
+                            Priorizamos a saúde física e emocional dos animais.
+                        </p>
+                        <p class="about_lista-descricao">
+                            <i class="ri-checkbox-multiple-fill about_icon"></i>
+                            Oferecemos dietas balanceadas e saudáveis.
+                        </p>
+                        <p class="about_lista-descricao">
+                            <i class="ri-checkbox-multiple-fill about_icon"></i>
+                            Garantimos acompanhamento médico constante.
+                        </p>
+                        <p class="about_lista-descricao">
+                            <i class="ri-checkbox-multiple-fill about_icon"></i>
+                            Promovemos conscientização sobre posse responsável.
+                        </p>
+                    </div>
+
+                    <a href="#" class="button_about">
+                        Veja mais <i class="ri-arrow-right-line button_about-icon"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANIMAIS -->
+
+        <section class="fill-section" id="animais">
+
+            <p class="subtitulo_animal">Conheça Algum Dos</p>
+            <h2 class="title_animal">Nossos Queridinhos</h2>
+
+            <section class="atracao section container">
+
+                <div class="atracao_container swiper">
+                    <!-- conheça algum <br>nossos QUERIDINHOS -->
+                    <div class="atracao_content">
+
+                        <div class="swiper-wrapper">
+
+                            <!-- PRIMEIRO CARD -->
+                            <article class="atracao_article swiper-slide">
+                                <div class="atracao_imagem">
+                                    <img src="source/img/img_animal_1.png" alt="" class="atracao_img">
+                                    <div class="atracao_shadow"></div>
+                                </div>
+
+                                <div class="atracao_info">
+                                    <h3 class="atracao_info-nome">Tigre Asiático</h3>
+                                    <p class="atracao_info-descricao">
+                                        O majestoso tigre asiático é uma criatura imponente da selva. Seu pelo é uma
+                                        tapeçaria de tons dourados e listras negras, perfeitamente adaptado ao habitat.
+                                    </p>
+
+                                    <a href="#" class="atracao_button">Veja Mais</a>
+                                </div>
+                            </article>
+
+                            <!-- SEGUNDO CARD -->
+                            <article class="atracao_article swiper-slide">
+                                <div class="atracao_imagem">
+                                    <img src="source/img/img_animal_2.png" alt="" class="atracao_img">
+                                    <div class="atracao_shadow"></div>
+                                </div>
+
+                                <div class="atracao_info">
+                                    <h3 class="atracao_info-nome">Sapo Azul</h3>
+                                    <p class="atracao_info-descricao">
+                                        O sapo azul é uma maravilha vibrante da vida selvagem. Sua pele suave e
+                                        resplandecente é uma mistura de tons azulados, como se fosse uma obra arte.
+                                    </p>
+
+                                    <a href="#" class="atracao_button">Veja Mais</a>
+                                </div>
+                            </article>
+
+                            <!-- TERCEIRO CARD -->
+                            <article class="atracao_article swiper-slide">
+                                <div class="atracao_imagem">
+                                    <img src="source/img/img_animal_3.png" alt="" class="atracao_img">
+                                    <div class="atracao_shadow"></div>
+                                </div>
+
+                                <div class="atracao_info">
+                                    <h3 class="atracao_info-nome">Tartaruga Shellby</h3>
+                                    <p class="atracao_info-descricao">
+                                        A tartaruga Shellby é uma pequena criatura com uma carapaça robusta e única,
+                                        exibindo um padrão de tons terrosos que se assemelham a uma mosaico encantador.
+                                    </p>
+
+                                    <a href="#" class="atracao_button">Veja Mais</a>
+                                </div>
+                            </article>
+
+                            <!-- QUARTO CARD -->
+                            <article class="atracao_article swiper-slide">
+                                <div class="atracao_imagem">
+                                    <img src="source/img/img_animal_4.png" alt="" class="atracao_img">
+                                    <div class="atracao_shadow"></div>
+                                </div>
+
+                                <div class="atracao_info">
+                                    <h3 class="atracao_info-nome">Água-Viva Ondula</h3>
+                                    <p class="atracao_info-descricao">
+                                        "A água-viva Ondula é uma criatura etérea que dança suavemente sob as correntes
+                                        marinhas. Sua forma translúcida é adornada por tentáculos longos.
+                                    </p>
+
+                                    <a href="#" class="atracao_button">Veja Mais</a>
+                                </div>
+                            </article>
+
+                            <!-- QUINTO CARD -->
+                            <article class="atracao_article swiper-slide">
+                                <div class="atracao_imagem">
+                                    <img src="source/img/img_animal_5.png" alt="" class="atracao_img">
+                                    <div class="atracao_shadow"></div>
+                                </div>
+
+                                <div class="atracao_info">
+                                    <h3 class="atracao_info-nome">Pássaro Jade</h3>
+                                    <p class="atracao_info-descricao">
+                                        O pássaro Jade é uma pequena ave adornada com plumagem verde brilhante,
+                                        lembrando a
+                                        preciosidade da pedra que empresta seu nome fantástico.
+                                    </p>
+
+                                    <a href="#" class="atracao_button">Veja Mais</a>
+                                </div>
+                            </article>
+
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-button-next">
+                        <i class="ri-arrow-right-s-line button_swiper"></i>
+                    </div>
+
+                    <div class="swiper-button-prev">
+                        <i class="ri-arrow-left-s-line button_swiper"></i>
+                    </div>
+
+                    <!-- Pagination -->
+                    <!-- <div class="swiper-pagination"></div> -->
+
+                </div>
+
+            </section>
+        </section>
+
+
+        <!-- ATRACOES -->
+        <section class="animal section container" id="atracao">
+
+            <h2 class="titulo_atrations">Atrações Selvagens Imperdíveis!</h2>
+
+            <div class="card_animal">
+                <div class="container_card">
+
+                    <!-- PRIMEIRO CARD -->
+                    <article class="card_article">
+                        <img src="source/img/img_atracao1.png" alt="" class="card_img">
+
+                        <div class="card_content">
+                            <span class="card_content-descricao">8:30 - 9:45</span>
+                            <h2 class="card_content-titulo">Pavão do Egito</h2>
+                            <a href="#" class="card_content-button">Leia Mais</a>
+                        </div>
+                    </article>
+
+                    <!-- SEGUNDO CARD -->
+                    <article class="card_article">
+                        <img src="source/img/img_atracao2.png" alt="" class="card_img">
+
+                        <div class="card_content">
+                            <span class="card_content-descricao">45 minutos</span>
+                            <h2 class="card_content-titulo">Tour - Aquário</h2>
+                            <a href="#" class="card_content-button">Leia Mais</a>
+                        </div>
+                    </article>
+
+                    <!-- TERCEIRO CARD -->
+                    <article class="card_article">
+                        <img src="source/img/img_atracao3.png" alt="" class="card_img">
+
+                        <div class="card_content">
+                            <span class="card_content-descricao">40 minutos</span>
+                            <h2 class="card_content-titulo">Castelo de Areia</h2>
+                            <a href="#" class="card_content-button">Leia Mais</a>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- INGRESSO -->
+        <section class="ingresso section" id="ingresso">
+
+            <div class="ingresso_container container grid">
+                <img src="source/img/img_bgingresso.png" alt="" class="ingresso_bg">
+
+                <div class="ingresso_content">
+                    <h2 class="ingresso_titulo">
+                        Adquira Ingressos para o Zoológico <br> Explore a Natureza
+                    </h2>
+
+                    <p class="ingresso_descricao">
+                        Garanta seu acesso a um mundo fascinante de criaturas incríveis! Adquira seus ingressos para o
+                        zoológico e embarque em uma jornada inesquecível, onde você poderá descobrir a diversidade da
+                        vida selvagem.
+                    </p>
+
+
+                    <a href="#" class="ingresso_button">
+                        Compre Agora
+                    </a>
+                </div>
+
+                <img src="source/img/img_ingresso (1).png" alt="" class="ingresso_img">
+
+            </div>
+        </section>
+
+
+        <!-- CONTATO -->
+        <section class="contato section container">
+            <div class="contato_container grid">
+                <div>
+                    <h3 class="contato_titulo">Estamos ansiosos <br>para ouvir você!</h3>
+                    <p class="contato_descricao">Nossa equipe está pronta para atender suas necessidades e responder a
+                        qualquer pergunta que você possa ter. Seja para discutir um projeto, solicitar informações
+                        adicionais ou simplesmente para trocar ideias, estamos aqui para ajudar.</p>
+                </div>
+
+                <form action="" class="contato_submit">
+                    <input type="text" placeholder="@email.com" class="contato_input">
+                    <a href="" class="contato_button">Enviar</a>
+                </form>
+            </div>
+        </section>
+
+
+
+        <!-- FOOTER -->
+        <footer class="footer section">
+            <div class="footer_container container grid">
+                <a href="#" class="footer_logo">
+                    <img class="img_footer" src="source/img/logo_footer.png">
+                </a>
+
+                <div class="footer_content">
+                    <h3 class="footer_titulo">Menu</h3>
+
+                    <ul class="footer_links">
+                        <li>
+                            <a href="#home" class="footer_link">Página Inicial</a>
+                        </li>
+                        <li>
+                            <a href="#about" class="footer_link">Sobre nós</a>
+                        </li>
+                        <li>
+                            <a href="#animais" class="footer_link">Animais</a>
+                        </li>
+                        <li>
+                            <a href="#atracao" class="footer_link">Atrações</a>
+                        </li>
+                        <li>
+                            <a href="#ingresso" class="footer_link">Comprar Ingresso</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer_content">
+                    <h3 class="footer_titulo">Contato</h3>
+
+                    <ul class="footer_links">
+                        <li>
+                            <a href="#home" class="footer_link"><!-- <b>Telefone: </b> --> <b>+55 (11) 3942 -
+                                    1761</b></a>
+                        </li>
+                        <li>
+                            <a href="#home" class="footer_link"><!-- <b>Logradouro: </b> --> <b>Rua Guaípa,
+                                    568</b></a>
+                        </li>
+                        <li>
+                            <a href="#home" class="footer_link"><b>ZOO.ME</b></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer_content">
+                    <p class="slogan_footer"><i>"Zoo Curituba: o Melhor do Brasil."</i></p>
+
+                    <div class="footer_mediasocial">
+                        <a href="https://www.instagram.com/_lionnez/" class="footer_socialmedia-link" target="_blank">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_lionnez/" class="footer_socialmedia-link" target="_blank">
+                            <i class="ri-facebook-circle-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_lionnez/" class="footer_socialmedia-link" target="_blank">
+                            <i class="ri-linkedin-box-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="footer_copyright">
+                <a href="#" class="footer_copy_link" target="_blank">
+                    &#169; Zoo. Todos os direitos reservados | Desenvolvido por Lionnez.
+                </a>
+            </p>
+        </footer>
+
+    </main>
+
+
+
+
+    <!-- SWIPER JS -->
+    <script src="script/swiper-bundle.min.js"></script>
+    <script src="script/main.js"></script>
+
+</body>
+
+</html>

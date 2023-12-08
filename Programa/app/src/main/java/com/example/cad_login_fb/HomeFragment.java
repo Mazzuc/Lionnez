@@ -2,11 +2,15 @@ package com.example.cad_login_fb;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,9 +25,17 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+
 public class HomeFragment extends Fragment {
 
     private LinearLayout profileLayout;
+    private LinearLayout linearAnim;
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     private List<Atracao> atracoesList = new ArrayList<>();
@@ -41,6 +53,11 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView3;
     private EventosAdapter adapter3;
     private CollectionReference eventosCollection = firestore.collection("Eventos");
+
+    private TextView textViewTemperatura;
+
+    private static final String OPEN_WEATHER_MAP_API_KEY = "649c22b78fe50b31eb1cc60e413b8a60";
+    private static final String OPEN_WEATHER_MAP_BASE_URL = "http://api.openweathermap.org/data/2.5/";
 
     public HomeFragment() {
         // Required empty public constructor
@@ -136,6 +153,20 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        linearAnim = view.findViewById(R.id.linearAnim);
+        linearAnim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(requireContext(), TesteApiPesquisaFragment.class);
+                startActivity(intent);
+            }
+        });
+
+        textViewTemperatura = view.findViewById(R.id.textViewTemperatura);
+
+        // Adicione o código para buscar a temperatura da API
+        getTemperatureForCuritiba();
+
         return view;
     }
 
@@ -162,14 +193,50 @@ public class HomeFragment extends Fragment {
         RateUsDialogFragment feedbackGeralFragment = new RateUsDialogFragment();
         feedbackGeralFragment.show(getFragmentManager(), "feedback_dialog");
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.AlertDialogCustomStyle);
-
-        final AlertDialog customDialog = builder.create();
+        // Criar o AlertDialog.Builder com o estilo TransparentDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.TransparentDialog);
 
         // Configurar o clique fora do AlertDialog para fechá-lo
-        customDialog.setCanceledOnTouchOutside(true);
+        builder.setCancelable(true);
 
         // Exibir o AlertDialog
-        customDialog.show();
+        AlertDialog alertDialog = builder.create();
+
+        // Configurar o fundo do AlertDialog como transparente
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        alertDialog.show();
+    }
+
+    private void getTemperatureForCuritiba() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(OPEN_WEATHER_MAP_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WeatherApi weatherApi = retrofit.create(WeatherApi.class);
+
+        // Substitua "YOUR_API_KEY" com sua chave da OpenWeatherMap
+        Call<WeatherResponse> call = weatherApi.getWeather("Curitiba", "metric", OPEN_WEATHER_MAP_API_KEY);
+
+        call.enqueue(new Callback<WeatherResponse>() {
+            @Override
+            public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
+                if (response.isSuccessful()) {
+                    float temperatureCelsius = response.body().main.temperature;
+                    String textoTemperatura = String.format("Temperatura: %.1fºC", temperatureCelsius);
+                    textViewTemperatura.setText(textoTemperatura);
+                } else {
+                    // Trate a resposta de erro aqui
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WeatherResponse> call, Throwable t) {
+                // Trate o erro de rede aqui
+            }
+        });
     }
 }

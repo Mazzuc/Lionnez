@@ -51,7 +51,7 @@ public class fragment_album_page extends Fragment {
             Glide.with(requireContext()).load(imagePath).into(imageView);
         } else {
             // Lógica para exibir uma imagem padrão ou mensagem quando não houver imagem.
-            imageView.setImageResource(R.drawable.fundoalbum);
+            imageView.setImageResource(R.drawable.albozoom1);
         }
 
         return view;

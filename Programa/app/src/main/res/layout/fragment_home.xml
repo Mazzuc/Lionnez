@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/FUNDO"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/FUNDO"
     tools:context=".HomeActivity">
 
     <ScrollView
@@ -25,9 +25,9 @@
 
             <ImageView
                 android:id="@+id/imageView6"
+                style="@style/FundoHome"
                 android:layout_width="440dp"
-                android:layout_height="350dp"
-                style="@style/FundoHome"/>
+                android:layout_height="350dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,29 +38,45 @@
                 android:paddingRight="10dp">
 
                 <LinearLayout
+                    style="@style/HOME_CARDAPOTIONS"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    style="@style/HOME_CARDAPOTIONS"
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        style="@style/HOME_CARDAPOTIONS"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        style="@style/HOME_CARDAPOTIONS"
                         android:orientation="horizontal"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         app:cardElevation="0dp">
 
                         <LinearLayout
+                            style="@style/CARDCLIMA"
                             android:layout_width="65dp"
                             android:layout_height="90dp"
                             android:layout_marginTop="10dp"
-                            style="@style/CARDCLIMA"
-                            android:orientation="horizontal"
-                            android:paddingLeft="20dp"
+                            android:orientation="vertical"
+                            android:padding="10dp"
                             app:cardElevation="0dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/tempo"
+                                android:layout_height="30dp"></LinearLayout>
 
+                            <TextView
+                                android:id="@+id/textViewTemperatura"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="26°C"
+                                android:layout_marginLeft="4dp"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -75,8 +91,8 @@
                             android:id="@+id/Linearrio"
                             android:layout_width="70dp"
                             android:layout_height="match_parent"
-                            android:orientation="vertical"
                             android:gravity="center"
+                            android:orientation="vertical"
                             app:cardElevation="10dp">
 
                             <LinearLayout
@@ -98,15 +114,15 @@
                             </LinearLayout>
 
                             <TextView
-                                android:layout_marginTop="05dp"
                                 android:id="@+id/texiew9"
+                                style="@style/TEXTCOLOR"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="05dp"
                                 android:fontFamily="@font/outifit"
                                 android:text="Horário"
-                                style="@style/TEXTCOLOR"
-                                android:textStyle="bold"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -121,8 +137,8 @@
                             android:id="@+id/Linrrio"
                             android:layout_width="70dp"
                             android:layout_height="match_parent"
-                            android:orientation="vertical"
                             android:gravity="center"
+                            android:orientation="vertical"
                             app:cardElevation="10dp">
 
                             <LinearLayout
@@ -132,7 +148,7 @@
                                 android:layout_height="50dp"
                                 android:layout_marginTop="10dp"
                                 android:orientation="horizontal"
-                                android:padding="10dp"
+                                android:padding="7dp"
                                 app:cardElevation="10dp">
 
                                 <!--android:onClick="qrcode"-->
@@ -142,20 +158,21 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    app:srcCompat="@drawable/iconqrcode" />
+                                    app:srcCompat="@drawable/estrela" />
                                 <!--android:onClick="qrcode"-->
 
                             </LinearLayout>
+
                             <TextView
-                                android:layout_marginTop="05dp"
                                 android:id="@+id/texw9"
+                                style="@style/TEXTCOLOR"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="05dp"
                                 android:fontFamily="@font/outifit"
-                                android:text="QRcode"
-                                style="@style/TEXTCOLOR"
-                                android:textStyle="bold"
-                                android:textSize="14sp" />
+                                android:text="Avaliar"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -168,16 +185,16 @@
                             android:id="@+id/Linrio"
                             android:layout_width="70dp"
                             android:layout_height="match_parent"
-                            android:orientation="vertical"
                             android:gravity="center"
+                            android:orientation="vertical"
                             app:cardElevation="10dp">
 
                             <LinearLayout
                                 android:id="@+id/LinearProfile"
+                                style="@style/HOME_CARDAPOTIONS"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_marginTop="10dp"
-                                style="@style/HOME_CARDAPOTIONS"
                                 android:orientation="horizontal"
                                 android:padding="10dp"
                                 app:cardElevation="10dp">
@@ -188,7 +205,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     app:srcCompat="@drawable/iconprofile" />
-
 
 
                             </LinearLayout>
@@ -218,6 +234,7 @@
 
                 <TextView
                     android:id="@+id/textView5"
+                    style="@style/TEXTDESTAQUE"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
@@ -225,7 +242,6 @@
                     android:paddingTop="20dp"
                     android:paddingRight="5dp"
                     android:text="@string/novidades"
-                    style="@style/TEXTDESTAQUE"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -235,8 +251,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:paddingLeft="10dp"
-                android:orientation="horizontal" />
+                android:orientation="horizontal"
+                android:paddingLeft="10dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -246,6 +262,7 @@
 
                 <TextView
                     android:id="@+id/textView8"
+                    style="@style/TEXTDESTAQUE"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
@@ -253,7 +270,6 @@
                     android:paddingTop="20dp"
                     android:paddingRight="5dp"
                     android:text="@string/animais"
-                    style="@style/TEXTDESTAQUE"
                     android:textSize="20sp" />
 
                 <LinearLayout
@@ -265,6 +281,7 @@
                     android:paddingRight="5dp">
 
                     <LinearLayout
+                        android:id="@+id/linearAnim"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:orientation="horizontal">
@@ -374,11 +391,11 @@
 
                     <TextView
                         android:id="@+id/textView9"
+                        style="@style/TEXTCOLOR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/outifit"
                         android:text="@string/mamiferos"
-                        style="@style/TEXTCOLOR"
                         android:textSize="13sp" />
 
                 </LinearLayout>
@@ -401,11 +418,11 @@
 
                     <TextView
                         android:id="@+id/textView10"
+                        style="@style/TEXTCOLOR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/outifit"
                         android:text="@string/aves"
-                        style="@style/TEXTCOLOR"
                         android:textSize="13sp" />
 
                 </LinearLayout>
@@ -427,11 +444,11 @@
 
                     <TextView
                         android:id="@+id/textView13"
+                        style="@style/TEXTCOLOR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/outifit"
                         android:text="@string/anfibios"
-                        style="@style/TEXTCOLOR"
                         android:textSize="13sp" />
 
                 </LinearLayout>
@@ -454,11 +471,11 @@
 
                     <TextView
                         android:id="@+id/textView15"
+                        style="@style/TEXTCOLOR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/outifit"
                         android:text="@string/repteis"
-                        style="@style/TEXTCOLOR"
                         android:textSize="13sp" />
 
                 </LinearLayout>
@@ -480,11 +497,11 @@
 
                     <TextView
                         android:id="@+id/textView16"
+                        style="@style/TEXTCOLOR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/outifit"
                         android:text="@string/aquaticos"
-                        style="@style/TEXTCOLOR"
                         android:textSize="13sp" />
 
                 </LinearLayout>

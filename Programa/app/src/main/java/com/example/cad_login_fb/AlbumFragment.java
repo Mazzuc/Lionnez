@@ -260,8 +260,7 @@ public class AlbumFragment extends Fragment {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     adicionarImagem();
                 } else {
-                    // Permissão da câmera negada
-                    // Lidar com este caso, mostrar uma mensagem ou desativar a funcionalidade da câmera
+
                 }
                 break;
 
@@ -269,8 +268,7 @@ public class AlbumFragment extends Fragment {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     abrirGaleria();
                 } else {
-                    // Permissão de armazenamento negada
-                    // Lidar com este caso, mostrar uma mensagem ou desativar a funcionalidade da galeria
+
                 }
                 break;
         }
